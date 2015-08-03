@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
+		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
+		184B14F21B6E84DD00276C04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14F11B6E84DD00276C04 /* ViewController.m */; };
+		184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184B14F31B6E84DD00276C04 /* Main.storyboard */; };
+		184B14F71B6E84DD00276C04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184B14F61B6E84DD00276C04 /* Images.xcassets */; };
+		184B14FA1B6E84DD00276C04 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184B14F81B6E84DD00276C04 /* LaunchScreen.xib */; };
+		184B15061B6E84DD00276C04 /* plov_comTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15051B6E84DD00276C04 /* plov_comTests.m */; };
+		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
+		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
+		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
+		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
+		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		184B15001B6E84DD00276C04 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 184B14DE1B6E84DD00276C04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 184B14E51B6E84DD00276C04;
+			remoteInfo = plov.com;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		184B14E61B6E84DD00276C04 /* plov.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plov.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		184B14EA1B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184B14EB1B6E84DD00276C04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		184B14ED1B6E84DD00276C04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		184B14EE1B6E84DD00276C04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		184B14F01B6E84DD00276C04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		184B14F11B6E84DD00276C04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		184B14F41B6E84DD00276C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		184B14F61B6E84DD00276C04 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		184B14F91B6E84DD00276C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = plov.comTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		184B15041B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184B15051B6E84DD00276C04 /* plov_comTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plov_comTests.m; sourceTree = "<group>"; };
+		184B15111B6E87E200276C04 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
+		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
+		D56D647D1B6FF71C0077671F /* PLResourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLResourseManager.h; sourceTree = "<group>"; };
+		D56D647E1B6FF71C0077671F /* PLResourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLResourseManager.m; sourceTree = "<group>"; };
+		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D56D64821B6FF8200077671F /* plov.com-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "plov.com-prefix.pch"; sourceTree = "<group>"; };
+		D56D64831B6FFA0F0077671F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		184B14E31B6E84DD00276C04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
+				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184B14FC1B6E84DD00276C04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		184B14DD1B6E84DD00276C04 = {
+			isa = PBXGroup;
+			children = (
+				D56D64831B6FFA0F0077671F /* UIKit.framework */,
+				D56D64801B6FF7E60077671F /* Foundation.framework */,
+				184B14E81B6E84DD00276C04 /* plov.com */,
+				184B15021B6E84DD00276C04 /* plov.comTests */,
+				184B14E71B6E84DD00276C04 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		184B14E71B6E84DD00276C04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				184B14E61B6E84DD00276C04 /* plov.com.app */,
+				184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		184B14E81B6E84DD00276C04 /* plov.com */ = {
+			isa = PBXGroup;
+			children = (
+				D56D647C1B6FF6F50077671F /* utils */,
+				184B15141B6E8B7B00276C04 /* controllers */,
+				184B150F1B6E87E200276C04 /* frameworks */,
+				184B14ED1B6E84DD00276C04 /* AppDelegate.h */,
+				184B14EE1B6E84DD00276C04 /* AppDelegate.m */,
+				184B14F01B6E84DD00276C04 /* ViewController.h */,
+				184B14F11B6E84DD00276C04 /* ViewController.m */,
+				184B14F31B6E84DD00276C04 /* Main.storyboard */,
+				184B14F61B6E84DD00276C04 /* Images.xcassets */,
+				184B14F81B6E84DD00276C04 /* LaunchScreen.xib */,
+				184B14E91B6E84DD00276C04 /* Supporting Files */,
+			);
+			path = plov.com;
+			sourceTree = "<group>";
+		};
+		184B14E91B6E84DD00276C04 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				184B14EA1B6E84DD00276C04 /* Info.plist */,
+				184B14EB1B6E84DD00276C04 /* main.m */,
+				D56D64821B6FF8200077671F /* plov.com-prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		184B15021B6E84DD00276C04 /* plov.comTests */ = {
+			isa = PBXGroup;
+			children = (
+				184B15051B6E84DD00276C04 /* plov_comTests.m */,
+				184B15031B6E84DD00276C04 /* Supporting Files */,
+			);
+			path = plov.comTests;
+			sourceTree = "<group>";
+		};
+		184B15031B6E84DD00276C04 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				184B15041B6E84DD00276C04 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		184B150F1B6E87E200276C04 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				184B15101B6E87E200276C04 /* SWRevealViewController */,
+			);
+			path = frameworks;
+			sourceTree = "<group>";
+		};
+		184B15101B6E87E200276C04 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				184B15111B6E87E200276C04 /* SWRevealViewController.h */,
+				184B15121B6E87E200276C04 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		184B15141B6E8B7B00276C04 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				184B15151B6E8BE800276C04 /* PLNavigationController.h */,
+				184B15161B6E8BE800276C04 /* PLNavigationController.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		D56D647C1B6FF6F50077671F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D56D647D1B6FF71C0077671F /* PLResourseManager.h */,
+				D56D647E1B6FF71C0077671F /* PLResourseManager.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		184B14E51B6E84DD00276C04 /* plov.com */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184B15091B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.com" */;
+			buildPhases = (
+				184B14E21B6E84DD00276C04 /* Sources */,
+				184B14E31B6E84DD00276C04 /* Frameworks */,
+				184B14E41B6E84DD00276C04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = plov.com;
+			productName = plov.com;
+			productReference = 184B14E61B6E84DD00276C04 /* plov.com.app */;
+			productType = "com.apple.product-type.application";
+		};
+		184B14FE1B6E84DD00276C04 /* plov.comTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184B150C1B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.comTests" */;
+			buildPhases = (
+				184B14FB1B6E84DD00276C04 /* Sources */,
+				184B14FC1B6E84DD00276C04 /* Frameworks */,
+				184B14FD1B6E84DD00276C04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				184B15011B6E84DD00276C04 /* PBXTargetDependency */,
+			);
+			name = plov.comTests;
+			productName = plov.comTests;
+			productReference = 184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		184B14DE1B6E84DD00276C04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = plov.com;
+				TargetAttributes = {
+					184B14E51B6E84DD00276C04 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					184B14FE1B6E84DD00276C04 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 184B14E51B6E84DD00276C04;
+					};
+				};
+			};
+			buildConfigurationList = 184B14E11B6E84DD00276C04 /* Build configuration list for PBXProject "plov.com" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 184B14DD1B6E84DD00276C04;
+			productRefGroup = 184B14E71B6E84DD00276C04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				184B14E51B6E84DD00276C04 /* plov.com */,
+				184B14FE1B6E84DD00276C04 /* plov.comTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		184B14E41B6E84DD00276C04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */,
+				184B14FA1B6E84DD00276C04 /* LaunchScreen.xib in Resources */,
+				184B14F71B6E84DD00276C04 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184B14FD1B6E84DD00276C04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		184B14E21B6E84DD00276C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184B14F21B6E84DD00276C04 /* ViewController.m in Sources */,
+				184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */,
+				184B14EC1B6E84DD00276C04 /* main.m in Sources */,
+				184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */,
+				184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */,
+				D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		184B14FB1B6E84DD00276C04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184B15061B6E84DD00276C04 /* plov_comTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		184B15011B6E84DD00276C04 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 184B14E51B6E84DD00276C04 /* plov.com */;
+			targetProxy = 184B15001B6E84DD00276C04 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		184B14F31B6E84DD00276C04 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184B14F41B6E84DD00276C04 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		184B14F81B6E84DD00276C04 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184B14F91B6E84DD00276C04 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		184B15071B6E84DD00276C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		184B15081B6E84DD00276C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		184B150A1B6E84DD00276C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
+				INFOPLIST_FILE = plov.com/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
+			};
+			name = Debug;
+		};
+		184B150B1B6E84DD00276C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
+				INFOPLIST_FILE = plov.com/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
+			};
+			name = Release;
+		};
+		184B150D1B6E84DD00276C04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = plov.comTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/plov.com.app/plov.com";
+			};
+			name = Debug;
+		};
+		184B150E1B6E84DD00276C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = plov.comTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/plov.com.app/plov.com";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		184B14E11B6E84DD00276C04 /* Build configuration list for PBXProject "plov.com" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184B15071B6E84DD00276C04 /* Debug */,
+				184B15081B6E84DD00276C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184B15091B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.com" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184B150A1B6E84DD00276C04 /* Debug */,
+				184B150B1B6E84DD00276C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184B150C1B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.comTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184B150D1B6E84DD00276C04 /* Debug */,
+				184B150E1B6E84DD00276C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 184B14DE1B6E84DD00276C04 /* Project object */;
+}
