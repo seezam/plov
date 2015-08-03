@@ -8,17 +8,51 @@
 
 #import "PLResourseManager.h"
 
+NSString * resImageMenu = @"menu.png";
+
 @implementation PLResourseManager
 
 + (NSString *)platformSuffix
 {
-    [UIDevice currentDevice];
+    if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS)
+    {
+        return @"_5";
+    }
+    
+    if (IS_IPHONE_6 || IS_IPHONE_6P)
+    {
+        return @"_6";
+    }
+    
     return @"";
+}
+
++ (NSString *)resWithName:(NSString *)resName
+{
+    NSString * ext = [resName pathExtension];
+    
+    NSString * name = resName;
+    
+    if (ext.length > 0)
+    {
+        name = [resName substringFromIndex:[resName rangeOfString:ext].location];
+    }
+    
+    name = [NSString stringWithFormat:@"%@%@.%@", name, [self platformSuffix], ext];
+    
+    return name;
 }
 
 + (UIImage *)imageWithName:(NSString *)resName
 {
-    return nil;
+    UIImage * image = [UIImage imageNamed:[self resWithName:resName]];
+    
+    if (!image)
+    {
+        image = [UIImage imageNamed:resName];
+    }
+    
+    return image;
 }
 
 @end

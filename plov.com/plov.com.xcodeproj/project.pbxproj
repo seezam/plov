@@ -19,6 +19,9 @@
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
+		D56D64891B7003690077671F /* logo_5.png in Resources */ = {isa = PBXBuildFile; fileRef = D56D64861B7003690077671F /* logo_5.png */; };
+		D56D648A1B7003690077671F /* logo_6.png in Resources */ = {isa = PBXBuildFile; fileRef = D56D64871B7003690077671F /* logo_6.png */; };
+		D56D648B1B7003690077671F /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D56D64881B7003690077671F /* menu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D56D64821B6FF8200077671F /* plov.com-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "plov.com-prefix.pch"; sourceTree = "<group>"; };
 		D56D64831B6FFA0F0077671F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D56D64861B7003690077671F /* logo_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_5.png; sourceTree = "<group>"; };
+		D56D64871B7003690077671F /* logo_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_6.png; sourceTree = "<group>"; };
+		D56D64881B7003690077671F /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		184B14E81B6E84DD00276C04 /* plov.com */ = {
 			isa = PBXGroup;
 			children = (
+				D56D64851B6FFEAC0077671F /* resourses */,
 				D56D647C1B6FF6F50077671F /* utils */,
 				184B15141B6E8B7B00276C04 /* controllers */,
 				184B150F1B6E87E200276C04 /* frameworks */,
@@ -174,6 +181,16 @@
 				D56D647E1B6FF71C0077671F /* PLResourseManager.m */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		D56D64851B6FFEAC0077671F /* resourses */ = {
+			isa = PBXGroup;
+			children = (
+				D56D64861B7003690077671F /* logo_5.png */,
+				D56D64871B7003690077671F /* logo_6.png */,
+				D56D64881B7003690077671F /* menu.png */,
+			);
+			path = resourses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +275,9 @@
 			files = (
 				184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */,
 				184B14FA1B6E84DD00276C04 /* LaunchScreen.xib in Resources */,
+				D56D648B1B7003690077671F /* menu.png in Resources */,
+				D56D648A1B7003690077671F /* logo_6.png in Resources */,
+				D56D64891B7003690077671F /* logo_5.png in Resources */,
 				184B14F71B6E84DD00276C04 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * resImageMenu;
+
 @interface PLResourseManager : NSObject
 
 + (UIImage *)imageWithName:(NSString *)resName;
