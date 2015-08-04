@@ -33,6 +33,11 @@
         
         [self setupController:self.visibleViewController];
     }
+    
+    UIColor * color = UIColorFromRGBA(resColorNavigation);
+    
+//    self.navigationBar.backgroundColor = color;
+//    self.navigationBar.tintColor = color;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,10 @@
 
 #import "PLResourseManager.h"
 
+//NSUInteger resColorNavigation = 0x8d724dff;
+NSUInteger resColorNavigation = 0xff0000ff;
+//NSUInteger resColorNavigation = 0xffffff00;
+
 NSString * resImageMenu = @"menu.png";
 
 @implementation PLResourseManager
@@ -54,5 +58,7 @@ NSString * resImageMenu = @"menu.png";
     
     return image;
 }
+
+
 
 @end
