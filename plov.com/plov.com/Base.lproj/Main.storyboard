@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="148.80000000000001" y="-589.77333333333331"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tKG-NM-1mt">
             <objects>
-                <viewController id="gbf-qi-kKW" sceneMemberID="viewController">
+                <viewController id="gbf-qi-kKW" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RSf-rr-PjR">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,14 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample.jpg" id="2s9-ta-uRC">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_5.png" id="Vnh-6y-PTy">
+                                                <rect key="frame" x="8" y="123" width="37" height="132"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_5.png" id="Qxu-MJ-Idk">
+                                                <rect key="frame" x="275" y="123" width="37" height="132"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                     </scrollView>
@@ -144,6 +152,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="nCu-lY-OmG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="leftArrow" destination="Vnh-6y-PTy" id="gak-CX-W7K"/>
+                        <outlet property="rightArrow" destination="Qxu-MJ-Idk" id="JxM-mO-9lK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lid-w3-I8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,8 +225,10 @@
     </scenes>
     <resources>
         <image name="bott_fade.png" width="480" height="138"/>
+        <image name="left_5.png" width="37" height="132"/>
         <image name="minus_5.png" width="54" height="54"/>
         <image name="plus_5.png" width="52" height="54"/>
+        <image name="right_5.png" width="37" height="132"/>
         <image name="sample.jpg" width="3280" height="4928"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
