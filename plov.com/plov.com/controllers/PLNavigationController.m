@@ -12,6 +12,7 @@
 @interface PLNavigationController ()<SWRevealViewControllerDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem * item;
+@property (nonatomic, strong) UIImageView * logo;
 
 @end
 
@@ -26,6 +27,13 @@
     
     self.item = [[UIBarButtonItem alloc] initWithCustomView:button];
     
+    self.logo = [[UIImageView alloc] initWithImage:[PLResourseManager imageWithName:resImageLogo]];
+    self.logo.tag = 'LOGO';
+    self.logo.frame = CGRectMake(66, 0, self.logo.frame.size.width, self.logo.frame.size.height);
+//    self.logo.frame = CGRectMake(66, 0, ceil(self.logo.frame.size.width/2), ceil(self.logo.frame.size.height/2));
+ 
+    [self.navigationBar addSubview:self.logo];
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
@@ -33,11 +41,6 @@
         
         [self setupController:self.visibleViewController];
     }
-    
-    UIColor * color = UIColorFromRGBA(resColorNavigation);
-    
-//    self.navigationBar.backgroundColor = color;
-//    self.navigationBar.tintColor = color;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +58,11 @@
 
 - (void)setupController:(UIViewController *)controller
 {
+//    if (controller.navigationItem.titleView.tag != 'LOGO')
+//    {
+//        controller.navigationItem.titleView = self.logo;
+//    }
+    
     controller.navigationItem.leftBarButtonItem = self.item;
 //    [controller.navigationItem.leftBarButtonItem setTarget:self.revealViewController];
 //    [controller.navigationItem.leftBarButtonItem setAction:@selector(revealToggle:)];

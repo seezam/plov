@@ -13,6 +13,7 @@ NSUInteger resColorNavigation = 0xff0000ff;
 //NSUInteger resColorNavigation = 0xffffff00;
 
 NSString * resImageMenu = @"menu.png";
+NSString * resImageLogo = @"logo.png";
 
 @implementation PLResourseManager
 
@@ -39,10 +40,22 @@ NSString * resImageMenu = @"menu.png";
     
     if (ext.length > 0)
     {
-        name = [resName substringFromIndex:[resName rangeOfString:ext].location];
+        name = [resName substringToIndex:[resName rangeOfString:ext].location - 1];
     }
     
-    name = [NSString stringWithFormat:@"%@%@.%@", name, [self platformSuffix], ext];
+    NSString * dbl = @"";
+//    NSString * dbl = @"@@2x";
+//    NSRange range = [name rangeOfString:dbl];
+//    if (range.location != NSNotFound)
+//    {
+//        name = [name substringToIndex:range.location];
+//    }
+//    else
+//    {
+//        dbl = @"";
+//    }
+    
+    name = [NSString stringWithFormat:@"%@%@%@.%@", name, [self platformSuffix], dbl, ext];
     
     return name;
 }

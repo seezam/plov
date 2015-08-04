@@ -11,7 +11,7 @@
 extern NSUInteger resColorNavigation;
 
 extern NSString * resImageMenu;
-
+extern NSString * resImageLogo;
 
 #define UIColorFromRGBA(rgbaValue) [UIColor \
     colorWithRed:((float)((rgbaValue & 0xFF000000) >> 24))/255.0 \
