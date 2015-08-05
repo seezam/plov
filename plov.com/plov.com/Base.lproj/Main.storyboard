@@ -53,12 +53,12 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_5.png" id="Vnh-6y-PTy">
-                                                <rect key="frame" x="8" y="123" width="37" height="132"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left.png" id="Vnh-6y-PTy">
+                                                <rect key="frame" x="8" y="159" width="25" height="88"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_5.png" id="Qxu-MJ-Idk">
-                                                <rect key="frame" x="275" y="123" width="37" height="132"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right.png" id="Qxu-MJ-Idk">
+                                                <rect key="frame" x="287" y="159" width="25" height="88"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -124,16 +124,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QV6-5Q-1mB">
-                                        <rect key="frame" x="90" y="95" width="32" height="32"/>
+                                        <rect key="frame" x="90" y="93" width="36" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="minus_5.png">
+                                        <state key="normal" image="minus.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="psm-Cs-5rn">
                                         <rect key="frame" x="199" y="95" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="plus_5.png">
+                                        <state key="normal" image="plus.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -224,11 +224,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bott_fade.png" width="480" height="138"/>
-        <image name="left_5.png" width="37" height="132"/>
-        <image name="minus_5.png" width="54" height="54"/>
-        <image name="plus_5.png" width="52" height="54"/>
-        <image name="right_5.png" width="37" height="132"/>
+        <image name="bott_fade.png" width="320" height="92"/>
+        <image name="left.png" width="25" height="88"/>
+        <image name="minus.png" width="36" height="36"/>
+        <image name="plus.png" width="35" height="36"/>
+        <image name="right.png" width="25" height="88"/>
         <image name="sample.jpg" width="3280" height="4928"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
