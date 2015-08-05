@@ -36,12 +36,34 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:1 animations:^{
-            self.leftArrow.alpha = 0;
-            self.rightArrow.alpha = 0;
-        }];
+    int steps = 7;
+    int step = 1;
+    __block CGFloat duration = 1.5;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self arrowAnimateWithStep:step forSteps:steps withDuration:duration];
     });
+}
+
+- (void)arrowAnimateWithStep:(int)step forSteps:(int)steps withDuration:(CGFloat)duration
+{
+    int dx = 2;
+    [UIView animateWithDuration:(duration/steps) animations:^{
+        self.leftArrow.alpha = 1 - (CGFloat)step/(CGFloat)steps;
+        self.rightArrow.alpha = 1 - (CGFloat)step/(CGFloat)steps;
+        
+        CGFloat delta = (step == 1 || step == steps)?dx:dx*2;
+        delta = delta * ((step%2 == 0)?-1:1);
+        
+        self.leftArrow.transform = CGAffineTransformMakeTranslation(delta, 0);
+        self.rightArrow.transform = CGAffineTransformMakeTranslation(delta, 0);;
+    } completion:^(BOOL finished) {
+        if (step >= steps)
+        {
+            return;
+        }
+        int newStep = step + 1;
+        [self arrowAnimateWithStep:newStep forSteps:steps withDuration:duration];
+    }];
 }
 
 @end
