@@ -28,6 +28,16 @@
 		D513F5741B73DF9000B0E16E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5691B73DF9000B0E16E /* AFURLRequestSerialization.m */; };
 		D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F56B1B73DF9000B0E16E /* AFURLResponseSerialization.m */; };
 		D513F5761B73DF9000B0E16E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F56D1B73DF9000B0E16E /* AFURLSessionManager.m */; };
+		D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5781B73E7C600B0E16E /* MenuViewController.m */; };
+		D513F5831B73E9D400B0E16E /* menu-account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57A1B73E9D400B0E16E /* menu-account@2x.png */; };
+		D513F5841B73E9D400B0E16E /* menu-adress2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57B1B73E9D400B0E16E /* menu-adress2x.png */; };
+		D513F5851B73E9D400B0E16E /* menu-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57C1B73E9D400B0E16E /* menu-call@2x.png */; };
+		D513F5861B73E9D400B0E16E /* menu-cards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */; };
+		D513F5871B73E9D400B0E16E /* menu-code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57E1B73E9D400B0E16E /* menu-code@2x.png */; };
+		D513F5881B73E9D400B0E16E /* menu-gift@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57F1B73E9D400B0E16E /* menu-gift@2x.png */; };
+		D513F5891B73E9D400B0E16E /* menu-invite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5801B73E9D400B0E16E /* menu-invite@2x.png */; };
+		D513F58A1B73E9D400B0E16E /* menu-orders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5811B73E9D400B0E16E /* menu-orders@2x.png */; };
+		D513F58B1B73E9D400B0E16E /* menu-status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5821B73E9D400B0E16E /* menu-status@2x.png */; };
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
@@ -93,6 +103,17 @@
 		D513F56B1B73DF9000B0E16E /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		D513F56C1B73DF9000B0E16E /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		D513F56D1B73DF9000B0E16E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		D513F5771B73E7C600B0E16E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		D513F5781B73E7C600B0E16E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		D513F57A1B73E9D400B0E16E /* menu-account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-account@2x.png"; sourceTree = "<group>"; };
+		D513F57B1B73E9D400B0E16E /* menu-adress2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-adress2x.png"; sourceTree = "<group>"; };
+		D513F57C1B73E9D400B0E16E /* menu-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-call@2x.png"; sourceTree = "<group>"; };
+		D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-cards@2x.png"; sourceTree = "<group>"; };
+		D513F57E1B73E9D400B0E16E /* menu-code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-code@2x.png"; sourceTree = "<group>"; };
+		D513F57F1B73E9D400B0E16E /* menu-gift@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-gift@2x.png"; sourceTree = "<group>"; };
+		D513F5801B73E9D400B0E16E /* menu-invite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-invite@2x.png"; sourceTree = "<group>"; };
+		D513F5811B73E9D400B0E16E /* menu-orders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-orders@2x.png"; sourceTree = "<group>"; };
+		D513F5821B73E9D400B0E16E /* menu-status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-status@2x.png"; sourceTree = "<group>"; };
 		D56D647D1B6FF71C0077671F /* PLResourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLResourseManager.h; sourceTree = "<group>"; };
 		D56D647E1B6FF71C0077671F /* PLResourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLResourseManager.m; sourceTree = "<group>"; };
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -223,6 +244,8 @@
 				D56D64A11B71684A0077671F /* MainViewController.m */,
 				D513F5411B72CFCB00B0E16E /* StartViewController.h */,
 				D513F5421B72CFCB00B0E16E /* StartViewController.m */,
+				D513F5771B73E7C600B0E16E /* MenuViewController.h */,
+				D513F5781B73E7C600B0E16E /* MenuViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -265,6 +288,15 @@
 		D56D64851B6FFEAC0077671F /* resourses */ = {
 			isa = PBXGroup;
 			children = (
+				D513F57A1B73E9D400B0E16E /* menu-account@2x.png */,
+				D513F57B1B73E9D400B0E16E /* menu-adress2x.png */,
+				D513F57C1B73E9D400B0E16E /* menu-call@2x.png */,
+				D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */,
+				D513F57E1B73E9D400B0E16E /* menu-code@2x.png */,
+				D513F57F1B73E9D400B0E16E /* menu-gift@2x.png */,
+				D513F5801B73E9D400B0E16E /* menu-invite@2x.png */,
+				D513F5811B73E9D400B0E16E /* menu-orders@2x.png */,
+				D513F5821B73E9D400B0E16E /* menu-status@2x.png */,
 				D513F53F1B72C91B00B0E16E /* spin@2x.png */,
 				D513F53D1B72C79800B0E16E /* intro@2x.png */,
 				D56D64A81B72C51B0077671F /* left@2x.png */,
@@ -361,16 +393,25 @@
 			files = (
 				184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */,
 				D56D64AE1B72C51B0077671F /* logo@2x.png in Resources */,
+				D513F5871B73E9D400B0E16E /* menu-code@2x.png in Resources */,
+				D513F5861B73E9D400B0E16E /* menu-cards@2x.png in Resources */,
 				D56D64AD1B72C51B0077671F /* left@2x.png in Resources */,
+				D513F5841B73E9D400B0E16E /* menu-adress2x.png in Resources */,
 				D56D64AF1B72C51B0077671F /* minus@2x.png in Resources */,
+				D513F58B1B73E9D400B0E16E /* menu-status@2x.png in Resources */,
 				D513F5471B72D40000B0E16E /* Default@2x.png in Resources */,
+				D513F5891B73E9D400B0E16E /* menu-invite@2x.png in Resources */,
+				D513F5831B73E9D400B0E16E /* menu-account@2x.png in Resources */,
 				D56D648B1B7003690077671F /* menu@2x.png in Resources */,
 				D513F5461B72D40000B0E16E /* Default-568h@2x.png in Resources */,
 				D56D64B11B72C51B0077671F /* right@2x.png in Resources */,
 				D56D64B01B72C51B0077671F /* plus@2x.png in Resources */,
+				D513F5851B73E9D400B0E16E /* menu-call@2x.png in Resources */,
 				D56D64971B714F9B0077671F /* bott_fade@2x.png in Resources */,
 				D513F53E1B72C79800B0E16E /* intro@2x.png in Resources */,
 				D56D649B1B7163080077671F /* sample.jpg in Resources */,
+				D513F58A1B73E9D400B0E16E /* menu-orders@2x.png in Resources */,
+				D513F5881B73E9D400B0E16E /* menu-gift@2x.png in Resources */,
 				D513F5401B72C91B00B0E16E /* spin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D513F5761B73DF9000B0E16E /* AFURLSessionManager.m in Sources */,
+				D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */,
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				184B14F21B6E84DD00276C04 /* ViewController.m in Sources */,
