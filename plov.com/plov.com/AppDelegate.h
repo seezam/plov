@@ -14,5 +14,8 @@
 
 + (AppDelegate *)app;
 
+- (void)startApplication:(UIView *)fromView;
+- (void)informNetworkIssue;
+
 @end
 

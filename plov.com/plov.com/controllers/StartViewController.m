@@ -8,6 +8,8 @@
 
 #import "StartViewController.h"
 
+#import "AFNetworkReachabilityManager.h"
+
 @interface StartViewController ()
 
 @end
@@ -18,27 +20,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *viewControllerToBeShown = [storyBoard instantiateViewControllerWithIdentifier:@"beginViewController"];
-        [SHARED_APP.window addSubview:viewControllerToBeShown.view];
-        viewControllerToBeShown.view.alpha = 0;
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            self.view.alpha = 0;
-            viewControllerToBeShown.view.alpha = 1;
-        } completion:^(BOOL finished) {
-            SHARED_APP.window.rootViewController = viewControllerToBeShown;
-        }];
-        
-    });
+    
+    [self checkForNetwork];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+- (void)checkForNetwork
 {
-    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewControllerToBeShown = [storyBoard instantiateViewControllerWithIdentifier:@"beginViewController"];
-    SHARED_APP.window.rootViewController = viewControllerToBeShown;
+    switch ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus)
+    {
+        case AFNetworkReachabilityStatusNotReachable:
+        {
+            [SHARED_APP informNetworkIssue];
+        }
+            break;
+        case AFNetworkReachabilityStatusUnknown:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self checkForNetwork];
+            });
+        }
+            break;
+        default:
+        {
+            [SHARED_APP startApplication:self.view];
+        }
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
