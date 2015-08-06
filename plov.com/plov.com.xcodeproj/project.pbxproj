@@ -10,7 +10,6 @@
 		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B14F21B6E84DD00276C04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14F11B6E84DD00276C04 /* ViewController.m */; };
-		184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184B14F31B6E84DD00276C04 /* Main.storyboard */; };
 		184B15061B6E84DD00276C04 /* plov_comTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15051B6E84DD00276C04 /* plov_comTests.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
@@ -30,7 +29,6 @@
 		D513F5761B73DF9000B0E16E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F56D1B73DF9000B0E16E /* AFURLSessionManager.m */; };
 		D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5781B73E7C600B0E16E /* MenuViewController.m */; };
 		D513F5831B73E9D400B0E16E /* menu-account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57A1B73E9D400B0E16E /* menu-account@2x.png */; };
-		D513F5841B73E9D400B0E16E /* menu-adress2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57B1B73E9D400B0E16E /* menu-adress2x.png */; };
 		D513F5851B73E9D400B0E16E /* menu-call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57C1B73E9D400B0E16E /* menu-call@2x.png */; };
 		D513F5861B73E9D400B0E16E /* menu-cards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */; };
 		D513F5871B73E9D400B0E16E /* menu-code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F57E1B73E9D400B0E16E /* menu-code@2x.png */; };
@@ -38,6 +36,19 @@
 		D513F5891B73E9D400B0E16E /* menu-invite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5801B73E9D400B0E16E /* menu-invite@2x.png */; };
 		D513F58A1B73E9D400B0E16E /* menu-orders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5811B73E9D400B0E16E /* menu-orders@2x.png */; };
 		D513F58B1B73E9D400B0E16E /* menu-status@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F5821B73E9D400B0E16E /* menu-status@2x.png */; };
+		D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F58D1B73ED1900B0E16E /* MenuTableViewCell.m */; };
+		D513F5901B73F34700B0E16E /* menu-adress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D513F58F1B73F34700B0E16E /* menu-adress@2x.png */; };
+		D513F5931B73F64500B0E16E /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5921B73F64500B0E16E /* AddressViewController.m */; };
+		D513F59C1B7401EE00B0E16E /* ProximaNova-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5941B7401EE00B0E16E /* ProximaNova-Black.otf */; };
+		D513F59D1B7401EE00B0E16E /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5951B7401EE00B0E16E /* ProximaNova-Bold.otf */; };
+		D513F59E1B7401EE00B0E16E /* ProximaNova-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5961B7401EE00B0E16E /* ProximaNova-BoldIt.otf */; };
+		D513F59F1B7401EE00B0E16E /* ProximaNova-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5971B7401EE00B0E16E /* ProximaNova-Light.otf */; };
+		D513F5A01B7401EE00B0E16E /* ProximaNova-LightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5981B7401EE00B0E16E /* ProximaNova-LightIt.otf */; };
+		D513F5A11B7401EE00B0E16E /* ProximaNova-Reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F5991B7401EE00B0E16E /* ProximaNova-Reg.otf */; };
+		D513F5A21B7401EE00B0E16E /* ProximaNova-RegIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F59A1B7401EE00B0E16E /* ProximaNova-RegIt.otf */; };
+		D513F5A31B7401EE00B0E16E /* ProximaNova-Xbold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D513F59B1B7401EE00B0E16E /* ProximaNova-Xbold.otf */; };
+		D513F5AA1B74069200B0E16E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D513F5AC1B74069200B0E16E /* Localizable.strings */; };
+		D513F5AF1B74074E00B0E16E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D513F5AE1B74074E00B0E16E /* Main.storyboard */; };
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
@@ -70,7 +81,6 @@
 		184B14EE1B6E84DD00276C04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		184B14F01B6E84DD00276C04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		184B14F11B6E84DD00276C04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		184B14F41B6E84DD00276C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = plov.comTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		184B15041B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184B15051B6E84DD00276C04 /* plov_comTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plov_comTests.m; sourceTree = "<group>"; };
@@ -106,7 +116,6 @@
 		D513F5771B73E7C600B0E16E /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		D513F5781B73E7C600B0E16E /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		D513F57A1B73E9D400B0E16E /* menu-account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-account@2x.png"; sourceTree = "<group>"; };
-		D513F57B1B73E9D400B0E16E /* menu-adress2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-adress2x.png"; sourceTree = "<group>"; };
 		D513F57C1B73E9D400B0E16E /* menu-call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-call@2x.png"; sourceTree = "<group>"; };
 		D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-cards@2x.png"; sourceTree = "<group>"; };
 		D513F57E1B73E9D400B0E16E /* menu-code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-code@2x.png"; sourceTree = "<group>"; };
@@ -114,6 +123,22 @@
 		D513F5801B73E9D400B0E16E /* menu-invite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-invite@2x.png"; sourceTree = "<group>"; };
 		D513F5811B73E9D400B0E16E /* menu-orders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-orders@2x.png"; sourceTree = "<group>"; };
 		D513F5821B73E9D400B0E16E /* menu-status@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-status@2x.png"; sourceTree = "<group>"; };
+		D513F58C1B73ED1900B0E16E /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
+		D513F58D1B73ED1900B0E16E /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
+		D513F58F1B73F34700B0E16E /* menu-adress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-adress@2x.png"; sourceTree = "<group>"; };
+		D513F5911B73F64500B0E16E /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		D513F5921B73F64500B0E16E /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		D513F5941B7401EE00B0E16E /* ProximaNova-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Black.otf"; sourceTree = "<group>"; };
+		D513F5951B7401EE00B0E16E /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.otf"; sourceTree = "<group>"; };
+		D513F5961B7401EE00B0E16E /* ProximaNova-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-BoldIt.otf"; sourceTree = "<group>"; };
+		D513F5971B7401EE00B0E16E /* ProximaNova-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Light.otf"; sourceTree = "<group>"; };
+		D513F5981B7401EE00B0E16E /* ProximaNova-LightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-LightIt.otf"; sourceTree = "<group>"; };
+		D513F5991B7401EE00B0E16E /* ProximaNova-Reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Reg.otf"; sourceTree = "<group>"; };
+		D513F59A1B7401EE00B0E16E /* ProximaNova-RegIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-RegIt.otf"; sourceTree = "<group>"; };
+		D513F59B1B7401EE00B0E16E /* ProximaNova-Xbold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Xbold.otf"; sourceTree = "<group>"; };
+		D513F5AB1B74069200B0E16E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D513F5AD1B74069400B0E16E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D513F5AE1B74074E00B0E16E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D56D647D1B6FF71C0077671F /* PLResourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLResourseManager.h; sourceTree = "<group>"; };
 		D56D647E1B6FF71C0077671F /* PLResourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLResourseManager.m; sourceTree = "<group>"; };
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,8 +199,10 @@
 		184B14E81B6E84DD00276C04 /* plov.com */ = {
 			isa = PBXGroup;
 			children = (
+				D513F5AE1B74074E00B0E16E /* Main.storyboard */,
 				D513F5441B72D40000B0E16E /* Default-568h@2x.png */,
 				D513F5451B72D40000B0E16E /* Default@2x.png */,
+				D513F5A71B74061D00B0E16E /* localizations */,
 				D56D64851B6FFEAC0077671F /* resourses */,
 				D56D647C1B6FF6F50077671F /* utils */,
 				184B15141B6E8B7B00276C04 /* controllers */,
@@ -184,7 +211,6 @@
 				184B14EE1B6E84DD00276C04 /* AppDelegate.m */,
 				184B14F01B6E84DD00276C04 /* ViewController.h */,
 				184B14F11B6E84DD00276C04 /* ViewController.m */,
-				184B14F31B6E84DD00276C04 /* Main.storyboard */,
 				184B14E91B6E84DD00276C04 /* Supporting Files */,
 			);
 			path = plov.com;
@@ -246,6 +272,10 @@
 				D513F5421B72CFCB00B0E16E /* StartViewController.m */,
 				D513F5771B73E7C600B0E16E /* MenuViewController.h */,
 				D513F5781B73E7C600B0E16E /* MenuViewController.m */,
+				D513F58C1B73ED1900B0E16E /* MenuTableViewCell.h */,
+				D513F58D1B73ED1900B0E16E /* MenuTableViewCell.m */,
+				D513F5911B73F64500B0E16E /* AddressViewController.h */,
+				D513F5921B73F64500B0E16E /* AddressViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -276,6 +306,14 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		D513F5A71B74061D00B0E16E /* localizations */ = {
+			isa = PBXGroup;
+			children = (
+				D513F5AC1B74069200B0E16E /* Localizable.strings */,
+			);
+			path = localizations;
+			sourceTree = "<group>";
+		};
 		D56D647C1B6FF6F50077671F /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,8 +326,16 @@
 		D56D64851B6FFEAC0077671F /* resourses */ = {
 			isa = PBXGroup;
 			children = (
+				D513F5941B7401EE00B0E16E /* ProximaNova-Black.otf */,
+				D513F5951B7401EE00B0E16E /* ProximaNova-Bold.otf */,
+				D513F5961B7401EE00B0E16E /* ProximaNova-BoldIt.otf */,
+				D513F5971B7401EE00B0E16E /* ProximaNova-Light.otf */,
+				D513F5981B7401EE00B0E16E /* ProximaNova-LightIt.otf */,
+				D513F5991B7401EE00B0E16E /* ProximaNova-Reg.otf */,
+				D513F59A1B7401EE00B0E16E /* ProximaNova-RegIt.otf */,
+				D513F59B1B7401EE00B0E16E /* ProximaNova-Xbold.otf */,
+				D513F58F1B73F34700B0E16E /* menu-adress@2x.png */,
 				D513F57A1B73E9D400B0E16E /* menu-account@2x.png */,
-				D513F57B1B73E9D400B0E16E /* menu-adress2x.png */,
 				D513F57C1B73E9D400B0E16E /* menu-call@2x.png */,
 				D513F57D1B73E9D400B0E16E /* menu-cards@2x.png */,
 				D513F57E1B73E9D400B0E16E /* menu-code@2x.png */,
@@ -374,6 +420,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 184B14DD1B6E84DD00276C04;
 			productRefGroup = 184B14E71B6E84DD00276C04 /* Products */;
@@ -391,27 +438,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				184B14F51B6E84DD00276C04 /* Main.storyboard in Resources */,
+				D513F5A11B7401EE00B0E16E /* ProximaNova-Reg.otf in Resources */,
 				D56D64AE1B72C51B0077671F /* logo@2x.png in Resources */,
 				D513F5871B73E9D400B0E16E /* menu-code@2x.png in Resources */,
+				D513F59F1B7401EE00B0E16E /* ProximaNova-Light.otf in Resources */,
 				D513F5861B73E9D400B0E16E /* menu-cards@2x.png in Resources */,
 				D56D64AD1B72C51B0077671F /* left@2x.png in Resources */,
-				D513F5841B73E9D400B0E16E /* menu-adress2x.png in Resources */,
 				D56D64AF1B72C51B0077671F /* minus@2x.png in Resources */,
+				D513F5A01B7401EE00B0E16E /* ProximaNova-LightIt.otf in Resources */,
 				D513F58B1B73E9D400B0E16E /* menu-status@2x.png in Resources */,
 				D513F5471B72D40000B0E16E /* Default@2x.png in Resources */,
+				D513F59C1B7401EE00B0E16E /* ProximaNova-Black.otf in Resources */,
+				D513F5A31B7401EE00B0E16E /* ProximaNova-Xbold.otf in Resources */,
 				D513F5891B73E9D400B0E16E /* menu-invite@2x.png in Resources */,
+				D513F5901B73F34700B0E16E /* menu-adress@2x.png in Resources */,
 				D513F5831B73E9D400B0E16E /* menu-account@2x.png in Resources */,
+				D513F5AA1B74069200B0E16E /* Localizable.strings in Resources */,
 				D56D648B1B7003690077671F /* menu@2x.png in Resources */,
 				D513F5461B72D40000B0E16E /* Default-568h@2x.png in Resources */,
 				D56D64B11B72C51B0077671F /* right@2x.png in Resources */,
 				D56D64B01B72C51B0077671F /* plus@2x.png in Resources */,
 				D513F5851B73E9D400B0E16E /* menu-call@2x.png in Resources */,
+				D513F59E1B7401EE00B0E16E /* ProximaNova-BoldIt.otf in Resources */,
 				D56D64971B714F9B0077671F /* bott_fade@2x.png in Resources */,
+				D513F5A21B7401EE00B0E16E /* ProximaNova-RegIt.otf in Resources */,
 				D513F53E1B72C79800B0E16E /* intro@2x.png in Resources */,
 				D56D649B1B7163080077671F /* sample.jpg in Resources */,
 				D513F58A1B73E9D400B0E16E /* menu-orders@2x.png in Resources */,
+				D513F59D1B7401EE00B0E16E /* ProximaNova-Bold.otf in Resources */,
 				D513F5881B73E9D400B0E16E /* menu-gift@2x.png in Resources */,
+				D513F5AF1B74074E00B0E16E /* Main.storyboard in Resources */,
 				D513F5401B72C91B00B0E16E /* spin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,9 +489,11 @@
 				D513F5761B73DF9000B0E16E /* AFURLSessionManager.m in Sources */,
 				D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */,
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
+				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				184B14F21B6E84DD00276C04 /* ViewController.m in Sources */,
 				D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */,
+				D513F5931B73F64500B0E16E /* AddressViewController.m in Sources */,
 				184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */,
 				184B14EC1B6E84DD00276C04 /* main.m in Sources */,
 				D513F5701B73DF9000B0E16E /* AFHTTPSessionManager.m in Sources */,
@@ -470,12 +528,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		184B14F31B6E84DD00276C04 /* Main.storyboard */ = {
+		D513F5AC1B74069200B0E16E /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				184B14F41B6E84DD00276C04 /* Base */,
+				D513F5AB1B74069200B0E16E /* en */,
+				D513F5AD1B74069400B0E16E /* ru */,
 			);
-			name = Main.storyboard;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

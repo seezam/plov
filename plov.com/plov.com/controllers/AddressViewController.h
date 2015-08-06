@@ -1,5 +1,5 @@
 //
-//  MenuViewController.h
+//  AddressViewController.h
 //  plov.com
 //
 //  Created by v.kubyshev on 06/08/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UITableViewController
+@interface AddressViewController : UITableViewController
 
 @end

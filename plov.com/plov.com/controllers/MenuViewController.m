@@ -7,6 +7,9 @@
 //
 
 #import "MenuViewController.h"
+#import "MenuTableViewCell.h"
+#import "SWRevealViewController.h"
+#import "PLNavigationController.h"
 
 @interface MenuViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray * items;
@@ -16,7 +19,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.items = @[
+                   @{
+                       @"image": @"menu-account",
+                       @"title": LOC(@"LOC_MENU_ACCOUNT")
+                    },
+                   @{
+                       @"image": @"menu-code",
+                       @"title": LOC(@"LOC_MENU_CODE")
+                    },
+                   @{
+                       @"image": @"menu-status",
+                       @"title": LOC(@"LOC_MENU_STATUS")
+                    },
+                   @{
+                       @"image": @"menu-gift",
+                       @"title": LOC(@"LOC_MENU_GIFT")
+                    },
+                   @{
+                       @"image": @"menu-invite",
+                       @"title": LOC(@"LOC_MENU_INVITE")
+                    },
+                   @{
+                       @"image": @"menu-orders",
+                       @"title": LOC(@"LOC_MENU_ORDERS")
+                    },
+                   @{
+                       @"image": @"menu-adress",
+                       @"title": LOC(@"LOC_MENU_ADRESS"),
+                       @"segue": @"addressViewController"
+                    },
+                   @{
+                       @"image": @"menu-cards",
+                       @"title": LOC(@"LOC_MENU_CARDS")
+                    },
+                   @{
+                       @"image": @"menu-call",
+                       @"title": LOC(@"LOC_MENU_CALL")
+                    },
+                   ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,21 +66,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+//#pragma mark - Navigation
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UIViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:segue.identifier];
+//    
+//    [self.revealViewController setRightViewController:vc];
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)processToViewController:(NSString *)segue
+{
+    PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
+    [navigation pushToViewController:segue];
 }
-*/
 
 #pragma mark - TableView delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.items.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -46,12 +92,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    static NSString *CellIdentifier = @"mainMenuItem";
+    
+    MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSInteger row = indexPath.row;
+    
+    NSDictionary * item = self.items[row];
+    
+    cell.menuImage.image = [UIImage imageNamed:item[@"image"]];
+    cell.menuTitle.text = item[@"title"];
+    
+    if (row != self.items.count - 1)
+    {
+        cell.bottomDivider.hidden = YES;
+    }
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary * item = self.items[indexPath.row];
     
+    [self processToViewController:item[@"segue"]];
 }
 
 @end

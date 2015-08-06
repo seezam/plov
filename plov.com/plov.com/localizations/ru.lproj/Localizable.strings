@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  plov.com
+
+  Created by v.kubyshev on 07/08/15.
+  Copyright (c) 2015 plov.com. All rights reserved.
+*/
+
+//Main Menu
+
+"LOC_MENU_ACCOUNT" = "БОНУСНЫЙ СЧЕТ";
+"LOC_MENU_CODE" = "ВВЕСТИ КОД";
+"LOC_MENU_STATUS" = "СТАТУС";
+"LOC_MENU_GIFT" = "УГОСТИТЬ ДРУГА";
+"LOC_MENU_INVITE" = "ПРИГЛАСИТЬ ДРУЗЕЙ";
+"LOC_MENU_ORDERS" = "МОИ ЗАКАЗЫ";
+"LOC_MENU_ADRESS" = "МОИ АДРЕСА";
+"LOC_MENU_CARDS" = "КАРТЫ ОПЛАТЫ";
+"LOC_MENU_CALL" = "CALL-ЦЕНТР";

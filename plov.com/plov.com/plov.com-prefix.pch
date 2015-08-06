@@ -30,4 +30,6 @@
 
 #define SHARED_APP [AppDelegate app]
 
+#define LOC(key) NSLocalizedString(key, "")
+
 #endif

@@ -9,7 +9,7 @@
 #import "PLNavigationController.h"
 #import "SWRevealViewController.h"
 
-@interface PLNavigationController ()<SWRevealViewControllerDelegate>
+@interface PLNavigationController ()<SWRevealViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem * item;
 @property (nonatomic, strong) UIImageView * logo;
@@ -34,6 +34,8 @@
  
     [self.navigationBar addSubview:self.logo];
     
+    self.delegate = self;
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
@@ -51,9 +53,7 @@
 - (void)resetCurrentController
 {
     self.visibleViewController.navigationItem.leftBarButtonItem = nil;
-//    [self.visibleViewController.navigationItem.leftBarButtonItem setTarget:nil];
-//    [self.visibleViewController.navigationItem.leftBarButtonItem setAction:NULL];
-    [self.visibleViewController.view removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    [self.visibleViewController.view removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (void)setupController:(UIViewController *)controller
@@ -64,37 +64,54 @@
 //    }
     
     controller.navigationItem.leftBarButtonItem = self.item;
-//    [controller.navigationItem.leftBarButtonItem setTarget:self.revealViewController];
-//    [controller.navigationItem.leftBarButtonItem setAction:@selector(revealToggle:)];
-    [controller.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    [controller.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (UIViewController *)rootViewController
 {
-    NSArray *viewControllers = self.navigationController.viewControllers;
-    return [viewControllers objectAtIndex:viewControllers.count - 2];
+    NSArray *viewControllers = self.viewControllers;
+    if (!viewControllers.count)
+    {
+        return nil;
+    }
+    
+    return [viewControllers objectAtIndex:0];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    NSTimeInterval duration = [self.transitionCoordinator transitionDuration];
+    if ((viewController != self.rootViewController))
+    {
+        self.logo.alpha = 0;
+    }
+    else
+    {
+        [UIView animateWithDuration:duration animations:^{
+            self.logo.alpha = (viewController == self.rootViewController)?1:0;
+        }];
+    }
 }
 
 - (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    [self resetCurrentController];
-    [self setupController:viewController];
-    
     return [super popToViewController:viewController animated:animated];
 }
 
 - (NSArray *)popToRootViewControllerAnimated:(BOOL)animated
 {
-    [self resetCurrentController];
-    [self setupController:self.rootViewController];
-    
+//    self.logo.hidden = NO;
+//    
+//    [self resetCurrentController];
+//    [self setupController:self.rootViewController];
+//    
     return [super popToRootViewControllerAnimated:animated];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-//    viewController.navigationItem.le
-    
     [super pushViewController:viewController animated:animated];
 }
 
@@ -127,14 +144,19 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)pushToViewController:(NSString *)viewControllerIdentifier
+{
+    UIViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
+    
+    [self pushViewController:vc animated:YES];
+    [self.revealViewController revealToggle:nil];
 }
-*/
+
+//
+//#pragma mark - Navigation
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    UIViewController * vc = self.storyboard instantiateViewControllerWithIdentifier:(NSString *)sender
+//}
 
 @end
