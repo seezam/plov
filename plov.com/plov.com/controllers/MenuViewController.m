@@ -22,6 +22,9 @@
     
     self.items = @[
                    @{
+                       @"type": @"logo"
+                   },
+                   @{
                        @"image": @"menu-account",
                        @"title": LOC(@"LOC_MENU_ACCOUNT")
                     },
@@ -92,26 +95,45 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"mainMenuItem";
-    
-    MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    static NSString *itemCellIdentifier = @"mainMenuItem";
+    static NSString *logoCellIdentifier = @"logoMenuItem";
     
     NSInteger row = indexPath.row;
     
     NSDictionary * item = self.items[row];
     
-    cell.menuImage.image = [UIImage imageNamed:item[@"image"]];
-    cell.menuTitle.text = item[@"title"];
+    NSString * reuseIdentifier = @"";
     
-    if (row != self.items.count - 1)
+    if ([item[@"type"] isEqualToString:@"logo"])
     {
-        cell.bottomDivider.hidden = YES;
+        reuseIdentifier = logoCellIdentifier;
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        }
+        
+        return cell;
     }
-    
-    return cell;
+    else
+    {
+        reuseIdentifier = itemCellIdentifier;
+        
+        MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (cell == nil) {
+            cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        }
+        
+        cell.menuImage.image = [UIImage imageNamed:item[@"image"]];
+        cell.menuTitle.text = item[@"title"];
+        
+        if (row != self.items.count - 1)
+        {
+            cell.bottomDivider.hidden = YES;
+        }
+        
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
