@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MenuObject;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) MenuObject * menuData;
 @property (strong, nonatomic) UIWindow *window;
 
 + (AppDelegate *)app;

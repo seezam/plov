@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSUInteger resColorMenuText;
+extern NSUInteger resColorMenuSelector;
 extern NSUInteger resColorNavigation;
+
 
 extern NSString * resImageMenu;
 extern NSString * resImageLogo;

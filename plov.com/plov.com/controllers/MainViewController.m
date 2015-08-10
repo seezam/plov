@@ -8,8 +8,14 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController ()
+#import "PLMenuView.h"
 
+#import "MenuObject.h"
+#import "MenuCategoryObject.h"
+#import "MenuItemObject.h"
+
+@interface MainViewController ()
+@property (nonatomic, strong) MenuObject * plovMenu;
 @end
 
 @implementation MainViewController
@@ -17,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setupWithMenu:SHARED_APP.menuData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,10 +42,18 @@
 }
 */
 
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    
+//    self.itemsScrollView.contentOffset = CGPointMake(0, 0);
+//}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     int steps = 7;
     int step = 1;
+    
     __block CGFloat duration = 1.5;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self arrowAnimateWithStep:step forSteps:steps withDuration:duration];
@@ -64,6 +80,13 @@
         int newStep = step + 1;
         [self arrowAnimateWithStep:newStep forSteps:steps withDuration:duration];
     }];
+}
+
+- (void)setupWithMenu:(MenuObject *)menu
+{
+    self.plovMenu = menu;
+    
+    [self.menuView setupMenu:menu];
 }
 
 @end

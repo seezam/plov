@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class MenuObject;
+@class PLMenuView;
+
 @interface MainViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *leftArrow;
-
 @property (weak, nonatomic) IBOutlet UIImageView *rightArrow;
+
+@property (weak, nonatomic) IBOutlet PLMenuView *menuView;
+@property (weak, nonatomic) IBOutlet UIScrollView *itemsScrollView;
+
+
+- (void)setupWithMenu:(MenuObject *)menu;
+
 @end

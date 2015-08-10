@@ -8,6 +8,10 @@
 
 #import "MenuItemObject.h"
 
+@interface MenuItemObject ()
+@property (nonatomic, strong) NSMutableDictionary * titles;
+@end
+
 @implementation MenuItemObject
 
 - (NSString *)title
@@ -17,14 +21,30 @@
 
 - (NSString *)titleForLng:(NSString *)lng
 {
-    return @"";
+    return self.titles[lng];
+}
+
+- (void)setTitle:(NSString *)title forLng:(NSString *)lng
+{
+    self.titles[lng] = title;
 }
 
 - (instancetype)initWithData:(NSData *)data
 {
     if (self = [super init])
     {
-        
+        _titles = [NSMutableDictionary dictionary];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithId:(NSString *)itemId
+{
+    if (self = [super init])
+    {
+        _itemId = itemId;
+        _titles = [NSMutableDictionary dictionary];
     }
     
     return self;

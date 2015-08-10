@@ -10,6 +10,13 @@
 
 #import "AFNetworkReachabilityManager.h"
 
+#import "MenuObject.h"
+#import "MenuCategoryObject.h"
+#import "MenuItemObject.h"
+
+#import "MainViewController.h"
+#import "SWRevealViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,10 +29,82 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
+- (MenuObject *)loadData
+{
+//    NSString * data = @"\
+//    {\"status\" : {\"code\" : 20000}, \
+//    \"categories\" : [ \
+//    { \
+//        \"title\": \"Plov\", \
+//        \"id\" : 0, \
+//        \"items\" : [] \
+//    }, \
+//    { \
+//        \"title\": \"Salad\", \
+//        \"id\" : 1, \
+//        \"items\" : [] \
+//    }, \
+//    { \
+//        \"title\": \"Samsa\", \
+//        \"id\" : 2, \
+//        \"items\" : [] \
+//    }, \
+//    { \
+//        \"title\": \"Bread\", \
+//        \"id\" : 3, \
+//        \"items\" : [] \
+//    }, \
+//    { \
+//        \"title\": \"Sweats\", \
+//        \"id\" : 4, \
+//        \"items\" : [] \
+//    }, \
+//    { \
+//        \"title\": \"Other\", \
+//        \"id\" : 5, \
+//        \"items\" : [] \
+//    } \
+//                    ]}\
+//    ";
+//    
+//    MenuObject * obj = [[MenuObject alloc] initWithData:[NSData dataWithBytes:data.UTF8String length:data.length]];
+    
+    MenuObject * obj = [[MenuObject alloc] init];
+    
+    
+    MenuCategoryObject * cat1 = [[MenuCategoryObject alloc] initWithId:@"0"];
+    [cat1 setTitle:@"Plov" forLng:@""];
+    [obj addMenuCategory:cat1];
+    
+    MenuCategoryObject * cat2 = [[MenuCategoryObject alloc] initWithId:@"1"];
+    [cat2 setTitle:@"Salad" forLng:@""];
+    [obj addMenuCategory:cat2];
+    
+    MenuCategoryObject * cat3 = [[MenuCategoryObject alloc] initWithId:@"2"];
+    [cat3 setTitle:@"Samsa" forLng:@""];
+    [obj addMenuCategory:cat3];
+    
+    MenuCategoryObject * cat4 = [[MenuCategoryObject alloc] initWithId:@"3"];
+    [cat4 setTitle:@"Bread" forLng:@""];
+    [obj addMenuCategory:cat4];
+    
+    MenuCategoryObject * cat5 = [[MenuCategoryObject alloc] initWithId:@"4"];
+    [cat5 setTitle:@"Sweats" forLng:@""];
+    [obj addMenuCategory:cat5];
+    
+    MenuCategoryObject * cat6 = [[MenuCategoryObject alloc] initWithId:@"5"];
+    [cat6 setTitle:@"Other" forLng:@""];
+    [obj addMenuCategory:cat6];
+    
+    return obj;
+}
+
 - (void)startApplication:(UIView *)fromView
 {
+    self.menuData = [self loadData];
+    
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewControllerToBeShown = [storyBoard instantiateViewControllerWithIdentifier:@"beginViewController"];
+    SWRevealViewController *viewControllerToBeShown = [storyBoard instantiateViewControllerWithIdentifier:@"beginViewController"];
     [SHARED_APP.window addSubview:viewControllerToBeShown.view];
     viewControllerToBeShown.view.alpha = 0;
     
@@ -33,7 +112,7 @@
         fromView.alpha = 0;
         viewControllerToBeShown.view.alpha = 1;
     } completion:^(BOOL finished) {
-        SHARED_APP.window.rootViewController = viewControllerToBeShown;
+        self.window.rootViewController = viewControllerToBeShown;
     }];
 }
 

@@ -10,13 +10,15 @@
 
 @interface MenuItemObject : NSObject
 
-@property (nonatomic, readonly, strong) NSString * categoryId;
+@property (nonatomic, strong) NSString * categoryId;
 @property (nonatomic, readonly, strong) NSString * itemId;
 @property (nonatomic, readonly, strong) NSString * title;
 @property (nonatomic, readonly, strong) UIImage * image;
 
 - (NSString *)titleForLng:(NSString *)lng;
+- (void)setTitle:(NSString *)title forLng:(NSString *)lng;
 
 - (instancetype)initWithData:(NSData *)data;
+- (instancetype)initWithId:(NSString *)itemId;
 
 @end

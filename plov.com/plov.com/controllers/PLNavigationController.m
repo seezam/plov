@@ -8,6 +8,7 @@
 
 #import "PLNavigationController.h"
 #import "SWRevealViewController.h"
+#import "MainViewController.h"
 
 @interface PLNavigationController ()<SWRevealViewControllerDelegate, UINavigationControllerDelegate>
 
@@ -33,8 +34,17 @@
 //    self.logo.frame = CGRectMake(66, 0, ceil(self.logo.frame.size.width/2), ceil(self.logo.frame.size.height/2));
  
     [self.navigationBar addSubview:self.logo];
+//
+    self.navigationBar.translucent = YES;
+    self.navigationBar.shadowImage = [UIImage new];
+    self.view.backgroundColor = [UIColor clearColor];
+    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.backgroundColor = [UIColor clearColor];
     
     self.delegate = self;
+    MainViewController * main = [self.storyboard instantiateViewControllerWithIdentifier:@"mainViewController"];
+    
+    [self pushViewController:main animated:NO];
     
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )

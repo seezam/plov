@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class  MenuItemObject;
+
 @interface MenuCategoryObject : NSObject
 
 @property (nonatomic, readonly, strong) NSString * categoryId;
@@ -15,7 +17,11 @@
 @property (nonatomic, readonly, strong) NSArray * items;
 
 - (NSString *)titleForLng:(NSString *)lng;
+- (void)setTitle:(NSString *)title forLng:(NSString *)lng;
 
 - (instancetype)initWithData:(NSData *)data;
+- (instancetype)initWithId:(NSString *)categoryId;
+
+- (void)addMenuItem:(MenuItemObject *)item;
 
 @end

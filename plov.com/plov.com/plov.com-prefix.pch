@@ -27,6 +27,7 @@
 
 #import "AppDelegate.h"
 #import "PLResourseManager.h"
+#import "UIView+Frame.h"
 
 #define SHARED_APP [AppDelegate app]
 

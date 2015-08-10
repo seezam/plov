@@ -10,6 +10,7 @@
 
 @implementation MenuObject
 
+
 - (instancetype)initWithData:(NSData *)data
 {
     if (self = [super init])
@@ -22,7 +23,28 @@
 
 - (NSArray *)readCategories:(NSData *)data
 {
+    NSDictionary * menu = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+    
+    if (menu)
+    {
+//        NSArray * categories = menu[@"categories"];
+    }
     return @[];
+}
+
+- (void)checkArray
+{
+    if (!_categories)
+    {
+        _categories = [NSArray array];
+    }
+}
+
+- (void)addMenuCategory:(MenuCategoryObject *)category
+{
+    [self checkArray];
+    
+    _categories = [_categories arrayByAddingObject:category];
 }
 
 @end
