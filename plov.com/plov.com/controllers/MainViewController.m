@@ -16,6 +16,12 @@
 
 @interface MainViewController ()
 @property (nonatomic, strong) MenuObject * plovMenu;
+
+@property (nonatomic, assign) BOOL panelHidden;
+@property (nonatomic, strong) UIGestureRecognizer * showPanelGesture;
+
+@property (nonatomic, assign) int itemsCount;
+
 @end
 
 @implementation MainViewController
@@ -23,6 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.panelHidden = YES;
+    [self toggleDescriptionPanel];
+    
+    self.itemsCount = 1;
+    [self.countMinusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
+    [self.countPlusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
     
     [self setupWithMenu:SHARED_APP.menuData];
 }
@@ -87,6 +100,77 @@
     self.plovMenu = menu;
     
     [self.menuView setupMenu:menu];
+}
+
+- (void)hideDescriptionPanel:(UITapGestureRecognizer *)gestureRecognizer
+{
+    self.panelHidden = YES;
+    [self toggleDescriptionPanel];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.descriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
+    }];
+}
+
+- (void)showDescriptionPanel:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    CGPoint velocity = [gestureRecognizer velocityInView:self.itemsScrollView];
+    
+    if (velocity.y < -100)
+    {
+        self.panelHidden = NO;
+        [self toggleDescriptionPanel];
+        [UIView animateWithDuration:0.2 animations:^{
+            CGFloat height = self.view.height/2;
+            self.descriptionPanel.frame = CGRectMake(0, height, self.view.width, height);
+        }];
+    }
+}
+
+- (void)toggleDescriptionPanel
+{
+    if (_showPanelGesture)
+    {
+        [self.itemsScrollView removeGestureRecognizer:self.showPanelGesture];
+        self.showPanelGesture = nil;
+    }
+    
+    if (self.panelHidden)
+    {
+        UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
+        self.showPanelGesture = recognizer;
+        
+        [self.itemsScrollView addGestureRecognizer:recognizer];
+    }
+    else
+    {
+        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
+        self.showPanelGesture = recognizer;
+        [self.itemsScrollView addGestureRecognizer:recognizer];
+    }
+}
+
+- (void)countChanged:(id)sender
+{
+    if (sender == self.countMinusButton)
+    {
+        self.itemsCount--;
+        
+        if (self.itemsCount < 1)
+        {
+            self.itemsCount = 1;
+        }
+    }
+    else
+    {
+        self.itemsCount++;
+        
+        if (self.itemsCount > 99)
+        {
+            self.itemsCount = 99;
+        }
+    }
+    
+    self.countLabel.text = @(self.itemsCount).stringValue;
 }
 
 @end

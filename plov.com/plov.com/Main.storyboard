@@ -17,39 +17,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left.png" id="Vnh-6y-PTy">
-                                        <rect key="frame" x="8" y="219" width="25" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right.png" id="Qxu-MJ-Idk">
-                                        <rect key="frame" x="287" y="219" width="25" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample.jpg" id="2s9-ta-uRC">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
                             </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left.png" id="Vnh-6y-PTy">
+                                <rect key="frame" x="8" y="240" width="25" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right.png" id="Qxu-MJ-Idk">
+                                <rect key="frame" x="287" y="240" width="25" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" id="nKc-7Y-r1w">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="iLY-x1-Bhp">
-                                <rect key="frame" x="0.0" y="409" width="320" height="158"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aLu-vx-4jD">
+                                <rect key="frame" x="0.0" y="416" width="320" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Плов  123 12314 йцукцуйкуц" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rA3-ld-69l">
-                                        <rect key="frame" x="8" y="10" width="304" height="110"/>
+                                        <rect key="frame" x="8" y="21" width="304" height="110"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecm-Bb-SH2">
+                                        <rect key="frame" x="139" y="65" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.63" colorSpace="calibratedRGB"/>
-                            </view>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                            </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Bb2-qC-7OB" customClass="PLMenuView">
                                 <rect key="frame" x="0.0" y="60" width="320" height="35"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -107,10 +114,18 @@
                     <navigationItem key="navigationItem" id="nCu-lY-OmG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="countLabel" destination="tqD-v7-XJQ" id="hvh-A6-Oze"/>
+                        <outlet property="countMinusButton" destination="QV6-5Q-1mB" id="ufY-Rg-sM3"/>
+                        <outlet property="countPlusButton" destination="psm-Cs-5rn" id="CsE-TX-qNj"/>
+                        <outlet property="descriptionPanel" destination="aLu-vx-4jD" id="M0N-0e-DZ6"/>
+                        <outlet property="itemDescriptionLabel" destination="rA3-ld-69l" id="brk-OA-cbF"/>
+                        <outlet property="itemNameLabel" destination="ecm-Bb-SH2" id="4A1-nj-vv7"/>
                         <outlet property="itemsScrollView" destination="mf0-dE-cak" id="ZNX-yM-mnx"/>
                         <outlet property="leftArrow" destination="Vnh-6y-PTy" id="gak-CX-W7K"/>
                         <outlet property="menuView" destination="Bb2-qC-7OB" id="EfS-YZ-ch0"/>
+                        <outlet property="priceLabel" destination="HqZ-SP-Ss2" id="V8l-V2-yCw"/>
                         <outlet property="rightArrow" destination="Qxu-MJ-Idk" id="JxM-mO-9lK"/>
+                        <outlet property="weightLabel" destination="nkz-b5-Jj7" id="XyG-EZ-X29"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lid-w3-I8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
