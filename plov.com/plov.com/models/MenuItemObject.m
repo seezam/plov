@@ -10,6 +10,7 @@
 
 @interface MenuItemObject ()
 @property (nonatomic, strong) NSMutableDictionary * titles;
+@property (nonatomic, strong) NSMutableDictionary * descs;
 @end
 
 @implementation MenuItemObject
@@ -29,11 +30,38 @@
     self.titles[lng] = title;
 }
 
+- (NSString *)desc
+{
+    return [self descForLng:@""];
+}
+
+- (NSString *)descForLng:(NSString *)lng
+{
+    return self.descs[lng];
+}
+
+- (void)setDesc:(NSString *)desc forLng:(NSString *)lng
+{
+    self.descs[lng] = desc;
+}
+
+- (void)setCost:(NSInteger)cost forWeight:(NSInteger)weight
+{
+    _cost = cost;
+    _weight = weight;
+}
+
+- (UIImage *)image
+{
+    return [UIImage imageNamed:@"sample.jpg"];
+}
+
 - (instancetype)initWithData:(NSData *)data
 {
     if (self = [super init])
     {
         _titles = [NSMutableDictionary dictionary];
+        _descs = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -45,6 +73,7 @@
     {
         _itemId = itemId;
         _titles = [NSMutableDictionary dictionary];
+        _descs = [NSMutableDictionary dictionary];
     }
     
     return self;

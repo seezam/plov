@@ -25,6 +25,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Bold.otf</string>
+		<string>ProximaNova-Light.otf</string>
+		<string>ProximaNova-Reg.otf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

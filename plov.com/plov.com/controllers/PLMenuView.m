@@ -16,6 +16,8 @@
 @property (nonatomic, strong) MenuObject * menu;
 @property (nonatomic, strong) UIView * selector;
 
+@property (nonatomic, assign) NSInteger lastTag;
+
 @end
 
 @implementation PLMenuView
@@ -101,9 +103,18 @@
     }
 }
 
+- (MenuCategoryObject *)currentCategory
+{
+    return self.menu.categories[self.lastTag];
+}
+
 - (void)selectCategoryByTag:(NSInteger)tag
 {
     [self setupSelector];
+    
+    self.lastTag = tag;
+    
+    [self.plDelegate selectingCategory:self.menu.categories[tag]];
     
     [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = [self selectorRectForTag:tag];
@@ -111,13 +122,20 @@
         [self scrollRectToVisible:CGRectInset(rect, -40, 0) animated:NO];
         self.selector.frame = rect;
     }];
-    
-    [self selectCategory:@""];
 }
 
 - (void)selectCategory:(NSString *)categoryId
 {
-    
+    int i = 0;
+    for (MenuCategoryObject * category in self.menu.categories)
+    {
+        if ([categoryId isEqualToString:category.categoryId])
+        {
+            [self selectCategoryByTag:i];
+            return;
+        }
+        i++;
+    }
 }
 
 @end

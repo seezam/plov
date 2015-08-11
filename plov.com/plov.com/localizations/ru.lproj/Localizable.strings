@@ -17,3 +17,6 @@
 "LOC_MENU_ADRESS" = "МОИ АДРЕСА";
 "LOC_MENU_CARDS" = "КАРТЫ ОПЛАТЫ";
 "LOC_MENU_CALL" = "CALL-ЦЕНТР";
+
+"LOC_MAIN_WEIGHT" = "%@ гр";
+"LOC_MAIN_COST" = "%@ руб";

@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @class MenuObject;
+@class MenuCategoryObject;
+
+@protocol PLMenuViewDelegate <NSObject>
+
+- (void)selectingCategory:(MenuCategoryObject *)category;
+
+@end
 
 @interface PLMenuView : UIScrollView
+
+@property (weak, nonatomic) id<PLMenuViewDelegate> plDelegate;
+@property (strong, nonatomic) MenuCategoryObject * currentCategory;
 
 - (void)setupMenu:(MenuObject *)menu;
 

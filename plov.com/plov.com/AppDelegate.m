@@ -71,30 +71,71 @@
     
     MenuObject * obj = [[MenuObject alloc] init];
     
-    
     MenuCategoryObject * cat1 = [[MenuCategoryObject alloc] initWithId:@"0"];
     [cat1 setTitle:@"Plov" forLng:@""];
     [obj addMenuCategory:cat1];
+    
+    MenuItemObject * item11 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item11 setTitle:@"Plov 1" forLng:@""];
+    [item11 setDesc:@"plov 1\nplov1\nplov1" forLng:@""];
+    [item11 setCost:200 forWeight:120];
+    [cat1 addMenuItem:item11];
+    
+    MenuItemObject * item12 = [[MenuItemObject alloc] initWithId:@"1"];
+    [item12 setTitle:@"Plov 2" forLng:@""];
+    [item12 setDesc:@"plov 2\nplov2\nplov2\nplov2" forLng:@""];
+    [item12 setCost:300 forWeight:220];
+    [cat1 addMenuItem:item12];
+    
+    MenuItemObject * item13 = [[MenuItemObject alloc] initWithId:@"2"];
+    [item13 setTitle:@"Plov 3" forLng:@""];
+    [item13 setDesc:@"plov 3\nplov3\nplov3\nplov 3\nplov 3\nplov 3" forLng:@""];
+    [item13 setCost:180 forWeight:100];
+    [cat1 addMenuItem:item13];
     
     MenuCategoryObject * cat2 = [[MenuCategoryObject alloc] initWithId:@"1"];
     [cat2 setTitle:@"Salad" forLng:@""];
     [obj addMenuCategory:cat2];
     
+    MenuItemObject * item21 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item21 setTitle:@"Salad 1" forLng:@""];
+    [cat2 addMenuItem:item21];
+    
+    MenuItemObject * item22 = [[MenuItemObject alloc] initWithId:@"1"];
+    [item22 setTitle:@"Salad 2" forLng:@""];
+    [cat2 addMenuItem:item22];
+    
     MenuCategoryObject * cat3 = [[MenuCategoryObject alloc] initWithId:@"2"];
     [cat3 setTitle:@"Samsa" forLng:@""];
     [obj addMenuCategory:cat3];
+    
+    MenuItemObject * item31 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item31 setTitle:@"Samsa" forLng:@""];
+    [cat3 addMenuItem:item31];
     
     MenuCategoryObject * cat4 = [[MenuCategoryObject alloc] initWithId:@"3"];
     [cat4 setTitle:@"Bread" forLng:@""];
     [obj addMenuCategory:cat4];
     
+    MenuItemObject * item41 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item41 setTitle:@"Bread" forLng:@""];
+    [cat4 addMenuItem:item41];
+    
     MenuCategoryObject * cat5 = [[MenuCategoryObject alloc] initWithId:@"4"];
     [cat5 setTitle:@"Sweats" forLng:@""];
     [obj addMenuCategory:cat5];
     
+    MenuItemObject * item51 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item51 setTitle:@"KitKat" forLng:@""];
+    [cat5 addMenuItem:item51];
+    
     MenuCategoryObject * cat6 = [[MenuCategoryObject alloc] initWithId:@"5"];
     [cat6 setTitle:@"Other" forLng:@""];
     [obj addMenuCategory:cat6];
+    
+    MenuItemObject * item61 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item61 setTitle:@"Towels" forLng:@""];
+    [cat6 addMenuItem:item61];
     
     return obj;
 }
