@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 
 #import "BBCyclingLabel.h"
+#import "SWRevealViewController.h"
 
 #import "PLMenuView.h"
 
@@ -28,6 +29,9 @@
 
 @property (nonatomic, assign) NSInteger bucketSum;
 @property (nonatomic, assign) BOOL arrowAnimation;
+
+@property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
+@property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
 @end
 
 @implementation MainViewController
@@ -46,7 +50,8 @@
     self.countLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
     self.countLabel.textColor = UIColorFromRGBA(resColorMenuText);
     self.countLabel.textAlignment = NSTextAlignmentCenter;
-    [self.countLabel setText:@"1" animated:NO];
+    [self.countLabel setText:@"0" animated:NO];
+    self.countLabel.clipsToBounds = YES;
     
     self.cartIcon.x = self.view.width - self.cartIcon.width - 16;
     self.bucketSumLabel.alpha = 0;
@@ -61,8 +66,16 @@
     
     self.itemNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
     self.itemDescriptionLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
+
     
-    self.countLabel.clipsToBounds = YES;
+    
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
+    self.panGesture.delegate = self;
+    [self.itemsScrollView addGestureRecognizer:self.panGesture];
+
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
+    self.tapGesture.delegate = self;
+    [self.itemsScrollView addGestureRecognizer:self.tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,8 +171,38 @@
     self.currentItem = 0;
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == self.tapGesture)
+    {
+        return !self.panelHidden || self.revealViewController.frontViewPosition == FrontViewPositionRight;
+    }
+    else if (gestureRecognizer == self.panGesture)
+    {
+        return self.panelHidden || self.revealViewController.frontViewPosition == FrontViewPositionRight;
+    }
+    
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
+    {
+        return NO;
+    }
+    //    NSLog(@"%@\n%@", gestureRecognizer, otherGestureRecognizer);
+    return YES;
+}
+
 - (void)hideDescriptionPanel:(UITapGestureRecognizer *)gestureRecognizer
 {
+    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
+    {
+        [self.revealViewController revealToggle:nil];
+        return;
+    }
+    
     self.panelHidden = YES;
     [self toggleDescriptionPanel];
     [UIView animateWithDuration:0.2 animations:^{
@@ -167,22 +210,13 @@
     }];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
-
 - (void)showDescriptionPanel:(UIPanGestureRecognizer *)gestureRecognizer
 {
-//    if (gestureRecognizer.direction == UISwipeGestureRecognizerDirectionUp)
-//    {
-//        self.panelHidden = NO;
-//        [self toggleDescriptionPanel];
-//        [UIView animateWithDuration:0.2 animations:^{
-//            CGFloat height = self.view.height/2;
-//            self.descriptionPanel.frame = CGRectMake(0, height, self.view.width, height);
-//        }];
-//    }
+    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
+    {
+        [self.revealViewController revealToggle:nil];
+        return;
+    }
     
     CGPoint velocity = [gestureRecognizer velocityInView:self.itemsScrollView];
     
@@ -202,25 +236,25 @@
 
 - (void)toggleDescriptionPanel
 {
-    if (_showPanelGesture)
-    {
-        [self.itemsScrollView removeGestureRecognizer:self.showPanelGesture];
-        self.showPanelGesture = nil;
-    }
-    
-    if (self.panelHidden)
-    {
-        UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
-        self.showPanelGesture = recognizer;
-        recognizer.delegate = self;
-        [self.itemsScrollView addGestureRecognizer:recognizer];
-    }
-    else
-    {
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
-        self.showPanelGesture = recognizer;
-        [self.itemsScrollView addGestureRecognizer:recognizer];
-    }
+//    if (_showPanelGesture)
+//    {
+//        [self.itemsScrollView removeGestureRecognizer:self.showPanelGesture];
+//        self.showPanelGesture = nil;
+//    }
+//    
+//    if (self.panelHidden)
+//    {
+//        UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
+//        self.showPanelGesture = recognizer;
+//        recognizer.delegate = self;
+//        [self.itemsScrollView addGestureRecognizer:recognizer];
+//    }
+//    else
+//    {
+//        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
+//        self.showPanelGesture = recognizer;
+//        [self.itemsScrollView addGestureRecognizer:recognizer];
+//    }
 }
 
 - (void)countChanged:(id)sender
