@@ -30,7 +30,7 @@
     
     self.logo = [[UIImageView alloc] initWithImage:[PLResourseManager imageWithName:resImageLogo]];
     self.logo.tag = 'LOGO';
-    self.logo.frame = CGRectMake(66, 0, self.logo.frame.size.width, self.logo.frame.size.height);
+    self.logo.frame = CGRectMake(66, 8, self.logo.frame.size.width, self.logo.frame.size.height);
 //    self.logo.frame = CGRectMake(66, 0, ceil(self.logo.frame.size.width/2), ceil(self.logo.frame.size.height/2));
  
     [self.navigationBar addSubview:self.logo];

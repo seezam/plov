@@ -25,6 +25,6 @@
 - (void)setupMenu:(MenuObject *)menu;
 
 - (void)selectCategory:(NSString *)categoryId;
-- (void)selectCategoryByTag:(NSInteger)tag;
+//- (void)selectCategoryByTag:(NSInteger)tag;
 
 @end

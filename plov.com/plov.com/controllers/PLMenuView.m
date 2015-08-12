@@ -81,7 +81,7 @@
 
 - (void)menuSelected:(UIButton *)sender
 {
-    [self selectCategoryByTag:sender.tag - 100];
+    [self selectCategoryByTag:sender.tag - 100 withScroll:YES];
 }
 
 - (CGRect)selectorRectForTag:(NSInteger)tag
@@ -108,13 +108,16 @@
     return self.menu.categories[self.lastTag];
 }
 
-- (void)selectCategoryByTag:(NSInteger)tag
+- (void)selectCategoryByTag:(NSInteger)tag withScroll:(BOOL)scroll
 {
     [self setupSelector];
     
     self.lastTag = tag;
     
-    [self.plDelegate selectingCategory:self.menu.categories[tag]];
+    if (scroll)
+    {
+        [self.plDelegate selectingCategory:self.menu.categories[tag]];
+    }
     
     [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = [self selectorRectForTag:tag];
@@ -131,7 +134,7 @@
     {
         if ([categoryId isEqualToString:category.categoryId])
         {
-            [self selectCategoryByTag:i];
+            [self selectCategoryByTag:i withScroll:NO];
             return;
         }
         i++;

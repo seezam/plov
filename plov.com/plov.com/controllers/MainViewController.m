@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 
+#import "BBCyclingLabel.h"
+
 #import "PLMenuView.h"
 
 #import "MenuObject.h"
@@ -20,12 +22,12 @@
 @property (nonatomic, assign) BOOL panelHidden;
 @property (nonatomic, strong) UIGestureRecognizer * showPanelGesture;
 
-@property (nonatomic, assign) int itemsCount;
-
 @property (nonatomic, assign) int currentItem;
 
 @property (nonatomic, strong) NSMutableArray * items;
 
+@property (nonatomic, assign) NSInteger bucketSum;
+@property (nonatomic, assign) BOOL arrowAnimation;
 @end
 
 @implementation MainViewController
@@ -34,12 +36,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.arrowAnimation = NO;
+    
     self.panelHidden = YES;
     [self toggleDescriptionPanel];
     
-    self.itemsCount = 1;
     [self.countMinusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
     [self.countPlusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
+    self.countLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
+    self.countLabel.textColor = UIColorFromRGBA(resColorMenuText);
+    self.countLabel.textAlignment = NSTextAlignmentCenter;
+    [self.countLabel setText:@"1" animated:NO];
+    
+    self.cartIcon.x = self.view.width - self.cartIcon.width - 16;
+    self.bucketSumLabel.alpha = 0;
+    self.bucketSumLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
+    self.bucketSumLabel.textColor = UIColorFromRGBA(resColorMenuText);
+    self.bucketSumLabel.textAlignment = NSTextAlignmentCenter;
+    self.bucketSumLabel.clipsToBounds = YES;
     
     [self setupWithMenu:SHARED_APP.menuData];
     
@@ -47,6 +61,8 @@
     
     self.itemNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
     self.itemDescriptionLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
+    
+    self.countLabel.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +89,16 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    if (self.arrowAnimation)
+    {
+        return;
+    }
+    
+    self.arrowAnimation = YES;
+    
+    self.leftArrow.alpha = 0;
+    self.rightArrow.alpha = 0;
+    
     int steps = 7;
     int step = 1;
     
@@ -80,6 +106,11 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self arrowAnimateWithStep:step forSteps:steps withDuration:duration];
     });
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.arrowAnimation = NO;
 }
 
 - (void)arrowAnimateWithStep:(int)step forSteps:(int)steps withDuration:(CGFloat)duration
@@ -97,6 +128,7 @@
     } completion:^(BOOL finished) {
         if (step >= steps)
         {
+            self.arrowAnimation = NO;
             return;
         }
         int newStep = step + 1;
@@ -161,8 +193,8 @@
             self.panelHidden = NO;
             [self toggleDescriptionPanel];
             [UIView animateWithDuration:0.2 animations:^{
-                CGFloat height = self.view.height/2;
-                self.descriptionPanel.frame = CGRectMake(0, height, self.view.width, height);
+                CGFloat height = CGRectGetMaxY(self.itemDescriptionLabel.frame) + 80;
+                self.descriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
             }];
         }
     }
@@ -193,26 +225,69 @@
 
 - (void)countChanged:(id)sender
 {
-    if (sender == self.countMinusButton)
+    if (_currentItem >= 0 && _currentItem < self.items.count)
     {
-        self.itemsCount--;
-        
-        if (self.itemsCount < 1)
+        MenuItemObject * item = self.items[_currentItem];
+        if (sender == self.countMinusButton)
         {
-            self.itemsCount = 1;
-        }
-    }
-    else
-    {
-        self.itemsCount++;
+            self.countLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollDown;
+            item.count--;
         
-        if (self.itemsCount > 99)
-        {
-            self.itemsCount = 99;
+            if (item.count < 0)
+            {
+                item.count = 0;
+                return;
+            }
+        
+            self.bucketSum -= item.cost;
+        
+            if (self.bucketSum == 0)
+            {
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.bucketSumLabel.alpha = 0;
+                    self.cartIcon.x = self.view.width - self.cartIcon.width - 16;
+                } completion:^(BOOL finished) {
+                    [self.bucketSumLabel setText:@"" animated:NO];
+                }];
+            }
+            else
+            {
+                self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollDown;
+                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:YES];
+            }
         }
-    }
+        else
+        {
+            self.countLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
+            item.count++;
+            
+            if (item.count > 99)
+            {
+                item.count = 99;
+                return;
+            }
+            
+            BOOL showSumm = self.bucketSum == 0;
+            MenuItemObject * item = self.items[_currentItem];
+            self.bucketSum += item.cost;
+            
+            if (showSumm)
+            {
+                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:NO];
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.bucketSumLabel.alpha = 1;
+                    self.cartIcon.x = self.view.width - self.cartIcon.width - 8 - self.bucketSumLabel.width;
+                }];
+            }
+            else
+            {
+                self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
+                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:YES];
+            }
+        }
     
-    self.countLabel.text = @(self.itemsCount).stringValue;
+        [self.countLabel setText:@(item.count).stringValue animated:YES];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -221,10 +296,7 @@
     NSInteger page = lround(fractionalPage);
  
     self.currentItem = page;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+    
     if (_currentItem >= 0 && _currentItem < self.items.count)
     {
         MenuItemObject * item = self.items[_currentItem];
@@ -233,7 +305,12 @@
             [self.menuView selectCategory:item.categoryId];
         }
     }
+
 }
+
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//}
 
 - (void)setCurrentItem:(int)currentItem
 {
@@ -300,9 +377,12 @@
     
         self.itemNameLabel.text = [item.title uppercaseString];
         self.itemDescriptionLabel.text = item.desc;
+        [self.itemDescriptionLabel sizeToFit];
+        
         
         self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
         self.priceLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_COST"), @(item.cost)];
+        [self.countLabel setText:@(item.count).stringValue animated:NO];
     }
 }
 

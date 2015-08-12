@@ -72,69 +72,87 @@
     MenuObject * obj = [[MenuObject alloc] init];
     
     MenuCategoryObject * cat1 = [[MenuCategoryObject alloc] initWithId:@"0"];
-    [cat1 setTitle:@"Plov" forLng:@""];
+    [cat1 setTitle:@"Плов" forLng:@""];
     [obj addMenuCategory:cat1];
     
     MenuItemObject * item11 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item11 setTitle:@"Plov 1" forLng:@""];
-    [item11 setDesc:@"plov 1\nplov1\nplov1" forLng:@""];
-    [item11 setCost:200 forWeight:120];
+    [item11 setTitle:@"Плов «Чайханский»" forLng:@""];
+    [item11 setDesc:@"Плов «Чайханский» Знаменитый узбекский плов из бараньей ножки с рисом «Лазер», желтой морковью, ароматным чесноком с добавлением «Зиры»." forLng:@""];
+    [item11 setCost:390 forWeight:300];
     [cat1 addMenuItem:item11];
     
     MenuItemObject * item12 = [[MenuItemObject alloc] initWithId:@"1"];
-    [item12 setTitle:@"Plov 2" forLng:@""];
-    [item12 setDesc:@"plov 2\nplov2\nplov2\nplov2" forLng:@""];
-    [item12 setCost:300 forWeight:220];
+    [item12 setTitle:@"Плов «Праздничный»" forLng:@""];
+    [item12 setDesc:@"Рис «Лазер», мясо барашка, желтая и красная морковь, горох «Нут», узбекский изюм с добавлением восточных специй." forLng:@""];
+    [item12 setCost:350 forWeight:300];
     [cat1 addMenuItem:item12];
     
     MenuItemObject * item13 = [[MenuItemObject alloc] initWithId:@"2"];
-    [item13 setTitle:@"Plov 3" forLng:@""];
-    [item13 setDesc:@"plov 3\nplov3\nplov3\nplov 3\nplov 3\nplov 3" forLng:@""];
-    [item13 setCost:180 forWeight:100];
+    [item13 setTitle:@"Плов «Вегетарианский»" forLng:@""];
+    [item13 setDesc:@"Плов с овощами, длинозерновым рисом, горохом «Нут», молотой паприкой, барбарисом и сухофруктами." forLng:@""];
+    [item13 setCost:370 forWeight:300];
     [cat1 addMenuItem:item13];
     
     MenuCategoryObject * cat2 = [[MenuCategoryObject alloc] initWithId:@"1"];
-    [cat2 setTitle:@"Salad" forLng:@""];
+    [cat2 setTitle:@"Салат" forLng:@""];
     [obj addMenuCategory:cat2];
     
     MenuItemObject * item21 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item21 setTitle:@"Salad 1" forLng:@""];
+    [item21 setTitle:@"Салат «Ачичук»" forLng:@""];
+    [item21 setDesc:@"«Ачичук» богат витаминами и кислотами, повышающими иммунитет и улучшающими обмен веществ – солоноватая cмесь лукового и помидорного сока." forLng:@""];
+    [item21 setCost:150 forWeight:150];
     [cat2 addMenuItem:item21];
     
-    MenuItemObject * item22 = [[MenuItemObject alloc] initWithId:@"1"];
-    [item22 setTitle:@"Salad 2" forLng:@""];
-    [cat2 addMenuItem:item22];
-    
     MenuCategoryObject * cat3 = [[MenuCategoryObject alloc] initWithId:@"2"];
-    [cat3 setTitle:@"Samsa" forLng:@""];
+    [cat3 setTitle:@"Самса" forLng:@""];
     [obj addMenuCategory:cat3];
     
     MenuItemObject * item31 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item31 setTitle:@"Samsa" forLng:@""];
+    [item31 setTitle:@"Самса с мясом" forLng:@""];
+    [item31 setDesc:@"Приготовленная по традиционному узбекскому рецепту, с начинкой из мелко рубленной баранины с добавлением лука и восточных специй." forLng:@""];
+    [item31 setCost:180 forWeight:100];
     [cat3 addMenuItem:item31];
     
+    MenuItemObject * item32 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item32 setTitle:@"Самса с тыквой" forLng:@""];
+    [item32 setDesc:@"Приготовленная по старинному узбекскому рецепту, с начинкой из тыквы с добавлением лука и восточных специй." forLng:@""];
+    [item32 setCost:160 forWeight:100];
+    [cat3 addMenuItem:item32];
+    
     MenuCategoryObject * cat4 = [[MenuCategoryObject alloc] initWithId:@"3"];
-    [cat4 setTitle:@"Bread" forLng:@""];
+    [cat4 setTitle:@"Хлеб" forLng:@""];
     [obj addMenuCategory:cat4];
     
     MenuItemObject * item41 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item41 setTitle:@"Bread" forLng:@""];
+    [item41 setTitle:@"Узбекская лепешка" forLng:@""];
+    [item41 setDesc:@"Запеченная в «Тандыре», пшеничное тесто на воде, украшенное кунжутом." forLng:@""];
+    [item41 setCost:60 forWeight:100];
     [cat4 addMenuItem:item41];
     
     MenuCategoryObject * cat5 = [[MenuCategoryObject alloc] initWithId:@"4"];
-    [cat5 setTitle:@"Sweats" forLng:@""];
+    [cat5 setTitle:@"Сладкое" forLng:@""];
     [obj addMenuCategory:cat5];
     
     MenuItemObject * item51 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item51 setTitle:@"KitKat" forLng:@""];
+    [item51 setTitle:@"Чак-Чак Норис" forLng:@""];
+    [item51 setDesc:@"Восточное лакомство, удивит самых отчаянных и искушенных сладкоежек." forLng:@""];
+    [item51 setCost:200 forWeight:200];
     [cat5 addMenuItem:item51];
     
+    MenuItemObject * item52 = [[MenuItemObject alloc] initWithId:@"0"];
+    [item52 setTitle:@"Варенье" forLng:@""];
+    [item52 setDesc:@"Традиционный ароматный десерт, которым так приятно побаловать себя за чашечкой вечернего чая – это, конечно же, вкусное варенье." forLng:@""];
+    [item52 setCost:200 forWeight:470];
+    [cat5 addMenuItem:item52];
+    
     MenuCategoryObject * cat6 = [[MenuCategoryObject alloc] initWithId:@"5"];
-    [cat6 setTitle:@"Other" forLng:@""];
+    [cat6 setTitle:@"Напитки" forLng:@""];
     [obj addMenuCategory:cat6];
     
     MenuItemObject * item61 = [[MenuItemObject alloc] initWithId:@"0"];
-    [item61 setTitle:@"Towels" forLng:@""];
+    [item61 setTitle:@"Компот" forLng:@""];
+    [item61 setDesc:@"Ароматный компот из самых спелых фруктов и ягод добавит организму энергии, улучшит настроение и порадует изумительным вкусом." forLng:@""];
+    [item61 setCost:180 forWeight:1000];
     [cat6 addMenuItem:item61];
     
     return obj;

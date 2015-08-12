@@ -35,6 +35,17 @@
                             <view contentMode="scaleToFill" id="nKc-7Y-r1w">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" id="XKa-jQ-hKn">
+                                        <rect key="frame" x="196" y="27" width="28" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" id="UFZ-dG-SAa" customClass="BBCyclingLabel">
+                                        <rect key="frame" x="232" y="26" width="80" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="aLu-vx-4jD">
@@ -42,7 +53,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Плов  123 12314 йцукцуйкуц" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rA3-ld-69l">
-                                        <rect key="frame" x="8" y="26" width="304" height="110"/>
+                                        <rect key="frame" x="8" y="31" width="304" height="110"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,15 +82,8 @@
                                         <rect key="frame" x="0.0" y="48" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tqD-v7-XJQ">
-                                        <rect key="frame" x="130" y="91" width="61" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
-                                        <color key="textColor" red="0.96862745098039216" green="0.90588235294117647" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120 гр" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkz-b5-Jj7">
-                                        <rect key="frame" x="0.0" y="95" width="82" height="39"/>
+                                        <rect key="frame" x="0.0" y="91" width="82" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,12 +104,17 @@
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HqZ-SP-Ss2">
-                                        <rect key="frame" x="238" y="95" width="82" height="39"/>
+                                        <rect key="frame" x="238" y="91" width="82" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" id="7YX-Ce-oKw" customClass="BBCyclingLabel">
+                                        <rect key="frame" x="130" y="91" width="61" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -115,7 +124,9 @@
                     <navigationItem key="navigationItem" id="nCu-lY-OmG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="countLabel" destination="tqD-v7-XJQ" id="hvh-A6-Oze"/>
+                        <outlet property="bucketSumLabel" destination="UFZ-dG-SAa" id="oPU-58-rX7"/>
+                        <outlet property="cartIcon" destination="XKa-jQ-hKn" id="eII-fb-mep"/>
+                        <outlet property="countLabel" destination="7YX-Ce-oKw" id="mK3-XM-87i"/>
                         <outlet property="countMinusButton" destination="QV6-5Q-1mB" id="ufY-Rg-sM3"/>
                         <outlet property="countPlusButton" destination="psm-Cs-5rn" id="CsE-TX-qNj"/>
                         <outlet property="descriptionPanel" destination="aLu-vx-4jD" id="M0N-0e-DZ6"/>
@@ -298,6 +309,7 @@
     </scenes>
     <resources>
         <image name="bott_fade.png" width="320" height="92"/>
+        <image name="cart" width="34" height="33"/>
         <image name="intro.png" width="186" height="321"/>
         <image name="left.png" width="25" height="88"/>
         <image name="logo.png" width="124" height="26"/>

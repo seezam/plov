@@ -10,6 +10,7 @@
 
 @class MenuObject;
 @class PLMenuView;
+@class BBCyclingLabel;
 
 @interface MainViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *leftArrow;
@@ -25,7 +26,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *countMinusButton;
 @property (weak, nonatomic) IBOutlet UIButton *countPlusButton;
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet BBCyclingLabel *countLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
+@property (weak, nonatomic) IBOutlet BBCyclingLabel *bucketSumLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;

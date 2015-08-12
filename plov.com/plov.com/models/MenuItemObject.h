@@ -17,6 +17,7 @@
 @property (nonatomic, readonly, strong) UIImage * image;
 @property (nonatomic, readonly, assign) NSInteger weight;
 @property (nonatomic, readonly, assign) NSInteger cost;
+@property (nonatomic, assign) NSInteger count;
 
 - (NSString *)titleForLng:(NSString *)lng;
 - (void)setTitle:(NSString *)title forLng:(NSString *)lng;
