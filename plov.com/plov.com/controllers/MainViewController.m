@@ -377,7 +377,9 @@
     
         self.itemNameLabel.text = [item.title uppercaseString];
         self.itemDescriptionLabel.text = item.desc;
+        CGFloat w = self.itemDescriptionLabel.width;
         [self.itemDescriptionLabel sizeToFit];
+        self.itemDescriptionLabel.width = w;
         
         
         self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
