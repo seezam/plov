@@ -43,7 +43,6 @@
     self.arrowAnimation = NO;
     
     self.panelHidden = YES;
-    [self toggleDescriptionPanel];
     
     [self.countMinusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
     [self.countPlusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
@@ -204,7 +203,6 @@
     }
     
     self.panelHidden = YES;
-    [self toggleDescriptionPanel];
     [UIView animateWithDuration:0.2 animations:^{
         self.descriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
     }];
@@ -225,36 +223,12 @@
         if (velocity.y < -100)
         {
             self.panelHidden = NO;
-            [self toggleDescriptionPanel];
             [UIView animateWithDuration:0.2 animations:^{
                 CGFloat height = CGRectGetMaxY(self.itemDescriptionLabel.frame) + 80;
                 self.descriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
             }];
         }
     }
-}
-
-- (void)toggleDescriptionPanel
-{
-//    if (_showPanelGesture)
-//    {
-//        [self.itemsScrollView removeGestureRecognizer:self.showPanelGesture];
-//        self.showPanelGesture = nil;
-//    }
-//    
-//    if (self.panelHidden)
-//    {
-//        UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
-//        self.showPanelGesture = recognizer;
-//        recognizer.delegate = self;
-//        [self.itemsScrollView addGestureRecognizer:recognizer];
-//    }
-//    else
-//    {
-//        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
-//        self.showPanelGesture = recognizer;
-//        [self.itemsScrollView addGestureRecognizer:recognizer];
-//    }
 }
 
 - (void)countChanged:(id)sender
@@ -324,6 +298,8 @@
     }
 }
 
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = self.itemsScrollView.width;
     float fractionalPage = self.itemsScrollView.contentOffset.x / pageWidth;
@@ -341,10 +317,6 @@
     }
 
 }
-
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-//{
-//}
 
 - (void)setCurrentItem:(int)currentItem
 {
