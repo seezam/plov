@@ -50,6 +50,7 @@
     if ( revealViewController )
     {
         revealViewController.delegate = self;
+        revealViewController.rearViewRevealWidth = -56;
         
         [self setupController:self.visibleViewController];
     }

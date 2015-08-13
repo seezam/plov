@@ -53,7 +53,9 @@
 
 - (UIImage *)image
 {
-    return [UIImage imageNamed:@"sample.jpg"];
+    NSInteger imgId = random() % 12 + 1;
+    NSString * imgName = [NSString stringWithFormat:@"sample%03d", imgId];
+    return [UIImage imageNamed:imgName];
 }
 
 - (instancetype)initWithData:(NSData *)data

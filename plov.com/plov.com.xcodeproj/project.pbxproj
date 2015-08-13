@@ -42,7 +42,6 @@
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
-		D56D649B1B7163080077671F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D56D649A1B7163080077671F /* sample.jpg */; };
 		D56D64A21B71684A0077671F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D64A11B71684A0077671F /* MainViewController.m */; };
 		D58BF8A71B792FF900821175 /* PLMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8A61B792FF900821175 /* PLMenuView.m */; };
 		D58BF8AA1B79417D00821175 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8A91B79417D00821175 /* UIView+Frame.m */; };
@@ -126,7 +125,6 @@
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D56D64821B6FF8200077671F /* plov.com-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "plov.com-prefix.pch"; sourceTree = "<group>"; };
 		D56D64831B6FFA0F0077671F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D56D649A1B7163080077671F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		D56D64A01B71684A0077671F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D56D64A11B71684A0077671F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D58BF8A51B792FF900821175 /* PLMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLMenuView.h; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 				D513F5991B7401EE00B0E16E /* ProximaNova-Reg.otf */,
 				D513F59A1B7401EE00B0E16E /* ProximaNova-RegIt.otf */,
 				D513F59B1B7401EE00B0E16E /* ProximaNova-Xbold.otf */,
-				D56D649A1B7163080077671F /* sample.jpg */,
 				D58BF8B01B7B781A00821175 /* Plov.xcassets */,
 			);
 			path = resourses;
@@ -453,7 +450,6 @@
 				D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */,
 				D513F59E1B7401EE00B0E16E /* ProximaNova-BoldIt.otf in Resources */,
 				D513F5A21B7401EE00B0E16E /* ProximaNova-RegIt.otf in Resources */,
-				D56D649B1B7163080077671F /* sample.jpg in Resources */,
 				D513F59D1B7401EE00B0E16E /* ProximaNova-Bold.otf in Resources */,
 				D513F5AF1B74074E00B0E16E /* Main.storyboard in Resources */,
 			);
