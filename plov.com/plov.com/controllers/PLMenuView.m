@@ -41,7 +41,7 @@
 {
     while (self.subviews.count) [self.subviews.firstObject removeFromSuperview];
     
-    int x = 10;
+    int x = 13;
     int tag = 0;
     
     for (MenuCategoryObject * category in self.menu.categories)
@@ -61,7 +61,7 @@
         [self addSubview:categoryTitle];
         
         x += categoryTitle.frame.size.width;
-        x += 20;
+        x += 26;
         
         CGRect btnRect = categoryTitle.frame;
         btnRect = CGRectMake(btnRect.origin.x - 10, 0, btnRect.size.width + 20, self.height);
@@ -74,7 +74,7 @@
         tag++;
     }
     
-    self.contentSize = CGSizeMake(x - 10, self.bounds.size.height);
+    self.contentSize = CGSizeMake(x - 13, self.bounds.size.height);
     
     [self setupSelector];
 }
