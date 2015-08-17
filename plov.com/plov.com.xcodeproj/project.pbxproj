@@ -10,7 +10,6 @@
 		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B14F21B6E84DD00276C04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14F11B6E84DD00276C04 /* ViewController.m */; };
-		184B15061B6E84DD00276C04 /* plov_comTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15051B6E84DD00276C04 /* plov_comTests.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
 		D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5421B72CFCB00B0E16E /* StartViewController.m */; };
@@ -49,17 +48,8 @@
 		D58BF8AF1B7B76C900821175 /* plov.icns in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8AE1B7B76C900821175 /* plov.icns */; };
 		D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8B01B7B781A00821175 /* Plov.xcassets */; };
 		D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */; };
+		D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1431B8258E00041D8EE /* ItemViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		184B15001B6E84DD00276C04 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 184B14DE1B6E84DD00276C04 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 184B14E51B6E84DD00276C04;
-			remoteInfo = plov.com;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		184B14E61B6E84DD00276C04 /* plov.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plov.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,9 +59,6 @@
 		184B14EE1B6E84DD00276C04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		184B14F01B6E84DD00276C04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		184B14F11B6E84DD00276C04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = plov.comTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		184B15041B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		184B15051B6E84DD00276C04 /* plov_comTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = plov_comTests.m; sourceTree = "<group>"; };
 		184B15111B6E87E200276C04 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
@@ -138,6 +125,8 @@
 		D58BF8B41B7B86ED00821175 /* plov.com.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = plov.com.entitlements; sourceTree = "<group>"; };
 		D58BF8B61B7BF68900821175 /* BBCyclingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCyclingLabel.h; sourceTree = "<group>"; };
 		D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCyclingLabel.m; sourceTree = "<group>"; };
+		D5E2F1421B8258E00041D8EE /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		D5E2F1431B8258E00041D8EE /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,13 +139,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		184B14FC1B6E84DD00276C04 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -166,7 +148,6 @@
 				D56D64831B6FFA0F0077671F /* UIKit.framework */,
 				D56D64801B6FF7E60077671F /* Foundation.framework */,
 				184B14E81B6E84DD00276C04 /* plov.com */,
-				184B15021B6E84DD00276C04 /* plov.comTests */,
 				184B14E71B6E84DD00276C04 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				184B14E61B6E84DD00276C04 /* plov.com.app */,
-				184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,23 +187,6 @@
 				184B14EA1B6E84DD00276C04 /* Info.plist */,
 				184B14EB1B6E84DD00276C04 /* main.m */,
 				D56D64821B6FF8200077671F /* plov.com-prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		184B15021B6E84DD00276C04 /* plov.comTests */ = {
-			isa = PBXGroup;
-			children = (
-				184B15051B6E84DD00276C04 /* plov_comTests.m */,
-				184B15031B6E84DD00276C04 /* Supporting Files */,
-			);
-			path = plov.comTests;
-			sourceTree = "<group>";
-		};
-		184B15031B6E84DD00276C04 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				184B15041B6E84DD00276C04 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,6 +229,8 @@
 				D58BF8A61B792FF900821175 /* PLMenuView.m */,
 				D58BF8AB1B7956A900821175 /* MenuItemsView.h */,
 				D58BF8AC1B7956A900821175 /* MenuItemsView.m */,
+				D5E2F1421B8258E00041D8EE /* ItemViewController.h */,
+				D5E2F1431B8258E00041D8EE /* ItemViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -373,24 +338,6 @@
 			productReference = 184B14E61B6E84DD00276C04 /* plov.com.app */;
 			productType = "com.apple.product-type.application";
 		};
-		184B14FE1B6E84DD00276C04 /* plov.comTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 184B150C1B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.comTests" */;
-			buildPhases = (
-				184B14FB1B6E84DD00276C04 /* Sources */,
-				184B14FC1B6E84DD00276C04 /* Frameworks */,
-				184B14FD1B6E84DD00276C04 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				184B15011B6E84DD00276C04 /* PBXTargetDependency */,
-			);
-			name = plov.comTests;
-			productName = plov.comTests;
-			productReference = 184B14FF1B6E84DD00276C04 /* plov.comTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -409,10 +356,6 @@
 							};
 						};
 					};
-					184B14FE1B6E84DD00276C04 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 184B14E51B6E84DD00276C04;
-					};
 				};
 			};
 			buildConfigurationList = 184B14E11B6E84DD00276C04 /* Build configuration list for PBXProject "plov.com" */;
@@ -430,7 +373,6 @@
 			projectRoot = "";
 			targets = (
 				184B14E51B6E84DD00276C04 /* plov.com */,
-				184B14FE1B6E84DD00276C04 /* plov.comTests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,13 +394,6 @@
 				D513F5A21B7401EE00B0E16E /* ProximaNova-RegIt.otf in Resources */,
 				D513F59D1B7401EE00B0E16E /* ProximaNova-Bold.otf in Resources */,
 				D513F5AF1B74074E00B0E16E /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		184B14FD1B6E84DD00276C04 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +421,7 @@
 				D58BF8A71B792FF900821175 /* PLMenuView.m in Sources */,
 				184B14EC1B6E84DD00276C04 /* main.m in Sources */,
 				D513F5701B73DF9000B0E16E /* AFHTTPSessionManager.m in Sources */,
+				D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */,
 				184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */,
 				D56D64A21B71684A0077671F /* MainViewController.m in Sources */,
 				D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */,
@@ -499,23 +435,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		184B14FB1B6E84DD00276C04 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				184B15061B6E84DD00276C04 /* plov_comTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		184B15011B6E84DD00276C04 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 184B14E51B6E84DD00276C04 /* plov.com */;
-			targetProxy = 184B15001B6E84DD00276C04 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D513F5AC1B74069200B0E16E /* Localizable.strings */ = {
@@ -642,40 +562,6 @@
 			};
 			name = Release;
 		};
-		184B150D1B6E84DD00276C04 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = plov.comTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/plov.com.app/plov.com";
-			};
-			name = Debug;
-		};
-		184B150E1B6E84DD00276C04 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = plov.comTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/plov.com.app/plov.com";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -693,15 +579,6 @@
 			buildConfigurations = (
 				184B150A1B6E84DD00276C04 /* Debug */,
 				184B150B1B6E84DD00276C04 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		184B150C1B6E84DD00276C04 /* Build configuration list for PBXNativeTarget "plov.comTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				184B150D1B6E84DD00276C04 /* Debug */,
-				184B150E1B6E84DD00276C04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

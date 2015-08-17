@@ -29,6 +29,15 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
+- (SWRevealViewController *)revealViewController
+{
+    if ([self.window.rootViewController isKindOfClass:[SWRevealViewController class]])
+    {
+        return (SWRevealViewController *)self.window.rootViewController;
+    }
+    return nil;
+}
+
 - (MenuObject *)loadData
 {
 //    NSString * data = @"\

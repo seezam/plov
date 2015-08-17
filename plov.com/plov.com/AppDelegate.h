@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MenuObject;
+@class SWRevealViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 + (AppDelegate *)app;
+- (SWRevealViewController *)revealViewController;
 
 - (void)startApplication:(UIView *)fromView;
 - (void)informNetworkIssue;

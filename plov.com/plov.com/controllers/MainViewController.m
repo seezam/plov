@@ -17,21 +17,22 @@
 #import "MenuCategoryObject.h"
 #import "MenuItemObject.h"
 
-@interface MainViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate, PLMenuViewDelegate>
+#import "ItemViewController.h"
+
+#define ITEM_VIEW_PREFIX 123012
+
+@interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate>
 @property (nonatomic, strong) MenuObject * plovMenu;
 
 @property (nonatomic, assign) BOOL panelHidden;
 @property (nonatomic, strong) UIGestureRecognizer * showPanelGesture;
 
-@property (nonatomic, assign) int currentItem;
+@property (nonatomic, assign) NSInteger currentItem;
 
 @property (nonatomic, strong) NSMutableArray * items;
 
 @property (nonatomic, assign) NSInteger bucketSum;
 @property (nonatomic, assign) BOOL arrowAnimation;
-
-@property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
-@property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
 @end
 
 @implementation MainViewController
@@ -62,19 +63,6 @@
     [self setupWithMenu:SHARED_APP.menuData];
     
     self.itemsScrollView.delegate = self;
-    
-    self.itemNameLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
-    self.itemDescriptionLabel.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
-
-    
-    
-    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showDescriptionPanel:)];
-    self.panGesture.delegate = self;
-    [self.itemsScrollView addGestureRecognizer:self.panGesture];
-
-    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideDescriptionPanel:)];
-    self.tapGesture.delegate = self;
-    [self.itemsScrollView addGestureRecognizer:self.tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -160,7 +148,8 @@
     {
         for (MenuItemObject * item in category.items)
         {
-            [self.items addObject:item];
+            [self.items addObject:@{@"item": item,
+                                    @"controller": [ItemViewController instantiateWithMenuItem:item]}];
         }
     }
     
@@ -168,67 +157,6 @@
     
     _currentItem = -1;
     self.currentItem = 0;
-}
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer == self.tapGesture)
-    {
-        return !self.panelHidden || self.revealViewController.frontViewPosition == FrontViewPositionRight;
-    }
-    else if (gestureRecognizer == self.panGesture)
-    {
-        return self.panelHidden || self.revealViewController.frontViewPosition == FrontViewPositionRight;
-    }
-    
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
-    {
-        return NO;
-    }
-    //    NSLog(@"%@\n%@", gestureRecognizer, otherGestureRecognizer);
-    return YES;
-}
-
-- (void)hideDescriptionPanel:(UITapGestureRecognizer *)gestureRecognizer
-{
-    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
-    {
-        [self.revealViewController revealToggle:nil];
-        return;
-    }
-    
-    self.panelHidden = YES;
-    [UIView animateWithDuration:0.2 animations:^{
-        self.descriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
-    }];
-}
-
-- (void)showDescriptionPanel:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
-    {
-        [self.revealViewController revealToggle:nil];
-        return;
-    }
-    
-    CGPoint velocity = [gestureRecognizer velocityInView:self.itemsScrollView];
-    
-    if (fabs(velocity.y) > fabs(velocity.x))
-    {
-        if (velocity.y < -100)
-        {
-            self.panelHidden = NO;
-            [UIView animateWithDuration:0.2 animations:^{
-                CGFloat height = CGRectGetMaxY(self.itemDescriptionLabel.frame) + 80;
-                self.descriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
-            }];
-        }
-    }
 }
 
 - (void)countChanged:(id)sender
@@ -276,7 +204,7 @@
             }
             
             BOOL showSumm = self.bucketSum == 0;
-            MenuItemObject * item = self.items[_currentItem];
+            MenuItemObject * item = self.items[_currentItem][@"item"];
             self.bucketSum += item.cost;
             
             if (showSumm)
@@ -309,7 +237,7 @@
     
     if (_currentItem >= 0 && _currentItem < self.items.count)
     {
-        MenuItemObject * item = self.items[_currentItem];
+        MenuItemObject * item = self.items[_currentItem][@"item"];
         if (![item.categoryId isEqualToString:self.menuView.currentCategory.categoryId])
         {
             [self.menuView selectCategory:item.categoryId];
@@ -318,13 +246,15 @@
 
 }
 
-- (void)setCurrentItem:(int)currentItem
+- (void)setCurrentItem:(NSInteger)currentItem
 {
     if (_currentItem != currentItem)
     {
-        if (!self.panelHidden)
+        if (_currentItem >=0 && _currentItem < self.items.count)
         {
-            [self hideDescriptionPanel:nil];
+            ItemViewController * itemVc = self.items[_currentItem][@"controller"];
+        
+            [itemVc hideDescriptionPanel];
         }
         
         _currentItem = currentItem;
@@ -337,16 +267,12 @@
 {
     if (pos >= 0 && pos < self.items.count)
     {
-        UIImageView * iv = [[UIImageView alloc] initWithFrame:self.itemsScrollView.bounds];
-        iv.tag = pos + 10100;
+//        MenuItemObject * item = self.items[pos][@"item"];
+        ItemViewController * vc = self.items[pos][@"controller"];
         
-        MenuItemObject * item = self.items[pos];
+        vc.view.x = pos * vc.view.width;
         
-        iv.image = item.image;
-        
-        iv.x = pos * iv.width;
-        
-        [self.itemsScrollView addSubview:iv];
+        [self.itemsScrollView addSubview:vc.view];
     }
 }
 
@@ -356,38 +282,31 @@
     {
         UIView * view = self.itemsScrollView.subviews[i];
         
-        if (view.tag < _currentItem + 10099 || view.tag > _currentItem + 10101)
+        if (view.tag < _currentItem + (ITEM_VIEW_PREFIX - 1) || view.tag > _currentItem + (ITEM_VIEW_PREFIX + 1))
         {
             [view removeFromSuperview];
         }
     }
     
-    if (![self.itemsScrollView viewWithTag:_currentItem + 10100])
+    if (![self.itemsScrollView viewWithTag:_currentItem + ITEM_VIEW_PREFIX])
     {
         [self insertViewForPos:_currentItem];
     }
     
-    if (![self.itemsScrollView viewWithTag:(_currentItem + 10099)])
+    if (![self.itemsScrollView viewWithTag:(_currentItem + ITEM_VIEW_PREFIX - 1)])
     {
         [self insertViewForPos:(_currentItem - 1)];
     }
     
-    if (![self.itemsScrollView viewWithTag:(_currentItem + 10101)])
+    if (![self.itemsScrollView viewWithTag:(_currentItem + ITEM_VIEW_PREFIX + 1)])
     {
         [self insertViewForPos:(_currentItem + 1)];
     }
     
     if (_currentItem >= 0 && _currentItem < self.items.count)
     {
-        MenuItemObject * item = self.items[_currentItem];
+        MenuItemObject * item = self.items[_currentItem][@"item"];
     
-        self.itemNameLabel.text = [item.title uppercaseString];
-        self.itemDescriptionLabel.text = item.desc;
-        CGFloat w = self.itemDescriptionLabel.width;
-        [self.itemDescriptionLabel sizeToFit];
-        self.itemDescriptionLabel.width = w;
-        
-        
         self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
         self.priceLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_COST"), @(item.cost)];
         [self.countLabel setText:@(item.count).stringValue animated:NO];
@@ -396,12 +315,18 @@
 
 - (void)selectingCategory:(MenuCategoryObject *)category
 {
-    NSInteger idx = [self.items indexOfObject:category.items.firstObject];
-    
-    self.currentItem = idx;
-    
-    CGRect rect = [self.itemsScrollView viewWithTag:_currentItem + 10100].frame;
-    [self.itemsScrollView scrollRectToVisible:rect animated:YES];
+    for (NSInteger idx = 0; idx < self.items.count; idx++)
+    {
+        if (self.items[idx][@"item"] == category.items.firstObject)
+        {
+            self.currentItem = idx;
+            
+            CGRect rect = [self.items[_currentItem][@"controller"] view].frame;
+            [self.itemsScrollView scrollRectToVisible:rect animated:YES];
+            
+            return;
+        }
+    }
 }
 
 @end

@@ -19,11 +19,6 @@
 @property (weak, nonatomic) IBOutlet PLMenuView *menuView;
 @property (weak, nonatomic) IBOutlet UIScrollView *itemsScrollView;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *descriptionPanel;
-@property (weak, nonatomic) IBOutlet UILabel *itemNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
-
-
 @property (weak, nonatomic) IBOutlet UIButton *countMinusButton;
 @property (weak, nonatomic) IBOutlet UIButton *countPlusButton;
 @property (weak, nonatomic) IBOutlet BBCyclingLabel *countLabel;

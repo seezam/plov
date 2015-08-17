@@ -34,6 +34,20 @@
                ReferencedContainer = "container:plov.com.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D5E2F1451B825CEE0041D8EE"
+               BuildableName = "plov.comTests copy.xctest"
+               BlueprintName = "plov.comTests copy"
+               ReferencedContainer = "container:plov.com.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "184B14FE1B6E84DD00276C04"
                BuildableName = "plov.comTests.xctest"
                BlueprintName = "plov.comTests"
+               ReferencedContainer = "container:plov.com.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D5E2F1451B825CEE0041D8EE"
+               BuildableName = "plov.comTests copy.xctest"
+               BlueprintName = "plov.comTests copy"
                ReferencedContainer = "container:plov.com.xcodeproj">
             </BuildableReference>
          </TestableReference>

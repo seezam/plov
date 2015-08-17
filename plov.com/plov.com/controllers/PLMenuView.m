@@ -118,13 +118,15 @@
     {
         [self.plDelegate selectingCategory:self.menu.categories[tag]];
     }
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        CGRect rect = [self selectorRectForTag:tag];
-        
-        [self scrollRectToVisible:CGRectInset(rect, -40, 0) animated:NO];
-        self.selector.frame = rect;
-    }];
+    else
+    {
+        [UIView animateWithDuration:0.2 animations:^{
+            CGRect rect = [self selectorRectForTag:tag];
+            
+            [self scrollRectToVisible:CGRectInset(rect, -40, 0) animated:NO];
+            self.selector.frame = rect;
+        }];
+    }
 }
 
 - (void)selectCategory:(NSString *)categoryId
