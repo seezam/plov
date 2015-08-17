@@ -49,6 +49,7 @@
 		D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8B01B7B781A00821175 /* Plov.xcassets */; };
 		D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */; };
 		D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1431B8258E00041D8EE /* ItemViewController.m */; };
+		D5E2F1501B826FB60041D8EE /* rub.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5E2F14F1B826FB60041D8EE /* rub.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCyclingLabel.m; sourceTree = "<group>"; };
 		D5E2F1421B8258E00041D8EE /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		D5E2F1431B8258E00041D8EE /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		D5E2F14F1B826FB60041D8EE /* rub.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rub.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 		D56D64851B6FFEAC0077671F /* resourses */ = {
 			isa = PBXGroup;
 			children = (
+				D5E2F14F1B826FB60041D8EE /* rub.otf */,
 				D513F5941B7401EE00B0E16E /* ProximaNova-Black.otf */,
 				D513F5951B7401EE00B0E16E /* ProximaNova-Bold.otf */,
 				D513F5961B7401EE00B0E16E /* ProximaNova-BoldIt.otf */,
@@ -382,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E2F1501B826FB60041D8EE /* rub.otf in Resources */,
 				D513F5A11B7401EE00B0E16E /* ProximaNova-Reg.otf in Resources */,
 				D513F59F1B7401EE00B0E16E /* ProximaNova-Light.otf in Resources */,
 				D58BF8AF1B7B76C900821175 /* plov.icns in Resources */,

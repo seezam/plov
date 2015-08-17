@@ -22,5 +22,7 @@
 - (void)startApplication:(UIView *)fromView;
 - (void)informNetworkIssue;
 
+- (NSAttributedString *)rubleCost:(NSInteger)cost font:(UIFont *)font;
+
 @end
 

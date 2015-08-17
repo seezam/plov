@@ -57,7 +57,7 @@
     self.bucketSumLabel.alpha = 0;
     self.bucketSumLabel.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
     self.bucketSumLabel.textColor = UIColorFromRGBA(resColorMenuText);
-    self.bucketSumLabel.textAlignment = NSTextAlignmentCenter;
+    self.bucketSumLabel.textAlignment = NSTextAlignmentRight;
     self.bucketSumLabel.clipsToBounds = YES;
     
     [self setupWithMenu:SHARED_APP.menuData];
@@ -159,11 +159,42 @@
     self.currentItem = 0;
 }
 
+- (void)checkCartPosAnimated:(BOOL)animated
+{
+    UILabel * testLabel = [[UILabel alloc] initWithFrame:self.bucketSumLabel.frame];
+    testLabel.attributedText = [SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font];
+    [testLabel sizeToFit];
+    NSInteger newX = self.view.width - self.cartIcon.width - 13 - ceil(testLabel.width/10)*10 - 3;
+    
+//    while (newX % 18 != 0)
+//    {
+//        newX--;
+//        if (newX <  self.view.width - self.cartIcon.width - 13 - testLabel.width - 20)
+//        {
+//            break;
+//        }
+//    }
+        
+    if (newX != self.cartIcon.x)
+    {
+        if (animated)
+        {
+            [UIView animateWithDuration:0.2 animations:^{
+                self.cartIcon.x = newX;
+            }];
+        }
+        else
+        {
+            self.cartIcon.x = newX;
+        }
+    }
+}
+
 - (void)countChanged:(id)sender
 {
     if (_currentItem >= 0 && _currentItem < self.items.count)
     {
-        MenuItemObject * item = self.items[_currentItem];
+        MenuItemObject * item = self.items[_currentItem][@"item"];
         if (sender == self.countMinusButton)
         {
             self.countLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollDown;
@@ -181,15 +212,17 @@
             {
                 [UIView animateWithDuration:0.2 animations:^{
                     self.bucketSumLabel.alpha = 0;
-                    self.cartIcon.x = self.view.width - self.cartIcon.width - 16;
+                    self.cartIcon.x = self.view.width - self.cartIcon.width - 13;
                 } completion:^(BOOL finished) {
                     [self.bucketSumLabel setText:@"" animated:NO];
                 }];
             }
             else
             {
+                [self checkCartPosAnimated:YES];
+                
                 self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollDown;
-                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:YES];
+                [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:YES];
             }
         }
         else
@@ -209,16 +242,19 @@
             
             if (showSumm)
             {
-                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:NO];
+                [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
                 [UIView animateWithDuration:0.2 animations:^{
                     self.bucketSumLabel.alpha = 1;
-                    self.cartIcon.x = self.view.width - self.cartIcon.width - 8 - self.bucketSumLabel.width;
+                    
+                    [self checkCartPosAnimated:NO];
                 }];
             }
             else
             {
+                [self checkCartPosAnimated:YES];
+                
                 self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
-                [self.bucketSumLabel setText:@(self.bucketSum).stringValue animated:YES];
+                [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:YES];
             }
         }
     
@@ -308,7 +344,7 @@
         MenuItemObject * item = self.items[_currentItem][@"item"];
     
         self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
-        self.priceLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_COST"), @(item.cost)];
+        self.priceLabel.attributedText = [SHARED_APP rubleCost:item.cost font:self.priceLabel.font];
         [self.countLabel setText:@(item.count).stringValue animated:NO];
     }
 }

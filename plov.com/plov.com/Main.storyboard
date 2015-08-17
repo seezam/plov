@@ -35,7 +35,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="UFZ-dG-SAa" customClass="BBCyclingLabel">
-                                        <rect key="frame" x="232" y="26" width="80" height="30"/>
+                                        <rect key="frame" x="227" y="26" width="80" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>

@@ -71,6 +71,7 @@ typedef void(^BBCyclingLabelTransitionBlock)(UILabel* labelToExit, UILabel* labe
 @property(copy,   nonatomic) BBCyclingLabelTransitionBlock transitionBlock;
 // Same properties as UILabel, these will be propagated to the underlying labels
 @property(copy,   nonatomic) NSString* text;
+@property(copy,   nonatomic) NSAttributedString* attributedText;
 @property(strong, nonatomic) UIFont* font;
 @property(strong, nonatomic) UIColor* textColor;
 @property(strong, nonatomic) UIColor* shadowColor;
@@ -92,5 +93,6 @@ typedef void(^BBCyclingLabelTransitionBlock)(UILabel* labelToExit, UILabel* labe
 
 /*! Sets the text for the next label and performs a transition between current and next label (if animated is YES) */
 - (void)setText:(NSString*)text animated:(BOOL)animated;
+- (void)setAttributedText:(NSAttributedString*)text animated:(BOOL)animated;
 
 @end

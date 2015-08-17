@@ -92,6 +92,11 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
     [self setText:text animated:YES];
 }
 
+- (void)setAttributedText:(NSAttributedString *)text
+{
+    [self setAttributedText:text animated:YES];
+}
+
 - (UIFont*)font
 {
     return _currentLabel.font;
@@ -215,22 +220,17 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
 
 #pragma mark Interface
 
-- (void)setText:(NSString*)text animated:(BOOL)animated
+- (void)changePrevLabel:(UILabel *)previousLabel nextLabel:(UILabel *)nextLabel nextIndex:(NSUInteger)nextLabelIndex animated:(BOOL)animated
 {
-    NSUInteger nextLabelIndex = [self nextLabelIndex];
-    UILabel* nextLabel = [_labels objectAtIndex:nextLabelIndex];
-    UILabel* previousLabel = _currentLabel;
-
-    nextLabel.text = text;
     // Resetting the label state ensures we can change the transition type without extra code on pre-transition block.
     // Without it a transition that has no alpha changes would have to ensure alpha = 1 on pre-transition block (as
     // well as with every other possible animatable property)
     [self resetLabel:nextLabel];
-
+    
     // Update both current label index and current label pointer
     _currentLabel = nextLabel;
     _currentLabelIndex = nextLabelIndex;
-
+    
     // Prepare the next label before the transition animation
     if (_preTransitionBlock != nil) {
         _preTransitionBlock(nextLabel);
@@ -238,10 +238,10 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
         // If no pre-transition block is set, prepare the next label for a cross-fade
         nextLabel.alpha = 0;
     }
-
+    
     // Unhide the label that's about to be shown
     nextLabel.hidden = NO;
-
+    
     void (^changeBlock)() = ^() {
         // Perform the user provided changes
         if (_transitionBlock != nil) {
@@ -256,12 +256,12 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
     void (^completionBlock)(BOOL) = ^(BOOL finished) {
         // TODO this is kind of bugged since all transitions that include affine transforms always return finished
         // as true, even when it doesn't finish...
-//        if (finished)
-//        {
-//            previousLabel.hidden = YES;
-//        }
+        //        if (finished)
+        //        {
+        //            previousLabel.hidden = YES;
+        //        }
     };
-
+    
     if (animated) {
         // Animate the transition between both labels
         [UIView animateWithDuration:_transitionDuration animations:changeBlock completion:completionBlock];
@@ -271,6 +271,27 @@ NSTimeInterval const kBBCyclingLabelDefaultTransitionDuration = 0.3;
     }
 }
 
+- (void)setText:(NSString*)text animated:(BOOL)animated
+{
+    NSUInteger nextLabelIndex = [self nextLabelIndex];
+    UILabel* nextLabel = [_labels objectAtIndex:nextLabelIndex];
+    UILabel* previousLabel = _currentLabel;
+    
+    nextLabel.text = text;
+    
+    [self changePrevLabel:previousLabel nextLabel:nextLabel nextIndex:nextLabelIndex animated:animated];
+}
+
+- (void)setAttributedText:(NSAttributedString *)text animated:(BOOL)animated
+{
+    NSUInteger nextLabelIndex = [self nextLabelIndex];
+    UILabel* nextLabel = [_labels objectAtIndex:nextLabelIndex];
+    UILabel* previousLabel = _currentLabel;
+    
+    nextLabel.attributedText = text;
+    
+    [self changePrevLabel:previousLabel nextLabel:nextLabel nextIndex:nextLabelIndex animated:animated];
+}
 
 #pragma mark Private helpers
 

@@ -189,6 +189,22 @@
     
 }
 
+- (NSAttributedString *)rubleCost:(NSInteger)cost font:(UIFont *)font
+{
+    UIFont * rubFont = [UIFont fontWithName:@"ALS Rubl" size:font.pointSize];
+    
+    NSAttributedString * rubString = [[NSAttributedString alloc] initWithString:@" i"
+                                                                      attributes:@{NSFontAttributeName: rubFont}];
+    
+    NSAttributedString * costString = [[NSAttributedString alloc] initWithString:@(cost).stringValue
+                                                                      attributes:@{NSFontAttributeName: font}];
+    
+    NSMutableAttributedString * result = [[NSMutableAttributedString alloc] initWithAttributedString:costString];
+    [result appendAttributedString:rubString];
+    
+    return result;
+}
+
 #pragma mark - delegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
