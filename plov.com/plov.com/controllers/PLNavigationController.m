@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 33, 27)];
+    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 19)];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[PLResourseManager imageWithName:resImageMenu] forState:UIControlStateNormal];
     
@@ -30,7 +30,7 @@
     
     self.logo = [[UIImageView alloc] initWithImage:[PLResourseManager imageWithName:resImageLogo]];
     self.logo.tag = 'LOGO';
-    self.logo.frame = CGRectMake(66, 8, self.logo.frame.size.width, self.logo.frame.size.height);
+    self.logo.frame = CGRectMake(56, 8, self.logo.frame.size.width, self.logo.frame.size.height);
 //    self.logo.frame = CGRectMake(66, 0, ceil(self.logo.frame.size.width/2), ceil(self.logo.frame.size.height/2));
  
     [self.navigationBar addSubview:self.logo];

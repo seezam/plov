@@ -34,6 +34,10 @@
                                         <rect key="frame" x="196" y="27" width="28" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="8bV-IM-B1X">
+                                        <rect key="frame" x="13" y="31" width="22" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" id="UFZ-dG-SAa" customClass="BBCyclingLabel">
                                         <rect key="frame" x="227" y="26" width="80" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -330,6 +334,7 @@
         <image name="intro.png" width="186" height="321"/>
         <image name="left" width="25" height="88"/>
         <image name="logo.png" width="124" height="26"/>
+        <image name="menu" width="22" height="19"/>
         <image name="minus" width="36" height="36"/>
         <image name="plus" width="35" height="36"/>
         <image name="right" width="25" height="88"/>
