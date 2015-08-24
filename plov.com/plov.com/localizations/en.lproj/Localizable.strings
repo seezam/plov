@@ -20,3 +20,5 @@
 
 "LOC_MAIN_WEIGHT" = "%@ g";
 "LOC_MAIN_COST" = "%@ rub";
+
+"LOC_TITLE_ORDER" = "Your order";

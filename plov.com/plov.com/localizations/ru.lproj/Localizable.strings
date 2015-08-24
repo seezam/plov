@@ -20,3 +20,5 @@
 
 "LOC_MAIN_WEIGHT" = "%@ гр";
 "LOC_MAIN_COST" = "%@ руб";
+
+"LOC_TITLE_ORDER" = "Ваш заказ";

@@ -18,6 +18,7 @@
 #import "MenuItemObject.h"
 
 #import "ItemViewController.h"
+#import "OrderViewController.h"
 
 #define ITEM_VIEW_PREFIX 123012
 
@@ -33,6 +34,8 @@
 
 @property (nonatomic, assign) NSInteger bucketSum;
 @property (nonatomic, assign) BOOL arrowAnimation;
+
+@property (nonatomic, strong) UIBarButtonItem * orderButton;
 @end
 
 @implementation MainViewController
@@ -63,6 +66,10 @@
     [self setupWithMenu:SHARED_APP.menuData];
     
     self.itemsScrollView.delegate = self;
+    
+    UIButton * btn = [[UIButton alloc] initWithFrame:self.bucketSumLabel.bounds];
+    [btn addTarget:self action:@selector(processToOrder) forControlEvents:UIControlEventTouchUpInside];
+    self.orderButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,6 +93,27 @@
 //    
 //    self.itemsScrollView.contentOffset = CGPointMake(0, 0);
 //}
+
+- (void)processToOrder
+{
+    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+    
+    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
+    
+    for (NSDictionary * item in self.items)
+    {
+        MenuItemObject * menuItem = item[@"item"];
+        
+        if (menuItem.count > 0)
+        {
+            [order addObject:menuItem];
+        }
+    }
+    
+    orderVc.order = order;
+    
+    [self.navigationController pushViewController:orderVc animated:YES];
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -174,7 +202,7 @@
 //            break;
 //        }
 //    }
-        
+    
     if (newX != self.cartIcon.x)
     {
         if (animated)
@@ -210,6 +238,8 @@
         
             if (self.bucketSum == 0)
             {
+                self.navigationItem.rightBarButtonItem = nil;
+                
                 [UIView animateWithDuration:0.2 animations:^{
                     self.bucketSumLabel.alpha = 0;
                     self.cartIcon.x = self.view.width - self.cartIcon.width - 13;
@@ -237,11 +267,12 @@
             }
             
             BOOL showSumm = self.bucketSum == 0;
-            MenuItemObject * item = self.items[_currentItem][@"item"];
             self.bucketSum += item.cost;
             
             if (showSumm)
             {
+                self.navigationItem.rightBarButtonItem = self.orderButton;
+                
                 [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
                 [UIView animateWithDuration:0.2 animations:^{
                     self.bucketSumLabel.alpha = 1;
