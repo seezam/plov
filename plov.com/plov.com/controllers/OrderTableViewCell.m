@@ -39,6 +39,10 @@
         
         self.suLabel.textColor = UIColorFromRGBA(resColorMenuText);
         self.suLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        
+        self.suView.layer.borderWidth = 1;
+        self.suView.layer.borderColor = UIColorFromRGBA(resColorMenuText).CGColor;
+        self.suView.layer.cornerRadius = 5;
     }
 }
 
@@ -121,9 +125,12 @@
     self.suLabel.attributedText = countString;
     
     [self.suLabel sizeToFit];
-    [self.suView sizeToFit];
+    self.suView.frame = CGRectMake(self.suView.x, self.suView.y, self.suLabel.width + 10, self.suLabel.height + 10);
     
-    self.suView.x = self.width - self.suView.width;
+    self.suLabel.center = CGPointMake(ceil(self.suView.width/2), ceil(self.suView.height/2));
+    
+    self.suView.x = self.width - self.suView.width - 13;
+    self.suView.y = ceil((self.height - self.suView.height)/2);
 }
 
 @end
