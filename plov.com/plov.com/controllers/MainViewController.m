@@ -321,7 +321,7 @@
         {
             ItemViewController * itemVc = self.items[_currentItem][@"controller"];
         
-            [itemVc hideDescriptionPanel];
+            [itemVc hidePanel];
         }
         
         _currentItem = currentItem;

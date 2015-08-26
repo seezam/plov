@@ -18,6 +18,6 @@
 
 + (instancetype)instantiateWithMenuItem:(MenuItemObject *)item;
 
-- (void)hideDescriptionPanel;
+- (void)hidePanel;
 
 @end
