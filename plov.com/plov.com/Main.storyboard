@@ -48,43 +48,43 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                             </scrollView>
                             <view contentMode="scaleToFill" id="aRC-qb-K0Q">
-                                <rect key="frame" x="0.0" y="430" width="320" height="138"/>
+                                <rect key="frame" x="0.0" y="478" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bott_fade" id="uDw-gU-mxC">
-                                        <rect key="frame" x="0.0" y="48" width="320" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120 гр" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkz-b5-Jj7">
-                                        <rect key="frame" x="13" y="93" width="69" height="39"/>
+                                        <rect key="frame" x="13" y="45" width="69" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QV6-5Q-1mB">
-                                        <rect key="frame" x="94" y="93" width="36" height="36"/>
+                                        <rect key="frame" x="94" y="45" width="36" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <state key="normal" image="minus">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="psm-Cs-5rn">
-                                        <rect key="frame" x="190" y="95" width="32" height="32"/>
+                                        <rect key="frame" x="190" y="47" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="plus">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HqZ-SP-Ss2">
-                                        <rect key="frame" x="239" y="93" width="68" height="39"/>
+                                        <rect key="frame" x="239" y="45" width="68" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="7YX-Ce-oKw" customClass="BBCyclingLabel">
-                                        <rect key="frame" x="130" y="91" width="61" height="39"/>
+                                        <rect key="frame" x="130" y="43" width="61" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -434,19 +434,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ka2-pf-MwP">
-                                <rect key="frame" x="0.0" y="417" width="320" height="151"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" id="L8X-bn-s9s">
+                                <rect key="frame" x="0.0" y="411" width="320" height="151"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Плов  123 12314 йцукцуйкуц" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I9c-8r-JU6">
-                                        <rect key="frame" x="13" y="31" width="294" height="110"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GcN-h0-rc9">
+                                        <rect key="frame" x="13" y="12" width="294" height="21"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="278-gp-DI7">
-                                        <rect key="frame" x="13" y="13" width="294" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Плов  123 12314 йцукцуйкуц" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j79-x8-Cvt">
+                                        <rect key="frame" x="13" y="30" width="294" height="110"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -454,15 +454,15 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
-                            </scrollView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="itemDescription" destination="I9c-8r-JU6" id="f6B-8o-szJ"/>
-                        <outlet property="itemDescriptionPanel" destination="Ka2-pf-MwP" id="Dgb-9A-LIO"/>
+                        <outlet property="itemDescription" destination="j79-x8-Cvt" id="Sp5-A3-rdQ"/>
+                        <outlet property="itemDescriptionPanel" destination="L8X-bn-s9s" id="6YW-cT-pRy"/>
                         <outlet property="itemImage" destination="0t2-Y6-CwM" id="25K-2d-NKf"/>
-                        <outlet property="itemTitle" destination="278-gp-DI7" id="2HI-p2-4s3"/>
+                        <outlet property="itemTitle" destination="GcN-h0-rc9" id="m11-6I-cWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcN-0g-gJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
