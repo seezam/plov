@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
-		184B14F21B6E84DD00276C04 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14F11B6E84DD00276C04 /* ViewController.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
 		D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5421B72CFCB00B0E16E /* StartViewController.m */; };
@@ -38,6 +37,7 @@
 		D513F5B61B754A7300B0E16E /* MenuObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5B51B754A7300B0E16E /* MenuObject.m */; };
 		D513F5B91B754A8E00B0E16E /* MenuCategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5B81B754A8E00B0E16E /* MenuCategoryObject.m */; };
 		D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5BB1B754AA800B0E16E /* MenuItemObject.m */; };
+		D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3DB41B8E8886004DF09C /* PlovApplication.m */; };
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
@@ -60,8 +60,6 @@
 		184B14EB1B6E84DD00276C04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		184B14ED1B6E84DD00276C04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		184B14EE1B6E84DD00276C04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		184B14F01B6E84DD00276C04 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		184B14F11B6E84DD00276C04 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		184B15111B6E87E200276C04 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		D513F5B81B754A8E00B0E16E /* MenuCategoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCategoryObject.m; sourceTree = "<group>"; };
 		D513F5BA1B754AA800B0E16E /* MenuItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemObject.h; sourceTree = "<group>"; };
 		D513F5BB1B754AA800B0E16E /* MenuItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemObject.m; sourceTree = "<group>"; };
+		D51B3DB31B8E8886004DF09C /* PlovApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlovApplication.h; sourceTree = "<group>"; };
+		D51B3DB41B8E8886004DF09C /* PlovApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlovApplication.m; sourceTree = "<group>"; };
 		D56D647D1B6FF71C0077671F /* PLResourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLResourseManager.h; sourceTree = "<group>"; };
 		D56D647E1B6FF71C0077671F /* PLResourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLResourseManager.m; sourceTree = "<group>"; };
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,9 +182,9 @@
 				184B150F1B6E87E200276C04 /* frameworks */,
 				184B14ED1B6E84DD00276C04 /* AppDelegate.h */,
 				184B14EE1B6E84DD00276C04 /* AppDelegate.m */,
-				184B14F01B6E84DD00276C04 /* ViewController.h */,
-				184B14F11B6E84DD00276C04 /* ViewController.m */,
 				184B14E91B6E84DD00276C04 /* Supporting Files */,
+				D51B3DB31B8E8886004DF09C /* PlovApplication.h */,
+				D51B3DB41B8E8886004DF09C /* PlovApplication.m */,
 			);
 			path = plov.com;
 			sourceTree = "<group>";
@@ -426,7 +426,6 @@
 				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */,
-				184B14F21B6E84DD00276C04 /* ViewController.m in Sources */,
 				D58BF8AD1B7956A900821175 /* MenuItemsView.m in Sources */,
 				D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */,
 				D513F5931B73F64500B0E16E /* AddressViewController.m in Sources */,
@@ -446,6 +445,7 @@
 				184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */,
 				D513F5741B73DF9000B0E16E /* AFURLRequestSerialization.m in Sources */,
 				D513F5711B73DF9000B0E16E /* AFNetworkReachabilityManager.m in Sources */,
+				D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */,
 				D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */,
 				D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */,
 			);

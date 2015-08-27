@@ -20,6 +20,8 @@
 #import "ItemViewController.h"
 #import "OrderViewController.h"
 
+#import "PlovApplication.h"
+
 #define ITEM_VIEW_PREFIX 123012
 
 @interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate>
@@ -134,11 +136,20 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self arrowAnimateWithStep:step forSteps:steps withDuration:duration];
     });
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppIdle) name:kApplicationDidTimeoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppIdleBreaks) name:kApplicationDidTimeoutBreaksNotification object:nil];
+    
+    [self scheduleItemsAnimation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     self.arrowAnimation = NO;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self cancelItemsAnimation];
 }
 
 - (void)arrowAnimateWithStep:(int)step forSteps:(int)steps withDuration:(CGFloat)duration
@@ -330,7 +341,7 @@
     }
 }
 
-- (void)insertViewForPos:(int)pos
+- (void)insertViewForPos:(long)pos
 {
     if (pos >= 0 && pos < self.items.count)
     {
@@ -394,6 +405,42 @@
             return;
         }
     }
+}
+
+- (void)onAppIdle
+{
+    [self itemsAnimation];
+}
+
+- (void)onAppIdleBreaks
+{
+    [self cancelItemsAnimation];
+}
+
+- (void)itemsAnimation
+{
+    NSInteger nextItem = _currentItem + 1;
+    
+    if (nextItem > self.items.count - 1)
+    {
+        nextItem = 0;
+    }
+    
+    CGRect rect = [self.items[nextItem][@"controller"] view].frame;
+    [self.itemsScrollView scrollRectToVisible:rect animated:YES];
+    
+    [self scheduleItemsAnimation];
+}
+
+- (void)scheduleItemsAnimation
+{
+    [self cancelItemsAnimation];
+    [self performSelector:@selector(itemsAnimation) withObject:nil afterDelay:5];
+}
+
+- (void)cancelItemsAnimation
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(itemsAnimation) object:nil];
 }
 
 @end
