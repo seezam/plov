@@ -140,7 +140,21 @@
 {
     NSDictionary * item = self.items[indexPath.row];
     
-    [self processToViewController:item[@"segue"]];
+    if ([item[@"image"] isEqualToString:@"menu-call"])
+    {
+        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
+        {
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+        }
+    }
+    else if ([item[@"segue"] length])
+    {
+        [self processToViewController:item[@"segue"]];
+    }
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 @end

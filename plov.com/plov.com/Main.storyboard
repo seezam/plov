@@ -31,7 +31,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" id="XKa-jQ-hKn">
-                                        <rect key="frame" x="196" y="31" width="20" height="20"/>
+                                        <rect key="frame" x="196" y="30" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="UFZ-dG-SAa" customClass="BBCyclingLabel">
@@ -71,7 +71,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="psm-Cs-5rn">
                                         <rect key="frame" x="190" y="47" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="plus">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -477,7 +477,7 @@
         <image name="left" width="25" height="88"/>
         <image name="logo.png" width="124" height="26"/>
         <image name="minus" width="36" height="36"/>
-        <image name="plus" width="35" height="36"/>
+        <image name="plus" width="36" height="36"/>
         <image name="right" width="25" height="88"/>
         <image name="spin.png" width="61" height="61"/>
     </resources>

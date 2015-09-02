@@ -304,14 +304,15 @@
     }
 }
 
-
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = self.itemsScrollView.width;
     float fractionalPage = self.itemsScrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
- 
-    self.currentItem = page;
+    
+    if (_currentItem != page)
+    {
+        self.currentItem = page;
+    }
     
     if (_currentItem >= 0 && _currentItem < self.items.count)
     {
@@ -419,6 +420,12 @@
 
 - (void)itemsAnimation
 {
+    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
+    {
+        [self scheduleItemsAnimation];
+        return;
+    }
+    
     NSInteger nextItem = _currentItem + 1;
     
     if (nextItem > self.items.count - 1)

@@ -193,10 +193,12 @@
 {
     UIFont * rubFont = [UIFont fontWithName:@"ALS Rubl" size:font.pointSize];
     
-    NSAttributedString * rubString = [[NSAttributedString alloc] initWithString:@" i"
+    NSAttributedString * rubString = [[NSAttributedString alloc] initWithString:@"i"
                                                                       attributes:@{NSFontAttributeName: rubFont}];
     
-    NSAttributedString * costString = [[NSAttributedString alloc] initWithString:@(cost).stringValue
+    NSString * priceString = [@(cost).stringValue stringByAppendingString:@" "];
+    
+    NSAttributedString * costString = [[NSAttributedString alloc] initWithString:priceString
                                                                       attributes:@{NSFontAttributeName: font}];
     
     NSMutableAttributedString * result = [[NSMutableAttributedString alloc] initWithAttributedString:costString];

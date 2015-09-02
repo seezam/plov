@@ -164,6 +164,10 @@
                 {
                     [self hidePanel];
                 }
+                else if (self.panelHidden)
+                {
+                    [self hidePanel];
+                }
             }
                 break;
             case UIGestureRecognizerStateCancelled:
@@ -191,7 +195,7 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return !self.panelHidden || self.revealViewController.frontViewPosition == FrontViewPositionRight;
+        return !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
     }
     else if (gestureRecognizer == self.panGesture)
     {
@@ -203,7 +207,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    if (self.revealViewController.frontViewPosition == FrontViewPositionRight)
+    if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
     {
         return NO;
     }

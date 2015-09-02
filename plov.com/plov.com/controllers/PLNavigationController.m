@@ -27,11 +27,11 @@
     [button setImage:[PLResourseManager imageWithName:resImageMenu] forState:UIControlStateNormal];
     
     self.item = [[UIBarButtonItem alloc] initWithCustomView:button];
+   [self.item setImageInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
     
     self.logo = [[UIImageView alloc] initWithImage:[PLResourseManager imageWithName:resImageLogo]];
     self.logo.tag = 'LOGO';
-    self.logo.frame = CGRectMake(56, 8, self.logo.frame.size.width, self.logo.frame.size.height);
-//    self.logo.frame = CGRectMake(66, 0, ceil(self.logo.frame.size.width/2), ceil(self.logo.frame.size.height/2));
+    self.logo.frame = CGRectMake(48, 8, self.logo.frame.size.width, self.logo.frame.size.height);
  
     [self.navigationBar addSubview:self.logo];
 //
@@ -74,7 +74,11 @@
 //        controller.navigationItem.titleView = self.logo;
 //    }
     
-    controller.navigationItem.leftBarButtonItem = self.item;
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [negativeSpacer setWidth:-3];
+    
+    controller.navigationItem.leftBarButtonItems = @[negativeSpacer, self.item];
+//    controller.navigationItem.leftBarButtonItem = self.item;
 //    [controller.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
