@@ -17,6 +17,8 @@
 #import "MainViewController.h"
 #import "SWRevealViewController.h"
 
+#import "PLCRMSupport.h"
+
 @interface AppDelegate ()
 
 @end
@@ -169,6 +171,8 @@
 
 - (void)startApplication:(UIView *)fromView
 {
+    self.crm = [[PLCRMSupport alloc] init];
+    
     self.menuData = [self loadData];
     
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

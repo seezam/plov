@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class PLCRMSupport;
 @class MenuObject;
 @class SWRevealViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+
+@property (strong, nonatomic) PLCRMSupport * crm;
 @property (strong, nonatomic) MenuObject * menuData;
 @property (strong, nonatomic) UIWindow *window;
 

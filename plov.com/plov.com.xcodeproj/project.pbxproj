@@ -38,6 +38,9 @@
 		D513F5B91B754A8E00B0E16E /* MenuCategoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5B81B754A8E00B0E16E /* MenuCategoryObject.m */; };
 		D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5BB1B754AA800B0E16E /* MenuItemObject.m */; };
 		D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = D51B3DB41B8E8886004DF09C /* PlovApplication.m */; };
+		D55D52AE1B9796840026D6D5 /* PLSimpleRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = D55D52AC1B9796840026D6D5 /* PLSimpleRequester.m */; };
+		D55D52B11B9796CE0026D6D5 /* PLCRMSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D55D52B01B9796CE0026D6D5 /* PLCRMSupport.m */; };
+		D55D52B41B97A7240026D6D5 /* NSString+JSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = D55D52B31B97A7240026D6D5 /* NSString+JSONString.m */; };
 		D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D647E1B6FF71C0077671F /* PLResourseManager.m */; };
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
@@ -110,6 +113,12 @@
 		D513F5BB1B754AA800B0E16E /* MenuItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemObject.m; sourceTree = "<group>"; };
 		D51B3DB31B8E8886004DF09C /* PlovApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlovApplication.h; sourceTree = "<group>"; };
 		D51B3DB41B8E8886004DF09C /* PlovApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlovApplication.m; sourceTree = "<group>"; };
+		D55D52AC1B9796840026D6D5 /* PLSimpleRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLSimpleRequester.m; sourceTree = "<group>"; };
+		D55D52AD1B9796840026D6D5 /* PLSimpleRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLSimpleRequester.h; sourceTree = "<group>"; };
+		D55D52AF1B9796CE0026D6D5 /* PLCRMSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCRMSupport.h; sourceTree = "<group>"; };
+		D55D52B01B9796CE0026D6D5 /* PLCRMSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLCRMSupport.m; sourceTree = "<group>"; };
+		D55D52B21B97A7240026D6D5 /* NSString+JSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONString.h"; sourceTree = "<group>"; };
+		D55D52B31B97A7240026D6D5 /* NSString+JSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONString.m"; sourceTree = "<group>"; };
 		D56D647D1B6FF71C0077671F /* PLResourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLResourseManager.h; sourceTree = "<group>"; };
 		D56D647E1B6FF71C0077671F /* PLResourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLResourseManager.m; sourceTree = "<group>"; };
 		D56D64801B6FF7E60077671F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -297,10 +306,16 @@
 		D56D647C1B6FF6F50077671F /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D55D52B21B97A7240026D6D5 /* NSString+JSONString.h */,
+				D55D52B31B97A7240026D6D5 /* NSString+JSONString.m */,
+				D55D52AC1B9796840026D6D5 /* PLSimpleRequester.m */,
+				D55D52AD1B9796840026D6D5 /* PLSimpleRequester.h */,
 				D58BF8A81B79417D00821175 /* UIView+Frame.h */,
 				D58BF8A91B79417D00821175 /* UIView+Frame.m */,
 				D56D647D1B6FF71C0077671F /* PLResourseManager.h */,
 				D56D647E1B6FF71C0077671F /* PLResourseManager.m */,
+				D55D52AF1B9796CE0026D6D5 /* PLCRMSupport.h */,
+				D55D52B01B9796CE0026D6D5 /* PLCRMSupport.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -422,6 +437,7 @@
 				D513F5B91B754A8E00B0E16E /* MenuCategoryObject.m in Sources */,
 				D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */,
 				D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */,
+				D55D52B11B9796CE0026D6D5 /* PLCRMSupport.m in Sources */,
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
 				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
@@ -436,6 +452,7 @@
 				184B14EC1B6E84DD00276C04 /* main.m in Sources */,
 				D513F5701B73DF9000B0E16E /* AFHTTPSessionManager.m in Sources */,
 				D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */,
+				D55D52B41B97A7240026D6D5 /* NSString+JSONString.m in Sources */,
 				184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */,
 				D56D64A21B71684A0077671F /* MainViewController.m in Sources */,
 				D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */,
@@ -447,6 +464,7 @@
 				D513F5711B73DF9000B0E16E /* AFNetworkReachabilityManager.m in Sources */,
 				D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */,
 				D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */,
+				D55D52AE1B9796840026D6D5 /* PLSimpleRequester.m in Sources */,
 				D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

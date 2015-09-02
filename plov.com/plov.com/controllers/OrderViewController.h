@@ -21,4 +21,5 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
 @property (weak, nonatomic) IBOutlet BBCyclingLabel *bucketSumLabel;
+- (IBAction)processOrder:(id)sender;
 @end

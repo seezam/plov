@@ -196,4 +196,47 @@
     [self.ordersTableView selectRowAtIndexPath:nil animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
+- (IBAction)processOrder:(id)sender
+{
+    NSMutableDictionary * orderDict = [NSMutableDictionary dictionary];
+    
+    orderDict[@"lastName"] = @"Pupkin";
+    orderDict[@"firstName"] = @"Vasya";
+    orderDict[@"phone"] = @"+79152700087";
+    orderDict[@"contragentType"] = @"individual";
+
+    NSMutableArray * orders = [NSMutableArray array];
+    
+    for (MenuItemObject * item in self.order)
+    {
+        NSDictionary * itemDesc = @{
+                                @"initialPrice": @(item.cost),
+                                @"purchasePrice": @(item.cost),
+                                @"productName": item.title,
+                                @"quantity": @(item.count),
+                                };
+        
+        [orders addObject:itemDesc];
+    }
+    
+    orderDict[@"items"] = orders;
+    
+    orderDict[@"delivery"] = @{@"address":
+                                   @{
+                                       @"city": @"muhosransk",
+                                       @"region": @"muhosranskaya obl",
+                                       @"street": @"muhosranskaya st.",
+                                       @"building" : @"12",
+                                       @"house": @"2",
+                                       @"flat": @"64"
+                                    }
+                            };
+    
+    [SHARED_APP.crm createOrder:orderDict success:^(NSData *data) {
+        
+    } error:^(NSError *error) {
+        
+    }];
+}
+
 @end
