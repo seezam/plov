@@ -45,6 +45,9 @@
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
 		D56D64A21B71684A0077671F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D64A11B71684A0077671F /* MainViewController.m */; };
+		D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */; };
+		D580A6661B9CFFB700C75316 /* CustomerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6651B9CFFB700C75316 /* CustomerObject.m */; };
+		D580A6691B9CFFF100C75316 /* AddressObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6681B9CFFF100C75316 /* AddressObject.m */; };
 		D58BF8A71B792FF900821175 /* PLMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8A61B792FF900821175 /* PLMenuView.m */; };
 		D58BF8AA1B79417D00821175 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8A91B79417D00821175 /* UIView+Frame.m */; };
 		D58BF8AD1B7956A900821175 /* MenuItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8AC1B7956A900821175 /* MenuItemsView.m */; };
@@ -55,6 +58,9 @@
 		D5E2F1501B826FB60041D8EE /* rub.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5E2F14F1B826FB60041D8EE /* rub.otf */; };
 		D5E2F1581B8878D00041D8EE /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1571B8878D00041D8EE /* OrderViewController.m */; };
 		D5E2F1651B8BBA620041D8EE /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1641B8BBA620041D8EE /* OrderTableViewCell.m */; };
+		D5F082A71BBB230900393AB9 /* OrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A66B1B9D000E00C75316 /* OrderObject.m */; settings = {ASSET_TAGS = (); }; };
+		D5F082AA1BBB2AF700393AB9 /* PLTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		D5F082AD1BBB436600393AB9 /* PLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082AC1BBB436600393AB9 /* PLTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +132,14 @@
 		D56D64831B6FFA0F0077671F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D56D64A01B71684A0077671F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D56D64A11B71684A0077671F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		D580A6611B9CFCE300C75316 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
+		D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
+		D580A6641B9CFFB700C75316 /* CustomerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerObject.h; sourceTree = "<group>"; };
+		D580A6651B9CFFB700C75316 /* CustomerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerObject.m; sourceTree = "<group>"; };
+		D580A6671B9CFFF100C75316 /* AddressObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressObject.h; sourceTree = "<group>"; };
+		D580A6681B9CFFF100C75316 /* AddressObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressObject.m; sourceTree = "<group>"; };
+		D580A66A1B9D000E00C75316 /* OrderObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderObject.h; sourceTree = "<group>"; };
+		D580A66B1B9D000E00C75316 /* OrderObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderObject.m; sourceTree = "<group>"; };
 		D58BF8A51B792FF900821175 /* PLMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLMenuView.h; sourceTree = "<group>"; };
 		D58BF8A61B792FF900821175 /* PLMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLMenuView.m; sourceTree = "<group>"; };
 		D58BF8A81B79417D00821175 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -144,6 +158,10 @@
 		D5E2F1571B8878D00041D8EE /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		D5E2F1631B8BBA620041D8EE /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
 		D5E2F1641B8BBA620041D8EE /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
+		D5F082A81BBB2AF700393AB9 /* PLTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTextTableViewCell.h; sourceTree = "<group>"; };
+		D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTextTableViewCell.m; sourceTree = "<group>"; };
+		D5F082AB1BBB436600393AB9 /* PLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTableViewController.h; sourceTree = "<group>"; };
+		D5F082AC1BBB436600393AB9 /* PLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +270,12 @@
 				D5E2F1571B8878D00041D8EE /* OrderViewController.m */,
 				D5E2F1631B8BBA620041D8EE /* OrderTableViewCell.h */,
 				D5E2F1641B8BBA620041D8EE /* OrderTableViewCell.m */,
+				D580A6611B9CFCE300C75316 /* ProfileTableViewCell.h */,
+				D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */,
+				D5F082A81BBB2AF700393AB9 /* PLTextTableViewCell.h */,
+				D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */,
+				D5F082AB1BBB436600393AB9 /* PLTableViewController.h */,
+				D5F082AC1BBB436600393AB9 /* PLTableViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -299,6 +323,12 @@
 				D513F5B81B754A8E00B0E16E /* MenuCategoryObject.m */,
 				D513F5BA1B754AA800B0E16E /* MenuItemObject.h */,
 				D513F5BB1B754AA800B0E16E /* MenuItemObject.m */,
+				D580A6641B9CFFB700C75316 /* CustomerObject.h */,
+				D580A6651B9CFFB700C75316 /* CustomerObject.m */,
+				D580A6671B9CFFF100C75316 /* AddressObject.h */,
+				D580A6681B9CFFF100C75316 /* AddressObject.m */,
+				D580A66A1B9D000E00C75316 /* OrderObject.h */,
+				D580A66B1B9D000E00C75316 /* OrderObject.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -433,8 +463,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F082AA1BBB2AF700393AB9 /* PLTextTableViewCell.m in Sources */,
 				D513F5761B73DF9000B0E16E /* AFURLSessionManager.m in Sources */,
 				D513F5B91B754A8E00B0E16E /* MenuCategoryObject.m in Sources */,
+				D580A6661B9CFFB700C75316 /* CustomerObject.m in Sources */,
 				D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */,
 				D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */,
 				D55D52B11B9796CE0026D6D5 /* PLCRMSupport.m in Sources */,
@@ -453,8 +485,10 @@
 				D513F5701B73DF9000B0E16E /* AFHTTPSessionManager.m in Sources */,
 				D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */,
 				D55D52B41B97A7240026D6D5 /* NSString+JSONString.m in Sources */,
+				D5F082AD1BBB436600393AB9 /* PLTableViewController.m in Sources */,
 				184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */,
 				D56D64A21B71684A0077671F /* MainViewController.m in Sources */,
+				D580A6691B9CFFF100C75316 /* AddressObject.m in Sources */,
 				D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */,
 				D513F5B61B754A7300B0E16E /* MenuObject.m in Sources */,
 				D5E2F1651B8BBA620041D8EE /* OrderTableViewCell.m in Sources */,
@@ -462,6 +496,8 @@
 				184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */,
 				D513F5741B73DF9000B0E16E /* AFURLRequestSerialization.m in Sources */,
 				D513F5711B73DF9000B0E16E /* AFNetworkReachabilityManager.m in Sources */,
+				D5F082A71BBB230900393AB9 /* OrderObject.m in Sources */,
+				D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */,
 				D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */,
 				D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */,
 				D55D52AE1B9796840026D6D5 /* PLSimpleRequester.m in Sources */,

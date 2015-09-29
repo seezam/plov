@@ -10,6 +10,7 @@
 
 @class PLCRMSupport;
 @class MenuObject;
+@class CustomerObject;
 @class SWRevealViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) PLCRMSupport * crm;
 @property (strong, nonatomic) MenuObject * menuData;
+@property (strong, nonatomic) CustomerObject * customer;
 @property (strong, nonatomic) UIWindow *window;
 
 + (AppDelegate *)app;

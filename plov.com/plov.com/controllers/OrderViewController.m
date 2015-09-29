@@ -11,6 +11,8 @@
 #import "MenuItemObject.h"
 #import "BBCyclingLabel.h"
 
+#import "CustomerObject.h"
+
 @interface OrderViewController() <OrderTableViewDelegate>
 
 @property (nonatomic, assign) NSInteger bucketSum;
@@ -200,9 +202,9 @@
 {
     NSMutableDictionary * orderDict = [NSMutableDictionary dictionary];
     
-    orderDict[@"lastName"] = @"Pupkin";
-    orderDict[@"firstName"] = @"Vasya";
-    orderDict[@"phone"] = @"+79152700087";
+//    orderDict[@"lastName"] = @"Pupkin";
+    orderDict[@"firstName"] = SHARED_APP.customer.name;
+    orderDict[@"phone"] = SHARED_APP.customer.phone;
     orderDict[@"contragentType"] = @"individual";
 
     NSMutableArray * orders = [NSMutableArray array];

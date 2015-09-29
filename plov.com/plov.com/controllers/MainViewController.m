@@ -22,6 +22,9 @@
 
 #import "PlovApplication.h"
 
+#import "AddressViewController.h"
+//#import "Name"
+
 #define ITEM_VIEW_PREFIX 123012
 
 @interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate>
@@ -98,23 +101,27 @@
 
 - (void)processToOrder
 {
-    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+    AddressViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
     
-    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
+    [self.navigationController pushViewController:vc animated:YES];
     
-    for (NSDictionary * item in self.items)
-    {
-        MenuItemObject * menuItem = item[@"item"];
-        
-        if (menuItem.count > 0)
-        {
-            [order addObject:menuItem];
-        }
-    }
-    
-    orderVc.order = order;
-    
-    [self.navigationController pushViewController:orderVc animated:YES];
+//    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+//    
+//    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
+//    
+//    for (NSDictionary * item in self.items)
+//    {
+//        MenuItemObject * menuItem = item[@"item"];
+//        
+//        if (menuItem.count > 0)
+//        {
+//            [order addObject:menuItem];
+//        }
+//    }
+//    
+//    orderVc.order = order;
+//    
+//    [self.navigationController pushViewController:orderVc animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

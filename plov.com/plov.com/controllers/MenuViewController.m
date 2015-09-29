@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "MenuTableViewCell.h"
+#import "ProfileTableViewCell.h"
 #import "SWRevealViewController.h"
 #import "PLNavigationController.h"
 
@@ -97,6 +98,7 @@
 {
     static NSString *itemCellIdentifier = @"mainMenuItem";
     static NSString *logoCellIdentifier = @"logoMenuItem";
+    static NSString *profileCellIdentifier = @"profileMenuItem";
     
     NSInteger row = indexPath.row;
     
@@ -111,6 +113,17 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        }
+        
+        return cell;
+    }
+    else if ([item[@"type"] isEqualToString:@"profile"])
+    {
+        reuseIdentifier = logoCellIdentifier;
+        
+        ProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+        if (cell == nil) {
+            cell = [[ProfileTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
         
         return cell;

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PLTableViewController.h"
 
-@interface AddressViewController : UITableViewController
+
+@interface AddressViewController : PLTableViewController
 
 @end
