@@ -16,6 +16,17 @@
     return [storyboard instantiateViewControllerWithIdentifier:@"tableViewController"];
 }
 
+- (void)viewDidLoad
+{
+    //set back button color
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+        setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor] }
+        forState:UIControlStateNormal];
+    //set back button arrow color
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+}
+
+
 - (void)setItems:(NSArray *)items
 {
     _items = items;

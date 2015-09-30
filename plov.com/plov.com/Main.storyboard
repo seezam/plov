@@ -126,26 +126,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" id="Dn0-TW-vl4">
-                                        <rect key="frame" x="196" y="58" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" id="X1N-Xq-EJY" customClass="BBCyclingLabel">
-                                        <rect key="frame" x="227" y="49" width="80" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ex9-gK-LNj">
-                                        <rect key="frame" x="60" y="30" width="164" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.96862745100000003" green="0.90588235289999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ex9-gK-LNj">
+                                        <rect key="frame" x="227" y="26" width="85" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="fls-ce-NGm">
                                         <rect key="frame" x="9" y="68" width="302" height="1"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.62745098040000002" green="0.53333333329999999" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.90588235294117647" blue="0.80000000000000004" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="SFq-Ff-TKR">
                                         <rect key="frame" x="9" y="86" width="302" height="1"/>
@@ -156,6 +147,17 @@
                                         <rect key="frame" x="9" y="72" width="50" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart-white" id="Dn0-TW-vl4">
+                                        <rect key="frame" x="240" y="27" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MHI-Kr-cHS">
+                                        <rect key="frame" x="240" y="46" width="72" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.55294117649999996" green="0.44705882349999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -512,7 +514,7 @@
         <scene sceneID="jVM-yd-WeM">
             <objects>
                 <viewController storyboardIdentifier="ItemViewController" id="pCb-ff-BGx" customClass="ItemViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4ze-IQ-qDI">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="4ze-IQ-qDI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -559,6 +561,7 @@
     <resources>
         <image name="bott_fade" width="320" height="92"/>
         <image name="cart" width="34" height="33"/>
+        <image name="cart-white" width="23" height="22"/>
         <image name="intro.png" width="186" height="321"/>
         <image name="left" width="25" height="88"/>
         <image name="logo.png" width="124" height="26"/>

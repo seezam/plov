@@ -20,4 +20,7 @@
 
 - (void)hidePanel;
 
+- (void)setProgress1:(float)progress;
+- (void)setProgress2:(float)progress;
+
 @end

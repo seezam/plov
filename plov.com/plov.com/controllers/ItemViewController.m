@@ -93,6 +93,26 @@
     }];
 }
 
+- (void)setProgress1:(float)progress
+{
+    CGPoint center = self.itemImage.center;
+    CGFloat width = self.view.width;
+    CGFloat halfW = width/2;
+    
+    center.x = halfW + width*(1 - progress);
+    self.itemImage.center = center;
+}
+
+- (void)setProgress2:(float)progress
+{
+    CGPoint center = self.itemImage.center;
+    CGFloat width = self.view.width;
+    CGFloat halfW = width/2;
+    
+    center.x = halfW - width*(1 - progress);
+    self.itemImage.center = center;
+}
+
 - (void)setPerforming:(BOOL)performing
 {
     UIScrollView * scroll = (UIScrollView *)self.view.superview;

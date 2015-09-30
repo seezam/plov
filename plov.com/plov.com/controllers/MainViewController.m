@@ -314,7 +314,30 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = self.itemsScrollView.width;
     float fractionalPage = self.itemsScrollView.contentOffset.x / pageWidth;
+    
     NSInteger page = lround(fractionalPage);
+    
+    float perc1 = 0.0;
+    float perc2 = 0.0;
+    
+    perc2 = modff(fractionalPage, &perc1);
+    perc1 = 1 - perc2;
+    
+    int p1 = (int)fractionalPage;
+    int p2 = p1 + 1;
+    
+    if (p1 >= 0 && p1 < self.items.count &&
+        p2 >= 0 && p2 < self.items.count)
+    {
+        ItemViewController * itemVc1 = self.items[p1][@"controller"];
+        ItemViewController * itemVc2 = self.items[p2][@"controller"];
+        
+        [itemVc1 setProgress1:perc1];
+        [itemVc2 setProgress2:perc2];
+    }
+    
+    NSLog (@"%d - %f : %d - %f", p1, perc1, p2, perc2);
+    
     
     if (_currentItem != page)
     {
