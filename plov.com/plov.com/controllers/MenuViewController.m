@@ -12,6 +12,8 @@
 #import "SWRevealViewController.h"
 #import "PLNavigationController.h"
 
+@import Intercom;
+
 @interface MenuViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray * items;
 @end
@@ -155,12 +157,14 @@
     
     if ([item[@"image"] isEqualToString:@"menu-call"])
     {
-        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+        [Intercom presentMessageComposer];
         
-        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
-        {
-            [[UIApplication sharedApplication] openURL:phoneUrl];
-        }
+//        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+//        
+//        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
+//        {
+//            [[UIApplication sharedApplication] openURL:phoneUrl];
+//        }
     }
     else if ([item[@"segue"] length])
     {
