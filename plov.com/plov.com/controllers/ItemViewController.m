@@ -164,6 +164,10 @@
                 {
                     CGFloat delta = (self.panPointBegin.y - currentPoint.y);
                     CGFloat height = self.startPanelHeight + delta;
+                    if (height > self.view.height/2)
+                    {
+                        height = ceil(self.view.height/2);
+                    }
                     self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
                 }
                 
