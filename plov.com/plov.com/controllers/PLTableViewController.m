@@ -9,9 +9,13 @@
 #import "PLTableViewController.h"
 #import "PLTextTableViewCell.h"
 
+@implementation PLTableItem
+
+@end
+
 @implementation PLTableViewController
 
-+ (instancetype)instantiateFromStoryboard:(UIStoryboard *)storyboard
++ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard
 {
     return [storyboard instantiateViewControllerWithIdentifier:@"tableViewController"];
 }
@@ -41,6 +45,11 @@
     return self.items.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 48;
+}
+
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
@@ -61,7 +70,13 @@
         }
             break;
         case PLTableItemType_Phone:
-            return nil;
+        {
+            PLTextTableViewCell * cell = [PLTextTableViewCell cellWithText:item.text
+                                                               placeholder:item.placeholder
+                                                                      name:item.title
+                                                                   reuseId:item.itemId];
+            return cell;
+        }
             break;
     }
 

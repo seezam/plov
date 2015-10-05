@@ -101,7 +101,7 @@
 
 - (void)processToOrder
 {
-    AddressViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
+    PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
     
     [self.navigationController pushViewController:vc animated:YES];
     
@@ -336,7 +336,7 @@
         [itemVc2 setProgress2:perc2];
     }
     
-    NSLog (@"%d - %f : %d - %f", p1, perc1, p2, perc2);
+//    NSLog (@"%d - %f : %d - %f", p1, perc1, p2, perc2);
     
     
     if (_currentItem != page)

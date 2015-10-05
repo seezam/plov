@@ -28,6 +28,6 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray * items;
 
-+ (instancetype)instantiateFromStoryboard:(UIStoryboard *)storyboard;
++ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard;
 
 @end

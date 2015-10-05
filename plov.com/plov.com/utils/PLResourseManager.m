@@ -8,7 +8,7 @@
 
 #import "PLResourseManager.h"
 
-//NSUInteger resColorNavigation = 0x8d724dff;
+NSUInteger resColorBackground = 0x8d724dff;
 NSUInteger resColorNavigation = 0xff0000ff;
 NSUInteger resColorMenuText = 0xf7d8a3ff;
 NSUInteger resColorMenuSelector = 0xbd724dff;

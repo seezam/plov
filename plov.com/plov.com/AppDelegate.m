@@ -19,6 +19,8 @@
 
 #import "PLCRMSupport.h"
 
+@import Intercom;
+
 @interface AppDelegate ()
 
 @end
@@ -217,6 +219,10 @@
     // Override point for customization after application launch.
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    [Intercom setApiKey:@"ios_sdk-2c950ea4e4e800c40c04cfbfaca8655046b7ee58" forAppId:@"dsdu3hzw"];
+    
+    [Intercom registerUnidentifiedUser];
     
     return YES;
 }

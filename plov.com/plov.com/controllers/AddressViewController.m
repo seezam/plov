@@ -14,19 +14,28 @@
 
 @implementation AddressViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
++ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard
+{
+    PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    PLTableItem * name = [[PLTableItem alloc] init];
+    name.type = PLTableItemType_Text;
+    name.title = LOC(@"LOC_NAME_FIELD");
+    name.text = @"";
+    name.placeholder = LOC(@"LOC_NAME_HINT");
+    name.itemId = @"name";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    PLTableItem * phone = [[PLTableItem alloc] init];
+    phone.type = PLTableItemType_Phone;
+    phone.title = LOC(@"LOC_PHONE_FIELD");
+    phone.text = @"";
+    phone.placeholder = LOC(@"LOC_PHONE_HINT");
+    phone.itemId = @"phone";
+    
+    vc.items = @[name, phone];
+    
+    return vc;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

@@ -14,17 +14,22 @@
 {
     PLTextTableViewCell * cell = [[PLTextTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseId];
     
-    UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 375, 30)];
+    cell.contentView.backgroundColor = UIColorFromRGBA(resColorBackground);
+    
+    UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(9, 5, 200, 30)];
+    title.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
+    title.textColor = UIColorFromRGBA(resColorMenuText);
     title.text = name?name:@"";
     [cell.contentView addSubview:title];
     
-    UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(120, 0, 375, 30)];
+    UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(170, 5, 150, 30)];
     field.placeholder = placeholder?placeholder:@"";
     field.autocorrectionType = UITextAutocorrectionTypeNo;
     field.text = text?text:@"";
+    field.backgroundColor = [UIColor clearColor];
     [field setClearButtonMode:UITextFieldViewModeWhileEditing];
     
-    cell.accessoryView = field;
+    [cell.contentView addSubview:field];
     
     return cell;
 }

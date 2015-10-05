@@ -575,7 +575,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     return UIStatusBarStyleLightContent;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     if ([self.frontViewController respondsToSelector:@selector(supportedInterfaceOrientations)]) {
         return [self.frontViewController supportedInterfaceOrientations];
