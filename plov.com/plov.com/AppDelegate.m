@@ -224,6 +224,9 @@
     
     [Intercom registerUnidentifiedUser];
     
+    [Intercom setPreviewPosition:ICMPreviewPositionTopLeft];
+    [Intercom setPreviewPaddingWithX:9 y:100];
+    
     return YES;
 }
 
