@@ -54,6 +54,7 @@
 		D58BF8AF1B7B76C900821175 /* plov.icns in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8AE1B7B76C900821175 /* plov.icns */; };
 		D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8B01B7B781A00821175 /* Plov.xcassets */; };
 		D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */; };
+		D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */; settings = {ASSET_TAGS = (); }; };
 		D5DFA0F91BBE8CD100A656D2 /* Intercom.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */; settings = {ASSET_TAGS = (); }; };
 		D5DFA0FA1BBE8CD100A656D2 /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DFA0F81BBE8CD100A656D2 /* Intercom.framework */; settings = {ASSET_TAGS = (); }; };
 		D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1431B8258E00041D8EE /* ItemViewController.m */; };
@@ -153,6 +154,8 @@
 		D58BF8B41B7B86ED00821175 /* plov.com.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = plov.com.entitlements; sourceTree = "<group>"; };
 		D58BF8B61B7BF68900821175 /* BBCyclingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCyclingLabel.h; sourceTree = "<group>"; };
 		D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCyclingLabel.m; sourceTree = "<group>"; };
+		D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		D59B5F1D1BC7125500BF32D4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Intercom.bundle; sourceTree = "<group>"; };
 		D5DFA0F81BBE8CD100A656D2 /* Intercom.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Intercom.framework; sourceTree = "<group>"; };
 		D5E2F1421B8258E00041D8EE /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
@@ -342,6 +345,8 @@
 		D56D647C1B6FF6F50077671F /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */,
+				D59B5F1D1BC7125500BF32D4 /* UIImage+Resize.h */,
 				D55D52B21B97A7240026D6D5 /* NSString+JSONString.h */,
 				D55D52B31B97A7240026D6D5 /* NSString+JSONString.m */,
 				D55D52AC1B9796840026D6D5 /* PLSimpleRequester.m */,
@@ -491,6 +496,7 @@
 				D55D52B11B9796CE0026D6D5 /* PLCRMSupport.m in Sources */,
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
 				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
+				D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */,
 				D58BF8AD1B7956A900821175 /* MenuItemsView.m in Sources */,

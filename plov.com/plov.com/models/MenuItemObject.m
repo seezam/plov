@@ -7,6 +7,7 @@
 //
 
 #import "MenuItemObject.h"
+#import "UIImage+Resize.h"
 
 @interface MenuItemObject ()
 @property (nonatomic, strong) NSMutableDictionary * titles;
@@ -53,9 +54,8 @@
 
 - (UIImage *)image
 {
-    NSInteger imgId = random() % 12 + 1;
-    NSString * imgName = [NSString stringWithFormat:@"sample%03ld", (long)imgId];
-    return [UIImage imageNamed:imgName];
+    NSString * imgName = [NSString stringWithFormat:@"item%03ld", (long)self.itemId.integerValue];
+    return [[UIImage imageNamed:imgName] resizeImageTo:CGSizeMake(320, 568)];
 }
 
 - (instancetype)initWithData:(NSData *)data
