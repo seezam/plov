@@ -11,6 +11,22 @@
 
 @implementation PLTableItem
 
++ (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title text:(NSString *)text required:(BOOL)requited
+{
+    PLTableItem * name = [[PLTableItem alloc] init];
+    name.type = PLTableItemType_Text;
+    name.title = title?title:@"";
+    name.text = text?text:@"";
+    name.placeholder = requited?LOC(@"LOC_ORDER_HINT_REQUIRED"):LOC(@"LOC_ORDER_HINT_OPTIONAL");
+    name.itemId = itemId;
+    
+    return name;
+}
+
+@end
+
+@interface PLTableViewController ()<PLTextTableViewCellDelegate>
+
 @end
 
 @implementation PLTableViewController
@@ -59,28 +75,31 @@
     
     PLTableItem * item = self.items[row];
     
+    PLTextTableViewCell * cell = nil;
+    
     switch (item.type) {
         case PLTableItemType_Text:
         {
-            PLTextTableViewCell * cell = [PLTextTableViewCell cellWithText:item.text
+            cell = [PLTextTableViewCell cellWithText:item.text
                                                                placeholder:item.placeholder
                                                                       name:item.title
                                                                    reuseId:item.itemId];
-            return cell;
         }
             break;
         case PLTableItemType_Phone:
         {
-            PLTextTableViewCell * cell = [PLTextTableViewCell cellWithText:item.text
+            [PLTextTableViewCell cellWithText:item.text
                                                                placeholder:item.placeholder
                                                                       name:item.title
                                                                    reuseId:item.itemId];
-            return cell;
         }
             break;
     }
 
-    return nil;
+    cell.delegate = self;
+    [cell hideDivider:(row == self.items.count - 1)];
+    
+    return cell;
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,5 +122,17 @@
 //    
 //    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 //}
+
+- (void)cell:(PLTextTableViewCell *)cell didChanged:(NSString *)text
+{
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    
+    if (row != NSNotFound)
+    {
+        PLTableItem * item = self.items[row];
+        
+        item.text = text;
+    }
+}
 
 @end

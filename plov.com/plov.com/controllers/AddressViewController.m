@@ -18,22 +18,15 @@
 {
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
-    PLTableItem * name = [[PLTableItem alloc] init];
-    name.type = PLTableItemType_Text;
-    name.title = LOC(@"LOC_NAME_FIELD");
-    name.text = @"";
-    name.placeholder = LOC(@"LOC_NAME_HINT");
-    name.itemId = @"name";
-    
-    PLTableItem * phone = [[PLTableItem alloc] init];
-    phone.type = PLTableItemType_Phone;
-    phone.title = LOC(@"LOC_PHONE_FIELD");
-    phone.text = @"";
-    phone.placeholder = LOC(@"LOC_PHONE_HINT");
-    phone.itemId = @"phone";
-    
-    vc.items = @[name, phone];
-    
+    vc.items = @[
+        [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:@"" required:YES],
+        [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:@"" required:YES],
+        [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:@"" required:YES],
+        [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD") text:@"" required:NO],
+        [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD") text:@"" required:NO],
+        [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD") text:@"" required:YES],
+    ];
+        
     return vc;
 }
 

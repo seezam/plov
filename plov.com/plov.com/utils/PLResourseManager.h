@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSUInteger resColorBackground;
+extern NSUInteger resColorDivider;
 extern NSUInteger resColorMenuText;
 extern NSUInteger resColorMenuSelector;
 extern NSUInteger resColorNavigation;

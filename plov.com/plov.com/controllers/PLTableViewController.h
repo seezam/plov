@@ -21,6 +21,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString * text;
 @property (nonatomic, assign) PLTableItemType type;
 
++ (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title text:(NSString *)text required:(BOOL)requited;
+
 @end
 
 @interface PLTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

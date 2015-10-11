@@ -22,3 +22,16 @@
 "LOC_MAIN_COST" = "%@ rub";
 
 "LOC_TITLE_ORDER" = "Your order";
+
+"LOC_ORDER_HINT_REQUIRED" = "Required";
+"LOC_ORDER_HINT_OPTIONAL" = "Optional";
+
+"LOC_ORDER_NAME_FIELD" = "Name";
+"LOC_ORDER_PHONE_FIELD" = "Phone";
+
+"LOC_ORDER_CITY_FIELD" = "City";
+"LOC_ORDER_STREET_FIELD" = "Street";
+"LOC_ORDER_BUILDING_FIELD" = "Building";
+"LOC_ORDER_HOUSE_FIELD" = "House";
+"LOC_ORDER_BLOCK_FIELD" = "Block";
+"LOC_ORDER_FLAT_FIELD" = "Flat";

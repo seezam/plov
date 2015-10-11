@@ -22,3 +22,16 @@
 "LOC_MAIN_COST" = "%@ руб";
 
 "LOC_TITLE_ORDER" = "Ваш заказ";
+
+"LOC_ORDER_HINT_REQUIRED" = "Обязательно";
+"LOC_ORDER_HINT_OPTIONAL" = "Не обязательно";
+
+"LOC_ORDER_NAME_FIELD" = "Имя";
+"LOC_ORDER_PHONE_FIELD" = "Телефон";
+
+"LOC_ORDER_CITY_FIELD" = "Город";
+"LOC_ORDER_STREET_FIELD" = "Улица";
+"LOC_ORDER_BUILDING_FIELD" = "Дом";
+"LOC_ORDER_HOUSE_FIELD" = "Строение";
+"LOC_ORDER_BLOCK_FIELD" = "Подъезд";
+"LOC_ORDER_FLAT_FIELD" = "Квартира";

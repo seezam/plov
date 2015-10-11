@@ -17,13 +17,15 @@
 #import "MenuCategoryObject.h"
 #import "MenuItemObject.h"
 
+#import "CustomerObject.h"
+
 #import "ItemViewController.h"
 #import "OrderViewController.h"
 
 #import "PlovApplication.h"
 
 #import "AddressViewController.h"
-//#import "Name"
+#import "NameViewController.h"
 
 #define ITEM_VIEW_PREFIX 123012
 
@@ -101,9 +103,19 @@
 
 - (void)processToOrder
 {
-    PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
-    
-    [self.navigationController pushViewController:vc animated:YES];
+//    if (!SHARED_APP.customer.name.length ||
+//        !SHARED_APP.customer.phone.length)
+//    {
+//        PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
+//    
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    else
+    {
+        PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 //    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
 //    
