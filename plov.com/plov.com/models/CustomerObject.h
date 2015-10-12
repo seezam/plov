@@ -20,4 +20,6 @@
 @property (nonatomic, strong) NSArray * orders;
 @property (nonatomic, strong) NSArray * addresses;
 
+- (void)saveData;
+
 @end

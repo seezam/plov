@@ -13,6 +13,10 @@
 
 #import "CustomerObject.h"
 
+#import "PLTableViewController.h"
+#import "AddressViewController.h"
+#import "NameViewController.h"
+
 @interface OrderViewController() <OrderTableViewDelegate>
 
 @property (nonatomic, assign) NSInteger bucketSum;
@@ -26,19 +30,35 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    UIColor * color = UIColorFromRGBA(resColorMenuText);
+    
+    //set back button arrow color
+    [self.navigationController.navigationBar setTintColor:color];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UIButton * button = [[UIButton alloc] init];
-    [button setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
-    [button sizeToFit];
+    UIColor * color = UIColorFromRGBA(resColorMenuText);
     
-    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [[UIBarButtonItem appearanceWhenContainedIn:[OrderViewController class], nil]
+     setTitleTextAttributes:@{NSForegroundColorAttributeName:color }
+     forState:UIControlStateNormal];
     
-    UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    UIButton * button = [[UIButton alloc] init];
+//    [button setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
+//    [button sizeToFit];
+//    
+//    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.leftBarButtonItem = backItem;
+//    UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+//    self.navigationItem.leftBarButtonItem = backItem;
     
     self.ordersTableView.delegate = self;
     self.ordersTableView.dataSource = self;
@@ -50,6 +70,7 @@
     self.bucketSumLabel.clipsToBounds = YES;
     
     self.processButton.layer.cornerRadius = 10;
+    [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
     
     for (MenuItemObject * item in self.order)
     {
@@ -60,6 +81,10 @@
     [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
     
     self.titleLabel.text = LOC(@"LOC_TITLE_ORDER");
+    self.titleLabel.hidden = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
+    [self.ordersTableView addGestureRecognizer:tap];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -190,7 +215,20 @@
     {
         [self.order removeObject:item];
         [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        
+        self.processButton.enabled = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.processButton.alpha = 0;
+        }];
     }
+}
+
+- (void)tableTapped:(UITapGestureRecognizer *)tap
+{
+    CGPoint location = [tap locationInView:self.ordersTableView];
+    NSIndexPath *path = [self.ordersTableView indexPathForRowAtPoint:location];
+    
+    [self.ordersTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -200,45 +238,59 @@
 
 - (IBAction)processOrder:(id)sender
 {
-    NSMutableDictionary * orderDict = [NSMutableDictionary dictionary];
-    
-//    orderDict[@"lastName"] = @"Pupkin";
-    orderDict[@"firstName"] = SHARED_APP.customer.name;
-    orderDict[@"phone"] = SHARED_APP.customer.phone;
-    orderDict[@"contragentType"] = @"individual";
-
-    NSMutableArray * orders = [NSMutableArray array];
-    
-    for (MenuItemObject * item in self.order)
+    if (!SHARED_APP.customer.name.length ||
+        !SHARED_APP.customer.phone.length)
     {
-        NSDictionary * itemDesc = @{
-                                @"initialPrice": @(item.cost),
-                                @"purchasePrice": @(item.cost),
-                                @"productName": item.title,
-                                @"quantity": @(item.count),
-                                };
-        
-        [orders addObject:itemDesc];
+        PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
+        vc.bucketSum = self.bucketSum;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
+        vc.bucketSum = self.bucketSum;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
-    orderDict[@"items"] = orders;
-    
-    orderDict[@"delivery"] = @{@"address":
-                                   @{
-                                       @"city": @"muhosransk",
-                                       @"region": @"muhosranskaya obl",
-                                       @"street": @"muhosranskaya st.",
-                                       @"building" : @"12",
-                                       @"house": @"2",
-                                       @"flat": @"64"
-                                    }
-                            };
-    
-    [SHARED_APP.crm createOrder:orderDict success:^(NSData *data) {
-        
-    } error:^(NSError *error) {
-        
-    }];
+//    NSMutableDictionary * orderDict = [NSMutableDictionary dictionary];
+//    
+////    orderDict[@"lastName"] = @"Pupkin";
+//    orderDict[@"firstName"] = SHARED_APP.customer.name;
+//    orderDict[@"phone"] = SHARED_APP.customer.phone;
+//    orderDict[@"contragentType"] = @"individual";
+//
+//    NSMutableArray * orders = [NSMutableArray array];
+//    
+//    for (MenuItemObject * item in self.order)
+//    {
+//        NSDictionary * itemDesc = @{
+//                                @"initialPrice": @(item.cost),
+//                                @"purchasePrice": @(item.cost),
+//                                @"productName": item.title,
+//                                @"quantity": @(item.count),
+//                                };
+//        
+//        [orders addObject:itemDesc];
+//    }
+//    
+//    orderDict[@"items"] = orders;
+//    
+//    orderDict[@"delivery"] = @{@"address":
+//                                   @{
+//                                       @"city": @"muhosransk",
+//                                       @"region": @"muhosranskaya obl",
+//                                       @"street": @"muhosranskaya st.",
+//                                       @"building" : @"12",
+//                                       @"house": @"2",
+//                                       @"flat": @"64"
+//                                    }
+//                            };
+//    
+//    [SHARED_APP.crm createOrder:orderDict success:^(NSData *data) {
+//        
+//    } error:^(NSError *error) {
+//        
+//    }];
 }
 
 @end

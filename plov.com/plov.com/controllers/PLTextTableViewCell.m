@@ -18,6 +18,7 @@
 {
     PLTextTableViewCell * cell = [[PLTextTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseId];
     
+    cell.backgroundColor = UIColorFromRGBA(resColorBackground);
     cell.contentView.backgroundColor = UIColorFromRGBA(resColorBackground);
     
     UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(18, 9, 120, 30)];

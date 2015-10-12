@@ -10,12 +10,12 @@
 #import "OrderObject.h"
 #import "AddressObject.h"
 
-NSString * nameField = @"name";
-NSString * phoneField = @"phone";
-NSString * mailField = @"mail";
+static const NSString * nameField = @"name";
+static const NSString * phoneField = @"phone";
+static const NSString * mailField = @"mail";
 
-NSString * ordersField = @"orders";
-NSString * addressesField = @"addresses";
+static const NSString * ordersField = @"orders";
+static const NSString * addressesField = @"addresses";
 
 @implementation CustomerObject
 
@@ -23,20 +23,25 @@ NSString * addressesField = @"addresses";
 {
     if (self = [super init])
     {
-        [self loadCustomerData];
+        [self loadData];
     }
     
     return self;
 }
 
-- (void)loadCustomerData
+- (NSString *)dataPath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString * path = [[paths objectAtIndex:0] copy];
     
     path = [path stringByAppendingPathComponent:@"customer.dat"];
     
-    NSData * data = [NSData dataWithContentsOfFile:path];
+    return path;
+}
+
+- (void)loadData
+{
+    NSData * data = [NSData dataWithContentsOfFile:[self dataPath]];
     
     if (data)
     {
@@ -49,6 +54,40 @@ NSString * addressesField = @"addresses";
         self.orders = [OrderObject ordersWithData:dict[ordersField]];
         self.addresses = [AddressObject addressesWithData:dict[addressesField]];
     }
+}
+
+- (void)saveData
+{
+    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    
+    if (self.name)
+    {
+        dict[nameField] = self.name;
+    }
+
+    if (self.phone)
+    {
+        dict[phoneField] = self.phone;
+    }
+    
+    if (self.mail)
+    {
+        dict[mailField] = self.mail;
+    }
+    
+    if (self.orders.count)
+    {
+//        dict[ordersField] = [OrderObject ];
+    }
+    
+    if (self.addresses.count)
+    {
+//        
+    }
+    
+    NSData * data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
+    
+    [data writeToFile:[self dataPath] atomically:YES];
 }
 
 @end

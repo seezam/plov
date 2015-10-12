@@ -18,6 +18,7 @@
 #import "SWRevealViewController.h"
 
 #import "PLCRMSupport.h"
+#import "CustomerObject.h"
 
 @import Intercom;
 
@@ -286,7 +287,7 @@
 - (void)startApplication:(UIView *)fromView
 {
     self.crm = [[PLCRMSupport alloc] init];
-    
+    self.customer = [[CustomerObject alloc] init];
     self.menuData = [self loadData];
     
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

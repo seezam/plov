@@ -21,6 +21,8 @@
 "LOC_MAIN_WEIGHT" = "%@ гр";
 "LOC_MAIN_COST" = "%@ руб";
 
+"LOC_CONTINUE_BUTTON" = "Продолжить";
+
 "LOC_TITLE_ORDER" = "Ваш заказ";
 
 "LOC_ORDER_HINT_REQUIRED" = "Обязательно";

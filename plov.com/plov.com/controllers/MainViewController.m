@@ -103,37 +103,23 @@
 
 - (void)processToOrder
 {
-//    if (!SHARED_APP.customer.name.length ||
-//        !SHARED_APP.customer.phone.length)
-//    {
-//        PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
-//    
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
-//    else
+    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+    
+    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
+    
+    for (NSDictionary * item in self.items)
     {
-        PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
+        MenuItemObject * menuItem = item[@"item"];
         
-        [self.navigationController pushViewController:vc animated:YES];
+        if (menuItem.count > 0)
+        {
+            [order addObject:menuItem];
+        }
     }
     
-//    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
-//    
-//    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
-//    
-//    for (NSDictionary * item in self.items)
-//    {
-//        MenuItemObject * menuItem = item[@"item"];
-//        
-//        if (menuItem.count > 0)
-//        {
-//            [order addObject:menuItem];
-//        }
-//    }
-//    
-//    orderVc.order = order;
-//    
-//    [self.navigationController pushViewController:orderVc animated:YES];
+    orderVc.order = order;
+    
+    [self.navigationController pushViewController:orderVc animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
