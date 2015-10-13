@@ -15,10 +15,12 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
 @property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
+@property (nonatomic, strong) UITapGestureRecognizer * tapGesture2;
 
 @property (nonatomic, assign) CGPoint panPointBegin;
 @property (nonatomic, assign) CGFloat startPanelHeight;
 @property (nonatomic, assign) BOOL performing;
+@property (nonatomic, assign) BOOL allowDescriptionDrag;
 
 @end
 
@@ -47,14 +49,19 @@
     itemVc.panGesture.delegate = itemVc;
     [itemVc.view addGestureRecognizer:itemVc.panGesture];
     
-    itemVc.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:itemVc action:@selector(hideDescriptionPanel:)];
+    itemVc.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:itemVc action:@selector(tapGestureHandler:)];
     itemVc.tapGesture.delegate = itemVc;
     [itemVc.view addGestureRecognizer:itemVc.tapGesture];
+    
+    itemVc.tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:itemVc action:@selector(doubleTapGestureHandler:)];
+    itemVc.tapGesture2.delegate = itemVc;
+    itemVc.tapGesture2.numberOfTapsRequired = 2;
+    [itemVc.view addGestureRecognizer:itemVc.tapGesture2];
     
     return itemVc;
 }
 
-- (void)hideDescriptionPanel:(UITapGestureRecognizer *)gestureRecognizer
+- (void)doubleTapGestureHandler:(UITapGestureRecognizer *)gestureRecognizer
 {
     if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
     {
@@ -62,7 +69,30 @@
         return;
     }
     
-    [self hidePanel];
+    CGPoint p = [gestureRecognizer locationInView:self.view];
+    
+    if (self.panelHidden && p.y >= self.itemDescriptionPanel.y && gestureRecognizer.numberOfTapsRequired == 2)
+    {
+        [self showPanel];
+    }
+    else
+    {
+        [self hidePanel];
+    }
+}
+
+- (void)tapGestureHandler:(UITapGestureRecognizer *)gestureRecognizer
+{
+    if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
+    {
+        [SHARED_APP.revealViewController revealToggle:nil];
+        return;
+    }
+    
+    if (!self.panelHidden)
+    {
+        [self hidePanel];
+    }
 }
 
 - (void)showPanel
@@ -120,6 +150,20 @@
     scroll.scrollEnabled = !performing;
 }
 
+- (BOOL)scrollInProgress
+{
+    UIScrollView * scroll = (UIScrollView *)self.view.superview;
+    
+    CGFloat pageWidth = scroll.width;
+    float fractionalPage = scroll.contentOffset.x / pageWidth;
+    
+    CGFloat p1, p2;
+    
+    p2 = modff(fractionalPage, &p1);
+    
+    return fabs(p2) != 0.0;
+}
+
 - (void)panGestureHandler:(UIPanGestureRecognizer *)gestureRecognizer
 {
     if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
@@ -130,13 +174,14 @@
     
     CGPoint velocity = [gestureRecognizer velocityInView:self.view];
     
-    if (fabs(velocity.y) > fabs(velocity.x))
+    if (![self scrollInProgress] && fabs(velocity.y) > fabs(velocity.x))
     {
         switch (gestureRecognizer.state) {
             case UIGestureRecognizerStateBegan:
                 self.performing = YES;
                 self.panPointBegin = [gestureRecognizer locationInView:self.view];
                 self.startPanelHeight = self.itemDescriptionPanel.height;
+                self.allowDescriptionDrag = self.panPointBegin.y >= self.itemDescriptionPanel.y;
                 break;
             case UIGestureRecognizerStateChanged:
             {
@@ -160,7 +205,7 @@
                         [self hidePanel];
                     }
                 }
-                else
+                else if (self.allowDescriptionDrag)
                 {
                     CGFloat delta = (self.panPointBegin.y - currentPoint.y);
                     CGFloat height = self.startPanelHeight + delta;
@@ -180,7 +225,7 @@
                 
                 CGPoint endPoint = [gestureRecognizer locationInView:self.view];
                 
-                if (self.panPointBegin.y - endPoint.y > 20)
+                if (self.panPointBegin.y - endPoint.y > 20 && self.allowDescriptionDrag)
                 {
                     [self showPanel];
                 }
@@ -219,7 +264,7 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
+        return !self.panelHidden && SHARED_APP.revealViewController.frontViewPosition != FrontViewPositionRight;
     }
     else if (gestureRecognizer == self.panGesture)
     {
@@ -235,7 +280,7 @@
     {
         return NO;
     }
-    //    NSLog(@"%@\n%@", gestureRecognizer, otherGestureRecognizer);
+//        NSLog(@"%@\n%@", gestureRecognizer, otherGestureRecognizer);
     return YES;
 }
 
