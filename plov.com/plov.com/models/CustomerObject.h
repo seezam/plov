@@ -22,4 +22,6 @@
 
 - (void)saveData;
 
+- (void)setLastAddress:(AddressObject *)address;
+
 @end

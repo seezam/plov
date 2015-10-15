@@ -15,9 +15,11 @@
 @property (nonatomic, strong) NSString * street;
 @property (nonatomic, strong) NSString * building;
 @property (nonatomic, strong) NSString * house;
+@property (nonatomic, strong) NSString * block;
 @property (nonatomic, strong) NSString * flat;
-@property (nonatomic, strong) NSString * floor;
 
 + (NSArray *)addressesWithData:(NSArray *)data;
+
+- (NSString *)fullAddressString;
 
 @end

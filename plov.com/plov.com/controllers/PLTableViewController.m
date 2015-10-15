@@ -27,7 +27,7 @@
 @end
 
 @interface PLTableViewController ()<PLTextTableViewCellDelegate>
-
+@property (nonatomic, assign) NSInteger initialTableHeight;
 @end
 
 @implementation PLTableViewController
@@ -73,11 +73,7 @@
         }
     }
     
-    Class nextClass = NSClassFromString(self.nextViewController);
-    PLTableViewController * vc = [nextClass instantiateFromStoryboard:self.storyboard];
-    
-    vc.bucketSum = self.bucketSum;
-    [self.navigationController pushViewController:vc animated:YES];
+    self.nextBlock(self);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,6 +84,13 @@
     
     //set back button arrow color
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.initialTableHeight = self.tableView.height;
 }
 
 
@@ -105,8 +108,22 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
     [self.tableView addGestureRecognizer:tap];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleWillShowKeyboardNotification:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleWillHideKeyboardNotification:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)setItems:(NSArray *)items
 {
@@ -214,6 +231,42 @@
 - (void)tableTapped:(UITapGestureRecognizer *)tap
 {
     [self.view endEditing:YES];
+}
+
+- (void)handleWillShowKeyboardNotification:(NSNotification *)notification {
+    [self keyboardWillShowHide:notification isShowing:YES];
+}
+
+// ----------------------------------------------------------------
+- (void)handleWillHideKeyboardNotification:(NSNotification *)notification {
+    [self keyboardWillShowHide:notification isShowing:NO];
+}
+
+- (void)keyboardWillShowHide:(NSNotification *)notification isShowing:(BOOL)isShowing {
+    // getting keyboard animation attributes
+    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    UIViewAnimationCurve curve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSTimeInterval duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    // getting passed blocks
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         [UIView setAnimationCurve:curve];
+                         
+                         if (isShowing) {
+                             self.tableView.height = self.initialTableHeight - CGRectGetHeight(keyboardRect) + 60;
+                         } else {
+                             self.tableView.height = self.initialTableHeight;
+                         }
+                         [self.view layoutIfNeeded];
+                         
+                     }
+                     completion:^(BOOL finished) {
+         
+                     }
+     ];
 }
 
 @end

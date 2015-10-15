@@ -45,6 +45,7 @@
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
 		D56D64A21B71684A0077671F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D64A11B71684A0077671F /* MainViewController.m */; };
+		D57359EA1BD0490700BE2A1E /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359E91BD0490700BE2A1E /* ProcessViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */; };
 		D580A6661B9CFFB700C75316 /* CustomerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6651B9CFFB700C75316 /* CustomerObject.m */; };
 		D580A6691B9CFFF100C75316 /* AddressObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6681B9CFFF100C75316 /* AddressObject.m */; };
@@ -136,6 +137,8 @@
 		D56D64831B6FFA0F0077671F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D56D64A01B71684A0077671F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		D56D64A11B71684A0077671F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		D57359E81BD0490700BE2A1E /* ProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
+		D57359E91BD0490700BE2A1E /* ProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
 		D580A6611B9CFCE300C75316 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		D580A6641B9CFFB700C75316 /* CustomerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerObject.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 				D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */,
 				D5F082AB1BBB436600393AB9 /* PLTableViewController.h */,
 				D5F082AC1BBB436600393AB9 /* PLTableViewController.m */,
+				D57359E81BD0490700BE2A1E /* ProcessViewController.h */,
+				D57359E91BD0490700BE2A1E /* ProcessViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
 				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
 				D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */,
+				D57359EA1BD0490700BE2A1E /* ProcessViewController.m in Sources */,
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */,
 				D58BF8AD1B7956A900821175 /* MenuItemsView.m in Sources */,

@@ -54,6 +54,11 @@ static const NSString * addressesField = @"addresses";
         self.orders = [OrderObject ordersWithData:dict[ordersField]];
         self.addresses = [AddressObject addressesWithData:dict[addressesField]];
     }
+    else
+    {
+        self.orders = [NSArray array];
+        self.addresses = [NSArray array];
+    }
 }
 
 - (void)saveData
@@ -88,6 +93,24 @@ static const NSString * addressesField = @"addresses";
     NSData * data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
     
     [data writeToFile:[self dataPath] atomically:YES];
+}
+
+- (void)setLastAddress:(AddressObject *)address
+{
+    NSMutableArray * addresses = [self.addresses mutableCopy];
+    
+    for (AddressObject * item in addresses)
+    {
+        if ([[item fullAddressString] isEqualToString:[address fullAddressString]])
+        {
+            [addresses removeObject:item];
+            break;
+        }
+    }
+    
+    [addresses addObject:address];
+    
+    self.addresses = addresses;
 }
 
 @end

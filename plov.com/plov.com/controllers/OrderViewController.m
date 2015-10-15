@@ -239,7 +239,8 @@
 - (IBAction)processOrder:(id)sender
 {
     if (!SHARED_APP.customer.name.length ||
-        !SHARED_APP.customer.phone.length)
+        !SHARED_APP.customer.phone.length ||
+        !SHARED_APP.customer.orders.count)
     {
         PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
         vc.bucketSum = self.bucketSum;

@@ -13,6 +13,10 @@ typedef enum : NSUInteger {
     PLTableItemType_Phone,
 } PLTableItemType;
 
+@class PLTableViewController;
+
+typedef void (^PLNextBlock)(PLTableViewController * controller);
+
 @interface PLTableItem : NSObject
 
 @property (nonatomic, strong) NSString * itemId;
@@ -32,8 +36,10 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
 @property (weak, nonatomic) IBOutlet UILabel *backetSumLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (copy, nonatomic) PLNextBlock nextBlock;
+
 @property (nonatomic, strong) NSArray * items;
-@property (nonatomic, strong) NSString * nextViewController;
 
 @property (nonatomic, assign) NSInteger bucketSum;
 

@@ -7,7 +7,9 @@
 //
 
 #import "NameViewController.h"
+#import "AddressViewController.h"
 #import "CustomerObject.h"
+
 
 @interface NameViewController ()
 
@@ -24,7 +26,27 @@
         [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES],
     ];
     
-    vc.nextViewController = @"AddressViewController";
+    vc.nextBlock = ^(PLTableViewController * controller){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            for (PLTableItem * item in controller.items)
+            {
+                if ([item.itemId isEqualToString:@"name"])
+                {
+                    SHARED_APP.customer.name = item.text;
+                }
+                else if ([item.itemId isEqualToString:@"phone"])
+                {
+                    SHARED_APP.customer.phone = item.text;
+                }
+            }
+            
+            PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard];
+            vc.bucketSum = controller.bucketSum;
+            
+            [controller.navigationController pushViewController:vc animated:YES];
+        });
+    };
         
     return vc;
 }

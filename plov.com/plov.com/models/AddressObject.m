@@ -9,10 +9,12 @@
 #import "AddressObject.h"
 
 static const NSString * idField = @"id";
-static const NSString * dateField = @"date";
-static const NSString * addressField = @"address";
-static const NSString * costField = @"cost";
-static const NSString * listField = @"list";
+static const NSString * cityField = @"city";
+static const NSString * streetField = @"street";
+static const NSString * buildingField = @"building";
+static const NSString * houseField = @"house";
+static const NSString * flatField = @"flat";
+static const NSString * blockField = @"block";
 
 @implementation AddressObject
 
@@ -26,28 +28,83 @@ static const NSString * listField = @"list";
     return self;
 }
 
+- (NSString *)fullAddressString
+{
+    NSMutableString * result = [NSMutableString string];
+    
+    [result appendString:self.city];
+    [result appendString:@", "];
+    [result appendString:self.street];
+    [result appendString:@", "];
+    [result appendString:self.building];
+    
+    if (self.house.length)
+    {
+        [result appendString:@"/"];
+        [result appendString:self.house];
+    }
+    
+    [result appendString:@", "];
+    [result appendString:self.flat];
+    
+    if (self.block)
+    {
+        [result appendString:@" ("];
+        [result appendString:self.block];
+        [result appendString:@")"];
+    }
+    
+    return result;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if ([super isEqual:object])
+    {
+        return YES;
+    }
+    
+    if ([object isKindOfClass:[AddressObject class]])
+    {
+        AddressObject * address = (AddressObject *)object;
+        
+        if ([address.city isEqualToString:address.city] &&
+            [address.street isEqualToString:address.street] &&
+            [address.building isEqualToString:address.building] &&
+            [address.house isEqualToString:address.house] &&
+            [address.block isEqualToString:address.block] &&
+            [address.flat isEqualToString:address.flat])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 - (void)loadAddressData:(NSDictionary *)dict
 {
     if (dict)
     {
-        _city;
-        _region;
-        _street;
-        _building;
-        _house;
-        _flat;
-        _floor;
-//        _orderId = dict[idField];
-//        _date = [NSDate dateWithTimeIntervalSince1970:[dict[dateField] unsignedIntegerValue]];
-//        _address = dict[addressField];
-//        _cost = [dict[costField] integerValue];
-        //        _list =
+        _city = dict[cityField];
+        _street = dict[streetField];
+        _building = dict[buildingField];
+        _house = dict[houseField];
+        _flat = dict[flatField];
+        _block = dict[blockField];
     }
 }
 
 - (NSDictionary *)addressToJson
 {
     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    
+    dict[cityField] = self.city?self.city:@"";
+    dict[streetField] = self.street?self.street:@"";
+    dict[buildingField] = self.building?self.building:@"";
+    dict[houseField] = self.house?self.house:@"";
+    dict[flatField] = self.flat?self.flat:@"";
+    dict[blockField] = self.block?self.block:@"";
     
     return dict;
 }
