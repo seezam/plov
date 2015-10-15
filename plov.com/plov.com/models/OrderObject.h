@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MenuItemObject;
+
 @interface OrderObject : NSObject
 
 @property (nonatomic, strong, readonly) NSString * orderId;
@@ -19,5 +21,9 @@
 @property (nonatomic, strong, readonly) NSArray * list;
 
 + (NSArray *)ordersWithData:(NSArray *)data;
+
+- (OrderObject *)initWithMenuItems:(NSArray *)items orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost;
+
+- (NSDictionary *)orderToJson;
 
 @end

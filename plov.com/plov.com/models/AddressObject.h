@@ -20,6 +20,8 @@
 
 + (NSArray *)addressesWithData:(NSArray *)data;
 
+- (NSDictionary *)addressToJson;
+
 - (NSString *)fullAddressString;
 
 @end

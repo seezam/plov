@@ -69,6 +69,7 @@
             [SHARED_APP.customer setLastAddress:address];
             
             ProcessViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"processViewController"];
+            vc.order = controller.order;
 //            vc.bucketSum = controller.bucketSum;
 //            
             [controller.navigationController pushViewController:vc animated:YES];

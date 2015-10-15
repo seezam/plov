@@ -23,5 +23,6 @@
 - (void)saveData;
 
 - (void)setLastAddress:(AddressObject *)address;
+- (void)setLastOrder:(NSArray *)order orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost;
 
 @end

@@ -9,6 +9,7 @@
 #import "CustomerObject.h"
 #import "OrderObject.h"
 #import "AddressObject.h"
+#import "MenuItemObject.h"
 
 static const NSString * nameField = @"name";
 static const NSString * phoneField = @"phone";
@@ -82,12 +83,25 @@ static const NSString * addressesField = @"addresses";
     
     if (self.orders.count)
     {
-//        dict[ordersField] = [OrderObject ];
+        NSMutableArray * orders = [NSMutableArray arrayWithCapacity:self.orders.count];
+        
+        for (OrderObject * order in self.orders)
+        {
+            [orders addObject:[order orderToJson]];
+        }
+        dict[ordersField] = orders;
     }
     
     if (self.addresses.count)
     {
-//        
+        NSMutableArray * addresses = [NSMutableArray arrayWithCapacity:self.addresses.count];
+        
+        for (AddressObject * address in self.addresses)
+        {
+            [addresses addObject:[address addressToJson]];
+        }
+        
+        dict[addressesField] = addressesField;
     }
     
     NSData * data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
@@ -111,6 +125,17 @@ static const NSString * addressesField = @"addresses";
     [addresses addObject:address];
     
     self.addresses = addresses;
+}
+
+- (void)setLastOrder:(NSArray *)order orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost
+{
+    NSMutableArray * orders = [self.orders mutableCopy];
+    
+    OrderObject * orderObject = [[OrderObject alloc] initWithMenuItems:order orderId:orderId address:address cost:cost];
+    
+    [orders addObject:orderObject];
+    
+    self.orders = orders;
 }
 
 @end

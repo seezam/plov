@@ -46,6 +46,7 @@
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
 		D56D64A21B71684A0077671F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D64A11B71684A0077671F /* MainViewController.m */; };
 		D57359EA1BD0490700BE2A1E /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359E91BD0490700BE2A1E /* ProcessViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D57359ED1BD05F6300BE2A1E /* OrderItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359EC1BD05F6300BE2A1E /* OrderItemObject.m */; settings = {ASSET_TAGS = (); }; };
 		D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */; };
 		D580A6661B9CFFB700C75316 /* CustomerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6651B9CFFB700C75316 /* CustomerObject.m */; };
 		D580A6691B9CFFF100C75316 /* AddressObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6681B9CFFF100C75316 /* AddressObject.m */; };
@@ -139,6 +140,8 @@
 		D56D64A11B71684A0077671F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D57359E81BD0490700BE2A1E /* ProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
 		D57359E91BD0490700BE2A1E /* ProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
+		D57359EB1BD05F6300BE2A1E /* OrderItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItemObject.h; sourceTree = "<group>"; };
+		D57359EC1BD05F6300BE2A1E /* OrderItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderItemObject.m; sourceTree = "<group>"; };
 		D580A6611B9CFCE300C75316 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		D580A6641B9CFFB700C75316 /* CustomerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerObject.h; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				D580A6681B9CFFF100C75316 /* AddressObject.m */,
 				D580A66A1B9D000E00C75316 /* OrderObject.h */,
 				D580A66B1B9D000E00C75316 /* OrderObject.m */,
+				D57359EB1BD05F6300BE2A1E /* OrderItemObject.h */,
+				D57359EC1BD05F6300BE2A1E /* OrderItemObject.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				D513F5B61B754A7300B0E16E /* MenuObject.m in Sources */,
 				D5E2F1651B8BBA620041D8EE /* OrderTableViewCell.m in Sources */,
 				D513F5721B73DF9000B0E16E /* AFSecurityPolicy.m in Sources */,
+				D57359ED1BD05F6300BE2A1E /* OrderItemObject.m in Sources */,
 				184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */,
 				D513F5741B73DF9000B0E16E /* AFURLRequestSerialization.m in Sources */,
 				D513F5711B73DF9000B0E16E /* AFNetworkReachabilityManager.m in Sources */,

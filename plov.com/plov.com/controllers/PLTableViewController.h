@@ -42,6 +42,7 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 @property (nonatomic, strong) NSArray * items;
 
 @property (nonatomic, assign) NSInteger bucketSum;
+@property (nonatomic, strong) NSArray * order;
 
 + (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard;
 

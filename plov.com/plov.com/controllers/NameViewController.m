@@ -43,6 +43,7 @@
             
             PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard];
             vc.bucketSum = controller.bucketSum;
+            vc.order = controller.order;
             
             [controller.navigationController pushViewController:vc animated:YES];
         });
