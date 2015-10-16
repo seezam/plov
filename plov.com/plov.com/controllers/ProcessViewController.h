@@ -11,7 +11,7 @@
 @interface ProcessViewController : UIViewController
 
 @property (nonatomic, strong) NSArray * order;
-@property (nonatomic, assign) NSInteger bucketCost;
+@property (nonatomic, assign) NSInteger bucketSum;
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;

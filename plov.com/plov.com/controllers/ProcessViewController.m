@@ -26,6 +26,10 @@
     UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 1, 11)];
     
     self.navigationController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.infoLabel.layer.masksToBounds = YES;
+    self.infoLabel.layer.cornerRadius = 10;
+    self.doneButton.layer.cornerRadius = 10;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,11 +46,15 @@
 
 - (void)createOrder
 {
+    self.infoLabel.text = LOC(@"LOC_ORDER_PROCESSING");
+    self.doneButton.enabled = NO;
+    
     NSMutableDictionary * orderDict = [NSMutableDictionary dictionary];
     
-    orderDict[@"nickName"] = SHARED_APP.customer.name;
+    orderDict[@"firstName"] = SHARED_APP.customer.name;
     orderDict[@"phone"] = SHARED_APP.customer.phone;
     orderDict[@"contragentType"] = @"individual";
+    orderDict[@"orderType"] = @"ios";
     
     NSMutableArray * orders = [NSMutableArray array];
     
@@ -85,16 +93,20 @@
     }
     orderDict[@"delivery"] = @{@"address": deliverTo};
 
-    [SHARED_APP.crm createOrder:orderDict success:^(NSData *data) {
-        NSDictionary * resp = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-        
+    [SHARED_APP.crm createOrder:orderDict success:^(NSDictionary * resp) {
         if ([resp[@"id"] integerValue] > 0 &&
             [resp[@"success"] integerValue] == 1)
         {
-            [SHARED_APP.customer setLastOrder:self.order orderId:resp[@"id"]
-                                      address:[address fullAddressString] cost:self.bucketCost];
+            NSString * strId = [NSString stringWithFormat:@"%@", resp[@"id"]];
+            
+            [SHARED_APP.customer setLastOrder:self.order orderId:strId
+                                      address:[address fullAddressString] cost:self.bucketSum];
             [SHARED_APP.customer saveData];
             self.processed = YES;
+            
+            self.infoLabel.text = LOC(@"LOC_ORDER_CREATED");
+            [self.doneButton setTitle:@"OK" forState:UIControlStateNormal];
+            self.doneButton.enabled = YES;
         }
         else
         {
@@ -108,7 +120,9 @@
 
 - (void)showError
 {
-    
+    self.infoLabel.text = LOC(@"LOC_ORDER_FAILED");
+    [self.doneButton setTitle:LOC(@"LOC_ORDER_RETRY") forState:UIControlStateNormal];
+    self.doneButton.enabled = YES;
 }
 
 - (IBAction)doneClick:(id)sender {

@@ -10,11 +10,12 @@
 
 @interface PLTextTableViewCell ()<UITextFieldDelegate>
 @property (nonatomic, weak) UIView * divider;
+@property (nonatomic, weak) UITextField * input;
 @end
 
 @implementation PLTextTableViewCell
 
-+ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId
++ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId type:(PLTableItemType)type last:(BOOL)last
 {
     PLTextTableViewCell * cell = [[PLTextTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseId];
     
@@ -36,6 +37,28 @@
     field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [field setClearButtonMode:UITextFieldViewModeWhileEditing];
     field.delegate = cell;
+    cell.input = field;
+    
+    switch (type) {
+        case PLTableItemType_Text:
+            field.keyboardType = UIKeyboardTypeDefault;
+            break;
+        case PLTableItemType_Number:
+            field.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            break;
+        case PLTableItemType_Phone:
+            field.keyboardType = UIKeyboardTypePhonePad;
+            break;
+    }
+    
+    if (last)
+    {
+        field.returnKeyType = UIReturnKeyDone;
+    }
+    else
+    {
+        field.returnKeyType = UIReturnKeyNext;
+    }
     
     [cell.contentView addSubview:field];
     
@@ -47,6 +70,17 @@
     [cell.contentView addSubview:view];
     
     return cell;
+}
+
+- (void)setResponder
+{
+    [self.input becomeFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.delegate cellDidReturn:self];
+    return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField

@@ -10,6 +10,7 @@
 
 typedef enum : NSUInteger {
     PLTableItemType_Text,
+    PLTableItemType_Number,
     PLTableItemType_Phone,
 } PLTableItemType;
 
@@ -26,7 +27,8 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 @property (nonatomic, assign) PLTableItemType type;
 @property (nonatomic, assign) BOOL required;
 
-+ (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title text:(NSString *)text required:(BOOL)requited;
++ (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title
+                     text:(NSString *)text required:(BOOL)requited type:(PLTableItemType)type;
 
 @end
 

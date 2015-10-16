@@ -11,10 +11,11 @@
 
 @implementation PLTableItem
 
-+ (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title text:(NSString *)text required:(BOOL)requited
++ (PLTableItem *)textItem:(NSString *)itemId
+                withTitle:(NSString *)title text:(NSString *)text required:(BOOL)requited type:(PLTableItemType)type
 {
     PLTableItem * name = [[PLTableItem alloc] init];
-    name.type = PLTableItemType_Text;
+    name.type = type;
     name.title = title?title:@"";
     name.text = text?text:@"";
     name.placeholder = requited?LOC(@"LOC_ORDER_HINT_REQUIRED"):LOC(@"LOC_ORDER_HINT_OPTIONAL");
@@ -155,24 +156,12 @@
     
     PLTextTableViewCell * cell = nil;
     
-    switch (item.type) {
-        case PLTableItemType_Text:
-        {
-            cell = [PLTextTableViewCell cellWithText:item.text
-                                                               placeholder:item.placeholder
-                                                                      name:item.title
-                                                                   reuseId:item.itemId];
-        }
-            break;
-        case PLTableItemType_Phone:
-        {
-            [PLTextTableViewCell cellWithText:item.text
-                                                               placeholder:item.placeholder
-                                                                      name:item.title
-                                                                   reuseId:item.itemId];
-        }
-            break;
-    }
+    cell = [PLTextTableViewCell cellWithText:item.text
+                                 placeholder:item.placeholder
+                                        name:item.title
+                                     reuseId:item.itemId
+                                        type:item.type
+                                        last:(row == self.items.count - 1)];
 
     cell.delegate = self;
     [cell hideDivider:(row == self.items.count - 1)];
@@ -214,6 +203,25 @@
     }
     
     self.backetSumLabel.attributedText = testLabel.attributedText;
+}
+
+- (void)cellDidReturn:(PLTextTableViewCell *)cell
+{
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    
+    if (row != NSNotFound)
+    {
+        if (row == self.items.count - 1)
+        {
+            [self.view endEditing:YES];
+        }
+        else
+        {
+            PLTextTableViewCell * nextCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(row + 1) inSection:0]];
+            
+            [nextCell setResponder];
+        }
+    }
 }
 
 - (void)cell:(PLTextTableViewCell *)cell didChanged:(NSString *)text

@@ -101,7 +101,7 @@ static const NSString * addressesField = @"addresses";
             [addresses addObject:[address addressToJson]];
         }
         
-        dict[addressesField] = addressesField;
+        dict[addressesField] = addresses;
     }
     
     NSData * data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];

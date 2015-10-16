@@ -7,20 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PLTableViewController.h"
+
 
 @class PLTextTableViewCell;
 
 @protocol PLTextTableViewCellDelegate <NSObject>
 
+- (void)cellDidReturn:(PLTextTableViewCell *)cell;
 - (void)cell:(PLTextTableViewCell *)cell didChanged:(NSString *)text;
 
 @end
 
 @interface PLTextTableViewCell : UITableViewCell
 
-+ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId;
++ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId type:(PLTableItemType)type last:(BOOL)last;
 
 - (void)hideDivider:(BOOL)hide;
+
+- (void)setResponder;
 
 @property (nonatomic, weak) id<PLTextTableViewCellDelegate> delegate;
 

@@ -13,11 +13,11 @@
 @interface PLCRMSupport : NSObject
 
 - (void)createOrder:(NSDictionary *)orderData
-            success:(void (^)(NSData *data))successBlock
+            success:(void (^)(NSDictionary *data))successBlock
               error:(void (^)(NSError *error))errorBlock;
 
 - (void)getOrderInfo:(NSString *)orderId
-             success:(void (^)(NSData *data))successBlock
+             success:(void (^)(NSDictionary *data))successBlock
                error:(void (^)(NSError *error))errorBlock;
 
 @end

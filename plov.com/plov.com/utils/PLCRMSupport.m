@@ -12,8 +12,8 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "NSString+JSONString.h"
 
-NSString * crmKey = @"qdBfOmOKOeAbFfqPah41TCPZkqLkPshX";
-NSString * crmCode = @"b12-skillum-ru";
+NSString * crmKey = @"79rFnffNDYVR3kfUUPU37sGQzQmlQWLO";
+NSString * crmCode = @"kubyshev-ru";
 NSString * crmUrl = @"https://kubyshev.retailcrm.ru";
 
 NSString * crmMethodOrders = @"/api/v3/orders/";
@@ -22,7 +22,7 @@ NSString * crmMethodOrdersCreate = @"create";
 @implementation PLCRMSupport
 
 - (void)createOrder:(NSDictionary *)order
-            success:(void (^)(NSData *data))successBlock
+            success:(void (^)(NSDictionary *data))successBlock
               error:(void (^)(NSError *error))errorBlock
 {
     NSString * method = [NSString stringWithFormat:@"%@%@", crmMethodOrders, crmMethodOrdersCreate];
@@ -33,7 +33,7 @@ NSString * crmMethodOrdersCreate = @"create";
 }
 
 - (void)getOrderInfo:(NSString *)orderId
-            success:(void (^)(NSData *data))successBlock
+            success:(void (^)(NSDictionary *data))successBlock
               error:(void (^)(NSError *error))errorBlock
 {
     NSString * method = [NSString stringWithFormat:@"%@%@", crmMethodOrders, orderId];
@@ -44,7 +44,7 @@ NSString * crmMethodOrdersCreate = @"create";
 }
 
 - (void)postCRMMethod:(NSString*)method params:(NSDictionary *)params
-              success:(void (^)(NSData *data))successBlock
+              success:(void (^)(NSDictionary *data))successBlock
                 error:(void (^)(NSError *error))errorBlock
 {
     NSMutableDictionary * dict = [params mutableCopy];

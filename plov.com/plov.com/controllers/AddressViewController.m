@@ -25,12 +25,18 @@
     AddressObject * lastAddress = SHARED_APP.customer.addresses.lastObject;
     
     vc.items = @[
-        [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:lastAddress.city required:YES],
-        [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:lastAddress.street required:YES],
-        [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:lastAddress.building required:YES],
-        [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD") text:lastAddress.house required:NO],
-        [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD") text:lastAddress.block required:NO],
-        [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD") text:lastAddress.flat required:YES],
+        [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:lastAddress.city required:YES
+                         type:PLTableItemType_Text],
+        [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:lastAddress.street required:YES
+                         type:PLTableItemType_Text],
+        [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:lastAddress.building required:YES
+                         type:PLTableItemType_Number],
+        [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD") text:lastAddress.house required:NO
+                         type:PLTableItemType_Number],
+        [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD") text:lastAddress.block required:NO
+                         type:PLTableItemType_Number],
+        [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD") text:lastAddress.flat required:YES
+                         type:PLTableItemType_Number],
     ];
     
     vc.nextBlock = ^(PLTableViewController * controller){
@@ -70,8 +76,8 @@
             
             ProcessViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"processViewController"];
             vc.order = controller.order;
-//            vc.bucketSum = controller.bucketSum;
-//            
+            vc.bucketSum = controller.bucketSum;
+//
             [controller.navigationController pushViewController:vc animated:YES];
         });
     };

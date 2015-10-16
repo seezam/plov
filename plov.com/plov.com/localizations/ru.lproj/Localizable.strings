@@ -37,3 +37,8 @@
 "LOC_ORDER_HOUSE_FIELD" = "Строение";
 "LOC_ORDER_BLOCK_FIELD" = "Подъезд";
 "LOC_ORDER_FLAT_FIELD" = "Квартира";
+
+"LOC_ORDER_PROCESSING" = "Пожалуйста подождите.";
+"LOC_ORDER_CREATED" = "Спасибо!\nВаш заказ принят.\nВ ближайшее время\nмы свяжемся с вами.";
+"LOC_ORDER_FAILED" = "Возникала проблема.\nПроверьте соединение.";
+"LOC_ORDER_RETRY" = "Повторить";

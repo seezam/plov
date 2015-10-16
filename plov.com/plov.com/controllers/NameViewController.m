@@ -22,8 +22,10 @@
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
     vc.items = @[
-        [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name required:YES],
-        [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES],
+        [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name required:YES
+                         type:PLTableItemType_Text],
+        [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES
+                         type:PLTableItemType_Phone],
     ];
     
     vc.nextBlock = ^(PLTableViewController * controller){
