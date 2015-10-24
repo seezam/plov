@@ -10,6 +10,7 @@
 
 @interface PLNavigationController : UINavigationController
 
-- (void)pushToViewController:(NSString *)viewControllerIdentifier;
+- (void)pushToViewControllerIdentifier:(NSString *)viewControllerIdentifier;
+- (void)pushToViewController:(UIViewController *)viewController;
 
 @end

@@ -165,11 +165,17 @@
     }
 }
 
-- (void)pushToViewController:(NSString *)viewControllerIdentifier
+- (void)pushToViewControllerIdentifier:(NSString *)viewControllerIdentifier
 {
     UIViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerIdentifier];
     
     [self pushViewController:vc animated:YES];
+    [self.revealViewController revealToggle:nil];
+}
+
+- (void)pushToViewController:(UIViewController *)viewController
+{
+    [self pushViewController:viewController animated:YES];
     [self.revealViewController revealToggle:nil];
 }
 

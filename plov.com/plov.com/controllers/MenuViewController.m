@@ -11,6 +11,9 @@
 #import "ProfileTableViewCell.h"
 #import "SWRevealViewController.h"
 #import "PLNavigationController.h"
+#import "NameViewController.h"
+
+#import "CustomerObject.h"
 
 @import Intercom;
 
@@ -20,57 +23,93 @@
 
 @implementation MenuViewController
 
+- (void)reloadData
+{
+    NSMutableArray * items = [NSMutableArray array];
+    
+    BOOL hasCustomer = (SHARED_APP.customer.name.length &&
+                        SHARED_APP.customer.phone.length &&
+                        SHARED_APP.customer.orders.count);
+    [items addObject:@{@"type": @"logo"}];
+    
+    if (hasCustomer)
+    {
+        [items addObject:@{@"type": @"profile"}];
+    }
+    
+    [items addObjectsFromArray:@[
+                                @{
+                                    @"image": @"menu-account",
+                                    @"title": LOC(@"LOC_MENU_ACCOUNT")
+                                    },
+                                @{
+                                    @"image": @"menu-code",
+                                    @"title": LOC(@"LOC_MENU_CODE")
+                                    }
+                                ]];
+    
+    if (hasCustomer)
+    {
+        [items addObject:@{
+                          @"image": @"menu-status",
+                          @"title": LOC(@"LOC_MENU_STATUS")
+                          }];
+    }
+    
+    [items addObjectsFromArray:@[@{
+                                    @"image": @"menu-gift",
+                                    @"title": LOC(@"LOC_MENU_GIFT")
+                                    },
+                                @{
+                                    @"image": @"menu-invite",
+                                    @"title": LOC(@"LOC_MENU_INVITE")
+                                    }
+                                 ]];
+    
+    if (hasCustomer)
+    {
+        [items addObjectsFromArray:@[@{
+                                         @"image": @"menu-orders",
+                                         @"title": LOC(@"LOC_MENU_ORDERS")
+                                         },
+                                     @{
+                                         @"image": @"menu-adress",
+                                         @"title": LOC(@"LOC_MENU_ADRESS"),
+                                         @"segue": @"addressViewController"
+                                         }
+                                     ]];
+    }
+    
+    [items addObjectsFromArray:@[@{
+                                     @"image": @"menu-cards",
+                                     @"title": LOC(@"LOC_MENU_CARDS")
+                                     },
+                                 @{
+                                     @"image": @"menu-call",
+                                     @"title": LOC(@"LOC_MENU_CALL")
+                                     }
+                                 ]];
+    
+    self.items = items;
+
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.items = @[
-                   @{
-                       @"type": @"logo"
-                   },
-                   @{
-                       @"image": @"menu-account",
-                       @"title": LOC(@"LOC_MENU_ACCOUNT")
-                    },
-                   @{
-                       @"image": @"menu-code",
-                       @"title": LOC(@"LOC_MENU_CODE")
-                    },
-                   @{
-                       @"image": @"menu-status",
-                       @"title": LOC(@"LOC_MENU_STATUS")
-                    },
-                   @{
-                       @"image": @"menu-gift",
-                       @"title": LOC(@"LOC_MENU_GIFT")
-                    },
-                   @{
-                       @"image": @"menu-invite",
-                       @"title": LOC(@"LOC_MENU_INVITE")
-                    },
-                   @{
-                       @"image": @"menu-orders",
-                       @"title": LOC(@"LOC_MENU_ORDERS")
-                    },
-                   @{
-                       @"image": @"menu-adress",
-                       @"title": LOC(@"LOC_MENU_ADRESS"),
-                       @"segue": @"addressViewController"
-                    },
-                   @{
-                       @"image": @"menu-cards",
-                       @"title": LOC(@"LOC_MENU_CARDS")
-                    },
-                   @{
-                       @"image": @"menu-call",
-                       @"title": LOC(@"LOC_MENU_CALL")
-                    },
-                   ];
+    [self reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//}
+
+//- (void)didReceiveMemoryWarning {
+//    [super didReceiveMemoryWarning];
+//    // Dispose of any resources that can be recreated.
+//}
 
 //#pragma mark - Navigation
 //
@@ -83,7 +122,7 @@
 - (void)processToViewController:(NSString *)segue
 {
     PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
-    [navigation pushToViewController:segue];
+    [navigation pushToViewControllerIdentifier:segue];
 }
 
 #pragma mark - TableView delegate
@@ -95,6 +134,26 @@
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    
+    NSDictionary * item = self.items[row];
+    
+    if ([item[@"type"] isEqualToString:@"logo"])
+    {
+        return 44;
+    }
+    else if ([item[@"type"] isEqualToString:@"profile"])
+    {
+        return 95;
+    }
+    else
+    {
+        return 44;
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,12 +180,14 @@
     }
     else if ([item[@"type"] isEqualToString:@"profile"])
     {
-        reuseIdentifier = logoCellIdentifier;
+        reuseIdentifier = profileCellIdentifier;
         
         ProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
         if (cell == nil) {
             cell = [[ProfileTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
         }
+        
+        [cell updateCell];
         
         return cell;
     }
@@ -155,7 +216,15 @@
 {
     NSDictionary * item = self.items[indexPath.row];
     
-    if ([item[@"image"] isEqualToString:@"menu-call"])
+    if ([item[@"type"] isEqualToString:@"profile"])
+    {
+        PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
+        vc.editMode = YES;
+        
+        PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
+        [navigation pushToViewController:vc];
+    }
+    else if ([item[@"image"] isEqualToString:@"menu-call"])
     {
         [Intercom presentMessageComposer];
         

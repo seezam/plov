@@ -10,4 +10,6 @@
 
 @interface MenuViewController : UITableViewController
 
+- (void)reloadData;
+
 @end

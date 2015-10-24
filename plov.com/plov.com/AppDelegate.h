@@ -29,5 +29,7 @@
 
 - (NSAttributedString *)rubleCost:(NSInteger)cost font:(UIFont *)font;
 
+- (void)updateMenu;
+
 @end
 

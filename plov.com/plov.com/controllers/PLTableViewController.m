@@ -105,7 +105,19 @@
     self.backetSumLabel.textAlignment = NSTextAlignmentRight;
     
     self.processButton.layer.cornerRadius = 10;
-    [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
+    
+    if (self.editMode)
+    {
+        [self.processButton setTitle:LOC(@"LOC_SAVE_BUTTON") forState:UIControlStateNormal];
+        self.cartIcon.hidden = YES;
+        self.backetSumLabel.hidden = YES;
+        self.orderLabel.hidden = YES;
+    }
+    else
+    {
+        [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
+        self.orderLabel.text = LOC(@"LOC_ORDER_TEXT");
+    }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
     [self.tableView addGestureRecognizer:tap];

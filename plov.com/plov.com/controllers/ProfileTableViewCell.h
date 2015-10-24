@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mailLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *editImage;
+
+- (void)updateCell;
 @end

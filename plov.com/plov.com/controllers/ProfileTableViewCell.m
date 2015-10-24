@@ -7,6 +7,7 @@
 //
 
 #import "ProfileTableViewCell.h"
+#import "CustomerObject.h"
 
 @implementation ProfileTableViewCell
 
@@ -21,6 +22,20 @@
     self.nameLabel.textColor =
     self.phoneLabel.textColor =
     self.mailLabel.textColor = UIColorFromRGBA(resColorMenuText);
+}
+
+- (void)updateCell
+{
+    self.nameLabel.text = SHARED_APP.customer.name;
+    self.phoneLabel.text = SHARED_APP.customer.phone;
+    self.mailLabel.text = SHARED_APP.customer.mail;
+    
+    UILabel * tmpLabel = [[UILabel alloc] init];
+    tmpLabel.text = self.nameLabel.text;
+    tmpLabel.font = self.nameLabel.font;
+    [tmpLabel sizeToFit];
+    
+    self.editImage.x = self.nameLabel.x + tmpLabel.width + 10;
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "MenuItemObject.h"
 
 #import "MainViewController.h"
+#import "MenuViewController.h"
 #import "SWRevealViewController.h"
 
 #import "PLCRMSupport.h"
@@ -41,6 +42,12 @@
         return (SWRevealViewController *)self.window.rootViewController;
     }
     return nil;
+}
+
+- (void)updateMenu
+{
+    MenuViewController * vc = (MenuViewController *)self.revealViewController.rearViewController;
+    [vc reloadData];
 }
 
 - (MenuObject *)loadData

@@ -22,7 +22,9 @@
 "LOC_MAIN_COST" = "%@ rub";
 
 "LOC_CONTINUE_BUTTON" = "Continue";
+"LOC_SAVE_BUTTON" = "Save";
 
+"LOC_ORDER_TEXT" = "Order";
 "LOC_TITLE_ORDER" = "Your order";
 
 "LOC_ORDER_HINT_REQUIRED" = "Required";
@@ -30,6 +32,7 @@
 
 "LOC_ORDER_NAME_FIELD" = "Name";
 "LOC_ORDER_PHONE_FIELD" = "Phone";
+"LOC_ORDER_EMAIL_FIELD" = "Email";
 
 "LOC_ORDER_CITY_FIELD" = "City";
 "LOC_ORDER_STREET_FIELD" = "Street";

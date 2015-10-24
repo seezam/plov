@@ -26,6 +26,8 @@
                          type:PLTableItemType_Text],
         [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES
                          type:PLTableItemType_Phone],
+        [PLTableItem textItem:@"mail" withTitle:LOC(@"LOC_ORDER_EMAIL_FIELD") text:SHARED_APP.customer.mail required:NO
+                         type:PLTableItemType_Email],
     ];
     
     vc.nextBlock = ^(PLTableViewController * controller){
@@ -41,13 +43,26 @@
                 {
                     SHARED_APP.customer.phone = item.text;
                 }
+                else if ([item.itemId isEqualToString:@"mail"])
+                {
+                    SHARED_APP.customer.mail = item.text;
+                }
             }
             
-            PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard];
-            vc.bucketSum = controller.bucketSum;
-            vc.order = controller.order;
-            
-            [controller.navigationController pushViewController:vc animated:YES];
+            if (controller.editMode)
+            {
+                [SHARED_APP.customer saveData];
+                [SHARED_APP updateMenu];
+                [controller.navigationController popToRootViewControllerAnimated:YES];
+            }
+            else
+            {
+                PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard];
+                vc.bucketSum = controller.bucketSum;
+                vc.order = controller.order;
+                
+                [controller.navigationController pushViewController:vc animated:YES];
+            }
         });
     };
         

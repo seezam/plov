@@ -22,7 +22,9 @@
 "LOC_MAIN_COST" = "%@ руб";
 
 "LOC_CONTINUE_BUTTON" = "Продолжить";
+"LOC_SAVE_BUTTON" = "Сохранить";
 
+"LOC_ORDER_TEXT" = "Заказ";
 "LOC_TITLE_ORDER" = "Ваш заказ";
 
 "LOC_ORDER_HINT_REQUIRED" = "Обязательно";
@@ -30,6 +32,7 @@
 
 "LOC_ORDER_NAME_FIELD" = "Имя";
 "LOC_ORDER_PHONE_FIELD" = "Телефон";
+"LOC_ORDER_EMAIL_FIELD" = "Email";
 
 "LOC_ORDER_CITY_FIELD" = "Город";
 "LOC_ORDER_STREET_FIELD" = "Улица";

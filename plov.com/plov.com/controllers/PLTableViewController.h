@@ -12,6 +12,7 @@ typedef enum : NSUInteger {
     PLTableItemType_Text,
     PLTableItemType_Number,
     PLTableItemType_Phone,
+    PLTableItemType_Email,
 } PLTableItemType;
 
 @class PLTableViewController;
@@ -34,6 +35,7 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 
 @interface PLTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *orderLabel;
 @property (weak, nonatomic) IBOutlet UIButton *processButton;
 @property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
 @property (weak, nonatomic) IBOutlet UILabel *backetSumLabel;
@@ -45,6 +47,8 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 
 @property (nonatomic, assign) NSInteger bucketSum;
 @property (nonatomic, strong) NSArray * order;
+
+@property (nonatomic, assign) BOOL editMode;
 
 + (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard;
 

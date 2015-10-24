@@ -102,6 +102,7 @@
             [SHARED_APP.customer setLastOrder:self.order orderId:strId
                                       address:[address fullAddressString] cost:self.bucketSum];
             [SHARED_APP.customer saveData];
+            [SHARED_APP updateMenu];
             self.processed = YES;
             
             self.infoLabel.text = LOC(@"LOC_ORDER_CREATED");

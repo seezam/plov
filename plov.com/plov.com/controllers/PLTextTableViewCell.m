@@ -49,6 +49,9 @@
         case PLTableItemType_Phone:
             field.keyboardType = UIKeyboardTypePhonePad;
             break;
+        case PLTableItemType_Email:
+            field.keyboardType = UIKeyboardTypeEmailAddress;
+            break;
     }
     
     if (last)
