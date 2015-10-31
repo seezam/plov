@@ -29,7 +29,7 @@
 
 #define ITEM_VIEW_PREFIX 123012
 
-@interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate>
+@interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate, ItemViewDelegate>
 @property (nonatomic, strong) MenuObject * plovMenu;
 
 @property (nonatomic, assign) BOOL panelHidden;
@@ -192,8 +192,11 @@
     {
         for (MenuItemObject * item in category.items)
         {
+            ItemViewController * itemVc = [ItemViewController instantiateWithMenuItem:item];
+            itemVc.delegate = self;
+            
             [self.items addObject:@{@"item": item,
-                                    @"controller": [ItemViewController instantiateWithMenuItem:item]}];
+                                    @"controller": itemVc}];
         }
     }
     
@@ -438,6 +441,33 @@
     }
 }
 
+- (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable
+{
+    [self cancelItemsAnimation];
+    self.itemsScrollView.scrollEnabled = NO;
+    CGFloat alpha = enable?0:1;
+    ItemViewController * itemVc = self.items[_currentItem][@"controller"];
+    if (enable)
+    {
+        [itemVc enableFullscreenMode:enable];
+    }
+    [UIView animateWithDuration:0.1 animations:^{
+        self.headerView.alpha = alpha;
+        self.menuView.alpha = alpha;
+        self.footerView.alpha = alpha;
+        self.navigationController.navigationBar.alpha = alpha;
+        
+        itemVc.itemDescriptionPanel.alpha = alpha;
+        
+        if (!enable)
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [itemVc enableFullscreenMode:enable];
+            });
+        }
+    }];
+}
+
 - (void)onAppIdle
 {
     [self itemsAnimation];
@@ -463,7 +493,9 @@
         nextItem = 0;
     }
     
-    CGRect rect = [self.items[nextItem][@"controller"] view].frame;
+    ItemViewController * nextItemVc = self.items[nextItem][@"controller"];
+    
+    CGRect rect = [nextItemVc view].frame;
     [self.itemsScrollView scrollRectToVisible:rect animated:YES];
     
     [self scheduleItemsAnimation];

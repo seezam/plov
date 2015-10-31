@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet BBCyclingLabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
 @property (weak, nonatomic) IBOutlet BBCyclingLabel *bucketSumLabel;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
 
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;

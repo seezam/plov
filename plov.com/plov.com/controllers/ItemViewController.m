@@ -22,6 +22,8 @@
 @property (nonatomic, assign) BOOL performing;
 @property (nonatomic, assign) BOOL allowDescriptionDrag;
 
+@property (nonatomic, assign) BOOL fullscreenMode;
+
 @end
 
 @implementation ItemViewController
@@ -64,6 +66,12 @@
 
 - (void)doubleTapGestureHandler:(UITapGestureRecognizer *)gestureRecognizer
 {
+//    if (self.fullscreenMode)
+//    {
+//        [self.delegate itemView:self enableFullscreen:NO];
+//        return;
+//    }
+    
     if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
     {
         [SHARED_APP.revealViewController revealToggle:nil];
@@ -72,18 +80,31 @@
     
     CGPoint p = [gestureRecognizer locationInView:self.view];
     
-    if (self.panelHidden && p.y >= self.itemDescriptionPanel.y && gestureRecognizer.numberOfTapsRequired == 2)
+    if (p.y >= self.itemDescriptionPanel.y)
     {
-        [self showPanel];
+        if (self.panelHidden)
+        {
+            [self showPanel];
+        }
+        else
+        {
+            [self hidePanel];
+        }
     }
     else
     {
-        [self hidePanel];
+        [self fullscreenImage];
     }
 }
 
 - (void)tapGestureHandler:(UITapGestureRecognizer *)gestureRecognizer
 {
+    if (self.fullscreenMode)
+    {
+        [self.delegate itemView:self enableFullscreen:NO];
+        return;
+    }
+    
     if (SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
     {
         [SHARED_APP.revealViewController revealToggle:nil];
@@ -111,6 +132,16 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
     }];
+}
+
+- (void)fullscreenImage
+{
+    [self.delegate itemView:self enableFullscreen:YES];
+}
+
+- (void)enableFullscreenMode:(BOOL)enable
+{
+    self.fullscreenMode = enable;
 }
 
 - (void)resetImageSize
@@ -146,9 +177,12 @@
 
 - (void)setPerforming:(BOOL)performing
 {
-    UIScrollView * scroll = (UIScrollView *)self.view.superview;
-    
-    scroll.scrollEnabled = !performing;
+    if (!self.fullscreenMode)
+    {
+        UIScrollView * scroll = (UIScrollView *)self.view.superview;
+        
+        scroll.scrollEnabled = !performing;
+    }
 }
 
 - (BOOL)scrollInProgress
@@ -182,7 +216,8 @@
                 self.performing = YES;
                 self.panPointBegin = [gestureRecognizer locationInView:self.view];
                 self.startPanelHeight = self.itemDescriptionPanel.height;
-                self.allowDescriptionDrag = self.panPointBegin.y >= self.itemDescriptionPanel.y;
+                
+                self.allowDescriptionDrag = !self.fullscreenMode && self.panPointBegin.y >= self.itemDescriptionPanel.y;
                 break;
             case UIGestureRecognizerStateChanged:
             {
@@ -265,7 +300,11 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
+        return self.fullscreenMode || !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
+    }
+    else if (gestureRecognizer == self.doubleTapGesture)
+    {
+        return !self.fullscreenMode;
     }
     else if (gestureRecognizer == self.panGesture)
     {

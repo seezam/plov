@@ -117,6 +117,8 @@
                         <outlet property="countLabel" destination="7YX-Ce-oKw" id="mK3-XM-87i"/>
                         <outlet property="countMinusButton" destination="QV6-5Q-1mB" id="ufY-Rg-sM3"/>
                         <outlet property="countPlusButton" destination="psm-Cs-5rn" id="CsE-TX-qNj"/>
+                        <outlet property="footerView" destination="aRC-qb-K0Q" id="1O3-zF-PAc"/>
+                        <outlet property="headerView" destination="nKc-7Y-r1w" id="q2Q-LR-xs8"/>
                         <outlet property="itemsScrollView" destination="mf0-dE-cak" id="ZNX-yM-mnx"/>
                         <outlet property="leftArrow" destination="Vnh-6y-PTy" id="gak-CX-W7K"/>
                         <outlet property="menuView" destination="Bb2-qC-7OB" id="EfS-YZ-ch0"/>
