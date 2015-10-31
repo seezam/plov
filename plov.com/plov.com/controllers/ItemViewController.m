@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
 @property (nonatomic, strong) UITapGestureRecognizer * tapGesture;
-@property (nonatomic, strong) UITapGestureRecognizer * tapGesture2;
+@property (nonatomic, strong) UITapGestureRecognizer * doubleTapGesture;
 
 @property (nonatomic, assign) CGPoint panPointBegin;
 @property (nonatomic, assign) CGFloat startPanelHeight;
@@ -53,10 +53,11 @@
     itemVc.tapGesture.delegate = itemVc;
     [itemVc.view addGestureRecognizer:itemVc.tapGesture];
     
-    itemVc.tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:itemVc action:@selector(doubleTapGestureHandler:)];
-    itemVc.tapGesture2.delegate = itemVc;
-    itemVc.tapGesture2.numberOfTapsRequired = 2;
-    [itemVc.view addGestureRecognizer:itemVc.tapGesture2];
+    itemVc.doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:itemVc
+                                                                          action:@selector(doubleTapGestureHandler:)];
+    itemVc.doubleTapGesture.delegate = itemVc;
+    itemVc.doubleTapGesture.numberOfTapsRequired = 2;
+    [itemVc.view addGestureRecognizer:itemVc.doubleTapGesture];
     
     return itemVc;
 }
@@ -264,7 +265,7 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return !self.panelHidden && SHARED_APP.revealViewController.frontViewPosition != FrontViewPositionRight;
+        return !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
     }
     else if (gestureRecognizer == self.panGesture)
     {

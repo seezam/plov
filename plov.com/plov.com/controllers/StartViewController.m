@@ -23,8 +23,18 @@
     [self checkForNetwork];
 }
 
+static int checkingTryes = 0;
+#define MAXIMUM_CHECKING_TRYES 10
+
+#define DO_NOT_CHECK_INTERNET 1
+
 - (void)checkForNetwork
 {
+#ifdef DO_NOT_CHECK_INTERNET
+    [SHARED_APP startApplication:self.view];
+    return;
+#endif
+    
     switch ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus)
     {
         case AFNetworkReachabilityStatusNotReachable:
@@ -35,7 +45,16 @@
         case AFNetworkReachabilityStatusUnknown:
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self checkForNetwork];
+                checkingTryes++;
+                
+                if (checkingTryes < MAXIMUM_CHECKING_TRYES)
+                {
+                    [self checkForNetwork];
+                }
+                else
+                {
+                    [SHARED_APP informNetworkIssue];
+                }
             });
         }
             break;

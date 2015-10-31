@@ -56,6 +56,7 @@
 		D58BF8AF1B7B76C900821175 /* plov.icns in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8AE1B7B76C900821175 /* plov.icns */; };
 		D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8B01B7B781A00821175 /* Plov.xcassets */; };
 		D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */; };
+		D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D596036B1BCA9C3000627068 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59603691BCA9C3000627068 /* NameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */; settings = {ASSET_TAGS = (); }; };
 		D5DFA0F91BBE8CD100A656D2 /* Intercom.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */; settings = {ASSET_TAGS = (); }; };
@@ -161,6 +162,8 @@
 		D58BF8B41B7B86ED00821175 /* plov.com.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = plov.com.entitlements; sourceTree = "<group>"; };
 		D58BF8B61B7BF68900821175 /* BBCyclingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCyclingLabel.h; sourceTree = "<group>"; };
 		D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCyclingLabel.m; sourceTree = "<group>"; };
+		D593FAF31BDB87F7004768E9 /* MyOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersViewController.h; sourceTree = "<group>"; };
+		D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		D59603691BCA9C3000627068 /* NameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameViewController.m; sourceTree = "<group>"; };
 		D596036A1BCA9C3000627068 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameViewController.h; sourceTree = "<group>"; };
 		D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				D5F082AC1BBB436600393AB9 /* PLTableViewController.m */,
 				D57359E81BD0490700BE2A1E /* ProcessViewController.h */,
 				D57359E91BD0490700BE2A1E /* ProcessViewController.m */,
+				D593FAF31BDB87F7004768E9 /* MyOrdersViewController.h */,
+				D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 				D596036B1BCA9C3000627068 /* NameViewController.m in Sources */,
 				D5F082A71BBB230900393AB9 /* OrderObject.m in Sources */,
 				D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */,
+				D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */,
 				D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */,
 				D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */,
 				D55D52AE1B9796840026D6D5 /* PLSimpleRequester.m in Sources */,
