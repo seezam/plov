@@ -32,6 +32,6 @@
 - (void)setProgress1:(float)progress;
 - (void)setProgress2:(float)progress;
 
-- (void)enableFullscreenMode:(BOOL)enable;
+@property (nonatomic, assign) BOOL fullscreenMode;
 
 @end

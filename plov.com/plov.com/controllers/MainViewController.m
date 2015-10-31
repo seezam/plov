@@ -443,26 +443,33 @@
 
 - (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable
 {
-    [self cancelItemsAnimation];
-    self.itemsScrollView.scrollEnabled = NO;
-    CGFloat alpha = enable?0:1;
-    ItemViewController * itemVc = self.items[_currentItem][@"controller"];
+    if (item.fullscreenMode == enable)
+    {
+        return;
+    }
+    
     if (enable)
     {
-        [itemVc enableFullscreenMode:enable];
+        item.fullscreenMode = enable;
+        self.itemsScrollView.scrollEnabled = NO;
+        [self cancelItemsAnimation];
     }
+    
+    CGFloat alpha = enable?0:1;
     [UIView animateWithDuration:0.1 animations:^{
         self.headerView.alpha = alpha;
         self.menuView.alpha = alpha;
         self.footerView.alpha = alpha;
         self.navigationController.navigationBar.alpha = alpha;
         
-        itemVc.itemDescriptionPanel.alpha = alpha;
+        item.itemDescriptionPanel.alpha = alpha;
         
         if (!enable)
         {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [itemVc enableFullscreenMode:enable];
+                item.fullscreenMode = NO;
+                self.itemsScrollView.scrollEnabled = YES;
+                [self scheduleItemsAnimation];
             });
         }
     }];
@@ -485,6 +492,14 @@
         [self scheduleItemsAnimation];
         return;
     }
+    
+    ItemViewController * itemVc = self.items[_currentItem][@"controller"];
+    
+    if (itemVc.fullscreenMode)
+    {
+        [self itemView:itemVc enableFullscreen:NO];
+    }
+    
     
     NSInteger nextItem = _currentItem + 1;
     

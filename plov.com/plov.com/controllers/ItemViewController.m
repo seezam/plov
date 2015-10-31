@@ -22,8 +22,6 @@
 @property (nonatomic, assign) BOOL performing;
 @property (nonatomic, assign) BOOL allowDescriptionDrag;
 
-@property (nonatomic, assign) BOOL fullscreenMode;
-
 @end
 
 @implementation ItemViewController
@@ -137,11 +135,6 @@
 - (void)fullscreenImage
 {
     [self.delegate itemView:self enableFullscreen:YES];
-}
-
-- (void)enableFullscreenMode:(BOOL)enable
-{
-    self.fullscreenMode = enable;
 }
 
 - (void)resetImageSize
