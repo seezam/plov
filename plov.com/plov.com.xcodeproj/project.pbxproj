@@ -45,8 +45,8 @@
 		D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64801B6FF7E60077671F /* Foundation.framework */; };
 		D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D56D64831B6FFA0F0077671F /* UIKit.framework */; };
 		D56D64A21B71684A0077671F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56D64A11B71684A0077671F /* MainViewController.m */; };
-		D57359EA1BD0490700BE2A1E /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359E91BD0490700BE2A1E /* ProcessViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D57359ED1BD05F6300BE2A1E /* OrderItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359EC1BD05F6300BE2A1E /* OrderItemObject.m */; settings = {ASSET_TAGS = (); }; };
+		D57359EA1BD0490700BE2A1E /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359E91BD0490700BE2A1E /* ProcessViewController.m */; };
+		D57359ED1BD05F6300BE2A1E /* OrderItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D57359EC1BD05F6300BE2A1E /* OrderItemObject.m */; };
 		D580A6631B9CFCE300C75316 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6621B9CFCE300C75316 /* ProfileTableViewCell.m */; };
 		D580A6661B9CFFB700C75316 /* CustomerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6651B9CFFB700C75316 /* CustomerObject.m */; };
 		D580A6691B9CFFF100C75316 /* AddressObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A6681B9CFFF100C75316 /* AddressObject.m */; };
@@ -56,18 +56,16 @@
 		D58BF8AF1B7B76C900821175 /* plov.icns in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8AE1B7B76C900821175 /* plov.icns */; };
 		D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BF8B01B7B781A00821175 /* Plov.xcassets */; };
 		D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BF8B71B7BF68900821175 /* BBCyclingLabel.m */; };
-		D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D596036B1BCA9C3000627068 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59603691BCA9C3000627068 /* NameViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */; settings = {ASSET_TAGS = (); }; };
-		D5DFA0F91BBE8CD100A656D2 /* Intercom.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */; settings = {ASSET_TAGS = (); }; };
-		D5DFA0FA1BBE8CD100A656D2 /* Intercom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5DFA0F81BBE8CD100A656D2 /* Intercom.framework */; settings = {ASSET_TAGS = (); }; };
+		D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */; };
+		D596036B1BCA9C3000627068 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59603691BCA9C3000627068 /* NameViewController.m */; };
+		D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */; };
 		D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1431B8258E00041D8EE /* ItemViewController.m */; };
 		D5E2F1501B826FB60041D8EE /* rub.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5E2F14F1B826FB60041D8EE /* rub.otf */; };
 		D5E2F1581B8878D00041D8EE /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1571B8878D00041D8EE /* OrderViewController.m */; };
 		D5E2F1651B8BBA620041D8EE /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1641B8BBA620041D8EE /* OrderTableViewCell.m */; };
-		D5F082A71BBB230900393AB9 /* OrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A66B1B9D000E00C75316 /* OrderObject.m */; settings = {ASSET_TAGS = (); }; };
-		D5F082AA1BBB2AF700393AB9 /* PLTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		D5F082AD1BBB436600393AB9 /* PLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082AC1BBB436600393AB9 /* PLTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D5F082A71BBB230900393AB9 /* OrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D580A66B1B9D000E00C75316 /* OrderObject.m */; };
+		D5F082AA1BBB2AF700393AB9 /* PLTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082A91BBB2AF700393AB9 /* PLTextTableViewCell.m */; };
+		D5F082AD1BBB436600393AB9 /* PLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5F082AC1BBB436600393AB9 /* PLTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,8 +166,6 @@
 		D596036A1BCA9C3000627068 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameViewController.h; sourceTree = "<group>"; };
 		D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		D59B5F1D1BC7125500BF32D4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
-		D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Intercom.bundle; sourceTree = "<group>"; };
-		D5DFA0F81BBE8CD100A656D2 /* Intercom.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Intercom.framework; sourceTree = "<group>"; };
 		D5E2F1421B8258E00041D8EE /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		D5E2F1431B8258E00041D8EE /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		D5E2F14F1B826FB60041D8EE /* rub.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rub.otf; sourceTree = "<group>"; };
@@ -190,7 +186,6 @@
 			files = (
 				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
 				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
-				D5DFA0FA1BBE8CD100A656D2 /* Intercom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +244,6 @@
 			children = (
 				D56D64831B6FFA0F0077671F /* UIKit.framework */,
 				D56D64801B6FF7E60077671F /* Foundation.framework */,
-				D5DFA0F61BBE8CD100A656D2 /* Intercom */,
 				D58BF8B51B7BF68900821175 /* BBCyclingLabel */,
 				D513F55A1B73DF9000B0E16E /* AFNetworking */,
 				184B15101B6E87E200276C04 /* SWRevealViewController */,
@@ -407,15 +401,6 @@
 			path = BBCyclingLabel;
 			sourceTree = "<group>";
 		};
-		D5DFA0F61BBE8CD100A656D2 /* Intercom */ = {
-			isa = PBXGroup;
-			children = (
-				D5DFA0F71BBE8CD100A656D2 /* Intercom.bundle */,
-				D5DFA0F81BBE8CD100A656D2 /* Intercom.framework */,
-			);
-			path = Intercom;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,7 +472,6 @@
 				D513F5A11B7401EE00B0E16E /* ProximaNova-Reg.otf in Resources */,
 				D513F59F1B7401EE00B0E16E /* ProximaNova-Light.otf in Resources */,
 				D58BF8AF1B7B76C900821175 /* plov.icns in Resources */,
-				D5DFA0F91BBE8CD100A656D2 /* Intercom.bundle in Resources */,
 				D513F5A01B7401EE00B0E16E /* ProximaNova-LightIt.otf in Resources */,
 				D513F59C1B7401EE00B0E16E /* ProximaNova-Black.otf in Resources */,
 				D513F5A31B7401EE00B0E16E /* ProximaNova-Xbold.otf in Resources */,

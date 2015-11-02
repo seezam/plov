@@ -10,8 +10,6 @@
 #import "SWRevealViewController.h"
 #import "MainViewController.h"
 
-@import Intercom;
-
 @interface PLNavigationController ()<SWRevealViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem * item;
@@ -103,11 +101,11 @@
     if ((viewController != self.rootViewController))
     {
         self.logo.alpha = 0;
-        [Intercom setMessagesHidden:YES];
+//        [Intercom setMessagesHidden:YES];
     }
     else
     {
-        [Intercom setMessagesHidden:NO];
+//        [Intercom setMessagesHidden:NO];
         [UIView animateWithDuration:duration animations:^{
             self.logo.alpha = (viewController == self.rootViewController)?1:0;
         }];
@@ -140,13 +138,13 @@
 {
     if (position == FrontViewPositionLeft)
     {
-        [Intercom setMessagesHidden:NO];
+//        [Intercom setMessagesHidden:NO];
         CGAffineTransform transform = CGAffineTransformMakeRotation(0);
         self.item.customView.transform = transform;
     }
     else if (position == FrontViewPositionRight)
     {
-        [Intercom setMessagesHidden:YES];
+//        [Intercom setMessagesHidden:YES];
         CGAffineTransform transform = CGAffineTransformMakeRotation(-M_PI_2);
         self.item.customView.transform = transform;
     }

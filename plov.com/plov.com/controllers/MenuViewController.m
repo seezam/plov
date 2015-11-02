@@ -15,8 +15,6 @@
 
 #import "CustomerObject.h"
 
-@import Intercom;
-
 @interface MenuViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray * items;
 @end
@@ -37,6 +35,7 @@
         [items addObject:@{@"type": @"profile"}];
     }
     
+    /*
     [items addObjectsFromArray:@[
                                 @{
                                     @"image": @"menu-account",
@@ -48,14 +47,6 @@
                                     }
                                 ]];
     
-    if (hasCustomer)
-    {
-        [items addObject:@{
-                          @"image": @"menu-status",
-                          @"title": LOC(@"LOC_MENU_STATUS")
-                          }];
-    }
-    
     [items addObjectsFromArray:@[@{
                                     @"image": @"menu-gift",
                                     @"title": LOC(@"LOC_MENU_GIFT")
@@ -65,6 +56,7 @@
                                     @"title": LOC(@"LOC_MENU_INVITE")
                                     }
                                  ]];
+    */
     
     if (hasCustomer)
     {
@@ -80,10 +72,11 @@
                                      ]];
     }
     
-    [items addObjectsFromArray:@[@{
+    [items addObjectsFromArray:@[
+                                 /*@{
                                      @"image": @"menu-cards",
                                      @"title": LOC(@"LOC_MENU_CARDS")
-                                     },
+                                     },*/
                                  @{
                                      @"image": @"menu-call",
                                      @"title": LOC(@"LOC_MENU_CALL")
@@ -226,14 +219,14 @@
     }
     else if ([item[@"image"] isEqualToString:@"menu-call"])
     {
-        [Intercom presentMessageComposer];
+//        [Intercom presentMessageComposer];
         
-//        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
-//        
-//        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
-//        {
-//            [[UIApplication sharedApplication] openURL:phoneUrl];
-//        }
+        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
+        {
+            [[UIApplication sharedApplication] openURL:phoneUrl];
+        }
     }
     else if ([item[@"segue"] length])
     {

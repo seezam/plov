@@ -21,8 +21,6 @@
 #import "PLCRMSupport.h"
 #import "CustomerObject.h"
 
-@import Intercom;
-
 @interface AppDelegate ()
 
 @end
@@ -340,12 +338,14 @@
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
+    /*
     [Intercom setApiKey:@"ios_sdk-2c950ea4e4e800c40c04cfbfaca8655046b7ee58" forAppId:@"dsdu3hzw"];
     
     [Intercom registerUnidentifiedUser];
     
     [Intercom setPreviewPosition:ICMPreviewPositionTopLeft];
     [Intercom setPreviewPaddingWithX:9 y:100];
+    */
     
     return YES;
 }
@@ -388,7 +388,7 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [Intercom setDeviceToken:deviceToken];
+//    [Intercom setDeviceToken:deviceToken];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

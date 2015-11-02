@@ -30,6 +30,8 @@
 #import "UIView+Frame.h"
 #import "PLCRMSupport.h"
 
+//@import Intercom;
+
 #define SHARED_APP [AppDelegate app]
 
 #define LOC(key) NSLocalizedString(key, "")
