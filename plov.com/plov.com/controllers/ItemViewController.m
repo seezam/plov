@@ -112,6 +112,14 @@
     if (!self.panelHidden)
     {
         [self hidePanel];
+        return;
+    }
+    
+    CGPoint p = [gestureRecognizer locationInView:self.view];
+    
+    if (p.y >= self.itemDescriptionPanel.y && self.panelHidden)
+    {
+        [self showPanel];
     }
 }
 
@@ -299,7 +307,22 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return self.delegate.fullscreenMode || !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
+        if (self.delegate.fullscreenMode || !self.panelHidden ||
+            SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight)
+        {
+            return YES;
+        }
+        else 
+        {
+            CGPoint p = [gestureRecognizer locationInView:self.view];
+            
+            if (p.y >= self.itemDescriptionPanel.y && self.panelHidden)
+            {
+                return YES;
+            }
+        }
+        
+        return NO;
     }
     else if (gestureRecognizer == self.doubleTapGesture)
     {
