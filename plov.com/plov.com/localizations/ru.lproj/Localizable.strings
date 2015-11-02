@@ -41,6 +41,8 @@
 "LOC_ORDER_BLOCK_FIELD" = "Подъезд";
 "LOC_ORDER_FLAT_FIELD" = "Квартира";
 
+"LOC_ORDER_CITY_DEF" = "Москва";
+
 "LOC_ORDER_PROCESSING" = "Пожалуйста подождите.";
 "LOC_ORDER_CREATED" = "Спасибо!\nВаш заказ принят.\nВ ближайшее время\nмы свяжемся с вами.";
 "LOC_ORDER_FAILED" = "Возникала проблема.\nПроверьте соединение.";

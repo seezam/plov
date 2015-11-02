@@ -25,8 +25,8 @@
     AddressObject * lastAddress = SHARED_APP.customer.addresses.lastObject;
     
     vc.items = @[
-        [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:lastAddress.city required:YES
-                         type:PLTableItemType_Text],
+        [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:LOC(@"LOC_ORDER_CITY_DEF") required:YES
+                         type:PLTableItemType_ReadOnly],
         [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:lastAddress.street required:YES
                          type:PLTableItemType_Text],
         [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:lastAddress.building required:YES

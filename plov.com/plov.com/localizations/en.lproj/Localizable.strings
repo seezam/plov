@@ -41,6 +41,9 @@
 "LOC_ORDER_BLOCK_FIELD" = "Block";
 "LOC_ORDER_FLAT_FIELD" = "Flat";
 
+
+"LOC_ORDER_CITY_DEF" = "Moscow";
+
 "LOC_ORDER_PROCESSING" = "Please wait.";
 "LOC_ORDER_CREATED" = "Thank you!\nYour order accepted.\nWe will contact you soon.";
 "LOC_ORDER_FAILED" = "Some trouble happened.\nCheck connection.";

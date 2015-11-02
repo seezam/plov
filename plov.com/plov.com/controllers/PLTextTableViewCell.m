@@ -52,6 +52,9 @@
         case PLTableItemType_Email:
             field.keyboardType = UIKeyboardTypeEmailAddress;
             break;
+        case PLTableItemType_ReadOnly:
+            field.userInteractionEnabled = NO;
+            break;
     }
     
     if (last)
