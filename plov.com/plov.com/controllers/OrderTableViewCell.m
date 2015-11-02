@@ -12,7 +12,8 @@
 @interface OrderTableViewCell ()
 
 @property (assign, nonatomic) BOOL awaked;
-@property (strong, nonatomic) UISwipeGestureRecognizer * swipe;
+@property (strong, nonatomic) UISwipeGestureRecognizer * swipeLeft;
+@property (strong, nonatomic) UISwipeGestureRecognizer * swipeRight;
 
 @property (assign, nonatomic) NSInteger count;
 @property (assign, nonatomic) NSInteger sum;
@@ -27,8 +28,14 @@
     {
         [super awakeFromNib];
         
-        self.swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDone:)];
-        [self addGestureRecognizer:self.swipe];
+        self.swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDone:)];
+        self.swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        
+        self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDone:)];
+        self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+        
+        [self addGestureRecognizer:self.swipeLeft];
+        [self addGestureRecognizer:self.swipeRight];
         
         self.countLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
         self.countLabel.textColor = UIColorFromRGBA(resColorMenuText);
@@ -48,7 +55,8 @@
 
 - (void)dealloc
 {
-    [self removeGestureRecognizer:self.swipe];
+    [self removeGestureRecognizer:self.swipeLeft];
+    [self removeGestureRecognizer:self.swipeRight];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -74,11 +82,11 @@
 
 - (void)swipeDone:(UISwipeGestureRecognizer *)gesture
 {
-    if (gesture.direction == UISwipeGestureRecognizerDirectionLeft)
+    if (gesture == self.swipeLeft)
     {
         [self setSelected:YES animated:YES];
     }
-    else if (gesture.direction == UISwipeGestureRecognizerDirectionRight)
+    else if (gesture == self.swipeRight)
     {
         [self setSelected:NO animated:YES];
     }

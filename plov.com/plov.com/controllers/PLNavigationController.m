@@ -97,18 +97,27 @@
       willShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
 {
-    NSTimeInterval duration = [self.transitionCoordinator transitionDuration];
-    if ((viewController != self.rootViewController))
+    if (viewController == self.rootViewController)
     {
-        self.logo.alpha = 0;
-//        [Intercom setMessagesHidden:YES];
+        [UIView animateWithDuration:0.33 animations:^{
+            self.logo.alpha = 1;
+        }];
+        
+        id<UIViewControllerTransitionCoordinator> tc = navigationController.topViewController.transitionCoordinator;
+        [tc notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+            if ([context isCancelled])
+            {
+                self.logo.alpha = 0;
+            }
+            else
+            {
+                self.logo.alpha = 1;
+            }
+        }];
     }
     else
     {
-//        [Intercom setMessagesHidden:NO];
-        [UIView animateWithDuration:duration animations:^{
-            self.logo.alpha = (viewController == self.rootViewController)?1:0;
-        }];
+        self.logo.alpha = 0;
     }
 }
 
