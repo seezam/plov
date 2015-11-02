@@ -26,6 +26,7 @@
     title.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
     title.textColor = UIColorFromRGBA(resColorMenuText);
     title.text = name?name:@"";
+    title.numberOfLines = 0;
     [cell.contentView addSubview:title];
     
     UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(140, 10, 150, 30)];
@@ -55,7 +56,21 @@
         case PLTableItemType_ReadOnly:
             field.userInteractionEnabled = NO;
             break;
+        case PLTableItemType_ListItem:
+            field.userInteractionEnabled = NO;
+            field.hidden = YES;
+            title.width = CGRectGetMaxX(field.frame) - title.x;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
     }
+    
+    CGPoint p = title.center;
+    CGRect r = title.frame;
+    
+    [title sizeToFit];
+    title.center = p;
+    title.x = r.origin.x;
+    title.width = r.size.width;
     
     if (last)
     {

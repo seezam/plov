@@ -13,6 +13,9 @@
 #import "PLNavigationController.h"
 #import "NameViewController.h"
 
+#import "MyOrdersViewController.h"
+#import "MyAddressesViewController.h"
+
 #import "CustomerObject.h"
 
 @interface MenuViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -67,7 +70,6 @@
                                      @{
                                          @"image": @"menu-adress",
                                          @"title": LOC(@"LOC_MENU_ADRESS"),
-                                         @"segue": @"addressViewController"
                                          }
                                      ]];
     }
@@ -213,6 +215,20 @@
     {
         PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
         vc.editMode = YES;
+        
+        PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
+        [navigation pushToViewController:vc];
+    }
+    else if ([item[@"image"] isEqualToString:@"menu-orders"])
+    {
+        PLTableViewController * vc = [MyOrdersViewController instantiateFromStoryboard:self.storyboard];
+        
+        PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
+        [navigation pushToViewController:vc];
+    }
+    else if ([item[@"image"] isEqualToString:@"menu-adress"])
+    {
+        PLTableViewController * vc = [MyAddressesViewController instantiateFromStoryboard:self.storyboard];
         
         PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
         [navigation pushToViewController:vc];

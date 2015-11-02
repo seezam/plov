@@ -59,6 +59,7 @@
 		D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */; };
 		D596036B1BCA9C3000627068 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D59603691BCA9C3000627068 /* NameViewController.m */; };
 		D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */; };
+		D5D9C7FB1BE824D700477BD1 /* MyAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D9C7FA1BE824D700477BD1 /* MyAddressesViewController.m */; };
 		D5E2F1441B8258E00041D8EE /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1431B8258E00041D8EE /* ItemViewController.m */; };
 		D5E2F1501B826FB60041D8EE /* rub.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5E2F14F1B826FB60041D8EE /* rub.otf */; };
 		D5E2F1581B8878D00041D8EE /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E2F1571B8878D00041D8EE /* OrderViewController.m */; };
@@ -166,6 +167,8 @@
 		D596036A1BCA9C3000627068 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameViewController.h; sourceTree = "<group>"; };
 		D59B5F1C1BC7125500BF32D4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		D59B5F1D1BC7125500BF32D4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		D5D9C7F91BE824D700477BD1 /* MyAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressesViewController.h; sourceTree = "<group>"; };
+		D5D9C7FA1BE824D700477BD1 /* MyAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressesViewController.m; sourceTree = "<group>"; };
 		D5E2F1421B8258E00041D8EE /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		D5E2F1431B8258E00041D8EE /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		D5E2F14F1B826FB60041D8EE /* rub.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rub.otf; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 		184B15141B6E8B7B00276C04 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D5D9C7F91BE824D700477BD1 /* MyAddressesViewController.h */,
+				D5D9C7FA1BE824D700477BD1 /* MyAddressesViewController.m */,
 				D59603691BCA9C3000627068 /* NameViewController.m */,
 				D596036A1BCA9C3000627068 /* NameViewController.h */,
 				184B15151B6E8BE800276C04 /* PLNavigationController.h */,
@@ -533,6 +538,7 @@
 				D593FAF51BDB87F7004768E9 /* MyOrdersViewController.m in Sources */,
 				D51B3DB51B8E8886004DF09C /* PlovApplication.m in Sources */,
 				D513F5751B73DF9000B0E16E /* AFURLResponseSerialization.m in Sources */,
+				D5D9C7FB1BE824D700477BD1 /* MyAddressesViewController.m in Sources */,
 				D55D52AE1B9796840026D6D5 /* PLSimpleRequester.m in Sources */,
 				D56D647F1B6FF71C0077671F /* PLResourseManager.m in Sources */,
 			);

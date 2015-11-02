@@ -14,6 +14,7 @@ typedef enum : NSUInteger {
     PLTableItemType_Phone,
     PLTableItemType_Email,
     PLTableItemType_ReadOnly,
+    PLTableItemType_ListItem,
 } PLTableItemType;
 
 @class PLTableViewController;
