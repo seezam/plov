@@ -97,7 +97,7 @@
 
 - (void)tapGestureHandler:(UITapGestureRecognizer *)gestureRecognizer
 {
-    if (self.fullscreenMode)
+    if (self.delegate.fullscreenMode)
     {
         [self.delegate itemView:self enableFullscreen:NO];
         return;
@@ -156,6 +156,12 @@
     
     center.x = halfW + width*(1 - progress);
     self.itemImage.center = center;
+    
+    if (self.delegate.fullscreenMode && progress != 0)
+    {
+        [self.delegate itemView:self enableFullscreen:NO];
+    }
+    
 }
 
 - (void)setProgress2:(float)progress
@@ -166,16 +172,15 @@
     
     center.x = halfW - width*(1 - progress);
     self.itemImage.center = center;
+    
+    self.itemDescriptionPanel.alpha = 1;
 }
 
 - (void)setPerforming:(BOOL)performing
 {
-    if (!self.fullscreenMode)
-    {
-        UIScrollView * scroll = (UIScrollView *)self.view.superview;
-        
-        scroll.scrollEnabled = !performing;
-    }
+    UIScrollView * scroll = (UIScrollView *)self.view.superview;
+    
+    scroll.scrollEnabled = !performing;
 }
 
 - (BOOL)scrollInProgress
@@ -210,7 +215,8 @@
                 self.panPointBegin = [gestureRecognizer locationInView:self.view];
                 self.startPanelHeight = self.itemDescriptionPanel.height;
                 
-                self.allowDescriptionDrag = !self.fullscreenMode && self.panPointBegin.y >= self.itemDescriptionPanel.y;
+                self.allowDescriptionDrag = !self.delegate.fullscreenMode &&
+                                            self.panPointBegin.y >= self.itemDescriptionPanel.y;
                 break;
             case UIGestureRecognizerStateChanged:
             {
@@ -293,11 +299,11 @@
 {
     if (gestureRecognizer == self.tapGesture)
     {
-        return self.fullscreenMode || !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
+        return self.delegate.fullscreenMode || !self.panelHidden || SHARED_APP.revealViewController.frontViewPosition == FrontViewPositionRight;
     }
     else if (gestureRecognizer == self.doubleTapGesture)
     {
-        return !self.fullscreenMode;
+        return !self.delegate.fullscreenMode;
     }
     else if (gestureRecognizer == self.panGesture)
     {

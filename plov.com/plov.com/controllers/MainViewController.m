@@ -30,6 +30,10 @@
 #define ITEM_VIEW_PREFIX 123012
 
 @interface MainViewController () <UIScrollViewDelegate, PLMenuViewDelegate, ItemViewDelegate>
+{
+    BOOL _fullscreenMode;
+}
+
 @property (nonatomic, strong) MenuObject * plovMenu;
 
 @property (nonatomic, assign) BOOL panelHidden;
@@ -51,6 +55,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _fullscreenMode = NO;
     self.arrowAnimation = NO;
     
     self.panelHidden = YES;
@@ -443,17 +448,12 @@
 
 - (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable
 {
-    if (item.fullscreenMode == enable)
+    if (_fullscreenMode == enable)
     {
         return;
     }
     
-    if (enable)
-    {
-        item.fullscreenMode = enable;
-        self.itemsScrollView.scrollEnabled = NO;
-        [self cancelItemsAnimation];
-    }
+    _fullscreenMode = enable;
     
     CGFloat alpha = enable?0:1;
     [UIView animateWithDuration:0.1 animations:^{
@@ -463,16 +463,12 @@
         self.navigationController.navigationBar.alpha = alpha;
         
         item.itemDescriptionPanel.alpha = alpha;
-        
-        if (!enable)
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                item.fullscreenMode = NO;
-                self.itemsScrollView.scrollEnabled = YES;
-                [self scheduleItemsAnimation];
-            });
-        }
     }];
+}
+
+- (BOOL)fullscreenMode
+{
+    return _fullscreenMode;
 }
 
 - (void)onAppIdle
@@ -495,7 +491,7 @@
     
     ItemViewController * itemVc = self.items[_currentItem][@"controller"];
     
-    if (itemVc.fullscreenMode)
+    if (_fullscreenMode)
     {
         [self itemView:itemVc enableFullscreen:NO];
     }

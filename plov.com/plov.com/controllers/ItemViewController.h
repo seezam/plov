@@ -14,6 +14,7 @@
 @protocol ItemViewDelegate <NSObject>
 
 - (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable;
+- (BOOL)fullscreenMode;
 
 @end
 
@@ -31,7 +32,5 @@
 
 - (void)setProgress1:(float)progress;
 - (void)setProgress2:(float)progress;
-
-@property (nonatomic, assign) BOOL fullscreenMode;
 
 @end
