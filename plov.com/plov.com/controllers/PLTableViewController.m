@@ -29,6 +29,7 @@
 
 @interface PLTableViewController ()<PLTextTableViewCellDelegate>
 @property (nonatomic, assign) NSInteger initialTableHeight;
+@property (nonatomic, assign) BOOL needResetContent;
 @end
 
 @implementation PLTableViewController
@@ -105,6 +106,8 @@
     self.backetSumLabel.textAlignment = NSTextAlignmentRight;
     
     self.processButton.layer.cornerRadius = 10;
+    
+    self.needResetContent = YES;
     
     if (self.editMode)
     {
@@ -244,7 +247,31 @@
     {
         PLTableItem * item = self.items[row];
         
-        item.text = text;
+        if (![item.text isEqualToString:text])
+        {
+            item.text = text;
+            
+            if (self.needResetContent)
+            {
+                for (PLTableItem * i in self.items)
+                {
+                    if (i.type != PLTableItemType_ReadOnly &&
+                        i != item)
+                    {
+                        i.text = @"";
+                    }
+                }
+                
+                self.needResetContent = NO;
+                
+                [self.tableView reloadData];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    PLTextTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(row) inSection:0]];
+                    [self cellDidReturn:cell];
+                });
+            }
+        }
     }
 }
 
