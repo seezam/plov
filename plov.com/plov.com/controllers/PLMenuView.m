@@ -11,6 +11,8 @@
 #import "MenuObject.h"
 #import "MenuCategoryObject.h"
 
+#define MENU_HEIGHT 35
+
 @interface PLMenuView ()
 
 @property (nonatomic, strong) MenuObject * menu;
@@ -53,7 +55,7 @@
         categoryTitle.textColor = UIColorFromRGBA(resColorMenuText);
         
         [categoryTitle sizeToFit];
-        categoryTitle.center = CGPointMake(0, ceil(self.frame.size.height/2));
+        categoryTitle.center = CGPointMake(0, ceil(MENU_HEIGHT/2));
         
         categoryTitle.x = x;
         categoryTitle.tag = 200 + tag;

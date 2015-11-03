@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *leftArrow;
 @property (weak, nonatomic) IBOutlet UIImageView *rightArrow;
 
+@property (weak, nonatomic) IBOutlet UIView *menuBackground;
 @property (weak, nonatomic) IBOutlet PLMenuView *menuView;
 @property (weak, nonatomic) IBOutlet UIScrollView *itemsScrollView;
 

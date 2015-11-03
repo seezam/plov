@@ -459,6 +459,7 @@
     [UIView animateWithDuration:0.1 animations:^{
         self.headerView.alpha = alpha;
         self.menuView.alpha = alpha;
+        self.menuBackground.alpha = alpha;
         self.footerView.alpha = alpha;
         self.navigationController.navigationBar.alpha = alpha;
         
