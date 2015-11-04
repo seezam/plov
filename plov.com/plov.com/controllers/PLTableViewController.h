@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     PLTableItemType_Email,
     PLTableItemType_ReadOnly,
     PLTableItemType_ListItem,
+    PLTableItemType_Complex,
 } PLTableItemType;
 
 @class PLTableViewController;
@@ -27,11 +28,14 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * placeholder;
 @property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSArray * blocks;
 @property (nonatomic, assign) PLTableItemType type;
 @property (nonatomic, assign) BOOL required;
 
 + (PLTableItem *)textItem:(NSString *)itemId withTitle:(NSString *)title
                      text:(NSString *)text required:(BOOL)requited type:(PLTableItemType)type;
+
++ (PLTableItem *)complexItem:(NSString *)itemId withTitle:(NSString *)title blocks:(NSArray *)blocks;
 
 @end
 

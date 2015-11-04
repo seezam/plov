@@ -16,12 +16,13 @@
 
 - (void)cellDidReturn:(PLTextTableViewCell *)cell;
 - (void)cell:(PLTextTableViewCell *)cell didChanged:(NSString *)text;
+- (void)complexCell:(PLTextTableViewCell *)cell idx:(NSInteger)idx didChanged:(NSString *)text;
 
 @end
 
 @interface PLTextTableViewCell : UITableViewCell
 
-+ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId type:(PLTableItemType)type last:(BOOL)last;
++ (PLTextTableViewCell *)cellWithText:(NSString *)text placeholder:(NSString *)placeholder name:(NSString *)name reuseId:(NSString *)reuseId type:(PLTableItemType)type blocks:(NSArray *)blocks last:(BOOL)last;
 
 - (void)hideDivider:(BOOL)hide;
 

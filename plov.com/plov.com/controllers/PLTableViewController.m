@@ -25,6 +25,20 @@
     return name;
 }
 
++ (PLTableItem *)complexItem:(NSString *)itemId withTitle:(NSString *)title blocks:(NSArray *)blocks
+{
+    PLTableItem * name = [[PLTableItem alloc] init];
+    name.type = PLTableItemType_Complex;
+    name.title = title?title:@"";
+    name.text = @"";
+    name.placeholder = @"";
+    name.itemId = itemId;
+    name.required = YES;
+    name.blocks = blocks;
+    
+    return name;
+}
+
 @end
 
 @interface PLTableViewController ()<PLTextTableViewCellDelegate>
@@ -67,11 +81,23 @@
     {
         PLTableItem * item = self.items[row];
         
-        if (item.required && item.text.length == 0)
+        if (item.required && item.type != PLTableItemType_Complex && item.text.length == 0)
         {
             [self shakeRow:row];
             
             return;
+        }
+        else if (item.type == PLTableItemType_Complex)
+        {
+            for (PLTableItem * block in item.blocks)
+            {
+                if (block.required && block.text.length == 0)
+                {
+                    [self shakeRow:row];
+                    
+                    return;
+                }
+            }
         }
     }
     
@@ -176,6 +202,7 @@
                                         name:item.title
                                      reuseId:item.itemId
                                         type:item.type
+                                      blocks:item.blocks
                                         last:(row == self.items.count - 1)];
 
     cell.delegate = self;
@@ -239,6 +266,62 @@
     }
 }
 
+- (void)resetContextWith:(PLTableItem *)item block:(PLTableItem *)block
+{
+    for (PLTableItem * i in self.items)
+    {
+        if (i.type != PLTableItemType_ReadOnly &&
+            i != item && i.type != PLTableItemType_Complex)
+        {
+            i.text = @"";
+        }
+        
+        if (i.type == PLTableItemType_Complex)
+        {
+            for (PLTableItem * b in i.blocks)
+            {
+                if (b != block)
+                {
+                    b.text = @"";
+                }
+                
+            }
+        }
+        
+    }
+    
+    self.needResetContent = NO;
+    
+    [self.tableView reloadData];
+}
+
+- (void)complexCell:(PLTextTableViewCell *)cell idx:(NSInteger)idx didChanged:(NSString *)text
+{
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    
+    if (row != NSNotFound)
+    {
+        PLTableItem * item = self.items[row];
+        
+        PLTableItem * block = item.blocks[idx];
+        
+        if (![block.text isEqualToString:text])
+        {
+            block.text = text;
+            
+            if (self.needResetContent)
+            {
+                [self resetContextWith:item block:block];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    PLTextTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(row) inSection:0]];
+                    [cell setResponder];
+                });
+            }
+        }
+    }
+}
+
 - (void)cell:(PLTextTableViewCell *)cell didChanged:(NSString *)text
 {
     NSInteger row = [self.tableView indexPathForCell:cell].row;
@@ -253,22 +336,11 @@
             
             if (self.needResetContent)
             {
-                for (PLTableItem * i in self.items)
-                {
-                    if (i.type != PLTableItemType_ReadOnly &&
-                        i != item)
-                    {
-                        i.text = @"";
-                    }
-                }
-                
-                self.needResetContent = NO;
-                
-                [self.tableView reloadData];
+                [self resetContextWith:item block:nil];
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     PLTextTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(row) inSection:0]];
-                    [self cellDidReturn:cell];
+                    [cell setResponder];
                 });
             }
         }

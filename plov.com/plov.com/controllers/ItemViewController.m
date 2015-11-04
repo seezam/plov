@@ -127,7 +127,7 @@
 {
     self.panelHidden = NO;
     [UIView animateWithDuration:0.2 animations:^{
-        CGFloat height = CGRectGetMaxY(self.itemDescription.frame) + 80;
+        CGFloat height = self.itemDescription.bottom + 80;
         self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
     }];
 }
@@ -198,7 +198,7 @@
     CGFloat pageWidth = scroll.width;
     float fractionalPage = scroll.contentOffset.x / pageWidth;
     
-    CGFloat p1, p2;
+    float p1, p2;
     
     p2 = modff(fractionalPage, &p1);
     

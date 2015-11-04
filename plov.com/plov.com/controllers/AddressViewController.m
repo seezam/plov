@@ -29,14 +29,21 @@
                          type:PLTableItemType_ReadOnly],
         [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:lastAddress.street required:YES
                          type:PLTableItemType_Text],
-        [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:lastAddress.building required:YES
-                         type:PLTableItemType_Number],
-        [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD") text:lastAddress.house required:NO
-                         type:PLTableItemType_Number],
-        [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD") text:lastAddress.block required:NO
-                         type:PLTableItemType_Number],
-        [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD") text:lastAddress.flat required:YES
-                         type:PLTableItemType_Number],
+        
+        [PLTableItem complexItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD")
+                          blocks:@[
+                                   
+         [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD") text:lastAddress.building
+                      required:YES type:PLTableItemType_Number],
+         [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD") text:lastAddress.house
+                      required:NO type:PLTableItemType_Number],
+         [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD") text:lastAddress.block
+                      required:NO type:PLTableItemType_Number],
+         [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD") text:lastAddress.flat
+                      required:YES type:PLTableItemType_Number]
+         
+                            ]]
+        
     ];
     
     vc.nextBlock = ^(PLTableViewController * controller){
@@ -56,19 +63,26 @@
                 }
                 else if ([item.itemId isEqualToString:@"building"])
                 {
-                    address.building = item.text;
-                }
-                else if ([item.itemId isEqualToString:@"house"])
-                {
-                    address.house = item.text;
-                }
-                else if ([item.itemId isEqualToString:@"block"])
-                {
-                    address.block = item.text;
-                }
-                else if ([item.itemId isEqualToString:@"flat"])
-                {
-                    address.flat = item.text;
+                    for (PLTableItem * buildItem in item.blocks)
+                    {
+                        if ([buildItem.itemId isEqualToString:@"building"])
+                        {
+                            address.building = buildItem.text;
+                        }
+                        else if ([buildItem.itemId isEqualToString:@"house"])
+                        {
+                            address.house = buildItem.text;
+                        }
+                        else if ([buildItem.itemId isEqualToString:@"block"])
+                        {
+                            address.block = buildItem.text;
+                        }
+                        else if ([buildItem.itemId isEqualToString:@"flat"])
+                        {
+                            address.flat = buildItem.text;
+                        }
+                    }
+                    
                 }
             }
             
