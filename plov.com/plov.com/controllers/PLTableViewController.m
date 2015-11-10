@@ -211,6 +211,18 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger row = indexPath.row;
+    
+    PLTableItem * item = self.items[row];
+    
+    if (item.type == PLTableItemType_ListItem && self.itemSelectBlock)
+    {
+        self.itemSelectBlock(self, item);
+    }
+}
+
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSDictionary * item = self.items[indexPath.row];
@@ -350,6 +362,14 @@
 - (void)tableTapped:(UITapGestureRecognizer *)tap
 {
     [self.view endEditing:YES];
+    
+    CGPoint p = [tap locationInView:self.tableView];
+    NSIndexPath * idxPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    if (idxPath)
+    {
+        [self tableView:self.tableView didSelectRowAtIndexPath:idxPath];
+    }
 }
 
 - (void)handleWillShowKeyboardNotification:(NSNotification *)notification {

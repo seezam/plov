@@ -18,11 +18,13 @@
 
 @implementation AddressViewController
 
-+ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard
++ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard withAddress:(AddressObject*)address
 {
-    PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
+    PLTableViewController * vc = [self instantiateFromStoryboard:storyboard];
     
-    AddressObject * lastAddress = SHARED_APP.customer.addresses.lastObject;
+//    AddressObject * lastAddress = SHARED_APP.customer.addresses.lastObject;
+    
+    AddressObject * lastAddress = address?address:SHARED_APP.customer.addresses.lastObject;
     
     vc.items = @[
         [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:LOC(@"LOC_ORDER_CITY_DEF") required:YES
@@ -49,17 +51,17 @@
     vc.nextBlock = ^(PLTableViewController * controller){
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            AddressObject * address = [[AddressObject alloc] init];
+            AddressObject * createdAddress = [[AddressObject alloc] init];
             
             for (PLTableItem * item in controller.items)
             {
                 if ([item.itemId isEqualToString:@"city"])
                 {
-                    address.city = item.text;
+                    createdAddress.city = item.text;
                 }
                 else if ([item.itemId isEqualToString:@"street"])
                 {
-                    address.street = item.text;
+                    createdAddress.street = item.text;
                 }
                 else if ([item.itemId isEqualToString:@"building"])
                 {
@@ -67,32 +69,39 @@
                     {
                         if ([buildItem.itemId isEqualToString:@"building"])
                         {
-                            address.building = buildItem.text;
+                            createdAddress.building = buildItem.text;
                         }
                         else if ([buildItem.itemId isEqualToString:@"house"])
                         {
-                            address.house = buildItem.text;
+                            createdAddress.house = buildItem.text;
                         }
                         else if ([buildItem.itemId isEqualToString:@"block"])
                         {
-                            address.block = buildItem.text;
+                            createdAddress.block = buildItem.text;
                         }
                         else if ([buildItem.itemId isEqualToString:@"flat"])
                         {
-                            address.flat = buildItem.text;
+                            createdAddress.flat = buildItem.text;
                         }
                     }
                     
                 }
             }
             
-            [SHARED_APP.customer setLastAddress:address];
+            if (address)
+            {
+                [controller.navigationController popViewControllerAnimated:YES];
+            }
+            else
+            {
+                [SHARED_APP.customer setLastAddress:createdAddress];
             
-            ProcessViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"processViewController"];
-            vc.order = controller.order;
-            vc.bucketSum = controller.bucketSum;
+                ProcessViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"processViewController"];
+                vc.order = controller.order;
+                vc.bucketSum = controller.bucketSum;
 //
-            [controller.navigationController pushViewController:vc animated:YES];
+                [controller.navigationController pushViewController:vc animated:YES];
+            }
         });
     };
         

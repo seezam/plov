@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "PLTableViewController.h"
 
+@class AddressObject;
 
 @interface AddressViewController : PLTableViewController
+
++ (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard withAddress:(AddressObject*)address;
 
 @end

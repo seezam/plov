@@ -7,6 +7,7 @@
 //
 
 #import "MyOrdersViewController.h"
+#import "OrderViewController.h"
 
 #import "CustomerObject.h"
 #import "AddressObject.h"
@@ -23,7 +24,6 @@
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
     NSMutableArray * orders = [NSMutableArray array];
-    int i = 0;
     for (OrderObject * order in SHARED_APP.customer.orders)
     {
         NSString * address = order.address;
@@ -35,44 +35,24 @@
         
         NSString * title = [NSString stringWithFormat:@"%@\n%@", address, date];
         
-        [orders addObject:[PLTableItem textItem:@(i).stringValue withTitle:title text:nil required:YES
+        [orders addObject:[PLTableItem textItem:order.orderId withTitle:title text:nil required:YES
                                               type:PLTableItemType_ListItem]];
     }
     vc.items = orders;
     
+    vc.itemSelectBlock = ^(PLTableViewController * controller, PLTableItem * item) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+//            OrderObject * order = [SHARED_APP.customer orderWithId:item.itemId];
+//            
+//            PLTableViewController * avc = [OrderViewController instantiateFromStoryboard:storyboard withAddress:address];
+//            avc.editMode = YES;
+//            [controller.navigationController pushViewController:avc animated:YES];
+        });
+    };
+    
     vc.nextBlock = ^(PLTableViewController * controller){
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            //            for (PLTableItem * item in controller.items)
-            //            {
-            //                if ([item.itemId isEqualToString:@"name"])
-            //                {
-            //                    SHARED_APP.customer.name = item.text;
-            //                }
-            //                else if ([item.itemId isEqualToString:@"phone"])
-            //                {
-            //                    SHARED_APP.customer.phone = item.text;
-            //                }
-            //                else if ([item.itemId isEqualToString:@"mail"])
-            //                {
-            //                    SHARED_APP.customer.mail = item.text;
-            //                }
-            //            }
-            //
-            //            if (controller.editMode)
-            //            {
-            //                [SHARED_APP.customer saveData];
-            //                [SHARED_APP updateMenu];
-            //                [controller.navigationController popToRootViewControllerAnimated:YES];
-            //            }
-            //            else
-            //            {
-            //                PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard];
-            //                vc.bucketSum = controller.bucketSum;
-            //                vc.order = controller.order;
-            //                
-            //                [controller.navigationController pushViewController:vc animated:YES];
-            //            }
         });
     };
     

@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class MenuItemObject;
+typedef enum : NSUInteger {
+    OrderStatus_Created,
+    OrderStatus_Sent,
+    OrderStatus_Completed,
+} OrderStatus;
 
 @interface OrderObject : NSObject
 
@@ -19,6 +23,8 @@
 
 @property (nonatomic, assign, readonly) NSInteger cost;
 @property (nonatomic, strong, readonly) NSArray * list;
+
+@property (nonatomic, assign, readonly) OrderStatus status;
 
 + (NSArray *)ordersWithData:(NSArray *)data;
 

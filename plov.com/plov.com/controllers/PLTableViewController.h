@@ -19,8 +19,10 @@ typedef enum : NSUInteger {
 } PLTableItemType;
 
 @class PLTableViewController;
+@class PLTableItem;
 
 typedef void (^PLNextBlock)(PLTableViewController * controller);
+typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableItem * item);
 
 @interface PLTableItem : NSObject
 
@@ -48,6 +50,7 @@ typedef void (^PLNextBlock)(PLTableViewController * controller);
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (copy, nonatomic) PLNextBlock nextBlock;
+@property (copy, nonatomic) PLItemSelectBlock itemSelectBlock;
 
 @property (nonatomic, strong) NSArray * items;
 

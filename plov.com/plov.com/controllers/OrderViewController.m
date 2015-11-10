@@ -254,7 +254,7 @@
     }
     else
     {
-        PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard];
+        PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard withAddress:nil];
         vc.bucketSum = self.bucketSum;
         vc.order = self.order;
         [self.navigationController pushViewController:vc animated:YES];
