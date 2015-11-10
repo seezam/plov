@@ -19,6 +19,7 @@
 
 @property (nonatomic, assign) CGPoint panPointBegin;
 @property (nonatomic, assign) CGFloat startPanelHeight;
+
 @property (nonatomic, assign) BOOL performing;
 @property (nonatomic, assign) BOOL allowDescriptionDrag;
 
@@ -145,15 +146,30 @@
     [self.delegate itemView:self enableFullscreen:YES];
 }
 
-- (void)resetImageSize
+- (void)resetImageSize:(BOOL)animated
 {
+    if (self.itemImage.width == self.view.width &&
+        self.itemImage.height == self.view.height)
+    {
+        return;
+    }
+    
     CGPoint center = self.itemImage.center;
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.itemImage.width = self.itemImage.image.size.width;
-        self.itemImage.height = self.itemImage.image.size.height;
+    if (animated)
+    {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.itemImage.width = self.view.width;
+            self.itemImage.height = self.view.height;
+            self.itemImage.center = center;
+        }];
+    }
+    else
+    {
+        self.itemImage.width = self.view.width;
+        self.itemImage.height = self.view.height;
         self.itemImage.center = center;
-    }];
+    }
 }
 
 - (void)setProgress1:(float)progress
@@ -239,8 +255,8 @@
                     
                     CGPoint center = self.itemImage.center;
                     
-                    self.itemImage.width = self.itemImage.image.size.width * newScale;
-                    self.itemImage.height = self.itemImage.image.size.height * newScale;
+                    self.itemImage.width = self.view.width * newScale;
+                    self.itemImage.height = self.view.height * newScale;
                     self.itemImage.center = center;
                     
                     if (!self.panelHidden)
@@ -264,7 +280,7 @@
             case UIGestureRecognizerStateEnded:
             {
                 self.performing = NO;
-                [self resetImageSize];
+                [self resetImageSize:YES];
                 
                 CGPoint endPoint = [gestureRecognizer locationInView:self.view];
                 
@@ -285,7 +301,7 @@
             case UIGestureRecognizerStateCancelled:
             case UIGestureRecognizerStateFailed:
                 self.performing = NO;
-                [self resetImageSize];
+                [self resetImageSize:YES];
                 [self hidePanel];
                 break;
 
@@ -296,7 +312,7 @@
     else
     {
         self.performing = NO;
-        [self resetImageSize];
+        [self resetImageSize:NO];
         [self hidePanel];
         self.panPointBegin = [gestureRecognizer locationInView:self.view];
         self.startPanelHeight = self.itemDescriptionPanel.height;
