@@ -214,7 +214,7 @@
     if ([item[@"type"] isEqualToString:@"profile"])
     {
         PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
-        vc.editMode = YES;
+        vc.buttonMode = PLTableButtonMode_Save;
         
         PLNavigationController * navigation = (PLNavigationController *)self.revealViewController.frontViewController;
         [navigation pushToViewController:vc];

@@ -34,12 +34,16 @@
 "LOC_ORDER_PHONE_FIELD" = "Телефон";
 "LOC_ORDER_EMAIL_FIELD" = "Email";
 
+"LOC_ORDER_DATE_FIELD" = "Дата";
+
+"LOC_ORDER_ADDRESS_FIELD" = "Адрес";
 "LOC_ORDER_CITY_FIELD" = "Город";
 "LOC_ORDER_STREET_FIELD" = "Улица";
 "LOC_ORDER_BUILDING_FIELD" = "Дом";
 "LOC_ORDER_HOUSE_FIELD" = "Строение";
 "LOC_ORDER_BLOCK_FIELD" = "Подъезд";
 "LOC_ORDER_FLAT_FIELD" = "Квартира";
+"LOC_ORDER_FLOOR_FIELD" = "Этаж";
 
 "LOC_ORDER_CITY_DEF" = "Москва";
 
@@ -47,3 +51,15 @@
 "LOC_ORDER_CREATED" = "Спасибо!\nВаш заказ принят.\nВ ближайшее время\nмы свяжемся с вами.";
 "LOC_ORDER_FAILED" = "Возникала проблема.\nПроверьте соединение.";
 "LOC_ORDER_RETRY" = "Повторить";
+
+"LOC_ORDER_STATUS_FIELD" = "Статус";
+"ORDER_STATUS_CREATED" = "Новый";
+"ORDER_STATUS_PREPARING" = "Подготовка";
+"ORDER_STATUS_DELIVERING" = "Доставка";
+"ORDER_STATUS_CANCELLED" = "Отменен";
+"ORDER_STATUS_COMPLETED" = "Завершен";
+
+
+"DELETE_ADDRESS_ACTION" = "Удалить этот адрес?";
+"DELETE_ACTION" = "Удалить";
+"CANCEL_ACTION" = "Отменить";

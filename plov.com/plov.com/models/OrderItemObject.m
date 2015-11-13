@@ -63,4 +63,32 @@ static const NSString * countField = @"count";
     return dict;
 }
 
+- (BOOL)incCount
+{
+    _count++;
+    
+    if (_count > 99)
+    {
+        _count = 99;
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)decCount
+{
+    _count--;
+    
+    if (_count < 0)
+    {
+        _count = 0;
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end

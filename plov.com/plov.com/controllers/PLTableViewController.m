@@ -9,6 +9,8 @@
 #import "PLTableViewController.h"
 #import "PLTextTableViewCell.h"
 
+#import "OrderObject.h"
+
 @implementation PLTableItem
 
 + (PLTableItem *)textItem:(NSString *)itemId
@@ -73,6 +75,29 @@
     }
 }
 
+- (void)trashButtonPressed
+{
+    UIActionSheet * action = [[UIActionSheet alloc] init];
+    
+    action.title = LOC(@"DELETE_ADDRESS_ACTION");
+    [action addButtonWithTitle:LOC(@"DELETE_ACTION")];
+    [action addButtonWithTitle:LOC(@"CANCEL_ACTION")];
+    
+    action.destructiveButtonIndex = 0;
+    action.cancelButtonIndex = 1;
+    
+    action.delegate = self;
+    [action showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        self.trashButtonBlock(self);
+    }
+}
+
 - (IBAction)processToOrder:(id)sender
 {
     [self.view endEditing:YES];
@@ -101,7 +126,7 @@
         }
     }
     
-    self.nextBlock(self);
+    self.nextButtonBlock(self);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -112,6 +137,11 @@
     
     //set back button arrow color
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    if (self.fillDataBlock)
+    {
+        self.fillDataBlock(self);
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -135,17 +165,31 @@
     
     self.needResetContent = YES;
     
-    if (self.editMode)
+    switch (self.buttonMode)
     {
-        [self.processButton setTitle:LOC(@"LOC_SAVE_BUTTON") forState:UIControlStateNormal];
-        self.cartIcon.hidden = YES;
-        self.backetSumLabel.hidden = YES;
-        self.orderLabel.hidden = YES;
-    }
-    else
-    {
-        [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
-        self.orderLabel.text = LOC(@"LOC_ORDER_TEXT");
+        case PLTableButtonMode_Continue:
+            [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
+            self.orderLabel.text = LOC(@"LOC_ORDER_TEXT");
+            break;
+        case PLTableButtonMode_Save:
+        case PLTableButtonMode_SaveDelete:
+            [self.processButton setTitle:LOC(@"LOC_SAVE_BUTTON") forState:UIControlStateNormal];
+            self.cartIcon.hidden = YES;
+            self.backetSumLabel.hidden = YES;
+            self.orderLabel.hidden = YES;
+            
+            if (self.buttonMode == PLTableButtonMode_SaveDelete)
+            {
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashButtonPressed)];
+            }
+            break;
+        case PLTableButtonMode_None:
+            self.tableView.height = self.view.height - self.tableView.y;
+            self.processButton.hidden = YES;
+            self.cartIcon.hidden = YES;
+            self.backetSumLabel.hidden = YES;
+            self.orderLabel.hidden = YES;
+            break;
     }
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
@@ -247,7 +291,7 @@
 - (void)checkCartPos
 {
     UILabel * testLabel = [[UILabel alloc] initWithFrame:self.backetSumLabel.frame];
-    testLabel.attributedText = [SHARED_APP rubleCost:self.bucketSum font:self.backetSumLabel.font];
+    testLabel.attributedText = [SHARED_APP rubleCost:self.order.cost font:self.backetSumLabel.font];
     [testLabel sizeToFit];
     NSInteger newX = self.view.width - self.cartIcon.width - 13 - ceil(testLabel.width/10)*10 - 3;
     

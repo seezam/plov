@@ -109,6 +109,35 @@ static const NSString * addressesField = @"addresses";
     [data writeToFile:[self dataPath] atomically:YES];
 }
 
+- (OrderObject *)orderWithId:(NSString *)orderId
+{
+    for (OrderObject * o in self.orders)
+    {
+        if ([o.orderId isEqualToString:orderId])
+        {
+            return o;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)deleteAddress:(AddressObject *)address
+{
+    NSMutableArray * addresses = [self.addresses mutableCopy];
+    
+    for (AddressObject * item in addresses)
+    {
+        if ([[item fullAddressString] isEqualToString:[address fullAddressString]])
+        {
+            [addresses removeObject:item];
+            break;
+        }
+    }
+    
+    self.addresses = addresses;
+}
+
 - (void)setLastAddress:(AddressObject *)address
 {
     NSMutableArray * addresses = [self.addresses mutableCopy];
@@ -127,13 +156,11 @@ static const NSString * addressesField = @"addresses";
     self.addresses = addresses;
 }
 
-- (void)setLastOrder:(NSArray *)order orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost
+- (void)setLastOrder:(OrderObject *)order
 {
     NSMutableArray * orders = [self.orders mutableCopy];
     
-    OrderObject * orderObject = [[OrderObject alloc] initWithMenuItems:order orderId:orderId address:address cost:cost];
-    
-    [orders addObject:orderObject];
+    [orders insertObject:order atIndex:0];
     
     self.orders = orders;
 }

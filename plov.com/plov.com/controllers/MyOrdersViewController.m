@@ -23,40 +23,36 @@
 {
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
-    NSMutableArray * orders = [NSMutableArray array];
-    for (OrderObject * order in SHARED_APP.customer.orders)
-    {
-        NSString * address = order.address;
-        
-        NSDateFormatter * df = [[NSDateFormatter alloc] init];
-        df.dateStyle = NSDateFormatterShortStyle;
-        df.timeStyle = NSDateFormatterShortStyle;
-        NSString * date = [df stringFromDate:order.date];
-        
-        NSString * title = [NSString stringWithFormat:@"%@\n%@", address, date];
-        
-        [orders addObject:[PLTableItem textItem:order.orderId withTitle:title text:nil required:YES
-                                              type:PLTableItemType_ListItem]];
-    }
-    vc.items = orders;
+    vc.fillDataBlock = ^(PLTableViewController * controller) {
+        NSMutableArray * orders = [NSMutableArray array];
+        for (OrderObject * order in SHARED_APP.customer.orders)
+        {
+            NSString * address = order.address;
+            
+            NSDateFormatter * df = [[NSDateFormatter alloc] init];
+            df.dateStyle = NSDateFormatterShortStyle;
+            df.timeStyle = NSDateFormatterShortStyle;
+            NSString * date = [df stringFromDate:order.date];
+            
+            NSString * title = [NSString stringWithFormat:@"%@\n%@", address, date];
+            
+            [orders addObject:[PLTableItem textItem:order.orderId withTitle:title text:nil required:YES
+                                               type:PLTableItemType_ListItem]];
+        }
+        controller.items = orders;
+    };
     
     vc.itemSelectBlock = ^(PLTableViewController * controller, PLTableItem * item) {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            OrderObject * order = [SHARED_APP.customer orderWithId:item.itemId];
-//            
-//            PLTableViewController * avc = [OrderViewController instantiateFromStoryboard:storyboard withAddress:address];
-//            avc.editMode = YES;
-//            [controller.navigationController pushViewController:avc animated:YES];
-        });
-    };
-    
-    vc.nextBlock = ^(PLTableViewController * controller){
-        dispatch_async(dispatch_get_main_queue(), ^{
+            OrderObject * order = [SHARED_APP.customer orderWithId:item.itemId];
             
+            OrderViewController * ovc = [OrderViewController instantiateWithStoryboard:storyboard order:order];
+            ovc.statusMode = YES;
+            [controller.navigationController pushViewController:ovc animated:YES];
         });
     };
     
-    vc.editMode = YES;
+    vc.buttonMode = PLTableButtonMode_None;
     return vc;
 }
 

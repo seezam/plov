@@ -34,13 +34,16 @@
 "LOC_ORDER_PHONE_FIELD" = "Phone";
 "LOC_ORDER_EMAIL_FIELD" = "Email";
 
+"LOC_ORDER_DATE_FIELD" = "Date";
+
+"LOC_ORDER_ADDRESS_FIELD" = "Address";
 "LOC_ORDER_CITY_FIELD" = "City";
 "LOC_ORDER_STREET_FIELD" = "Street";
 "LOC_ORDER_BUILDING_FIELD" = "Building";
 "LOC_ORDER_HOUSE_FIELD" = "House";
 "LOC_ORDER_BLOCK_FIELD" = "Block";
 "LOC_ORDER_FLAT_FIELD" = "Flat";
-
+"LOC_ORDER_FLOOR_FIELD" = "Floor";
 
 "LOC_ORDER_CITY_DEF" = "Moscow";
 
@@ -48,3 +51,14 @@
 "LOC_ORDER_CREATED" = "Thank you!\nYour order accepted.\nWe will contact you soon.";
 "LOC_ORDER_FAILED" = "Some trouble happened.\nCheck connection.";
 "LOC_ORDER_RETRY" = "Retry";
+
+"LOC_ORDER_STATUS_FIELD" = "Status";
+"ORDER_STATUS_CREATED" = "New";
+"ORDER_STATUS_PREPARING" = "Preparing";
+"ORDER_STATUS_DELIVERING" = "Delivering";
+"ORDER_STATUS_CANCELLED" = "Cancelled";
+"ORDER_STATUS_COMPLETED" = "Completed";
+
+"DELETE_ADDRESS_ACTION" = "Delete this address?";
+"DELETE_ACTION" = "Delete";
+"CANCEL_ACTION" = "Cancel";

@@ -18,10 +18,20 @@ typedef enum : NSUInteger {
     PLTableItemType_Complex,
 } PLTableItemType;
 
+typedef enum : NSUInteger {
+    PLTableButtonMode_Continue,
+    PLTableButtonMode_Save,
+    PLTableButtonMode_SaveDelete,
+    PLTableButtonMode_None,
+} PLTableButtonMode;
+
 @class PLTableViewController;
 @class PLTableItem;
+@class OrderObject;
 
-typedef void (^PLNextBlock)(PLTableViewController * controller);
+typedef void (^PLFillDataBlock)(PLTableViewController * controller);
+typedef void (^PLNextButtonBlock)(PLTableViewController * controller);
+typedef void (^PLTrashButtonBlock)(PLTableViewController * controller);
 typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableItem * item);
 
 @interface PLTableItem : NSObject
@@ -41,7 +51,7 @@ typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableIte
 
 @end
 
-@interface PLTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PLTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *orderLabel;
 @property (weak, nonatomic) IBOutlet UIButton *processButton;
@@ -49,15 +59,16 @@ typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableIte
 @property (weak, nonatomic) IBOutlet UILabel *backetSumLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (copy, nonatomic) PLNextBlock nextBlock;
+@property (copy, nonatomic) PLFillDataBlock fillDataBlock;
+@property (copy, nonatomic) PLNextButtonBlock nextButtonBlock;
+@property (copy, nonatomic) PLTrashButtonBlock trashButtonBlock;
 @property (copy, nonatomic) PLItemSelectBlock itemSelectBlock;
 
 @property (nonatomic, strong) NSArray * items;
 
-@property (nonatomic, assign) NSInteger bucketSum;
-@property (nonatomic, strong) NSArray * order;
+@property (nonatomic, strong) OrderObject * order;
 
-@property (nonatomic, assign) BOOL editMode;
+@property (nonatomic, assign) PLTableButtonMode buttonMode;
 
 + (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard;
 

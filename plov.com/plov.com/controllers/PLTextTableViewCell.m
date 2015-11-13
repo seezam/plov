@@ -15,6 +15,7 @@
 @property (nonatomic, assign) PLTableItemType type;
 @end
 
+#define FIELD_AVAILABLE_WIDTH (320-18)
 #define FIELD_WIDTH 180
 #define BLOCK_GAP 10
 #define FIELD_LEFT_MARGIN 140
@@ -42,6 +43,13 @@
     {
         NSInteger blockW = FIELD_WIDTH/blocks.count;
         NSInteger blockX = FIELD_LEFT_MARGIN;
+
+        if (!title.text.length)
+        {
+            blockW = FIELD_AVAILABLE_WIDTH/blocks.count;
+            blockX = title.x;
+        }
+        
         for (PLTableItem * item in blocks)
         {
             UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(blockX, 10, blockW - BLOCK_GAP, 30)];
@@ -73,10 +81,10 @@
             v.backgroundColor = item.required?UIColorFromRGBA(resColorMenuText):[UIColor colorWithWhite:1 alpha:0.3];
             [cell.contentView addSubview:v];
             
-            UILabel * hint = [[UILabel alloc] initWithFrame:CGRectMake(field.x, v.bottom+1, field.width, 10)];
+            UILabel * hint = [[UILabel alloc] initWithFrame:CGRectMake(field.x, v.bottom+2, field.width, 12)];
             hint.backgroundColor = [UIColor clearColor];
             hint.textColor = UIColorFromRGBA(resColorMenuText);
-            hint.font = [UIFont fontWithName:@"ProximaNova-Light" size:10];
+            hint.font = [UIFont fontWithName:@"ProximaNova-Light" size:12];
             hint.text = item.title;
             hint.textAlignment = NSTextAlignmentCenter;
             
@@ -87,7 +95,7 @@
     }
     else
     {
-        UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(140, 10, 170, 30)];
+        UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(140, 10, FIELD_WIDTH, 30)];
         field.placeholder = placeholder?placeholder:@"";
         field.autocorrectionType = UITextAutocorrectionTypeNo;
         field.text = text?text:@"";
@@ -97,6 +105,12 @@
         [field setClearButtonMode:UITextFieldViewModeWhileEditing];
         field.delegate = cell;
         [cell.inputs addObject:field];
+        
+        if (!title.text.length)
+        {
+            field.x = title.x;
+            field.width = FIELD_AVAILABLE_WIDTH;
+        }
         
         switch (type) {
             case PLTableItemType_Text:
@@ -144,7 +158,7 @@
     title.x = r.origin.x;
     title.width = r.size.width;
     
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(9, 47, 320-18, 1)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(9, 47, FIELD_AVAILABLE_WIDTH, 1)];
     view.backgroundColor = UIColorFromRGBA(resColorDivider);
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     cell.divider = view;

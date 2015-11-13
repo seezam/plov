@@ -22,7 +22,11 @@
 
 - (void)saveData;
 
+- (OrderObject *)orderWithId:(NSString *)orderId;
+
+- (void)deleteAddress:(AddressObject *)address;
+
 - (void)setLastAddress:(AddressObject *)address;
-- (void)setLastOrder:(NSArray *)order orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost;
+- (void)setLastOrder:(OrderObject *)order;
 
 @end

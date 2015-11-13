@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class BBCyclingLabel;
+@class OrderObject;
 
 @interface OrderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) NSMutableArray * order;
++ (OrderViewController *)instantiateWithStoryboard:(UIStoryboard *)storyboard order:(OrderObject *)order;
+
+//@property (strong, nonatomic) NSMutableArray * order;
 
 @property (weak, nonatomic) IBOutlet UITableView *ordersTableView;
 @property (weak, nonatomic) IBOutlet UIButton *processButton;
@@ -21,5 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cartIcon;
 @property (weak, nonatomic) IBOutlet BBCyclingLabel *bucketSumLabel;
+
+@property (assign, nonatomic) BOOL statusMode;
+
 - (IBAction)processOrder:(id)sender;
 @end

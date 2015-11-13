@@ -34,8 +34,11 @@
         self.swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDone:)];
         self.swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
         
-        [self addGestureRecognizer:self.swipeLeft];
-        [self addGestureRecognizer:self.swipeRight];
+        if (!self.readOnly)
+        {
+            [self addGestureRecognizer:self.swipeLeft];
+            [self addGestureRecognizer:self.swipeRight];
+        }
         
         self.countLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
         self.countLabel.textColor = UIColorFromRGBA(resColorMenuText);
@@ -59,8 +62,31 @@
     [self removeGestureRecognizer:self.swipeRight];
 }
 
+- (void)setReadOnly:(BOOL)readOnly
+{
+    if (_readOnly != readOnly)
+    {
+        _readOnly = readOnly;
+        if (readOnly)
+        {
+            [self removeGestureRecognizer:self.swipeLeft];
+            [self removeGestureRecognizer:self.swipeRight];
+        }
+        else
+        {
+            [self addGestureRecognizer:self.swipeLeft];
+            [self addGestureRecognizer:self.swipeRight];
+        }
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    if (self.readOnly)
+    {
+        return;
+    }
+    
     [UIView animateWithDuration:0.2 animations:^{
         if (selected)
         {

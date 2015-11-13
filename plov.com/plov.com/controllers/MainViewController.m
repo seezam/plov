@@ -18,6 +18,7 @@
 #import "MenuItemObject.h"
 
 #import "CustomerObject.h"
+#import "OrderObject.h"
 
 #import "ItemViewController.h"
 #import "OrderViewController.h"
@@ -108,9 +109,7 @@
 
 - (void)processToOrder
 {
-    OrderViewController * orderVc = [self.storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
-    
-    NSMutableArray * order = [[NSMutableArray alloc] initWithCapacity:self.items.count];
+    NSMutableArray * menuItems = [[NSMutableArray alloc] initWithCapacity:self.items.count];
     
     for (NSDictionary * item in self.items)
     {
@@ -118,11 +117,13 @@
         
         if (menuItem.count > 0)
         {
-            [order addObject:menuItem];
+            [menuItems addObject:menuItem];
         }
     }
     
-    orderVc.order = order;
+    OrderObject * order = [[OrderObject alloc] initWithMenuItems:menuItems orderId:@"" address:@""];
+    
+    OrderViewController * orderVc = [OrderViewController instantiateWithStoryboard:self.storyboard order:order];
     
     [self.navigationController pushViewController:orderVc animated:YES];
 }

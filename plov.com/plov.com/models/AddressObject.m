@@ -15,6 +15,7 @@ static const NSString * buildingField = @"building";
 static const NSString * houseField = @"house";
 static const NSString * flatField = @"flat";
 static const NSString * blockField = @"block";
+static const NSString * floorField = @"floor";
 
 @implementation AddressObject
 
@@ -47,40 +48,48 @@ static const NSString * blockField = @"block";
     [result appendString:@", "];
     [result appendString:self.flat];
     
-    if (self.block)
+    if (self.block.length)
     {
         [result appendString:@" ("];
         [result appendString:self.block];
         [result appendString:@")"];
     }
     
+    if (self.floor.length)
+    {
+        [result appendString:@" ["];
+        [result appendString:self.floor];
+        [result appendString:@"]"];
+    }
+    
     return result;
 }
 
-- (BOOL)isEqual:(id)object
-{
-    if ([super isEqual:object])
-    {
-        return YES;
-    }
-    
-    if ([object isKindOfClass:[AddressObject class]])
-    {
-        AddressObject * address = (AddressObject *)object;
-        
-        if ([address.city isEqualToString:address.city] &&
-            [address.street isEqualToString:address.street] &&
-            [address.building isEqualToString:address.building] &&
-            [address.house isEqualToString:address.house] &&
-            [address.block isEqualToString:address.block] &&
-            [address.flat isEqualToString:address.flat])
-        {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
+//- (BOOL)isEqual:(id)object
+//{
+//    if ([super isEqual:object])
+//    {
+//        return YES;
+//    }
+//    
+//    if ([object isKindOfClass:[AddressObject class]])
+//    {
+//        AddressObject * address = (AddressObject *)object;
+//        
+//        if ([address.city isEqualToString:address.city] &&
+//            [address.street isEqualToString:address.street] &&
+//            [address.building isEqualToString:address.building] &&
+//            [address.house isEqualToString:address.house] &&
+//            [address.block isEqualToString:address.block] &&
+//            [address.flat isEqualToString:address.flat] &&
+//            address.floor isEqualToString:<#(nonnull NSString *)#>)
+//        {
+//            return YES;
+//        }
+//    }
+//    
+//    return NO;
+//}
 
 - (void)loadAddressData:(NSDictionary *)dict
 {
@@ -92,6 +101,7 @@ static const NSString * blockField = @"block";
         _house = dict[houseField];
         _flat = dict[flatField];
         _block = dict[blockField];
+        _floor = dict[floorField];
     }
 }
 
@@ -105,6 +115,7 @@ static const NSString * blockField = @"block";
     dict[houseField] = self.house?self.house:@"";
     dict[flatField] = self.flat?self.flat:@"";
     dict[blockField] = self.block?self.block:@"";
+    dict[floorField] = self.floor?self.floor:@"";
     
     return dict;
 }

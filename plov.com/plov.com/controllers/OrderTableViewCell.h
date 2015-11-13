@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 
+@property (assign, nonatomic) BOOL readOnly;
+
 @property (weak, nonatomic) id<OrderTableViewDelegate> delegate;
 
 - (IBAction)countChanged:(id)sender;

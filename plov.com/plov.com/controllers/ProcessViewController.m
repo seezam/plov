@@ -10,8 +10,9 @@
 
 #import "CustomerObject.h"
 #import "AddressObject.h"
+#import "OrderObject.h"
 #import "PLCRMSupport.h"
-#import "MenuItemObject.h"
+#import "OrderItemObject.h"
 
 @interface ProcessViewController ()
 @property (nonatomic, assign) BOOL processed;
@@ -58,12 +59,12 @@
     
     NSMutableArray * orders = [NSMutableArray array];
     
-    for (MenuItemObject * item in self.order)
+    for (OrderItemObject * item in self.order.list)
     {
         NSDictionary * itemDesc = @{
                                     @"initialPrice": @(item.cost),
                                     @"purchasePrice": @(item.cost),
-                                    @"productName": item.title,
+                                    @"productName": item.name,
                                     @"quantity": @(item.count),
                                     };
         
@@ -99,8 +100,10 @@
         {
             NSString * strId = [NSString stringWithFormat:@"%@", resp[@"id"]];
             
-            [SHARED_APP.customer setLastOrder:self.order orderId:strId
-                                      address:[address fullAddressString] cost:self.bucketSum];
+            AddressObject * address = SHARED_APP.customer.addresses.lastObject;
+            [self.order updateOrderWithId:strId address:address.fullAddressString];
+            
+            [SHARED_APP.customer setLastOrder:self.order];
             [SHARED_APP.customer saveData];
             [SHARED_APP updateMenu];
             self.processed = YES;

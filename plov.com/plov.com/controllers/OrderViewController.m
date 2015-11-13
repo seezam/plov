@@ -8,22 +8,37 @@
 
 #import "OrderViewController.h"
 #import "OrderTableViewCell.h"
-#import "MenuItemObject.h"
+#import "OrderItemObject.h"
 #import "BBCyclingLabel.h"
 
 #import "CustomerObject.h"
+#import "OrderObject.h"
 
 #import "PLTableViewController.h"
+#import "PLTextTableViewCell.h"
 #import "AddressViewController.h"
 #import "NameViewController.h"
+
+#import "PLCRMSupport.h"
 
 @interface OrderViewController() <OrderTableViewDelegate>
 
 @property (nonatomic, assign) NSInteger bucketSum;
+@property (nonatomic, strong) OrderObject * order;
+
 
 @end
 
 @implementation OrderViewController
+
++ (OrderViewController *)instantiateWithStoryboard:(UIStoryboard *)storyboard order:(OrderObject *)order
+{
+    OrderViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+    vc.statusMode = NO;
+    vc.order = order;
+    
+    return vc;
+}
 
 - (void)back
 {
@@ -38,6 +53,28 @@
     
     //set back button arrow color
     [self.navigationController.navigationBar setTintColor:color];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.statusMode)
+    {
+        [SHARED_APP.crm getOrderInfo:self.order.orderId success:^(NSDictionary *data) {
+            if ([data[@"success"] integerValue] == 1)
+            {
+                [self.order updateOrderStatus:data[@"order"][@"status"]];
+                [SHARED_APP.customer saveData];
+                
+                [self.ordersTableView reloadData];
+                
+                [self updateNextButtonAnimated:YES];
+            }
+        } error:^(NSError *error) {
+            
+        }];
+    }
 }
 
 - (void)viewDidLoad
@@ -70,21 +107,76 @@
     self.bucketSumLabel.clipsToBounds = YES;
     
     self.processButton.layer.cornerRadius = 10;
-    [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
-    
-    for (MenuItemObject * item in self.order)
+    if (self.statusMode)
     {
-        self.bucketSum += item.count * item.cost;
+        [self updateNextButtonAnimated:NO];
     }
+    else
+    {
+        [self.processButton setTitle:LOC(@"LOC_CONTINUE_BUTTON") forState:UIControlStateNormal];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
+        [self.ordersTableView addGestureRecognizer:tap];
+    }
+    
+    self.bucketSum = self.order.cost;
     
     [self checkCartPosAnimated:NO];
     [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
     
     self.titleLabel.text = LOC(@"LOC_TITLE_ORDER");
     self.titleLabel.hidden = YES;
+}
+
+- (void)updateNextButtonAnimated:(BOOL)animated
+{
+    [self.processButton setTitle:LOC(@"LOC_ORDER_RETRY") forState:UIControlStateNormal];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableTapped:)];
-    [self.ordersTableView addGestureRecognizer:tap];
+    if (!animated)
+    {
+        if (self.order.status == OrderStatus_Completed ||
+            self.order.status == OrderStatus_Cancelled)
+        {
+            self.processButton.hidden = NO;
+            self.processButton.alpha = 1;
+            self.ordersTableView.height = self.processButton.y - 5 - self.ordersTableView.y;
+        }
+        else
+        {
+            self.processButton.hidden = YES;
+            self.ordersTableView.height = self.view.height - self.ordersTableView.y;
+        }
+    }
+    
+    if (self.order.status == OrderStatus_Completed ||
+        self.order.status == OrderStatus_Cancelled)
+    {
+        if (self.processButton.hidden)
+        {
+            self.processButton.alpha = 0;
+            self.processButton.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.processButton.alpha = 1;
+                
+                self.ordersTableView.height = self.processButton.y - 5 - self.ordersTableView.y;
+            }];
+        }
+            
+    }
+    else
+    {
+        if (!self.processButton.hidden)
+        {
+            self.processButton.alpha = 1;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.processButton.alpha = 0;
+                
+                self.ordersTableView.height = self.view.height - self.ordersTableView.y;
+            } completion:^(BOOL finished) {
+                self.processButton.hidden = YES;
+            }];
+        }
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,23 +186,90 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.order.count;
+    if (self.statusMode)
+    {
+        return self.order.list.count + 3;
+    }
+    return self.order.list.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OrderTableViewCell *cell = (OrderTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
     NSInteger row = indexPath.row;
     
-    MenuItemObject * item = self.order[row];
+    if (row < self.order.list.count)
+    {
+        OrderTableViewCell *cell = (OrderTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                                                         forIndexPath:indexPath];
+        
+        
+        
+        OrderItemObject * item = self.order.list[row];
+        
+        cell.titleLabel.text = item.name;
+        [cell.countLabel setText:@(item.count).stringValue animated:NO];
+        cell.delegate = self;
+        [cell setCount:item.count withSum:item.cost];
+        
+        cell.readOnly = self.statusMode;
+        
+        return cell;
+    }
+    else
+    {
+        if (row == self.order.list.count)
+        {
+            PLTextTableViewCell * cell = nil;
+            cell = [PLTextTableViewCell cellWithText:self.order.address
+                                         placeholder:@""
+                                                name:@""
+                                             reuseId:@"address"
+                                                type:PLTableItemType_ReadOnly
+                                              blocks:nil
+                                                last:NO];
+            
+            [cell hideDivider:NO];
+            
+            return cell;
+        }
+        else if (row == self.order.list.count + 1)
+        {
+            NSDateFormatter * df = [[NSDateFormatter alloc] init];
+            df.dateStyle = NSDateFormatterShortStyle;
+            df.timeStyle = NSDateFormatterShortStyle;
+            NSString * date = [df stringFromDate:self.order.date];
+            
+            PLTextTableViewCell * cell = nil;
+            cell = [PLTextTableViewCell cellWithText:date
+                                         placeholder:@""
+                                                name:LOC(@"LOC_ORDER_DATE_FIELD")
+                                             reuseId:@"address"
+                                                type:PLTableItemType_ReadOnly
+                                              blocks:nil
+                                                last:NO];
+            
+            [cell hideDivider:NO];
+            
+            return cell;
+        }
+        else
+        {
+            PLTextTableViewCell * cell = nil;
+            cell = [PLTextTableViewCell cellWithText:self.order.statusString
+                                         placeholder:@""
+                                                name:LOC(@"LOC_ORDER_STATUS_FIELD")
+                                             reuseId:@"status"
+                                                type:PLTableItemType_ReadOnly
+                                              blocks:nil
+                                                last:YES];
+            
+            [cell hideDivider:YES];
+            
+            return cell;
+        }
+    }
     
-    cell.titleLabel.text = item.title;
-    [cell.countLabel setText:@(item.count).stringValue animated:NO];
-    cell.delegate = self;
-    [cell setCount:item.count withSum:item.cost];
-    
-    return cell;
+    return nil;
 }
 
 - (void)checkCartPosAnimated:(BOOL)animated
@@ -141,18 +300,15 @@
     NSIndexPath * path = [self.ordersTableView indexPathForCell:cell];
     NSInteger row = path.row;
     
-    MenuItemObject * item = self.order[row];
+    OrderItemObject * item = self.order.list[row];
     if (!incremented)
     {
-        item.count--;
-        
-        if (item.count < 0)
+        if (![self.order decCountForItem:item])
         {
-            item.count = 0;
             return 0;
         }
-        
-        self.bucketSum -= item.cost;
+                
+        self.bucketSum = self.order.cost;
         
         if (self.bucketSum == 0)
         {
@@ -175,16 +331,14 @@
     }
     else
     {
-        item.count++;
-        
-        if (item.count > 99)
+        if (![self.order incCountForItem:item])
         {
-            item.count = 99;
             return item.count;
         }
         
+        
         BOOL showSumm = self.bucketSum == 0;
-        self.bucketSum += item.cost;
+        self.bucketSum = self.order.cost;
         
         if (showSumm)
         {
@@ -214,11 +368,11 @@
     NSIndexPath * path = [self.ordersTableView indexPathForCell:cell];
     NSInteger row = path.row;
     
-    MenuItemObject * item = self.order[row];
+    OrderItemObject * item = self.order.list[row];
     
     if (item.count == 0)
     {
-        [self.order removeObject:item];
+        [self.order removeItem:item];
         [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         
         self.processButton.enabled = NO;
@@ -230,10 +384,13 @@
 
 - (void)tableTapped:(UITapGestureRecognizer *)tap
 {
-    CGPoint location = [tap locationInView:self.ordersTableView];
-    NSIndexPath *path = [self.ordersTableView indexPathForRowAtPoint:location];
+    if (!self.statusMode)
+    {
+        CGPoint location = [tap locationInView:self.ordersTableView];
+        NSIndexPath *path = [self.ordersTableView indexPathForRowAtPoint:location];
     
-    [self.ordersTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self.ordersTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -243,20 +400,25 @@
 
 - (IBAction)processOrder:(id)sender
 {
+    OrderObject * order = self.order;
+    
+    if (self.statusMode)
+    {
+        order = [[OrderObject alloc] initWithOrderCopy:self.order];
+    }
+    
     if (!SHARED_APP.customer.name.length ||
         !SHARED_APP.customer.phone.length ||
         !SHARED_APP.customer.orders.count)
     {
         PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
-        vc.bucketSum = self.bucketSum;
-        vc.order = self.order;
+        vc.order = order;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else
     {
         PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:self.storyboard withAddress:nil];
-        vc.bucketSum = self.bucketSum;
-        vc.order = self.order;
+        vc.order = order;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

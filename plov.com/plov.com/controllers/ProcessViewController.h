@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class OrderObject;
+
 @interface ProcessViewController : UIViewController
 
-@property (nonatomic, strong) NSArray * order;
-@property (nonatomic, assign) NSInteger bucketSum;
+@property (nonatomic, strong) OrderObject * order;
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;

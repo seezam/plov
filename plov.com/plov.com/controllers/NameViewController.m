@@ -21,49 +21,47 @@
 {
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
-    vc.items = @[
-        [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name required:YES
-                         type:PLTableItemType_Text],
-        [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES
-                         type:PLTableItemType_Phone],
-        [PLTableItem textItem:@"mail" withTitle:LOC(@"LOC_ORDER_EMAIL_FIELD") text:SHARED_APP.customer.mail required:NO
-                         type:PLTableItemType_Email],
-    ];
+    vc.fillDataBlock = ^(PLTableViewController * controller){
+        controller.items = @[
+                     [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name required:YES
+                                      type:PLTableItemType_Text],
+                     [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone required:YES
+                                      type:PLTableItemType_Phone],
+                     [PLTableItem textItem:@"mail" withTitle:LOC(@"LOC_ORDER_EMAIL_FIELD") text:SHARED_APP.customer.mail required:NO
+                                      type:PLTableItemType_Email],
+                     ];
+    };
     
-    vc.nextBlock = ^(PLTableViewController * controller){
-        dispatch_async(dispatch_get_main_queue(), ^{
+    vc.nextButtonBlock = ^(PLTableViewController * controller){
+        for (PLTableItem * item in controller.items)
+        {
+            if ([item.itemId isEqualToString:@"name"])
+            {
+                SHARED_APP.customer.name = item.text;
+            }
+            else if ([item.itemId isEqualToString:@"phone"])
+            {
+                SHARED_APP.customer.phone = item.text;
+            }
+            else if ([item.itemId isEqualToString:@"mail"])
+            {
+                SHARED_APP.customer.mail = item.text;
+            }
+        }
+        
+        if (controller.buttonMode == PLTableButtonMode_Save)
+        {
+            [SHARED_APP.customer saveData];
+            [SHARED_APP updateMenu];
+            [controller.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else
+        {
+            PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard withAddress:nil];
+            vc.order = controller.order;
             
-            for (PLTableItem * item in controller.items)
-            {
-                if ([item.itemId isEqualToString:@"name"])
-                {
-                    SHARED_APP.customer.name = item.text;
-                }
-                else if ([item.itemId isEqualToString:@"phone"])
-                {
-                    SHARED_APP.customer.phone = item.text;
-                }
-                else if ([item.itemId isEqualToString:@"mail"])
-                {
-                    SHARED_APP.customer.mail = item.text;
-                }
-            }
-            
-            if (controller.editMode)
-            {
-                [SHARED_APP.customer saveData];
-                [SHARED_APP updateMenu];
-                [controller.navigationController popToRootViewControllerAnimated:YES];
-            }
-            else
-            {
-                PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard withAddress:nil];
-                vc.bucketSum = controller.bucketSum;
-                vc.order = controller.order;
-                
-                [controller.navigationController pushViewController:vc animated:YES];
-            }
-        });
+            [controller.navigationController pushViewController:vc animated:YES];
+        }
     };
         
     return vc;

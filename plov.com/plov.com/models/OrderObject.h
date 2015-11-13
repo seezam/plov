@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class OrderItemObject;
+
 typedef enum : NSUInteger {
     OrderStatus_Created,
-    OrderStatus_Sent,
+    OrderStatus_Preparing,
+    OrderStatus_Delivering,
     OrderStatus_Completed,
+    OrderStatus_Cancelled,
 } OrderStatus;
 
 @interface OrderObject : NSObject
@@ -26,10 +30,20 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign, readonly) OrderStatus status;
 
+@property (nonatomic, strong, readonly) NSString * statusString;
+
 + (NSArray *)ordersWithData:(NSArray *)data;
 
-- (OrderObject *)initWithMenuItems:(NSArray *)items orderId:(NSString *)orderId address:(NSString *)address cost:(NSInteger)cost;
+- (OrderObject *)initWithMenuItems:(NSArray *)items orderId:(NSString *)orderId address:(NSString *)address;
+- (OrderObject *)initWithOrderCopy:(OrderObject *)order;
 
 - (NSDictionary *)orderToJson;
+
+- (BOOL)decCountForItem:(OrderItemObject *)item;
+- (BOOL)incCountForItem:(OrderItemObject *)item;
+- (void)removeItem:(OrderItemObject *)item;
+
+- (void)updateOrderWithId:(NSString *)orderId address:(NSString *)address;
+- (void)updateOrderStatus:(NSString *)status;
 
 @end

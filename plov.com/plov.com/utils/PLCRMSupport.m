@@ -40,7 +40,7 @@ NSString * crmMethodOrdersCreate = @"create";
     
     NSDictionary * orderData = @{@"by": @"id", @"externalId": orderId};
     
-    [self postCRMMethod:method params:orderData success:successBlock error:errorBlock];
+    [self getCRMMethod:method params:orderData success:successBlock error:errorBlock];
 }
 
 - (void)postCRMMethod:(NSString*)method params:(NSDictionary *)params
@@ -70,9 +70,15 @@ NSString * crmMethodOrdersCreate = @"create";
 }
 
 - (void)getCRMMethod:(NSString*)method params:(NSDictionary *)params
-              success:(void (^)(NSData *data))successBLock
+              success:(void (^)(NSDictionary *data))successBLock
                 error:(void (^)(NSError *error))errorBlock
 {
+    NSMutableDictionary * dict = [params mutableCopy];
+    dict[@"site"] = crmCode;
+    dict[@"apiKey"] = crmKey;
+    
+    params = [dict copy];
+    
     NSString * url = [NSString stringWithFormat:@"%@%@", crmUrl, method];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

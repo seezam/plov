@@ -22,6 +22,9 @@
 - (instancetype)initWithData:(NSDictionary *)data;
 - (OrderItemObject *)initWithMenuItem:(MenuItemObject *)item;
 
+- (BOOL)incCount;
+- (BOOL)decCount;
+
 - (NSDictionary *)orderItemToJson;
 
 @end
