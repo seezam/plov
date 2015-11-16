@@ -110,7 +110,7 @@
 {
     if (gesture == self.swipeLeft)
     {
-        [self setSelected:YES animated:YES];
+        [self.delegate orderCellWillSelect:self];
     }
     else if (gesture == self.swipeRight)
     {

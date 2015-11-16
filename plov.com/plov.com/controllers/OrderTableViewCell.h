@@ -15,6 +15,7 @@
 
 - (NSInteger)orderCell:(OrderTableViewCell *)cell countDidIncremented:(BOOL)incremented;
 - (void)orderCellDidDeselect:(OrderTableViewCell *)cell;
+- (void)orderCellWillSelect:(OrderTableViewCell *)cell;
 
 @end
 

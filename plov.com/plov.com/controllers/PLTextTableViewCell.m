@@ -58,7 +58,7 @@
             field.textAlignment = NSTextAlignmentCenter;
             field.text = item.text?item.text:@"";
             field.backgroundColor = [UIColor clearColor];
-            field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
+            field.textColor = [UIColor whiteColor];
             field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             [field setClearButtonMode:UITextFieldViewModeNever];
             field.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
@@ -100,7 +100,7 @@
         field.autocorrectionType = UITextAutocorrectionTypeNo;
         field.text = text?text:@"";
         field.backgroundColor = [UIColor clearColor];
-        field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
+        field.textColor = [UIColor whiteColor];
         field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [field setClearButtonMode:UITextFieldViewModeWhileEditing];
         field.delegate = cell;
@@ -127,6 +127,7 @@
                 break;
             case PLTableItemType_ReadOnly:
                 field.userInteractionEnabled = NO;
+                field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
                 break;
             case PLTableItemType_ListItem:
                 field.userInteractionEnabled = NO;

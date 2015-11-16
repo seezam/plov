@@ -363,6 +363,12 @@
     return item.count;
 }
 
+- (void)orderCellWillSelect:(OrderTableViewCell *)cell
+{
+    NSIndexPath * path = [self.ordersTableView indexPathForCell:cell];
+    [self.ordersTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+
 - (void)orderCellDidDeselect:(OrderTableViewCell *)cell
 {
     NSIndexPath * path = [self.ordersTableView indexPathForCell:cell];
