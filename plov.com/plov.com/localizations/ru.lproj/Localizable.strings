@@ -51,6 +51,8 @@
 "LOC_ORDER_CREATED" = "Спасибо!\nВаш заказ принят.\nВ ближайшее время\nмы свяжемся с вами.";
 "LOC_ORDER_FAILED" = "Возникала проблема.\nПроверьте соединение.";
 "LOC_ORDER_RETRY" = "Повторить";
+"LOC_ORDER_OR_LABEL" = "ИЛИ";
+"LOC_ORDER_CALL" = "Позвоните нам!";
 
 "LOC_ORDER_STATUS_FIELD" = "Статус";
 "ORDER_STATUS_CREATED" = "Новый";

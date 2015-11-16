@@ -51,6 +51,9 @@
 "LOC_ORDER_CREATED" = "Thank you!\nYour order accepted.\nWe will contact you soon.";
 "LOC_ORDER_FAILED" = "Some trouble happened.\nCheck connection.";
 "LOC_ORDER_RETRY" = "Retry";
+"LOC_ORDER_OR_LABEL" = "OR";
+"LOC_ORDER_CALL" = "Call us!";
+
 
 "LOC_ORDER_STATUS_FIELD" = "Status";
 "ORDER_STATUS_CREATED" = "New";

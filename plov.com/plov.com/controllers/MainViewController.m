@@ -140,6 +140,24 @@
     [self.navigationController pushViewController:orderVc animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (SHARED_APP.reinitialized)
+    {
+        [self fillItemInfo];
+
+        self.bucketSum = 0;
+        
+        self.navigationItem.rightBarButtonItem = nil;
+        
+        self.bucketSumLabel.alpha = 0;
+        self.cartIcon.x = self.view.width - self.cartIcon.width - 13;
+        [self.bucketSumLabel setText:@"" animated:NO];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     if (self.arrowAnimation)

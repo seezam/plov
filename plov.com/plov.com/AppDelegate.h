@@ -21,6 +21,8 @@
 @property (strong, nonatomic) CustomerObject * customer;
 @property (strong, nonatomic) UIWindow *window;
 
+@property (assign, nonatomic) BOOL reinitialized;
+
 + (AppDelegate *)app;
 - (SWRevealViewController *)revealViewController;
 

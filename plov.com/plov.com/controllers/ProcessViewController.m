@@ -24,13 +24,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 1, 11)];
-    
-    self.navigationController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
     self.infoLabel.layer.masksToBounds = YES;
     self.infoLabel.layer.cornerRadius = 10;
     self.doneButton.layer.cornerRadius = 10;
+    
+    self.orLabel.alpha = 0;
+    self.orLabel.text = LOC(@"LOC_ORDER_OR_LABEL");
+    
+    self.callCenterButton.alpha = 0;
+    self.callCenterButton.layer.cornerRadius = 10;
+    [self.callCenterButton setTitle:LOC(@"LOC_ORDER_CALL") forState:UIControlStateNormal];
+    
+    [self.callCenterButton addTarget:self action:@selector(callCenterAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +52,8 @@
 
 - (void)createOrder
 {
+    [self.navigationItem setHidesBackButton:YES animated:YES];
+    
     self.infoLabel.text = LOC(@"LOC_ORDER_PROCESSING");
     self.doneButton.enabled = NO;
     
@@ -126,9 +133,17 @@
 
 - (void)showError
 {
+    [self.navigationItem setHidesBackButton:NO animated:YES];
+    
     self.infoLabel.text = LOC(@"LOC_ORDER_FAILED");
     [self.doneButton setTitle:LOC(@"LOC_ORDER_RETRY") forState:UIControlStateNormal];
     self.doneButton.enabled = YES;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.orLabel.alpha = 1;
+        self.callCenterButton.alpha = 1;
+        self.callCenterButton.enabled = YES;
+    }];
 }
 
 - (IBAction)doneClick:(id)sender {
@@ -140,9 +155,24 @@
     }
     else
     {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.orLabel.alpha = 0;
+            self.callCenterButton.alpha = 0;
+            self.callCenterButton.enabled = NO;
+        }];
+        
         [self createOrder];
     }
 }
 
+- (void)callCenterAction
+{
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
+    {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    }
+}
 
 @end

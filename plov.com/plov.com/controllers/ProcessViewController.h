@@ -16,5 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIButton *callCenterButton;
+@property (weak, nonatomic) IBOutlet UILabel *orLabel;
 - (IBAction)doneClick:(id)sender;
 @end

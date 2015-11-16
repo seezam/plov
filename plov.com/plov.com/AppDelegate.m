@@ -46,6 +46,16 @@
 {
     MenuViewController * vc = (MenuViewController *)self.revealViewController.rearViewController;
     [vc reloadData];
+    
+    for (MenuCategoryObject * cat in self.menuData.categories)
+    {
+        for (MenuItemObject * item in cat.items)
+        {
+            item.count = 0;
+        }
+    }
+    
+    self.reinitialized = YES;
 }
 
 - (MenuObject *)loadData
