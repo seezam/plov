@@ -11,6 +11,7 @@
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
+		D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */; };
 		D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5421B72CFCB00B0E16E /* StartViewController.m */; };
 		D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55C1B73DF9000B0E16E /* AFHTTPRequestOperation.m */; };
 		D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55E1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m */; };
@@ -79,6 +80,7 @@
 		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
 		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
+		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = plov.com/frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D513F5411B72CFCB00B0E16E /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		D513F5421B72CFCB00B0E16E /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		D513F55B1B73DF9000B0E16E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */,
 				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
 				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
 			);
@@ -198,6 +201,7 @@
 		184B14DD1B6E84DD00276C04 = {
 			isa = PBXGroup;
 			children = (
+				D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */,
 				184B14E81B6E84DD00276C04 /* plov.com */,
 				184B14E71B6E84DD00276C04 /* Products */,
 			);
@@ -651,6 +655,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/plov.com/frameworks/Intercom",
+					"$(PROJECT_DIR)/plov.com/frameworks",
 				);
 				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
 				INFOPLIST_FILE = plov.com/Info.plist;
@@ -672,6 +677,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/plov.com/frameworks/Intercom",
+					"$(PROJECT_DIR)/plov.com/frameworks",
 				);
 				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
 				INFOPLIST_FILE = plov.com/Info.plist;

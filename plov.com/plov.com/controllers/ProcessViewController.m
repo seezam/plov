@@ -111,6 +111,8 @@
             self.infoLabel.text = LOC(@"LOC_ORDER_CREATED");
             [self.doneButton setTitle:@"OK" forState:UIControlStateNormal];
             self.doneButton.enabled = YES;
+            
+            [FBSDKAppEvents logEvent:@"Puchased" valueToSum:self.order.cost];
         }
         else
         {
