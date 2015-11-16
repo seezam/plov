@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "plus@2x.png"
+      "filename" : "plus@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "6Oval+.png",
       "scale" : "3x"
     }
   ],

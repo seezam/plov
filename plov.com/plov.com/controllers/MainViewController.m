@@ -61,6 +61,18 @@
     
     self.panelHidden = YES;
     
+    if (IS_IPHONE_6 || IS_IPHONE_6P)
+    {
+        CGPoint c1 = self.countMinusButton.center;
+        CGPoint c2 = self.countPlusButton.center;
+        
+        self.countMinusButton.width = self.countPlusButton.width =  48;
+        self.countMinusButton.height = self.countPlusButton.height = 48;
+        
+        self.countMinusButton.center = c1;
+        self.countPlusButton.center = c2;
+    }
+    
     [self.countMinusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
     [self.countPlusButton addTarget:self action:@selector(countChanged:) forControlEvents:UIControlEventTouchUpInside];
     self.countLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:28];
