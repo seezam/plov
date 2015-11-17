@@ -34,6 +34,10 @@
 
 #import <Parse/Parse.h>
 
+#import "TAGContainer.h"
+#import "TAGContainerOpener.h"
+#import "TAGManager.h"
+
 //@import Intercom;
 
 #define SHARED_APP [AppDelegate app]

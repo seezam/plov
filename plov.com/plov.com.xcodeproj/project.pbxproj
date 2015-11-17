@@ -17,6 +17,9 @@
 		D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0361BFB29D000544165 /* libz.tbd */; };
 		D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0381BFB29D700544165 /* libsqlite3.tbd */; };
 		D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC03A1BFB29F600544165 /* AudioToolbox.framework */; };
+		D50EC0441BFBB2D600544165 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0431BFBB2D600544165 /* CoreData.framework */; };
+		D50EC04E1BFBB35300544165 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0481BFBB35300544165 /* libGoogleAnalyticsServices.a */; };
+		D50EC0501BFBB5CF00544165 /* GTM-W8ZTJS in Resources */ = {isa = PBXBuildFile; fileRef = D50EC04F1BFBB5CF00544165 /* GTM-W8ZTJS */; };
 		D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5421B72CFCB00B0E16E /* StartViewController.m */; };
 		D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55C1B73DF9000B0E16E /* AFHTTPRequestOperation.m */; };
 		D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55E1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m */; };
@@ -87,10 +90,18 @@
 		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
 		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D50EC0301BFB26F000544165 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = plov.com/frameworks/Bolts.framework; sourceTree = "<group>"; };
+		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D50EC0361BFB29D000544165 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D50EC0381BFB29D700544165 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D50EC03A1BFB29F600544165 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D50EC0431BFBB2D600544165 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D50EC0481BFBB35300544165 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		D50EC0491BFBB35300544165 /* TAGContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainer.h; sourceTree = "<group>"; };
+		D50EC04A1BFBB35300544165 /* TAGContainerOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainerOpener.h; sourceTree = "<group>"; };
+		D50EC04B1BFBB35300544165 /* TAGDataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGDataLayer.h; sourceTree = "<group>"; };
+		D50EC04C1BFBB35300544165 /* TAGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGLogger.h; sourceTree = "<group>"; };
+		D50EC04D1BFBB35300544165 /* TAGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGManager.h; sourceTree = "<group>"; };
+		D50EC04F1BFBB5CF00544165 /* GTM-W8ZTJS */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTM-W8ZTJS"; sourceTree = "<group>"; };
 		D513F5411B72CFCB00B0E16E /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		D513F5421B72CFCB00B0E16E /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		D513F55B1B73DF9000B0E16E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -199,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50EC0441BFBB2D600544165 /* CoreData.framework in Frameworks */,
 				D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */,
 				D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */,
 				D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */,
@@ -207,6 +219,7 @@
 				D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */,
 				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
 				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
+				D50EC04E1BFBB35300544165 /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,10 +229,6 @@
 		184B14DD1B6E84DD00276C04 = {
 			isa = PBXGroup;
 			children = (
-				D50EC03A1BFB29F600544165 /* AudioToolbox.framework */,
-				D50EC0381BFB29D700544165 /* libsqlite3.tbd */,
-				D50EC0361BFB29D000544165 /* libz.tbd */,
-				D50EC0341BFB286E00544165 /* Bolts.framework */,
 				184B14E81B6E84DD00276C04 /* plov.com */,
 				184B14E71B6E84DD00276C04 /* Products */,
 			);
@@ -257,6 +266,7 @@
 		184B14E91B6E84DD00276C04 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D50EC04F1BFBB5CF00544165 /* GTM-W8ZTJS */,
 				184B14EA1B6E84DD00276C04 /* Info.plist */,
 				184B14EB1B6E84DD00276C04 /* main.m */,
 				D56D64821B6FF8200077671F /* plov.com-prefix.pch */,
@@ -267,6 +277,12 @@
 		184B150F1B6E87E200276C04 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D50EC03A1BFB29F600544165 /* AudioToolbox.framework */,
+				D50EC0381BFB29D700544165 /* libsqlite3.tbd */,
+				D50EC0361BFB29D000544165 /* libz.tbd */,
+				D50EC0341BFB286E00544165 /* Bolts.framework */,
+				D50EC0471BFBB33500544165 /* GTM */,
+				D50EC0431BFBB2D600544165 /* CoreData.framework */,
 				D50EC0301BFB26F000544165 /* Parse.framework */,
 				D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */,
 				D56D64831B6FFA0F0077671F /* UIKit.framework */,
@@ -328,6 +344,19 @@
 				D593FAF41BDB87F7004768E9 /* MyOrdersViewController.m */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		D50EC0471BFBB33500544165 /* GTM */ = {
+			isa = PBXGroup;
+			children = (
+				D50EC0481BFBB35300544165 /* libGoogleAnalyticsServices.a */,
+				D50EC0491BFBB35300544165 /* TAGContainer.h */,
+				D50EC04A1BFBB35300544165 /* TAGContainerOpener.h */,
+				D50EC04B1BFBB35300544165 /* TAGDataLayer.h */,
+				D50EC04C1BFBB35300544165 /* TAGLogger.h */,
+				D50EC04D1BFBB35300544165 /* TAGManager.h */,
+			);
+			path = GTM;
 			sourceTree = "<group>";
 		};
 		D513F55A1B73DF9000B0E16E /* AFNetworking */ = {
@@ -504,6 +533,7 @@
 				D513F5A01B7401EE00B0E16E /* ProximaNova-LightIt.otf in Resources */,
 				D513F59C1B7401EE00B0E16E /* ProximaNova-Black.otf in Resources */,
 				D513F5A31B7401EE00B0E16E /* ProximaNova-Xbold.otf in Resources */,
+				D50EC0501BFBB5CF00544165 /* GTM-W8ZTJS in Resources */,
 				D513F5AA1B74069200B0E16E /* Localizable.strings in Resources */,
 				D58BF8B11B7B781A00821175 /* Plov.xcassets in Resources */,
 				D513F59E1B7401EE00B0E16E /* ProximaNova-BoldIt.otf in Resources */,
@@ -681,6 +711,10 @@
 				INFOPLIST_FILE = plov.com/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/plov.com/frameworks/GTM",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";
@@ -703,6 +737,10 @@
 				INFOPLIST_FILE = plov.com/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/plov.com/frameworks/GTM",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SHARED_PRECOMPS_DIR = "$(CACHE_ROOT)/SharedPrecompiledHeaders";

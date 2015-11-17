@@ -21,7 +21,10 @@
 #import "PLCRMSupport.h"
 #import "CustomerObject.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <TAGContainerOpenerNotifier>
+
+@property (nonatomic, strong) TAGManager *tagManager;
+@property (nonatomic, strong) TAGContainer *container;
 
 @end
 
@@ -343,9 +346,8 @@
 
 #pragma mark - delegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     /*
@@ -356,6 +358,17 @@
     [Intercom setPreviewPosition:ICMPreviewPositionTopLeft];
     [Intercom setPreviewPaddingWithX:9 y:100];
     */
+    
+    self.tagManager = [TAGManager instance];
+    
+    // Optional: Change the LogLevel to Verbose to enable logging at VERBOSE and higher levels.
+    [self.tagManager.logger setLogLevel:kTAGLoggerLogLevelVerbose];
+    
+    [TAGContainerOpener openContainerWithId:@"GTM-W8ZTJS"   // Update with your Container ID.
+                                 tagManager:self.tagManager
+                                   openType:kTAGOpenTypePreferFresh
+                                    timeout:nil
+                                   notifier:self];
     
     [Parse setApplicationId:@"1OwEBp7a2H7MInky6Tps3kMhh8iqXdYzv1QtTfng"
                   clientKey:@"vOqnH9hAB7TUFQ6hp4IHAth2ZwVEr0PE1Xp1X5Cs"];
@@ -376,6 +389,14 @@
     }
     
     return YES;
+}
+
+// TAGContainerOpenerNotifier callback.
+- (void)containerAvailable:(TAGContainer *)container
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.container = container;
+    });
 }
 
 - (BOOL)application:(UIApplication *)application
