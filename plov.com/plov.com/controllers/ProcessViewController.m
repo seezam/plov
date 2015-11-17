@@ -62,7 +62,7 @@
     orderDict[@"firstName"] = SHARED_APP.customer.name;
     orderDict[@"phone"] = SHARED_APP.customer.phone;
     orderDict[@"contragentType"] = @"individual";
-    orderDict[@"orderType"] = @"ios";
+    orderDict[@"orderType"] = @"ios-app";
     
     NSMutableArray * orders = [NSMutableArray array];
     
@@ -99,6 +99,12 @@
     {
         deliverTo[@"block"] = address.block;
     }
+    
+    if (address.floor.length)
+    {
+        deliverTo[@"floor"] = address.floor;
+    }
+    
     orderDict[@"delivery"] = @{@"address": deliverTo};
 
     [SHARED_APP.crm createOrder:orderDict success:^(NSDictionary * resp) {

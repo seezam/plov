@@ -12,6 +12,11 @@
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
 		D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */; };
+		D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0301BFB26F000544165 /* Parse.framework */; };
+		D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0341BFB286E00544165 /* Bolts.framework */; };
+		D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0361BFB29D000544165 /* libz.tbd */; };
+		D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0381BFB29D700544165 /* libsqlite3.tbd */; };
+		D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC03A1BFB29F600544165 /* AudioToolbox.framework */; };
 		D513F5431B72CFCB00B0E16E /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F5421B72CFCB00B0E16E /* StartViewController.m */; };
 		D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55C1B73DF9000B0E16E /* AFHTTPRequestOperation.m */; };
 		D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D513F55E1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m */; };
@@ -80,7 +85,12 @@
 		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
 		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
-		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = plov.com/frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		D50EC0301BFB26F000544165 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = plov.com/frameworks/Bolts.framework; sourceTree = "<group>"; };
+		D50EC0361BFB29D000544165 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D50EC0381BFB29D700544165 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		D50EC03A1BFB29F600544165 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D513F5411B72CFCB00B0E16E /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		D513F5421B72CFCB00B0E16E /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		D513F55B1B73DF9000B0E16E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -189,6 +199,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */,
+				D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */,
+				D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */,
+				D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */,
+				D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */,
 				D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */,
 				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
 				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
@@ -201,7 +216,10 @@
 		184B14DD1B6E84DD00276C04 = {
 			isa = PBXGroup;
 			children = (
-				D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */,
+				D50EC03A1BFB29F600544165 /* AudioToolbox.framework */,
+				D50EC0381BFB29D700544165 /* libsqlite3.tbd */,
+				D50EC0361BFB29D000544165 /* libz.tbd */,
+				D50EC0341BFB286E00544165 /* Bolts.framework */,
 				184B14E81B6E84DD00276C04 /* plov.com */,
 				184B14E71B6E84DD00276C04 /* Products */,
 			);
@@ -249,6 +267,8 @@
 		184B150F1B6E87E200276C04 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D50EC0301BFB26F000544165 /* Parse.framework */,
+				D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */,
 				D56D64831B6FFA0F0077671F /* UIKit.framework */,
 				D56D64801B6FF7E60077671F /* Foundation.framework */,
 				D58BF8B51B7BF68900821175 /* BBCyclingLabel */,

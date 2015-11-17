@@ -357,8 +357,23 @@
     [Intercom setPreviewPaddingWithX:9 y:100];
     */
     
+    [Parse setApplicationId:@"1OwEBp7a2H7MInky6Tps3kMhh8iqXdYzv1QtTfng"
+                  clientKey:@"vOqnH9hAB7TUFQ6hp4IHAth2ZwVEr0PE1Xp1X5Cs"];
+    
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]){ // iOS 8 (User notifications)
+        [application registerUserNotificationSettings:
+         [UIUserNotificationSettings settingsForTypes:
+          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)
+                                           categories:nil]];
+        [application registerForRemoteNotifications];
+    } else { // iOS 7 (Remote notifications)
+        [application registerForRemoteNotificationTypes:
+         (UIRemoteNotificationType)(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
     
     return YES;
 }
@@ -399,21 +414,25 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     [FBSDKAppEvents activateApp];
-    
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]){ // iOS 8 (User notifications)
-        [application registerUserNotificationSettings:
-         [UIUserNotificationSettings settingsForTypes:
-          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)
-                                           categories:nil]];
-        [application registerForRemoteNotifications];
-    } else { // iOS 7 (Remote notifications)
-        [application registerForRemoteNotificationTypes:
-         (UIRemoteNotificationType)(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [Intercom setDeviceToken:deviceToken];
+    NSLog(@"My token is: %@", deviceToken);
+    
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

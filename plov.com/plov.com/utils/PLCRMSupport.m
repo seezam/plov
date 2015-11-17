@@ -12,9 +12,13 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "NSString+JSONString.h"
 
-NSString * crmKey = @"79rFnffNDYVR3kfUUPU37sGQzQmlQWLO";
-NSString * crmCode = @"kubyshev-ru";
-NSString * crmUrl = @"https://kubyshev.retailcrm.ru";
+//NSString * crmKey = @"79rFnffNDYVR3kfUUPU37sGQzQmlQWLO";
+//NSString * crmCode = @"kubyshev-ru";
+//NSString * crmUrl = @"https://kubyshev.retailcrm.ru";
+
+NSString * crmKey = @"ULUtDZ9mWVu1K9uKJr3UjdSxZ9ufU37d";
+NSString * crmCode = @"plov-com";
+NSString * crmUrl = @"https://plov1.retailcrm.ru";
 
 NSString * crmMethodOrders = @"/api/v3/orders/";
 NSString * crmMethodOrdersCreate = @"create";

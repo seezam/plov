@@ -32,6 +32,8 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#import <Parse/Parse.h>
+
 //@import Intercom;
 
 #define SHARED_APP [AppDelegate app]
