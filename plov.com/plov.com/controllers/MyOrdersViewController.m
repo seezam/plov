@@ -53,6 +53,8 @@
     };
     
     vc.buttonMode = PLTableButtonMode_None;
+    
+    vc.screenName = @"My Orders";
     return vc;
 }
 

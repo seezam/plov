@@ -96,6 +96,15 @@
     [self reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                      @"screenName": @"Menu"}];  // Name of the screen name field, screen name value.
+}
+
 //- (void)viewWillAppear:(BOOL)animated
 //{
 //    [super viewWillAppear:animated];

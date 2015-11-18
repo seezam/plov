@@ -40,11 +40,14 @@
             
             PLTableViewController * avc = [AddressViewController instantiateFromStoryboard:storyboard withAddress:address];
             avc.buttonMode = PLTableButtonMode_SaveDelete;
+            avc.screenName = @"Address Edit";
             [controller.navigationController pushViewController:avc animated:YES];
         });
     };
     
     vc.buttonMode = PLTableButtonMode_None;
+    
+    vc.screenName = @"My Addresses";
     return vc;
 }
 

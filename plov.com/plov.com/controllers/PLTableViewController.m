@@ -149,6 +149,11 @@
     [super viewDidAppear:animated];
     
     self.initialTableHeight = self.tableView.height;
+    
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    
+    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                      @"screenName": self.screenName}];  // Name of the screen name field, screen name value.
 }
 
 

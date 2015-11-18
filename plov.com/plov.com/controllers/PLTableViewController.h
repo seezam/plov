@@ -70,6 +70,8 @@ typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableIte
 
 @property (nonatomic, assign) PLTableButtonMode buttonMode;
 
+@property (nonatomic, copy) NSString * screenName;
+
 + (PLTableViewController *)instantiateFromStoryboard:(UIStoryboard *)storyboard;
 
 - (IBAction)processToOrder:(id)sender;

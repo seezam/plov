@@ -74,7 +74,18 @@
         } error:^(NSError *error) {
             
         }];
+        
+        TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+        [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                          @"screenName": @"Order Status"}];  // Name of the screen name field, screen name value.
     }
+    else
+    {
+        TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+        [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                          @"screenName": @"Order Edit"}];  // Name of the screen name field, screen name value.
+    }
+
 }
 
 - (void)viewDidLoad
@@ -419,6 +430,7 @@
     {
         PLTableViewController * vc = [NameViewController instantiateFromStoryboard:self.storyboard];
         vc.order = order;
+        vc.screenName = @"Name Order";
         [self.navigationController pushViewController:vc animated:YES];
     }
     else

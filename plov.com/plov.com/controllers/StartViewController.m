@@ -23,6 +23,15 @@
     [self checkForNetwork];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                      @"screenName": @"Main"}];  // Name of the screen name field, screen name value.
+}
+
 static int checkingTryes = 0;
 #define MAXIMUM_CHECKING_TRYES 10
 

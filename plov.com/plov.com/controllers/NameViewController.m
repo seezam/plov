@@ -59,11 +59,14 @@
         {
             PLTableViewController * vc = [AddressViewController instantiateFromStoryboard:storyboard withAddress:nil];
             vc.order = controller.order;
+            vc.screenName = @"Order Address";
             
             [controller.navigationController pushViewController:vc animated:YES];
         }
     };
-        
+    
+    vc.screenName = @"My Name";
+    
     return vc;
 }
 

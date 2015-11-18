@@ -182,6 +182,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppIdleBreaks) name:kApplicationDidTimeoutBreaksNotification object:nil];
     
     [self scheduleItemsAnimation];
+    
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    
+    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
+                      @"screenName": @"Main"}];  // Name of the screen name field, screen name value.
 }
 
 - (void)viewDidDisappear:(BOOL)animated
