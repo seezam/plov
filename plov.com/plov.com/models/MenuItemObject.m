@@ -50,6 +50,14 @@
 {
     _cost = cost;
     _weight = weight;
+    _litres = NO;
+}
+
+- (void)setCost:(NSInteger)cost forLitres:(NSInteger)litres
+{
+    _cost = cost;
+    _weight = litres;
+    _litres = YES;
 }
 
 - (UIImage *)image

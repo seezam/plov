@@ -460,7 +460,14 @@
     {
         MenuItemObject * item = self.items[_currentItem][@"item"];
     
-        self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
+        if (item.litres)
+        {
+            self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_LITRES"), @(item.weight)];
+        }
+        else
+        {
+            self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_WEIGHT"), @(item.weight)];
+        }
         self.priceLabel.attributedText = [SHARED_APP rubleCost:item.cost font:self.priceLabel.font];
         [self.countLabel setText:@(item.count).stringValue animated:NO];
     }

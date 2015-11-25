@@ -19,6 +19,7 @@
 "LOC_MENU_CALL" = "CALL-ЦЕНТР";
 
 "LOC_MAIN_WEIGHT" = "%@ гр";
+"LOC_MAIN_LITRES" = "%@ л";
 "LOC_MAIN_COST" = "%@ руб";
 
 "LOC_CONTINUE_BUTTON" = "Продолжить";

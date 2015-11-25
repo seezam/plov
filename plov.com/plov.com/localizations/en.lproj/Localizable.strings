@@ -19,6 +19,7 @@
 "LOC_MENU_CALL" = "CALL-CENTER";
 
 "LOC_MAIN_WEIGHT" = "%@ g";
+"LOC_MAIN_LITRES" = "%@ l";
 "LOC_MAIN_COST" = "%@ rub";
 
 "LOC_CONTINUE_BUTTON" = "Continue";
