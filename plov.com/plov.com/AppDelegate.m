@@ -309,7 +309,7 @@
 {
     if (alertView.tag == 100)
     {
-        NSURL *appStoreURL = [NSURL URLWithString:@"http://appstore.com/plovcom"];
+        NSURL *appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/app/id1029884019"];
         [[UIApplication sharedApplication] openURL:appStoreURL];
     }
 }
