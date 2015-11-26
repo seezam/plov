@@ -27,6 +27,9 @@
 + (AppDelegate *)app;
 - (SWRevealViewController *)revealViewController;
 
+- (BOOL)checkForAppVersion;
+- (void)updateApplication;
+
 - (void)startApplication:(UIView *)fromView;
 - (void)informNetworkIssue;
 

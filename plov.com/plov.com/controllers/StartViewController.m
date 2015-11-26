@@ -38,7 +38,22 @@ static int checkingTryes = 0;
 - (void)checkForNetwork
 {
 #ifdef DO_NOT_CHECK_INTERNET
-    [SHARED_APP startApplication:self.view];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([SHARED_APP checkForAppVersion])
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SHARED_APP startApplication:self.view];
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SHARED_APP updateApplication];
+            });
+        }
+    });
+    
+    
     return;
 #endif
     

@@ -12,6 +12,8 @@
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
 		18FD9B811C077AC0004D835D /* PLTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD9B801C077AC0004D835D /* PLTracking.m */; };
+		18FD9B831C078D45004D835D /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD9B821C078D45004D835D /* libAdIdAccess.a */; };
+		18FD9B851C078DD7004D835D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD9B841C078DD6004D835D /* AdSupport.framework */; };
 		D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */; };
 		D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0301BFB26F000544165 /* Parse.framework */; };
 		D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0341BFB286E00544165 /* Bolts.framework */; };
@@ -91,6 +93,8 @@
 		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
 		18FD9B7F1C077AC0004D835D /* PLTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTracking.h; sourceTree = "<group>"; };
 		18FD9B801C077AC0004D835D /* PLTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTracking.m; sourceTree = "<group>"; };
+		18FD9B821C078D45004D835D /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAdIdAccess.a; path = GTM/libAdIdAccess.a; sourceTree = "<group>"; };
+		18FD9B841C078DD6004D835D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D50EC0301BFB26F000544165 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FD9B851C078DD7004D835D /* AdSupport.framework in Frameworks */,
+				18FD9B831C078D45004D835D /* libAdIdAccess.a in Frameworks */,
 				D50EC0441BFBB2D600544165 /* CoreData.framework in Frameworks */,
 				D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */,
 				D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */,
@@ -280,6 +286,8 @@
 		184B150F1B6E87E200276C04 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18FD9B841C078DD6004D835D /* AdSupport.framework */,
+				18FD9B821C078D45004D835D /* libAdIdAccess.a */,
 				D50EC03A1BFB29F600544165 /* AudioToolbox.framework */,
 				D50EC0381BFB29D700544165 /* libsqlite3.tbd */,
 				D50EC0361BFB29D000544165 /* libz.tbd */,

@@ -64,8 +64,10 @@
 "ORDER_STATUS_CANCELLED" = "Отменен";
 "ORDER_STATUS_COMPLETED" = "Завершен";
 
-
 "DELETE_ADDRESS_ACTION" = "Удалить этот адрес?";
 "DELETE_ACTION" = "Удалить";
 "CANCEL_ACTION" = "Отменить";
 "OK_ACTION" = "OK";
+"UPDATE_ACTION" = "Обновить";
+
+"LOC_MINIMAL_VER" = "Версия приложения устарела. Пожалуйста, обновите.";

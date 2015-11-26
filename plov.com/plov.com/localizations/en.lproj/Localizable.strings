@@ -69,3 +69,6 @@
 "DELETE_ACTION" = "Delete";
 "CANCEL_ACTION" = "Cancel";
 "OK_ACTION" = "OK";
+"UPDATE_ACTION" = "Update";
+
+"LOC_MINIMAL_VER" = "Application version is up to date. Please, update.";

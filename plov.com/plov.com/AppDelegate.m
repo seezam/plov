@@ -21,7 +21,7 @@
 #import "CustomerObject.h"
 
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UIAlertViewDelegate>
 
 
 
@@ -294,6 +294,42 @@
     obj.minimalCost = 1500;
     
     return obj;
+}
+
+- (void)updateApplication
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                     message:LOC(@"LOC_MINIMAL_VER") delegate:self cancelButtonTitle:LOC(@"UPDATE_ACTION") otherButtonTitles:nil];
+    
+    alert.tag = 100;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100)
+    {
+        NSURL *appStoreURL = [NSURL URLWithString:@"http://appstore.com/plovcom"];
+        [[UIApplication sharedApplication] openURL:appStoreURL];
+    }
+}
+
+- (BOOL)checkForAppVersion
+{
+    NSData * str = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://plov.com/apps.php"] options:0 error:nil];
+    
+    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:str options:0 error:nil];
+    
+    if (json.count)
+    {
+        NSInteger minBuild = [json[@"min-ios-build-number"] integerValue];
+        
+        NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
+        
+        return (appBuild >= minBuild);
+    }
+    
+    return YES;
 }
 
 - (void)startApplication:(UIView *)fromView
