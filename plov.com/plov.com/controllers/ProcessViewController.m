@@ -49,9 +49,9 @@
     
     [self createOrder];
     
-    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                      @"screenName": @"Post Order"}];  // Name of the screen name field, screen name value.
+    [SHARED_APP.tracking openScreen:@"Post Order"];
+    
+    [SHARED_APP.tracking orderStep:self.order step:4];
 }
 
 - (void)createOrder
@@ -129,7 +129,9 @@
             [self.doneButton setTitle:@"OK" forState:UIControlStateNormal];
             self.doneButton.enabled = YES;
             
-            [FBSDKAppEvents logEvent:@"Puchased" valueToSum:self.order.cost];
+            [SHARED_APP.tracking FBLogEvent:@"Purchased" sum:self.order.cost];
+            
+            [SHARED_APP.tracking cartPurchased:self.order];
         }
         else
         {

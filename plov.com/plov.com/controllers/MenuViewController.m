@@ -100,9 +100,7 @@
 {
     [super viewDidAppear:animated];
     
-    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                      @"screenName": @"Menu"}];  // Name of the screen name field, screen name value.
+    [SHARED_APP.tracking openScreen:@"Menu"];
 }
 
 //- (void)viewWillAppear:(BOOL)animated

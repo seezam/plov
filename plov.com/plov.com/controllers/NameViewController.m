@@ -22,6 +22,11 @@
     PLTableViewController * vc = [super instantiateFromStoryboard:storyboard];
     
     vc.fillDataBlock = ^(PLTableViewController * controller){
+        if (controller.buttonMode != PLTableButtonMode_Save)
+        {
+            [SHARED_APP.tracking orderStep:controller.order step:3];
+        }
+        
         controller.items = @[
                      [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name required:YES
                                       type:PLTableItemType_Text],

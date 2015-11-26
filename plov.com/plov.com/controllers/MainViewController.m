@@ -183,10 +183,7 @@
     
     [self scheduleItemsAnimation];
     
-    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-    
-    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                      @"screenName": @"Main"}];  // Name of the screen name field, screen name value.
+    [SHARED_APP.tracking openScreen:@"Main"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -294,6 +291,11 @@
                 return;
             }
         
+            NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+            
+            [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:item.title
+                                        itemId:item.itemId price:item.cost quantity:1];
+            
             self.bucketSum -= item.cost;
         
             if (self.bucketSum == 0)
@@ -325,6 +327,10 @@
                 item.count = 99;
                 return;
             }
+            
+            NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+            [SHARED_APP.tracking cartOperation:YES category:categoryName itemName:item.title
+                                        itemId:item.itemId price:item.cost quantity:1];
             
             BOOL showSumm = self.bucketSum == 0;
             self.bucketSum += item.cost;

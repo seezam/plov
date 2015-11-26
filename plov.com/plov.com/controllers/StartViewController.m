@@ -27,9 +27,7 @@
 {
     [super viewDidAppear:animated];
     
-    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-    [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                      @"screenName": @"Main"}];  // Name of the screen name field, screen name value.
+    [SHARED_APP.tracking openScreen:@"Launch"];
 }
 
 static int checkingTryes = 0;

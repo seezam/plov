@@ -13,6 +13,7 @@
 @interface OrderItemObject : NSObject
 
 @property (nonatomic, strong, readonly) NSString * itemId;
+@property (nonatomic, strong, readonly) NSString * categoryId;
 
 @property (nonatomic, strong, readonly) NSString * name;
 

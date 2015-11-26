@@ -11,9 +11,13 @@
 @class MenuCategoryObject;
 
 @interface MenuObject : NSObject
+
+@property (nonatomic, assign) NSUInteger minimalCost;
 @property (nonatomic, readonly, strong) NSArray * categories;
 
 - (instancetype)initWithData:(NSData *)data;
 
 - (void)addMenuCategory:(MenuCategoryObject *)category;
+- (MenuCategoryObject *)categoryById:(NSString *)categoryId;
+
 @end

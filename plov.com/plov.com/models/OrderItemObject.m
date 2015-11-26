@@ -11,6 +11,7 @@
 
 static const NSString * idField = @"id";
 static const NSString * nameField = @"name";
+static const NSString * categoryField = @"category";
 static const NSString * costField = @"cost";
 static const NSString * countField = @"count";
 
@@ -33,6 +34,7 @@ static const NSString * countField = @"count";
     {
         _itemId = dict[idField];
         _name = dict[nameField];
+        _categoryId = dict[categoryField];
         _cost = [dict[costField] integerValue];
         _count = [dict[countField] integerValue];
     }
@@ -46,6 +48,7 @@ static const NSString * countField = @"count";
         _cost = item.cost;
         _count = item.count;
         _name = item.title;
+        _categoryId = item.categoryId;
     }
     
     return self;
@@ -57,6 +60,7 @@ static const NSString * countField = @"count";
     
     dict[idField] = self.itemId;
     dict[nameField] = self.name;
+    dict[categoryField] = self.categoryId;
     dict[costField] = @(self.cost);
     dict[countField] = @(self.count);
     

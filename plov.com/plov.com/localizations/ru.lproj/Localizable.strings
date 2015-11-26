@@ -28,6 +28,8 @@
 "LOC_ORDER_TEXT" = "Заказ";
 "LOC_TITLE_ORDER" = "Ваш заказ";
 
+"LOC_MINIMAL_COST" = "Извините, минимальная сумма заказа %@ рублей. Вам нужно добавить блюд на %@ рублей.";
+
 "LOC_ORDER_HINT_REQUIRED" = "Обязательно";
 "LOC_ORDER_HINT_OPTIONAL" = "Не обязательно";
 
@@ -66,3 +68,4 @@
 "DELETE_ADDRESS_ACTION" = "Удалить этот адрес?";
 "DELETE_ACTION" = "Удалить";
 "CANCEL_ACTION" = "Отменить";
+"OK_ACTION" = "OK";

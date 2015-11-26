@@ -25,6 +25,11 @@
     AddressObject * lastAddress = address?address:SHARED_APP.customer.addresses.lastObject;
     
     vc.fillDataBlock = ^(PLTableViewController * controller) {
+        if (!address)
+        {
+            [SHARED_APP.tracking orderStep:controller.order step:2];
+        }
+        
         controller.items = @[
                      [PLTableItem textItem:@"city" withTitle:LOC(@"LOC_ORDER_CITY_FIELD") text:LOC(@"LOC_ORDER_CITY_DEF")
                                   required:YES

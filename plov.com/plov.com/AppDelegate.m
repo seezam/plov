@@ -18,13 +18,12 @@
 #import "MenuViewController.h"
 #import "SWRevealViewController.h"
 
-#import "PLCRMSupport.h"
 #import "CustomerObject.h"
 
-@interface AppDelegate () <TAGContainerOpenerNotifier>
 
-@property (nonatomic, strong) TAGManager *tagManager;
-@property (nonatomic, strong) TAGContainer *container;
+@interface AppDelegate ()
+
+
 
 @end
 
@@ -214,7 +213,7 @@
     
     MenuItemObject * item53 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item53 setTitle:@"i—Чучук" forLng:@""];
-    [item52 setDesc:@"Тонко порезанные спелые ароматные помидоры, белый лук, вместе с нашинкованным зеленым базиликом — традиционный салат для плова." forLng:@""];
+    [item53 setDesc:@"Тонко порезанные спелые ароматные помидоры, белый лук, вместе с нашинкованным зеленым базиликом — традиционный салат для плова." forLng:@""];
     [item53 setCost:150 forWeight:150];
     [cat5 addMenuItem:item53];
     
@@ -236,28 +235,35 @@
     [cat6 addMenuItem:item61];
     
     MenuItemObject * item62 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item62 setTitle:@"Кутаб Пифагора с зеленью" forLng:@""];
-    [item62 setDesc:@"Начинённый шпинатом и кинзой, с добавлением зелёного молодого лука и укропа. Приготовленный из бездрожжевого теста на огне." forLng:@""];
+    [item62 setTitle:@"Кутаб Пифагора с мясом" forLng:@""];
+    [item62 setDesc:@"Мякоть говядины и специи, с добавлением приправ в запеченном без дрожжевом тесте и обмазанное сливочным маслом." forLng:@""];
     [item62 setCost:200 forWeight:130];
     [cat6 addMenuItem:item62];
     
     MenuItemObject * item63 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item63 setTitle:@"Самса с ягнятиной" forLng:@""];
-    [item63 setDesc:@"Приготовленная по традиционному узбекскому рецепту, с начинкой из мелко рубленной баранины с добавлением лука и душистых специй в слоеном тесте." forLng:@""];
-    [item63 setCost:180 forWeight:100];
+    [item63 setTitle:@"Кутаб Пифагора с зеленью" forLng:@""];
+    [item63 setDesc:@"Начинённый шпинатом и кинзой, с добавлением зелёного молодого лука и укропа. Приготовленный из бездрожжевого теста на огне." forLng:@""];
+    [item63 setCost:200 forWeight:130];
     [cat6 addMenuItem:item63];
-
-    MenuItemObject * item64 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item64 setTitle:@"Самса с тыквой" forLng:@""];
-    [item64 setDesc:@"Запеченное слоеное тесто с начинкой из ароматной тыквы, лука, с добавлением душистых специй." forLng:@""];
-    [item64 setCost:160 forWeight:100];
-    [cat6 addMenuItem:item64];
     
+    MenuItemObject * item64 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+    [item64 setTitle:@"Самса с ягнятиной" forLng:@""];
+    [item64 setDesc:@"Приготовленная по традиционному узбекскому рецепту, с начинкой из мелко рубленной баранины с добавлением лука и душистых специй в слоеном тесте." forLng:@""];
+    [item64 setCost:180 forWeight:100];
+    [cat6 addMenuItem:item64];
+
     MenuItemObject * item65 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item65 setTitle:@"The Лепешка" forLng:@""];
-    [item65 setDesc:@"Запеченное в тандыре пшеничное тесто на воде, украшенное кунжутом." forLng:@""];
-    [item65 setCost:60 forWeight:100];
+    [item65 setTitle:@"Самса с тыквой" forLng:@""];
+    [item65 setDesc:@"Запеченное слоеное тесто с начинкой из ароматной тыквы, лука, с добавлением душистых специй."
+             forLng:@""];
+    [item65 setCost:160 forWeight:100];
     [cat6 addMenuItem:item65];
+    
+    MenuItemObject * item66 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+    [item66 setTitle:@"The Лепешка" forLng:@""];
+    [item66 setDesc:@"Запеченное в тандыре пшеничное тесто на воде, украшенное кунжутом." forLng:@""];
+    [item66 setCost:60 forWeight:100];
+    [cat6 addMenuItem:item66];
 //-----------------
     MenuCategoryObject * cat7 = [[MenuCategoryObject alloc] initWithId:@"6"];
     [cat7 setTitle:@"Сладости" forLng:@""];
@@ -272,7 +278,7 @@
     MenuItemObject * item72 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item72 setTitle:@"Чак-Чак Норрис" forLng:@""];
     [item72 setDesc:@"Восточное лакомство приготовленное в сочетании замешанного теста на яйцах, сахаре, масле и медовой обливки." forLng:@""];
-    [item72 setCost:60 forWeight:200];
+    [item72 setCost:180 forWeight:200];
     [cat7 addMenuItem:item72];
 //-----------------
     MenuCategoryObject * cat8 = [[MenuCategoryObject alloc] initWithId:@"7"];
@@ -284,6 +290,8 @@
     [item81 setDesc:@"Разнообразные компоты с ягодами и плодами с чудесным ароматом и вкусом." forLng:@""];
     [item81 setCost:180 forLitres:1];
     [cat8 addMenuItem:item81];
+    
+    obj.minimalCost = 1500;
     
     return obj;
 }
@@ -345,23 +353,7 @@
     [Intercom setPreviewPaddingWithX:9 y:100];
     */
     
-    self.tagManager = [TAGManager instance];
-    
-    // Optional: Change the LogLevel to Verbose to enable logging at VERBOSE and higher levels.
-    [self.tagManager.logger setLogLevel:kTAGLoggerLogLevelVerbose];
-    
-    [TAGContainerOpener openContainerWithId:@"GTM-W8ZTJS"   // Update with your Container ID.
-                                 tagManager:self.tagManager
-                                   openType:kTAGOpenTypePreferFresh
-                                    timeout:nil
-                                   notifier:self];
-    
-    [Parse setApplicationId:@"1OwEBp7a2H7MInky6Tps3kMhh8iqXdYzv1QtTfng"
-                  clientKey:@"vOqnH9hAB7TUFQ6hp4IHAth2ZwVEr0PE1Xp1X5Cs"];
-    
-    [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
-    
+    self.tracking = [[PLTracking alloc] initAtStart:launchOptions];
     
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]){ // iOS 8 (User notifications)
         [application registerUserNotificationSettings:
@@ -377,22 +369,12 @@
     return YES;
 }
 
-// TAGContainerOpenerNotifier callback.
-- (void)containerAvailable:(TAGContainer *)container
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.container = container;
-    });
-}
-
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    
+    return [self.tracking FBOpenURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -420,17 +402,14 @@
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
-    [FBSDKAppEvents activateApp];
+    [self.tracking FBActivateApp];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    [Intercom setDeviceToken:deviceToken];
     NSLog(@"My token is: %@", deviceToken);
     
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[ @"global" ];
-    [currentInstallation saveInBackground];
+    [self.tracking ParseRegisterPush:deviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -439,7 +418,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+    [self.tracking ParseHandlePush:userInfo];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -15,7 +15,7 @@
 @property (nonatomic, assign) PLTableItemType type;
 @end
 
-#define FIELD_AVAILABLE_WIDTH (320-18)
+#define FIELD_AVAILABLE_WIDTH ([[UIScreen mainScreen] bounds].size.width - 18)
 #define FIELD_WIDTH 180
 #define BLOCK_GAP 10
 #define FIELD_LEFT_MARGIN 140
@@ -59,7 +59,7 @@
             field.text = item.text?item.text:@"";
             field.backgroundColor = [UIColor clearColor];
             field.textColor = [UIColor whiteColor];
-            field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            field.autoresizingMask = UIViewAutoresizingNone;
             [field setClearButtonMode:UITextFieldViewModeNever];
             field.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             field.delegate = cell;
@@ -161,7 +161,7 @@
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(9, 47, FIELD_AVAILABLE_WIDTH, 1)];
     view.backgroundColor = UIColorFromRGBA(resColorDivider);
-    view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     cell.divider = view;
     
     [cell.contentView addSubview:view];

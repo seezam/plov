@@ -7,6 +7,7 @@
 //
 
 #import "MenuObject.h"
+#import "MenuCategoryObject.h"
 
 @implementation MenuObject
 
@@ -45,6 +46,19 @@
     [self checkArray];
     
     _categories = [_categories arrayByAddingObject:category];
+}
+
+- (MenuCategoryObject *)categoryById:(NSString *)categoryId
+{
+    for (MenuCategoryObject * obj in self.categories)
+    {
+        if ([obj.categoryId isEqualToString:categoryId])
+        {
+            return obj;
+        }
+    }
+    
+    return nil;
 }
 
 @end

@@ -543,9 +543,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="suJ-N2-M1J">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="suJ-N2-M1J">
                                             <rect key="frame" x="23" y="9" width="124" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
                                     </subviews>
@@ -722,6 +722,7 @@
         <image name="cart-white" width="23" height="22"/>
         <image name="intro.png" width="186" height="321"/>
         <image name="left" width="25" height="88"/>
+        <image name="logo" width="124" height="26"/>
         <image name="logo.png" width="124" height="26"/>
         <image name="menu-avatar" width="69" height="69"/>
         <image name="menu-edit" width="25" height="19"/>

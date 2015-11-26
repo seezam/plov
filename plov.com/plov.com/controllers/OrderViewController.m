@@ -13,6 +13,8 @@
 
 #import "CustomerObject.h"
 #import "OrderObject.h"
+#import "MenuObject.h"
+#import "MenuCategoryObject.h"
 
 #import "PLTableViewController.h"
 #import "PLTextTableViewCell.h"
@@ -75,17 +77,13 @@
             
         }];
         
-        TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-        [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                          @"screenName": @"Order Status"}];  // Name of the screen name field, screen name value.
+        [SHARED_APP.tracking openScreen:@"Order Status"];
     }
     else
     {
-        TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
-        [dataLayer push:@{@"event": @"openScreen",          // Event, name of Open Screen Event.
-                          @"screenName": @"Order Edit"}];  // Name of the screen name field, screen name value.
+        [SHARED_APP.tracking openScreen:@"Order Edit"];
+        [SHARED_APP.tracking orderStep:self.order step:1];
     }
-
 }
 
 - (void)viewDidLoad
@@ -318,7 +316,11 @@
         {
             return 0;
         }
-                
+        
+        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+        [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:item.name
+                                    itemId:item.itemId price:item.cost quantity:1];
+        
         self.bucketSum = self.order.cost;
         
         if (self.bucketSum == 0)
@@ -347,6 +349,9 @@
             return item.count;
         }
         
+        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+        [SHARED_APP.tracking cartOperation:YES category:categoryName itemName:item.name
+                                    itemId:item.itemId price:item.cost quantity:1];
         
         BOOL showSumm = self.bucketSum == 0;
         self.bucketSum = self.order.cost;
@@ -418,6 +423,23 @@
 - (IBAction)processOrder:(id)sender
 {
     OrderObject * order = self.order;
+    
+    if (order.cost < SHARED_APP.menuData.minimalCost)
+    {
+        NSInteger remain = SHARED_APP.menuData.minimalCost - order.cost;
+        
+        NSString * message = [NSString stringWithFormat:LOC(@"LOC_MINIMAL_COST"),
+                              @(SHARED_APP.menuData.minimalCost),
+                              @(remain)];
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                         message:message
+                                                        delegate:nil
+                                               cancelButtonTitle:LOC(@"OK_ACTION")
+                                               otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
     if (self.statusMode)
     {

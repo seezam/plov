@@ -12,10 +12,11 @@
 @class MenuObject;
 @class CustomerObject;
 @class SWRevealViewController;
+@class PLTracking;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-
+@property (strong, nonatomic) PLTracking * tracking;
 @property (strong, nonatomic) PLCRMSupport * crm;
 @property (strong, nonatomic) MenuObject * menuData;
 @property (strong, nonatomic) CustomerObject * customer;

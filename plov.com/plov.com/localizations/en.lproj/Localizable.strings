@@ -28,6 +28,8 @@
 "LOC_ORDER_TEXT" = "Order";
 "LOC_TITLE_ORDER" = "Your order";
 
+"LOC_MINIMAL_COST" = "Sorry, minimal order price is %@ rubles. Please, add to order dishes for %@ rubles.";
+
 "LOC_ORDER_HINT_REQUIRED" = "Required";
 "LOC_ORDER_HINT_OPTIONAL" = "Optional";
 
@@ -66,3 +68,4 @@
 "DELETE_ADDRESS_ACTION" = "Delete this address?";
 "DELETE_ACTION" = "Delete";
 "CANCEL_ACTION" = "Cancel";
+"OK_ACTION" = "OK";

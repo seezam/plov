@@ -11,6 +11,7 @@
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
 		184B15171B6E8BE800276C04 /* PLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15161B6E8BE800276C04 /* PLNavigationController.m */; };
+		18FD9B811C077AC0004D835D /* PLTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD9B801C077AC0004D835D /* PLTracking.m */; };
 		D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */; };
 		D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0301BFB26F000544165 /* Parse.framework */; };
 		D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0341BFB286E00544165 /* Bolts.framework */; };
@@ -88,6 +89,8 @@
 		184B15121B6E87E200276C04 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		184B15151B6E8BE800276C04 /* PLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLNavigationController.h; sourceTree = "<group>"; };
 		184B15161B6E8BE800276C04 /* PLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLNavigationController.m; sourceTree = "<group>"; };
+		18FD9B7F1C077AC0004D835D /* PLTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLTracking.h; sourceTree = "<group>"; };
+		18FD9B801C077AC0004D835D /* PLTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLTracking.m; sourceTree = "<group>"; };
 		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D50EC0301BFB26F000544165 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 				D56D647E1B6FF71C0077671F /* PLResourseManager.m */,
 				D55D52AF1B9796CE0026D6D5 /* PLCRMSupport.h */,
 				D55D52B01B9796CE0026D6D5 /* PLCRMSupport.m */,
+				18FD9B7F1C077AC0004D835D /* PLTracking.h */,
+				18FD9B801C077AC0004D835D /* PLTracking.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				D513F56E1B73DF9000B0E16E /* AFHTTPRequestOperation.m in Sources */,
 				D513F5BC1B754AA800B0E16E /* MenuItemObject.m in Sources */,
 				D58BF8AD1B7956A900821175 /* MenuItemsView.m in Sources */,
+				18FD9B811C077AC0004D835D /* PLTracking.m in Sources */,
 				D513F56F1B73DF9000B0E16E /* AFHTTPRequestOperationManager.m in Sources */,
 				D513F5931B73F64500B0E16E /* AddressViewController.m in Sources */,
 				184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */,

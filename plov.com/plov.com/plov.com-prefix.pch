@@ -29,15 +29,7 @@
 #import "PLResourseManager.h"
 #import "UIView+Frame.h"
 #import "PLCRMSupport.h"
-
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-
-#import <Parse/Parse.h>
-
-#import "TAGContainer.h"
-#import "TAGContainerOpener.h"
-#import "TAGManager.h"
-#import "TAGDataLayer.h"
+#import "PLTracking.h"
 
 //@import Intercom;
 
