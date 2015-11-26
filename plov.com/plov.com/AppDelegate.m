@@ -122,7 +122,8 @@
     
     MenuItemObject * item13 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item13 setTitle:@"Плов «Вегетарианский»" forLng:@""];
-    [item13 setDesc:@"Плов с овощами, длинозерновым рисом, горохом «Нут», молотой паприкой, барбарисом и сухофруктами." forLng:@""];
+    [item13 setDesc:@"Плов с овощами, длинозерновым рисом, горохом «Нут», молотой паприкой, барбарисом и сухофруктами."
+             forLng:@""];
     [item13 setCost:370 forWeight:300];
     [cat1 addMenuItem:item13];
 //-----------------

@@ -430,7 +430,8 @@
         vc.view.x = pos * vc.view.width;
         
         [self.itemsScrollView addSubview:vc.view];
-        
+     
+        [vc.itemDescription sizeToFit];
         [vc hidePanel];
     }
 }

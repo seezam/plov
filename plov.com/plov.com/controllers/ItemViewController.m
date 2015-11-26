@@ -37,8 +37,10 @@
     itemVc.itemTitle.text = [item.title uppercaseString];
     itemVc.itemDescription.text = item.desc;
     CGFloat w = itemVc.itemDescription.width;
-    [itemVc.itemDescription sizeToFit];
-    itemVc.itemDescription.width = w;
+    
+    CGSize size = [itemVc.itemDescription sizeThatFits:CGSizeMake(w, 10000)];
+    itemVc.itemDescription.height = size.height;
+    itemVc.itemDescription.width = size.width;
     
     itemVc.itemTitle.font = [UIFont fontWithName:@"ProximaNova-Bold" size:18];
     itemVc.itemDescription.font = [UIFont fontWithName:@"ProximaNova-Light" size:16];
@@ -126,19 +128,29 @@
 
 - (void)showPanel
 {
-    self.panelHidden = NO;
-    [UIView animateWithDuration:0.2 animations:^{
-        CGFloat height = self.itemDescription.bottom + 80;
-        self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
-    }];
+    if (self.panelHidden)
+    {
+        self.panelHidden = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            CGFloat height = self.itemDescription.bottom + 80;
+            if (height < 151)
+            {
+                height = 151;
+            }
+            self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - height, self.view.width, height);
+        }];
+    }
 }
 
 - (void)hidePanel
 {
-    self.panelHidden = YES;
-    [UIView animateWithDuration:0.2 animations:^{
-        self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
-    }];
+    if (!self.panelHidden)
+    {
+        self.panelHidden = YES;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);
+        }];
+    }
 }
 
 - (void)fullscreenImage
