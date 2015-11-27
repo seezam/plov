@@ -45,8 +45,11 @@ static const NSString * floorField = @"floor";
         [result appendString:self.house];
     }
     
-    [result appendString:@", "];
-    [result appendString:self.flat];
+    if (self.flat.length)
+    {
+        [result appendString:@", "];
+        [result appendString:self.flat];
+    }
     
     if (self.block.length)
     {

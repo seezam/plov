@@ -122,7 +122,7 @@
                               @"products": @[
                                   @{@"name": name,
                                     @"id": itemId,
-                                    @"price": @(price),
+                                    @"price": @(price).stringValue,
                                     @"brand": @"Plov.com",
                                     @"category": category,
                                     @"quantity": @(quantity)}]}}}];
@@ -140,20 +140,25 @@
         
         [products addObject:@{@"name": item.name,   // Name or ID is required.
                               @"id": item.itemId,
-                              @"price": @(item.cost),
+                              @"price": @(item.cost).stringValue,
                               @"brand": @"Plov.com",
                               @"category": categoryName,
                               @"quantity": @(item.count),
                               }];
     }
     
-    [dataLayer push:@{@"ecommerce": @{
-                          @"purchase": @{
-                              @"actionField": @{
-                                  @"id": order.orderId,
-                                  @"affiliation": @"Plov.com iOS App",
-                                  @"revenue": @(order.cost)},
-                              @"products": products}}}];
+    NSDictionary * pushData = @{@"event": @"purchase",
+                                @"ecommerce": @{
+                                        @"purchase": @{
+                                                @"actionField": @{
+                                                        @"id": order.orderId,
+                                                        @"affiliation": @"Plov.com iOS App",
+                                                        @"revenue": @(order.cost).stringValue},
+                                                @"products": products}}};
+    
+    [dataLayer push:@{@"ecommerce":[NSNull null]}];
+    
+    [dataLayer push:pushData];
     
     [dataLayer push:@{@"event": @"thankyou_purchase_message"}];
 }
@@ -170,7 +175,7 @@
         
         [products addObject:@{@"name": item.name,   // Name or ID is required.
                               @"id": item.itemId,
-                              @"price": @(item.cost),
+                              @"price": @(item.cost).stringValue,
                               @"brand": @"Plov.com",
                               @"category": categoryName,
                               @"quantity": @(item.count),

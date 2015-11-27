@@ -53,7 +53,7 @@
                                                              required:NO type:PLTableItemType_Number],
                                                 [PLTableItem textItem:@"flat" withTitle:LOC(@"LOC_ORDER_FLAT_FIELD")
                                                                  text:lastAddress.flat
-                                                             required:YES type:PLTableItemType_Number],
+                                                             required:NO type:PLTableItemType_Number],
                                                 [PLTableItem textItem:@"floor" withTitle:LOC(@"LOC_ORDER_FLOOR_FIELD")
                                                                  text:lastAddress.floor
                                                              required:NO type:PLTableItemType_Number]
