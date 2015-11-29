@@ -8,6 +8,7 @@
 
 #import "MenuObject.h"
 #import "MenuCategoryObject.h"
+#import "MenuItemObject.h"
 
 @implementation MenuObject
 
@@ -55,6 +56,22 @@
         if ([obj.categoryId isEqualToString:categoryId])
         {
             return obj;
+        }
+    }
+    
+    return nil;
+}
+
+- (MenuItemObject *)itemById:(NSString *)itemId
+{
+    for (MenuCategoryObject * obj in self.categories)
+    {
+        for (MenuItemObject * item in obj.items)
+        {
+            if ([item.itemId isEqualToString:itemId])
+            {
+                return item;
+            }
         }
     }
     

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class MenuCategoryObject;
+@class MenuItemObject;
 
 @interface MenuObject : NSObject
 
@@ -19,5 +20,6 @@
 
 - (void)addMenuCategory:(MenuCategoryObject *)category;
 - (MenuCategoryObject *)categoryById:(NSString *)categoryId;
+- (MenuItemObject *)itemById:(NSString *)itemId;
 
 @end

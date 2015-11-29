@@ -21,6 +21,7 @@
 #import "OrderObject.h"
 #import "OrderItemObject.h"
 #import "MenuCategoryObject.h"
+#import "MenuItemObject.h"
 
 @interface PLTracking ()<TAGContainerOpenerNotifier>
 
@@ -136,9 +137,10 @@
     
     for (OrderItemObject * item in order.list)
     {
-        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+        NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
         
-        [products addObject:@{@"name": item.name,   // Name or ID is required.
+        [products addObject:@{@"name": itemName,   // Name or ID is required.
                               @"id": item.itemId,
                               @"price": @(item.cost).stringValue,
                               @"brand": @"Plov.com",
@@ -171,9 +173,10 @@
     
     for (OrderItemObject * item in order.list)
     {
-        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+        NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
         
-        [products addObject:@{@"name": item.name,   // Name or ID is required.
+        [products addObject:@{@"name": itemName,   // Name or ID is required.
                               @"id": item.itemId,
                               @"price": @(item.cost).stringValue,
                               @"brand": @"Plov.com",

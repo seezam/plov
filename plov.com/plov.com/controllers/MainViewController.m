@@ -291,9 +291,10 @@
                 return;
             }
         
-            NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
+            NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+            NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
             
-            [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:item.title
+            [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:itemName
                                         itemId:item.itemId price:item.cost quantity:1];
             
             self.bucketSum -= item.cost;

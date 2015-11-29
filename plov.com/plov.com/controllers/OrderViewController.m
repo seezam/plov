@@ -15,6 +15,7 @@
 #import "OrderObject.h"
 #import "MenuObject.h"
 #import "MenuCategoryObject.h"
+#import "MenuItemObject.h"
 
 #import "PLTableViewController.h"
 #import "PLTextTableViewCell.h"
@@ -317,8 +318,10 @@
             return 0;
         }
         
-        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] title];
-        [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:item.name
+        NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+        NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
+        
+        [SHARED_APP.tracking cartOperation:NO category:categoryName itemName:itemName
                                     itemId:item.itemId price:item.cost quantity:1];
         
         self.bucketSum = self.order.cost;
@@ -426,11 +429,8 @@
     
     if (order.cost < SHARED_APP.menuData.minimalCost)
     {
-//        NSInteger remain = SHARED_APP.menuData.minimalCost - order.cost;
-        
         NSString * message = [NSString stringWithFormat:LOC(@"LOC_MINIMAL_COST"),
-                              @(SHARED_APP.menuData.minimalCost)];//,
-//                              @(remain)];
+                              @(SHARED_APP.menuData.minimalCost)];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
                                                          message:message

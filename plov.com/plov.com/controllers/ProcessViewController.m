@@ -13,6 +13,8 @@
 #import "OrderObject.h"
 #import "PLCRMSupport.h"
 #import "OrderItemObject.h"
+#import "MenuObject.h"
+#import "MenuItemObject.h"
 
 @interface ProcessViewController ()
 @property (nonatomic, assign) BOOL processed;
@@ -80,10 +82,12 @@
     
     for (OrderItemObject * item in self.order.list)
     {
+        NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
+        
         NSDictionary * itemDesc = @{
                                     @"initialPrice": @(item.cost),
                                     @"purchasePrice": @(item.cost),
-                                    @"productName": item.name,
+                                    @"productName": itemName,
                                     @"quantity": @(item.count),
                                     };
         
