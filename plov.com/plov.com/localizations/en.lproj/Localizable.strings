@@ -11,14 +11,14 @@
 "LOC_MENU_ACCOUNT" = "BONUS ACCOUNT";
 "LOC_MENU_CODE" = "ENTER THE CODE";
 "LOC_MENU_STATUS" = "STATUS";
-"LOC_MENU_GIFT" = "GIFT THE FRIEND";
+"LOC_MENU_GIFT" = "TREAT A FRIEND";
 "LOC_MENU_INVITE" = "INVITE FRIENDS";
 "LOC_MENU_ORDERS" = "MY ORDERS";
 "LOC_MENU_ADRESS" = "MY ADDRESSES";
-"LOC_MENU_CARDS" = "PAY CARDS";
-"LOC_MENU_CALL" = "CALL-CENTER";
+"LOC_MENU_CARDS" = "MY CARDS";
+"LOC_MENU_CALL" = "CALL CENTER";
 
-"LOC_MAIN_WEIGHT" = "%@ g";
+"LOC_MAIN_WEIGHT" = "%@ gm";
 "LOC_MAIN_LITRES" = "%@ l";
 "LOC_MAIN_COST" = "%@ rub";
 
@@ -28,13 +28,13 @@
 "LOC_ORDER_TEXT" = "Order";
 "LOC_TITLE_ORDER" = "Your order";
 
-"LOC_MINIMAL_COST" = "Sorry, minimal order price is %@ rubles. Please, add to order dishes for %@ rubles.";
+"LOC_MINIMAL_COST" = "The delivery minimum is %@ rubles. Please add more items to your order.";
 
 "LOC_ORDER_HINT_REQUIRED" = "Required";
 "LOC_ORDER_HINT_OPTIONAL" = "Optional";
 
 "LOC_ORDER_NAME_FIELD" = "Name";
-"LOC_ORDER_PHONE_FIELD" = "Phone";
+"LOC_ORDER_PHONE_FIELD" = "Phone number";
 "LOC_ORDER_EMAIL_FIELD" = "Email";
 
 "LOC_ORDER_DATE_FIELD" = "Date";
@@ -42,26 +42,26 @@
 "LOC_ORDER_ADDRESS_FIELD" = "Address";
 "LOC_ORDER_CITY_FIELD" = "City";
 "LOC_ORDER_STREET_FIELD" = "Street";
-"LOC_ORDER_BUILDING_FIELD" = "Building";
-"LOC_ORDER_HOUSE_FIELD" = "House";
-"LOC_ORDER_BLOCK_FIELD" = "Block";
-"LOC_ORDER_FLAT_FIELD" = "Flat";
+"LOC_ORDER_BUILDING_FIELD" = "Street number";
+"LOC_ORDER_HOUSE_FIELD" = "Building";
+"LOC_ORDER_BLOCK_FIELD" = "Entrance";
+"LOC_ORDER_FLAT_FIELD" = "Apartment";
 "LOC_ORDER_FLOOR_FIELD" = "Floor";
 
 "LOC_ORDER_CITY_DEF" = "Moscow";
 
 "LOC_ORDER_PROCESSING" = "Please wait.";
-"LOC_ORDER_CREATED" = "Thank you!\nYour order accepted.\nWe will contact you soon.";
-"LOC_ORDER_FAILED" = "Some trouble happened.\nCheck connection.";
+"LOC_ORDER_CREATED" = "Thank you!\nYour order has been accepted.\nWe will contact you soon.";
+"LOC_ORDER_FAILED" = "Check your Internet connection.";
 "LOC_ORDER_RETRY" = "Retry";
 "LOC_ORDER_OR_LABEL" = "OR";
-"LOC_ORDER_CALL" = "Call us!";
+"LOC_ORDER_CALL" = "Give us a call!";
 
 
 "LOC_ORDER_STATUS_FIELD" = "Status";
 "ORDER_STATUS_CREATED" = "New";
 "ORDER_STATUS_PREPARING" = "Preparing";
-"ORDER_STATUS_DELIVERING" = "Delivering";
+"ORDER_STATUS_DELIVERING" = "Out for delivery";
 "ORDER_STATUS_CANCELLED" = "Cancelled";
 "ORDER_STATUS_COMPLETED" = "Completed";
 
@@ -71,4 +71,4 @@
 "OK_ACTION" = "OK";
 "UPDATE_ACTION" = "Update";
 
-"LOC_MINIMAL_VER" = "Application version is up to date. Please, update.";
+"LOC_MINIMAL_VER" = "App version is up to date. Please update.";

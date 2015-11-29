@@ -426,11 +426,11 @@
     
     if (order.cost < SHARED_APP.menuData.minimalCost)
     {
-        NSInteger remain = SHARED_APP.menuData.minimalCost - order.cost;
+//        NSInteger remain = SHARED_APP.menuData.minimalCost - order.cost;
         
         NSString * message = [NSString stringWithFormat:LOC(@"LOC_MINIMAL_COST"),
-                              @(SHARED_APP.menuData.minimalCost),
-                              @(remain)];
+                              @(SHARED_APP.menuData.minimalCost)];//,
+//                              @(remain)];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
                                                          message:message

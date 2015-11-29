@@ -28,14 +28,14 @@
 "LOC_ORDER_TEXT" = "Заказ";
 "LOC_TITLE_ORDER" = "Ваш заказ";
 
-"LOC_MINIMAL_COST" = "Извините, минимальная сумма заказа %@ рублей. Вам нужно добавить блюд на %@ рублей.";
+"LOC_MINIMAL_COST" = "Извините, минимальная сумма заказа %@ рублей. Пожалуйста, добавьте больше блюд в заказ.";
 
 "LOC_ORDER_HINT_REQUIRED" = "Обязательно";
 "LOC_ORDER_HINT_OPTIONAL" = "Не обязательно";
 
 "LOC_ORDER_NAME_FIELD" = "Имя";
 "LOC_ORDER_PHONE_FIELD" = "Телефон";
-"LOC_ORDER_EMAIL_FIELD" = "Email";
+"LOC_ORDER_EMAIL_FIELD" = "E-mail";
 
 "LOC_ORDER_DATE_FIELD" = "Дата";
 
@@ -50,9 +50,9 @@
 
 "LOC_ORDER_CITY_DEF" = "Москва";
 
-"LOC_ORDER_PROCESSING" = "Пожалуйста подождите.";
+"LOC_ORDER_PROCESSING" = "Пожалуйста, подождите.";
 "LOC_ORDER_CREATED" = "Спасибо!\nВаш заказ принят.\nВ ближайшее время\nмы свяжемся с вами.";
-"LOC_ORDER_FAILED" = "Возникала проблема.\nПроверьте соединение.";
+"LOC_ORDER_FAILED" = "Проверьте ваше интернет-соединение.";
 "LOC_ORDER_RETRY" = "Повторить";
 "LOC_ORDER_OR_LABEL" = "ИЛИ";
 "LOC_ORDER_CALL" = "Позвоните нам!";

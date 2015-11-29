@@ -76,6 +76,11 @@ NSString * resImageLogo = @"logo.png";
     return image;
 }
 
-
++ (NSString *)currentLng
+{
+    NSString * preferredLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+    
+    return [preferredLanguage substringToIndex:2];
+}
 
 @end

@@ -28,4 +28,6 @@ extern NSString * resImageLogo;
 
 + (UIImage *)imageWithName:(NSString *)resName;
 
++ (NSString *)currentLng;
+
 @end

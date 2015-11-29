@@ -18,7 +18,7 @@
 
 - (NSString *)title
 {
-    return [self titleForLng:@""];
+    return [self titleForLng:[PLResourseManager currentLng]];
 }
 
 - (NSString *)titleForLng:(NSString *)lng
@@ -33,7 +33,7 @@
 
 - (NSString *)desc
 {
-    return [self descForLng:@""];
+    return [self descForLng:[PLResourseManager currentLng]];
 }
 
 - (NSString *)descForLng:(NSString *)lng
