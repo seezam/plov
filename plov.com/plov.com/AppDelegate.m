@@ -389,15 +389,18 @@
 {
     NSData * str = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://plov.com/apps.php"] options:0 error:nil];
     
-    NSDictionary * json = [NSJSONSerialization JSONObjectWithData:str options:0 error:nil];
-    
-    if (json.count)
+    if (str.length)
     {
-        NSInteger minBuild = [json[@"min-ios-build-number"] integerValue];
-        
-        NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
-        
-        return (appBuild >= minBuild);
+        NSDictionary * json = [NSJSONSerialization JSONObjectWithData:str options:0 error:nil];
+    
+        if (json.count)
+        {
+            NSInteger minBuild = [json[@"min-ios-build-number"] integerValue];
+            
+            NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
+            
+            return (appBuild >= minBuild);
+        }
     }
     
     return YES;
