@@ -357,6 +357,10 @@
         }
     
         [self.countLabel setText:@(item.count).stringValue animated:YES];
+        
+        self.bucketSumLabel.textColor = (self.bucketSum > SHARED_APP.menuData.minimalCost)?
+                                            UIColorFromRGBA(resColorMenuText):
+                                            UIColorFromRGBA(resColorMenuTextDisable);
     }
 }
 

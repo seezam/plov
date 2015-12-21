@@ -159,9 +159,9 @@
     title.x = r.origin.x;
     title.width = r.size.width;
     
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(9, 47, FIELD_AVAILABLE_WIDTH, 1)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(9, 46, FIELD_AVAILABLE_WIDTH, 1)];
     view.backgroundColor = UIColorFromRGBA(resColorDivider);
-    view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
     cell.divider = view;
     
     [cell.contentView addSubview:view];
@@ -172,6 +172,27 @@
 - (void)setResponder
 {
     [self.inputs.firstObject becomeFirstResponder];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    switch (self.type) {
+        case PLTableItemType_Text:
+        {
+            if ([string isEqualToString:@" "]) return YES;
+
+            NSCharacterSet *validChars = [NSCharacterSet letterCharacterSet];
+            NSCharacterSet *invalidChars = [validChars invertedSet];
+            
+            NSRange range = [string rangeOfCharacterFromSet:invalidChars options:NSCaseInsensitiveSearch];
+            
+            return range.location == NSNotFound;
+        }
+        default:
+            break;
+    }
+    
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

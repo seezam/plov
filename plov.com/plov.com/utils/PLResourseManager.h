@@ -11,6 +11,7 @@
 extern NSUInteger resColorBackground;
 extern NSUInteger resColorDivider;
 extern NSUInteger resColorMenuText;
+extern NSUInteger resColorMenuTextDisable;
 extern NSUInteger resColorMenuSelector;
 extern NSUInteger resColorNavigation;
 
