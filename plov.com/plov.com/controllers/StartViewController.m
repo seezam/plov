@@ -52,11 +52,7 @@ static int checkingTryes = 0;
             });
         }
     });
-    
-    
-    return;
-#endif
-    
+#else
     switch ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus)
     {
         case AFNetworkReachabilityStatusNotReachable:
@@ -86,6 +82,7 @@ static int checkingTryes = 0;
         }
             break;
     }
+#endif
 }
 
 - (void)didReceiveMemoryWarning {

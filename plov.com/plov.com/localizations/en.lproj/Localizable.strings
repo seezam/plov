@@ -29,6 +29,7 @@
 "LOC_TITLE_ORDER" = "Your order";
 
 "LOC_MINIMAL_COST" = "The delivery minimum is %@ rubles. Please add more items to your order.";
+"LOC_ORDER_BEGIN_FAILED" = "Internet connection required for continue.";
 
 "LOC_ORDER_HINT_REQUIRED" = "Required";
 "LOC_ORDER_HINT_OPTIONAL" = "Optional";
@@ -37,12 +38,15 @@
 "LOC_ORDER_PHONE_FIELD" = "Phone number";
 "LOC_ORDER_EMAIL_FIELD" = "Email";
 
+"LOC_ORDER_DELIVERING" = "Delivering";
+"LOC_NOCATEGORY" = "No category";
+
 "LOC_ORDER_DATE_FIELD" = "Date";
 
 "LOC_ORDER_ADDRESS_FIELD" = "Address";
 "LOC_ORDER_CITY_FIELD" = "City";
 "LOC_ORDER_STREET_FIELD" = "Street";
-"LOC_ORDER_BUILDING_FIELD" = "Street number";
+"LOC_ORDER_BUILDING_FIELD" = "St. number";
 "LOC_ORDER_HOUSE_FIELD" = "Building";
 "LOC_ORDER_BLOCK_FIELD" = "Entrance";
 "LOC_ORDER_FLAT_FIELD" = "Apartment";

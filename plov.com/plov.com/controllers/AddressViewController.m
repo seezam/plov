@@ -36,7 +36,7 @@
                                       type:PLTableItemType_ReadOnly],
                      [PLTableItem textItem:@"street" withTitle:LOC(@"LOC_ORDER_STREET_FIELD") text:lastAddress.street
                                   required:YES
-                                      type:PLTableItemType_Text],
+                                      type:PLTableItemType_AlphaNumber],
                      
                      [PLTableItem complexItem:@"building"
                                     withTitle:@""
@@ -44,10 +44,10 @@
                                                 
                                                 [PLTableItem textItem:@"building" withTitle:LOC(@"LOC_ORDER_BUILDING_FIELD")
                                                                  text:lastAddress.building
-                                                             required:YES type:PLTableItemType_Number],
+                                                             required:YES type:PLTableItemType_AlphaNumber],
                                                 [PLTableItem textItem:@"house" withTitle:LOC(@"LOC_ORDER_HOUSE_FIELD")
                                                                  text:lastAddress.house
-                                                             required:NO type:PLTableItemType_Number],
+                                                             required:NO type:PLTableItemType_AlphaNumber],
                                                 [PLTableItem textItem:@"block" withTitle:LOC(@"LOC_ORDER_BLOCK_FIELD")
                                                                  text:lastAddress.block
                                                              required:NO type:PLTableItemType_Number],

@@ -23,8 +23,6 @@
 
 @interface AppDelegate ()<UIAlertViewDelegate>
 
-
-
 @end
 
 @implementation AppDelegate
@@ -32,7 +30,7 @@
 
 + (AppDelegate *)app
 {
-    return [[UIApplication sharedApplication] delegate];
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 - (SWRevealViewController *)revealViewController
@@ -362,7 +360,48 @@
     [item81 setCost:180 forLitres:1];
     [cat8 addMenuItem:item81];
     
-    obj.minimalCost = 1500;
+    MenuItemObject * item82 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+    [item82 setTitle:@"Чай молочный улун" forLng:@"ru"];
+    [item82 setTitle:@"Milk ulun tea" forLng:@"en"];
+    [item82 setDesc:@"Зелёный китайский чай с мягким молочным вкусом и лёгким приятным ароматом." forLng:@"ru"];
+    [item82 setDesc:@"Green tea" forLng:@"en"];
+    [item82 setCost:150 forWeight:10];
+    [cat8 addMenuItem:item82];
+   
+    MenuItemObject * item83 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+    [item83 setTitle:@"Зелёный чай" forLng:@"ru"];
+    [item83 setTitle:@"Green tea" forLng:@"en"];
+    [item83 setDesc:@"Насыщенный зелёный крупнолистовой чай с многогранным ароматом." forLng:@"ru"];
+    [item83 setDesc:@"Green tea" forLng:@"en"];
+    [item83 setCost:150 forWeight:10];
+    [cat8 addMenuItem:item83];
+    
+    MenuItemObject * item84 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+    [item84 setTitle:@"Чай пуэр" forLng:@"ru"];
+    [item84 setTitle:@"Green tea" forLng:@"en"];
+    [item84 setDesc:@"Китайский выдержанный чай, ферментированный естественным способом с тонким вкусом и насыщенным цветом." forLng:@"ru"];
+    [item84 setDesc:@"Green tea" forLng:@"en"];
+    [item84 setCost:150 forWeight:10];
+    [cat8 addMenuItem:item84];
+    
+    
+    MenuCategoryObject * cat9 = [[MenuCategoryObject alloc] initWithId:@"8"];
+    cat9.hide = YES;
+    [cat9 setTitle:@"Прочее" forLng:@"ru"];
+    [cat9 setTitle:@"Other" forLng:@"en"];
+    [obj addMenuCategory:cat9];
+
+    MenuItemObject * item91 = [[MenuItemObject alloc] initWithId:@"10000"];
+    [item91 setTitle:@"Доставка" forLng:@"ru"];
+    [item91 setTitle:@"Delivery" forLng:@"en"];
+    [item91 setDesc:@"Доставка" forLng:@"ru"];
+    [item91 setDesc:@"Delivery" forLng:@"en"];
+    [item91 setCost:300 forWeight:1];
+    [cat9 addMenuItem:item91];
+    
+    obj.minimalCost = [self.remoteAppInfo[@"minimal-cost"] integerValue];
+    obj.freeDeliveryCost = [self.remoteAppInfo[@"free-delivery-cost"] integerValue];
+    obj.deliveryCost = [self.remoteAppInfo[@"delivery-cost"] integerValue];
     
     return obj;
 }
@@ -370,7 +409,10 @@
 - (void)updateApplication
 {
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
-                                                     message:LOC(@"LOC_MINIMAL_VER") delegate:self cancelButtonTitle:LOC(@"UPDATE_ACTION") otherButtonTitles:nil];
+                                                     message:LOC(@"LOC_MINIMAL_VER")
+                                                    delegate:self
+                                           cancelButtonTitle:LOC(@"UPDATE_ACTION")
+                                           otherButtonTitles:nil];
     
     alert.tag = 100;
     [alert show];
@@ -385,22 +427,37 @@
     }
 }
 
-- (BOOL)checkForAppVersion
+- (BOOL)updateRemoteInfo
 {
+    if (self.remoteAppInfo)
+    {
+        return YES;
+    }
+    
     NSData * str = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://plov.com/apps.php"] options:0 error:nil];
     
     if (str.length)
     {
         NSDictionary * json = [NSJSONSerialization JSONObjectWithData:str options:0 error:nil];
-    
+        
         if (json.count)
         {
-            NSInteger minBuild = [json[@"min-ios-build-number"] integerValue];
-            
-            NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
-            
-            return (appBuild >= minBuild);
+            self.remoteAppInfo = json;
         }
+    }
+    
+    return self.remoteAppInfo.count > 0;
+}
+
+- (BOOL)checkForAppVersion
+{
+    if ([self updateRemoteInfo])
+    {
+        NSInteger minBuild = [self.remoteAppInfo[@"min-ios-build-number"] integerValue];
+        
+        NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
+        
+        return (appBuild >= minBuild);
     }
     
     return YES;

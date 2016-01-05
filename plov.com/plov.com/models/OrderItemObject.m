@@ -54,6 +54,20 @@ static const NSString * countField = @"count";
     return self;
 }
 
+- (OrderItemObject *)initDelivery:(NSInteger)cost
+{
+    if (self = [super init])
+    {
+        _itemId = @"1000";
+        _cost = cost;
+        _count = 1;
+        _name = LOC(@"LOC_ORDER_DELIVERING");
+        _categoryId = @"";
+    }
+    
+    return self;
+}
+
 - (NSDictionary *)orderItemToJson
 {
     NSMutableDictionary * dict = [NSMutableDictionary dictionary];

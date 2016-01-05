@@ -168,6 +168,22 @@ static const NSString * statusField = @"status";
     return NO;
 }
 
+- (void)appendItem:(OrderItemObject *)item
+{
+    NSMutableArray * newArray  = [self.list mutableCopy];
+    
+    for (OrderItemObject * i in newArray)
+    {
+        if ([i.name isEqualToString:item.name])
+        {
+            return;
+        }
+    }
+    
+    [newArray addObject:item];
+    _list = newArray;
+}
+
 - (void)removeItem:(OrderItemObject *)item
 {
     NSMutableArray * newArray  = [self.list mutableCopy];

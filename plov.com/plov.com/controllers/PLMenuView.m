@@ -48,6 +48,8 @@
     
     for (MenuCategoryObject * category in self.menu.categories)
     {
+        if (category.hide) continue;
+        
         UILabel * categoryTitle = [[UILabel alloc] init];
         
         categoryTitle.text = category.title;

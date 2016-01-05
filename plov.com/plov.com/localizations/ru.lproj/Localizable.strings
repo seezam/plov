@@ -29,6 +29,7 @@
 "LOC_TITLE_ORDER" = "Ваш заказ";
 
 "LOC_MINIMAL_COST" = "Извините, минимальная сумма заказа %@ рублей. Пожалуйста, добавьте больше блюд в заказ.";
+"LOC_ORDER_BEGIN_FAILED" = "Для продолжения необходимо интернет-соединение.";
 
 "LOC_ORDER_HINT_REQUIRED" = "Обязательно";
 "LOC_ORDER_HINT_OPTIONAL" = "Не обязательно";
@@ -36,6 +37,9 @@
 "LOC_ORDER_NAME_FIELD" = "Имя";
 "LOC_ORDER_PHONE_FIELD" = "Телефон";
 "LOC_ORDER_EMAIL_FIELD" = "E-mail";
+
+"LOC_ORDER_DELIVERING" = "Доставка";
+"LOC_NOCATEGORY" = "Без категории";
 
 "LOC_ORDER_DATE_FIELD" = "Дата";
 

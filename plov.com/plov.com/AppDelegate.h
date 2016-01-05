@@ -22,11 +22,14 @@
 @property (strong, nonatomic) CustomerObject * customer;
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) NSDictionary * remoteAppInfo;
+
 @property (assign, nonatomic) BOOL reinitialized;
 
 + (AppDelegate *)app;
 - (SWRevealViewController *)revealViewController;
 
+- (BOOL)updateRemoteInfo;
 - (BOOL)checkForAppVersion;
 - (void)updateApplication;
 

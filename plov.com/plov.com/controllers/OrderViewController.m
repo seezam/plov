@@ -221,7 +221,7 @@
         cell.delegate = self;
         [cell setCount:item.count withSum:item.cost];
         
-        cell.readOnly = self.statusMode;
+        cell.readOnly = self.statusMode || [item.itemId isEqualToString:@"10000"];
         
         return cell;
     }
@@ -398,12 +398,53 @@
     if (item.count == 0)
     {
         [self.order removeItem:item];
-        [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+                                    withRowAnimation:UITableViewRowAnimationTop];
+    }
+    
+//    self.processButton.enabled = NO;
+//    [UIView animateWithDuration:0.5 animations:^{
+//        self.processButton.alpha = 0;
+//    }];
+    
+    if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
+    {
+        BOOL addDelivery = YES;
+        for (OrderItemObject * item in self.order.list)
+        {
+            if ([item.itemId isEqualToString:@"10000"])
+            {
+                addDelivery = NO;
+                break;
+            }
+        }
         
-        self.processButton.enabled = NO;
-        [UIView animateWithDuration:0.5 animations:^{
-            self.processButton.alpha = 0;
-        }];
+        if (addDelivery)
+        {
+            MenuItemObject * item = [SHARED_APP.menuData itemById:@"10000"];
+            item.count = 1;
+            OrderItemObject * orderItem = [[OrderItemObject alloc] initWithMenuItem:item];
+            
+            [self.order appendItem:orderItem];
+            
+            [self.ordersTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(self.order.list.count - 1) inSection:0]]
+                                                           withRowAnimation:UITableViewRowAnimationTop];
+        }
+    }
+    else
+    {
+        for (OrderItemObject * item in self.order.list)
+        {
+            if ([item.itemId isEqualToString:@"10000"])
+            {
+                NSInteger row = [self.order.list indexOfObject:item];
+                [self.order removeItem:item];
+            
+                [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+                                            withRowAnimation:UITableViewRowAnimationTop];
+                break;
+            }
+        }
     }
 }
 

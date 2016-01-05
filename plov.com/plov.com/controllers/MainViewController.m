@@ -19,6 +19,7 @@
 
 #import "CustomerObject.h"
 #import "OrderObject.h"
+#import "OrderItemObject.h"
 
 #import "ItemViewController.h"
 #import "OrderViewController.h"
@@ -35,7 +36,7 @@
     BOOL _fullscreenMode;
 }
 
-@property (nonatomic, strong) MenuObject * plovMenu;
+//@property (nonatomic, strong) MenuObject * plovMenu;
 
 @property (nonatomic, assign) BOOL panelHidden;
 @property (nonatomic, strong) UIGestureRecognizer * showPanelGesture;
@@ -119,6 +120,33 @@
 //    self.itemsScrollView.contentOffset = CGPointMake(0, 0);
 //}
 
+- (void)checkDeliveries
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([SHARED_APP updateRemoteInfo])
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                SHARED_APP.menuData.minimalCost = [SHARED_APP.remoteAppInfo[@"minimal-cost"] integerValue];
+                SHARED_APP.menuData.freeDeliveryCost = [SHARED_APP.remoteAppInfo[@"free-delivery-cost"] integerValue];
+                SHARED_APP.menuData.deliveryCost = [SHARED_APP.remoteAppInfo[@"delivery-cost"] integerValue];
+                
+                [self processToOrder];
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:nil
+                                                                 message:LOC(@"LOC_ORDER_BEGIN_FAILED")
+                                                                delegate:nil
+                                                       cancelButtonTitle:LOC(@"OK_ACTION")
+                                                       otherButtonTitles:nil];
+                [alert show];
+            });
+        }
+    });
+}
+
 - (void)processToOrder
 {
     NSMutableArray * menuItems = [[NSMutableArray alloc] initWithCapacity:self.items.count];
@@ -131,6 +159,13 @@
         {
             [menuItems addObject:menuItem];
         }
+    }
+    
+    if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
+    {
+        MenuItemObject * deliveryItem = [SHARED_APP.menuData itemById:@"10000"];
+        deliveryItem.count = 1;
+        [menuItems addObject:deliveryItem];
     }
     
     OrderObject * order = [[OrderObject alloc] initWithMenuItems:menuItems orderId:@"" address:@""];
@@ -222,12 +257,13 @@
 {
     self.items = [NSMutableArray arrayWithCapacity:20];
     
-    self.plovMenu = menu;
     [self.menuView setupMenu:menu];
     self.menuView.plDelegate = self;
     
     for (MenuCategoryObject * category in menu.categories)
     {
+        if (category.hide) continue;
+        
         for (MenuItemObject * item in category.items)
         {
             ItemViewController * itemVc = [ItemViewController instantiateWithMenuItem:item];
@@ -358,9 +394,21 @@
     
         [self.countLabel setText:@(item.count).stringValue animated:YES];
         
-        self.bucketSumLabel.textColor = (self.bucketSum > SHARED_APP.menuData.minimalCost)?
-                                            UIColorFromRGBA(resColorMenuText):
-                                            UIColorFromRGBA(resColorMenuTextDisable);
+        if (self.bucketSum >= SHARED_APP.menuData.minimalCost)
+        {
+            if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
+            {
+                self.bucketSumLabel.textColor = UIColorFromRGBA(resColorMenuText);
+            }
+            else
+            {
+                self.bucketSumLabel.textColor = UIColorFromRGBA(resColorMenuSelector);
+            }
+        }
+        else
+        {
+            self.bucketSumLabel.textColor = UIColorFromRGBA(resColorMenuTextDisable);
+        }
     }
 }
 

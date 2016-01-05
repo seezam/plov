@@ -41,6 +41,8 @@ typedef enum : NSUInteger {
 
 - (BOOL)decCountForItem:(OrderItemObject *)item;
 - (BOOL)incCountForItem:(OrderItemObject *)item;
+
+- (void)appendItem:(OrderItemObject *)item;
 - (void)removeItem:(OrderItemObject *)item;
 
 - (void)updateOrderWithId:(NSString *)orderId address:(NSString *)address;

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    PLTableItemType_Text,
+    PLTableItemType_Alpha,
     PLTableItemType_Number,
+    PLTableItemType_AlphaNumber,
     PLTableItemType_Phone,
     PLTableItemType_Email,
     PLTableItemType_ReadOnly,

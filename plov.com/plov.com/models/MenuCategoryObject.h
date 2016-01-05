@@ -16,6 +16,8 @@
 @property (nonatomic, readonly, strong) NSString * title;
 @property (nonatomic, readonly, strong) NSArray * items;
 
+@property (nonatomic, assign) BOOL hide;
+
 - (NSString *)titleForLng:(NSString *)lng;
 - (void)setTitle:(NSString *)title forLng:(NSString *)lng;
 

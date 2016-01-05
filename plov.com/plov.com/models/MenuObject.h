@@ -14,6 +14,8 @@
 @interface MenuObject : NSObject
 
 @property (nonatomic, assign) NSUInteger minimalCost;
+@property (nonatomic, assign) NSUInteger freeDeliveryCost;
+@property (nonatomic, assign) NSUInteger deliveryCost;
 @property (nonatomic, readonly, strong) NSArray * categories;
 
 - (instancetype)initWithData:(NSData *)data;

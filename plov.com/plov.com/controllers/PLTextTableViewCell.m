@@ -64,7 +64,25 @@
             field.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             field.delegate = cell;
          
-            [cell.inputs addObject:field];
+            switch (item.type) {
+                case PLTableItemType_Alpha:
+                    field.keyboardType = UIKeyboardTypeNamePhonePad;
+                    break;
+                case PLTableItemType_AlphaNumber:
+                    field.keyboardType = UIKeyboardTypeDefault;
+                    break;
+                case PLTableItemType_Number:
+                    field.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+                    break;
+                case PLTableItemType_ReadOnly:
+                    field.userInteractionEnabled = NO;
+                    field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
+                    break;
+                default:
+                    break;
+            }
+            
+            [cell.inputs addObject:@{@"type": @(item.type), @"field": field}];
             
             if (item != blocks.lastObject || !last)
             {
@@ -104,7 +122,7 @@
         field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [field setClearButtonMode:UITextFieldViewModeWhileEditing];
         field.delegate = cell;
-        [cell.inputs addObject:field];
+        [cell.inputs addObject:@{@"type": @(type), @"field": field }];
         
         if (!title.text.length)
         {
@@ -113,7 +131,10 @@
         }
         
         switch (type) {
-            case PLTableItemType_Text:
+            case PLTableItemType_Alpha:
+                field.keyboardType = UIKeyboardTypeNamePhonePad;
+                break;
+            case PLTableItemType_AlphaNumber:
                 field.keyboardType = UIKeyboardTypeDefault;
                 break;
             case PLTableItemType_Number:
@@ -171,28 +192,68 @@
 
 - (void)setResponder
 {
-    [self.inputs.firstObject becomeFirstResponder];
+    NSDictionary * input = self.inputs.firstObject;
+    [input[@"field"] becomeFirstResponder];
+}
+
+- (BOOL)validChars:(NSString *)string type:(PLTableItemType)type field:(UITextField *)field
+{
+    NSCharacterSet * validChars = nil;
+    NSCharacterSet * invalidChars = nil;
+    
+    switch (type) {
+        case PLTableItemType_Alpha:
+        {
+            if ([string isEqualToString:@" "]) return YES;
+            
+            validChars = [NSCharacterSet letterCharacterSet];
+        }
+            break;
+        case PLTableItemType_Number:
+        case PLTableItemType_Phone:
+        {
+            validChars = [NSCharacterSet decimalDigitCharacterSet];
+        }
+            break;
+        case PLTableItemType_AlphaNumber:
+        {
+            if ([string isEqualToString:@" "]||
+                [string isEqualToString:@"-"]||
+                [string isEqualToString:@"/"]||
+                [string isEqualToString:@"."]) return YES;
+            
+            validChars = [NSCharacterSet alphanumericCharacterSet];
+        }
+            break;
+        case PLTableItemType_Complex:
+        {
+            for (NSDictionary * dict in self.inputs)
+            {
+                PLTableItemType t = [dict[@"type"] integerValue];
+                UITextField * f = dict[@"field"];
+                if (f == field)
+                {
+                    return [self validChars:string type:t field:nil];
+                }
+            }
+            
+            return YES;
+        }
+        default:
+            return YES;
+            break;
+    }
+    
+    invalidChars = [validChars invertedSet];
+    
+    NSRange range = [string rangeOfCharacterFromSet:invalidChars options:NSCaseInsensitiveSearch];
+    
+    return range.location == NSNotFound;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    switch (self.type) {
-        case PLTableItemType_Text:
-        {
-            if ([string isEqualToString:@" "]) return YES;
-
-            NSCharacterSet *validChars = [NSCharacterSet letterCharacterSet];
-            NSCharacterSet *invalidChars = [validChars invertedSet];
-            
-            NSRange range = [string rangeOfCharacterFromSet:invalidChars options:NSCaseInsensitiveSearch];
-            
-            return range.location == NSNotFound;
-        }
-        default:
-            break;
-    }
-    
-    return YES;
+    return [self validChars:string type:self.type field:textField];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -201,7 +262,7 @@
     {
         for (int i = 0; i < self.inputs.count; i++)
         {
-            UITextField * f = self.inputs[i];
+            UITextField * f = self.inputs[i][@"field"];
             if (f == textField)
             {
                 if (i == self.inputs.count - 1)
@@ -210,7 +271,7 @@
                 }
                 else
                 {
-                    UITextField * next = self.inputs[i+1];
+                    UITextField * next = self.inputs[i+1][@"field"];
                     [next becomeFirstResponder];
                 }
                 break;
@@ -230,7 +291,7 @@
     {
         for (int i = 0; i < self.inputs.count; i++)
         {
-            UITextField * f = self.inputs[i];
+            UITextField * f = self.inputs[i][@"field"];
             if (f == textField)
             {
                 [self.delegate complexCell:self idx:i didChanged:textField.text];
