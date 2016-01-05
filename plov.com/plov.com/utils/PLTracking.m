@@ -193,4 +193,60 @@
                               @"products": products}}}];
 }
 
+- (void)itemOnScreen:(MenuItemObject *)item
+{
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    
+    NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+    NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
+    
+    [dataLayer push:@{@"ecommerce": @{
+                              @"impressions": @[
+                                      @{@"name": itemName,     // Name or ID is required.
+                                        @"id": item.itemId,
+                                        @"price": @(item.cost).stringValue,
+                                        @"brand": @"Plov.com",
+                                        @"category": categoryName,
+                                        },
+                                      ]}}];
+}
+
+- (void)itemOnFullScreen:(MenuItemObject *)item
+{
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    
+    NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+    NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
+    
+    [dataLayer push:@{@"event": @"productClick",
+                      @"ecommerce": @{
+                          @"click": @{
+//                              @"actionField": @{},
+                              @"products": @[
+                                  @{@"name": itemName,   // Name or ID is required.
+                                    @"id": item.itemId,
+                                    @"price": @(item.cost).stringValue,
+                                    @"brand": @"Plov.com",
+                                    @"category": categoryName
+                                    }]}}}];
+}
+
+- (void)itemOnInfo:(MenuItemObject *)item
+{
+    TAGDataLayer *dataLayer = [TAGManager instance].dataLayer;
+    
+    NSString * categoryName = [[SHARED_APP.menuData categoryById:item.categoryId] titleForLng:@"ru"];
+    NSString * itemName = [[SHARED_APP.menuData itemById:item.itemId] titleForLng:@"ru"];
+    
+    [dataLayer push:@{@"ecommerce": @{
+                          @"detail": @{
+                              @"products": @[
+                                  @{@"name": itemName,   // Name or ID is required.
+                                    @"id": item.itemId,
+                                    @"price": @(item.cost).stringValue,
+                                    @"brand": @"Plov.com",
+                                    @"category": categoryName
+                                    }]}}}];
+}
+
 @end

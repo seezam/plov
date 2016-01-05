@@ -130,6 +130,8 @@
 {
     if (self.panelHidden)
     {
+        [self.delegate itemView:self showInfo:YES];
+        
         self.panelHidden = NO;
         [UIView animateWithDuration:0.2 animations:^{
             CGFloat height = self.itemDescription.bottom + 80;
@@ -146,6 +148,8 @@
 {
     if (!self.panelHidden)
     {
+        [self.delegate itemView:self showInfo:NO];
+        
         self.panelHidden = YES;
         [UIView animateWithDuration:0.2 animations:^{
             self.itemDescriptionPanel.frame = CGRectMake(0, self.view.height - 151, self.view.width, 151);

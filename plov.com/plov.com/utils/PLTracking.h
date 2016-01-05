@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class OrderObject;
+@class MenuItemObject;
 
 @interface PLTracking : NSObject
 
@@ -30,5 +31,9 @@
                itemId:(NSString *)itemId
                 price:(CGFloat)price
              quantity:(CGFloat)quantity;
+
+- (void)itemOnScreen:(MenuItemObject *)item;
+- (void)itemOnFullScreen:(MenuItemObject *)item;
+- (void)itemOnInfo:(MenuItemObject *)item;
 
 @end

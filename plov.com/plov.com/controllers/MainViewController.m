@@ -530,7 +530,19 @@
         }
         self.priceLabel.attributedText = [SHARED_APP rubleCost:item.cost font:self.priceLabel.font];
         [self.countLabel setText:@(item.count).stringValue animated:NO];
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendImpressionsForItem) object:nil];
+        [self performSelector:@selector(sendImpressionsForItem) withObject:nil afterDelay:0.2];
     }
+}
+
+- (void)sendImpressionsForItem
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendImpressionsForItem) object:nil];
+    
+    MenuItemObject * item = self.items[_currentItem][@"item"];
+    
+    [SHARED_APP.tracking itemOnScreen:item];
 }
 
 - (void)selectingCategory:(MenuCategoryObject *)category
@@ -549,11 +561,26 @@
     }
 }
 
+- (void)itemView:(ItemViewController *)item showInfo:(BOOL)enable
+{
+    if (enable)
+    {
+        MenuItemObject * menuItem = self.items[_currentItem][@"item"];
+        [SHARED_APP.tracking itemOnInfo:menuItem];
+    }
+}
+
 - (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable
 {
     if (_fullscreenMode == enable)
     {
         return;
+    }
+    
+    if (enable)
+    {
+        MenuItemObject * menuItem = self.items[_currentItem][@"item"];
+        [SHARED_APP.tracking itemOnFullScreen:menuItem];
     }
     
     _fullscreenMode = enable;

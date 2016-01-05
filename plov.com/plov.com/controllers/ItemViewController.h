@@ -14,6 +14,7 @@
 @protocol ItemViewDelegate <NSObject>
 
 - (void)itemView:(ItemViewController *)item enableFullscreen:(BOOL)enable;
+- (void)itemView:(ItemViewController *)item showInfo:(BOOL)enable;
 - (BOOL)fullscreenMode;
 
 @end
