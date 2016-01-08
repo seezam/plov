@@ -151,12 +151,13 @@
     
     NSDictionary * pushData = @{@"event": @"purchase",
                                 @"ecommerce": @{
-                                        @"purchase": @{
-                                                @"actionField": @{
-                                                        @"id": order.orderId,
-                                                        @"affiliation": @"Plov.com iOS App",
-                                                        @"revenue": @(order.cost).stringValue},
-                                                @"products": products}}};
+                                    @"purchase": @{
+                                        @"actionField": @{
+                                            @"id": order.orderId,
+                                            @"affiliation": @"Plov.com iOS App",
+                                            @"shipping": @(order.deliveryCost).stringValue,
+                                            @"revenue": @(order.cost).stringValue},
+                                        @"products": products}}};
     
     [dataLayer push:@{@"ecommerce":[NSNull null]}];
     

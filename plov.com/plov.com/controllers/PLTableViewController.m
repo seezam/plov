@@ -290,10 +290,22 @@
 //    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 //}
 
+- (NSInteger)totalCost
+{
+    if (self.order.cost > 0)
+    {
+        return self.order.cost + self.order.deliveryCost;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 - (void)checkCartPos
 {
     UILabel * testLabel = [[UILabel alloc] initWithFrame:self.backetSumLabel.frame];
-    testLabel.attributedText = [SHARED_APP rubleCost:self.order.cost font:self.backetSumLabel.font];
+    testLabel.attributedText = [SHARED_APP rubleCost:[self totalCost] font:self.backetSumLabel.font];
     [testLabel sizeToFit];
     NSInteger newX = self.view.width - self.cartIcon.width - 13 - ceil(testLabel.width/10)*10 - 3;
     

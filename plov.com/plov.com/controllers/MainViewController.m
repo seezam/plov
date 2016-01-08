@@ -160,14 +160,7 @@
             [menuItems addObject:menuItem];
         }
     }
-    
-    if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
-    {
-        MenuItemObject * deliveryItem = [SHARED_APP.menuData itemById:@"10000"];
-        deliveryItem.count = 1;
-        [menuItems addObject:deliveryItem];
-    }
-    
+        
     OrderObject * order = [[OrderObject alloc] initWithMenuItems:menuItems orderId:@"" address:@""];
     
     OrderViewController * orderVc = [OrderViewController instantiateWithStoryboard:self.storyboard order:order];

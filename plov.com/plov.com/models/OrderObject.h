@@ -23,7 +23,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong, readonly) NSString * orderId;
 
 @property (nonatomic, strong, readonly) NSDate * date;
-@property (nonatomic, strong, readonly) NSString * address;
+@property (nonatomic, strong, readonly) NSString * deliveryAddress;
+@property (nonatomic, assign, readonly) NSInteger deliveryCost;
 
 @property (nonatomic, assign, readonly) NSInteger cost;
 @property (nonatomic, strong, readonly) NSArray * list;
@@ -34,7 +35,8 @@ typedef enum : NSUInteger {
 
 + (NSArray *)ordersWithData:(NSArray *)data;
 
-- (OrderObject *)initWithMenuItems:(NSArray *)items orderId:(NSString *)orderId address:(NSString *)address;
+- (OrderObject *)initWithMenuItems:(NSArray *)items orderId:(NSString *)orderId
+                           address:(NSString *)address;
 - (OrderObject *)initWithOrderCopy:(OrderObject *)order;
 
 - (NSDictionary *)orderToJson;
@@ -45,6 +47,7 @@ typedef enum : NSUInteger {
 - (void)appendItem:(OrderItemObject *)item;
 - (void)removeItem:(OrderItemObject *)item;
 
+- (BOOL)updateDeliveryCost:(NSInteger)deliveryCost;
 - (void)updateOrderWithId:(NSString *)orderId address:(NSString *)address;
 - (void)updateOrderStatus:(NSString *)status;
 

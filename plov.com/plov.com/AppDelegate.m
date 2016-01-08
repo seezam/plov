@@ -385,19 +385,19 @@
     [cat8 addMenuItem:item84];
     
     
-    MenuCategoryObject * cat9 = [[MenuCategoryObject alloc] initWithId:@"8"];
-    cat9.hide = YES;
-    [cat9 setTitle:@"Прочее" forLng:@"ru"];
-    [cat9 setTitle:@"Other" forLng:@"en"];
-    [obj addMenuCategory:cat9];
-
-    MenuItemObject * item91 = [[MenuItemObject alloc] initWithId:@"10000"];
-    [item91 setTitle:@"Доставка" forLng:@"ru"];
-    [item91 setTitle:@"Delivery" forLng:@"en"];
-    [item91 setDesc:@"Доставка" forLng:@"ru"];
-    [item91 setDesc:@"Delivery" forLng:@"en"];
-    [item91 setCost:300 forWeight:1];
-    [cat9 addMenuItem:item91];
+//    MenuCategoryObject * cat9 = [[MenuCategoryObject alloc] initWithId:@"8"];
+//    cat9.hide = YES;
+//    [cat9 setTitle:@"Прочее" forLng:@"ru"];
+//    [cat9 setTitle:@"Other" forLng:@"en"];
+//    [obj addMenuCategory:cat9];
+//
+//    MenuItemObject * item91 = [[MenuItemObject alloc] initWithId:@"10000"];
+//    [item91 setTitle:@"Доставка" forLng:@"ru"];
+//    [item91 setTitle:@"Delivery" forLng:@"en"];
+//    [item91 setDesc:@"Доставка" forLng:@"ru"];
+//    [item91 setDesc:@"Delivery" forLng:@"en"];
+//    [item91 setCost:300 forWeight:1];
+//    [cat9 addMenuItem:item91];
     
     obj.minimalCost = [self.remoteAppInfo[@"minimal-cost"] integerValue];
     obj.freeDeliveryCost = [self.remoteAppInfo[@"free-delivery-cost"] integerValue];

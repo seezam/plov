@@ -198,9 +198,9 @@
 {
     if (self.statusMode)
     {
-        return self.order.list.count + 3;
+        return self.order.list.count + 4;
     }
-    return self.order.list.count;
+    return self.order.list.count + 1; //delivery row
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -221,7 +221,7 @@
         cell.delegate = self;
         [cell setCount:item.count withSum:item.cost];
         
-        cell.readOnly = self.statusMode || [item.itemId isEqualToString:@"10000"];
+        cell.readOnly = self.statusMode;
         
         return cell;
     }
@@ -230,7 +230,22 @@
         if (row == self.order.list.count)
         {
             PLTextTableViewCell * cell = nil;
-            cell = [PLTextTableViewCell cellWithText:self.order.address
+            cell = [PLTextTableViewCell cellWithText:@(self.order.deliveryCost).stringValue
+                                         placeholder:@""
+                                                name:LOC(@"LOC_ORDER_DELIVERING")
+                                             reuseId:@"address"
+                                                type:PLTableItemType_ReadOnly
+                                              blocks:nil
+                                                last:!self.statusMode];
+            
+            [cell hideDivider:!self.statusMode];
+            
+            return cell;
+        }
+        else if (row == self.order.list.count + 1)
+        {
+            PLTextTableViewCell * cell = nil;
+            cell = [PLTextTableViewCell cellWithText:self.order.deliveryAddress
                                          placeholder:@""
                                                 name:@""
                                              reuseId:@"address"
@@ -242,7 +257,7 @@
             
             return cell;
         }
-        else if (row == self.order.list.count + 1)
+        else if (row == self.order.list.count + 2)
         {
             NSDateFormatter * df = [[NSDateFormatter alloc] init];
             df.dateStyle = NSDateFormatterShortStyle;
@@ -285,7 +300,7 @@
 - (void)checkCartPosAnimated:(BOOL)animated
 {
     UILabel * testLabel = [[UILabel alloc] initWithFrame:self.bucketSumLabel.frame];
-    testLabel.attributedText = [SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font];
+    testLabel.attributedText = [SHARED_APP rubleCost:[self totalCost] font:self.bucketSumLabel.font];
     [testLabel sizeToFit];
     NSInteger newX = self.view.width - self.cartIcon.width - 13 - ceil(testLabel.width/10)*10 - 3;
     
@@ -304,6 +319,17 @@
     }
 }
 
+- (NSInteger)totalCost
+{
+    if (self.bucketSum > 0)
+    {
+        return self.bucketSum + self.order.deliveryCost;
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 - (NSInteger)orderCell:(OrderTableViewCell *)cell countDidIncremented:(BOOL)incremented
 {
@@ -342,7 +368,7 @@
             [self checkCartPosAnimated:YES];
             
             self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollDown;
-            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:YES];
+            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:[self totalCost] font:self.bucketSumLabel.font] animated:YES];
         }
     }
     else
@@ -363,7 +389,7 @@
         {
 //            self.navigationItem.rightBarButtonItem = self.orderButton;
             
-            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
+            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:[self totalCost] font:self.bucketSumLabel.font] animated:NO];
             [UIView animateWithDuration:0.2 animations:^{
                 self.bucketSumLabel.alpha = 1;
                 
@@ -375,7 +401,7 @@
             [self checkCartPosAnimated:YES];
             
             self.bucketSumLabel.transitionEffect = BBCyclingLabelTransitionEffectScrollUp;
-            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:YES];
+            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:[self totalCost] font:self.bucketSumLabel.font] animated:YES];
         }
     }
     
@@ -407,44 +433,36 @@
 //        self.processButton.alpha = 0;
 //    }];
     
-    if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
+    if (!self.statusMode)
     {
-        BOOL addDelivery = YES;
-        for (OrderItemObject * item in self.order.list)
+        if (self.bucketSum < SHARED_APP.menuData.freeDeliveryCost)
         {
-            if ([item.itemId isEqualToString:@"10000"])
+            if ([self.order updateDeliveryCost:SHARED_APP.menuData.deliveryCost])
             {
-                addDelivery = NO;
-                break;
+                [self updateDeliveryCost:YES];
             }
         }
-        
-        if (addDelivery)
+        else
         {
-            MenuItemObject * item = [SHARED_APP.menuData itemById:@"10000"];
-            item.count = 1;
-            OrderItemObject * orderItem = [[OrderItemObject alloc] initWithMenuItem:item];
-            
-            [self.order appendItem:orderItem];
-            
-            [self.ordersTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(self.order.list.count - 1) inSection:0]]
-                                                           withRowAnimation:UITableViewRowAnimationTop];
+            if ([self.order updateDeliveryCost:0])
+            {
+                [self updateDeliveryCost:NO];
+            }
         }
     }
-    else
+}
+
+- (void)updateDeliveryCost:(BOOL)up
+{
+    [self.ordersTableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.order.list.count inSection:0]]
+                                withRowAnimation:UITableViewRowAnimationFade];
+    
+    if (self.bucketSum > 0)
     {
-        for (OrderItemObject * item in self.order.list)
-        {
-            if ([item.itemId isEqualToString:@"10000"])
-            {
-                NSInteger row = [self.order.list indexOfObject:item];
-                [self.order removeItem:item];
-            
-                [self.ordersTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
-                                            withRowAnimation:UITableViewRowAnimationTop];
-                break;
-            }
-        }
+        self.bucketSumLabel.transitionEffect = up?BBCyclingLabelTransitionEffectScrollUp:BBCyclingLabelTransitionEffectScrollDown;
+        [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:[self totalCost] font:self.bucketSumLabel.font] animated:YES];
+        
+        [self checkCartPosAnimated:YES];
     }
 }
 

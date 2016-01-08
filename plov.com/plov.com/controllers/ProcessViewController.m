@@ -121,7 +121,10 @@
         deliverTo[@"floor"] = address.floor;
     }
     
-    orderDict[@"delivery"] = @{@"address": deliverTo};
+    orderDict[@"delivery"] = @{
+                               @"address": deliverTo,
+                               @"cost": @(self.order.deliveryCost).stringValue
+                               };
 
     [SHARED_APP.crm createOrder:orderDict success:^(NSDictionary * resp) {
         if ([resp[@"id"] integerValue] > 0 &&

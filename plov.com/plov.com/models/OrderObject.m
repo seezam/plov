@@ -14,6 +14,7 @@
 static const NSString * idField = @"id";
 static const NSString * dateField = @"date";
 static const NSString * addressField = @"address";
+static const NSString * deliveryField = @"delivery";
 static const NSString * costField = @"cost";
 static const NSString * listField = @"list";
 static const NSString * statusField = @"status";
@@ -36,7 +37,8 @@ static const NSString * statusField = @"status";
     {
         _orderId = dict[idField];
         _date = [NSDate dateWithTimeIntervalSince1970:[dict[dateField] unsignedIntegerValue]];
-        _address = dict[addressField];
+        _deliveryAddress = dict[addressField];
+        _deliveryCost = [dict[deliveryField] integerValue];
         _cost = [dict[costField] integerValue];
         _status = [dict[statusField] integerValue];
         
@@ -59,7 +61,8 @@ static const NSString * statusField = @"status";
     {
         _orderId = orderId;
         _date = [NSDate date];
-        _address = address;
+        _deliveryAddress = address;
+        _deliveryCost = 0;
         _status = OrderStatus_Created;
     
         NSInteger cost = 0;
@@ -88,7 +91,8 @@ static const NSString * statusField = @"status";
     {
         _orderId = @"";
         _date = [NSDate date];
-        _address = @"";
+        _deliveryAddress = @"";
+        _deliveryCost = order.deliveryCost;
         _cost = order.cost;
         _list = [order.list copy];
         _status = OrderStatus_Created;
@@ -116,7 +120,8 @@ static const NSString * statusField = @"status";
     
     res[idField] = self.orderId;
     res[dateField] = @([self.date timeIntervalSince1970]);
-    res[addressField] = self.address;
+    res[addressField] = self.deliveryAddress;
+    res[deliveryField] = @(self.deliveryCost);
     res[costField] = @(self.cost);
     res[statusField] = @(self.status);
     
@@ -199,9 +204,20 @@ static const NSString * statusField = @"status";
     }
 }
 
+- (BOOL)updateDeliveryCost:(NSInteger)deliveryCost
+{
+    if (deliveryCost != _deliveryCost)
+    {
+        _deliveryCost = deliveryCost;
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)updateOrderWithId:(NSString *)orderId address:(NSString *)address
 {
-    _address = address;
+    _deliveryAddress = address;
     _orderId = orderId;
 }
 

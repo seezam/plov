@@ -27,7 +27,7 @@
         NSMutableArray * orders = [NSMutableArray array];
         for (OrderObject * order in SHARED_APP.customer.orders)
         {
-            NSString * address = order.address;
+            NSString * address = order.deliveryAddress;
             
             NSDateFormatter * df = [[NSDateFormatter alloc] init];
             df.dateStyle = NSDateFormatterShortStyle;
