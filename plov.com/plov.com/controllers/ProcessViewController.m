@@ -96,7 +96,7 @@
 
     //delivery
     {
-        NSString * itemName = LOC(@"LOC_ORDER_DELIVERING");
+        NSString * itemName = @"Доставка";//LOC(@"LOC_ORDER_DELIVERING");
         
         NSDictionary * itemDesc = @{
                                     @"initialPrice": @(self.order.deliveryCost),
