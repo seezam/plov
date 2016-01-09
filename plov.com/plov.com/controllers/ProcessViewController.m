@@ -93,6 +93,20 @@
         
         [orders addObject:itemDesc];
     }
+
+    //delivery
+    {
+        NSString * itemName = LOC(@"LOC_ORDER_DELIVERING");
+        
+        NSDictionary * itemDesc = @{
+                                    @"initialPrice": @(self.order.deliveryCost),
+                                    @"purchasePrice": @(self.order.deliveryCost),
+                                    @"productName": itemName,
+                                    @"quantity": @(1),
+                                    };
+        
+        [orders addObject:itemDesc];
+    }
     
     orderDict[@"items"] = orders;
     
@@ -123,7 +137,7 @@
     
     orderDict[@"delivery"] = @{
                                @"address": deliverTo,
-                               @"cost": @(self.order.deliveryCost).stringValue
+                               /*@"cost": @(self.order.deliveryCost).stringValue*/
                                };
 
     [SHARED_APP.crm createOrder:orderDict success:^(NSDictionary * resp) {

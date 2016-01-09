@@ -9,6 +9,7 @@
 #import "PLTableViewController.h"
 #import "PLTextTableViewCell.h"
 
+#import "PhoneNumberFormatter.h"
 #import "OrderObject.h"
 
 @implementation PLTableItem
@@ -39,6 +40,59 @@
     name.blocks = blocks;
     
     return name;
+}
+
+- (BOOL)internalValidation
+{
+    switch (self.type)
+    {
+        case PLTableItemType_Phone:
+        {
+            NSString * strip = [PhoneNumberFormatter strip:self.text];
+            if (strip.length < 12)
+            {
+                return NO;
+            }
+        }
+            break;
+        case PLTableItemType_Email:
+        {
+            NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+            NSString *emailRegex = laxString;
+            NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+            return [emailTest evaluateWithObject:self.text];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
+- (BOOL)valid
+{
+    if (self.type != PLTableItemType_Complex)
+    {
+        if (self.text.length == 0)
+        {
+            return !self.required;
+        }
+        
+        return [self internalValidation];
+    }
+    else
+    {
+        for (PLTableItem * block in self.blocks)
+        {
+            if (![block valid])
+            {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
 }
 
 @end
@@ -106,23 +160,11 @@
     {
         PLTableItem * item = self.items[row];
         
-        if (item.required && item.type != PLTableItemType_Complex && item.text.length == 0)
+        if (![item valid])
         {
             [self shakeRow:row];
             
             return;
-        }
-        else if (item.type == PLTableItemType_Complex)
-        {
-            for (PLTableItem * block in item.blocks)
-            {
-                if (block.required && block.text.length == 0)
-                {
-                    [self shakeRow:row];
-                    
-                    return;
-                }
-            }
         }
     }
     

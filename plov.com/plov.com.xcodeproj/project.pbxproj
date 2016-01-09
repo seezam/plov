@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180F64D61C41199100D792AE /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F64D51C41199100D792AE /* PhoneNumberFormatter.m */; };
 		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
@@ -82,6 +83,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180F64D41C41199100D792AE /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		180F64D51C41199100D792AE /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 		184B14E61B6E84DD00276C04 /* plov.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plov.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184B14EA1B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184B14EB1B6E84DD00276C04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				D55D52B01B9796CE0026D6D5 /* PLCRMSupport.m */,
 				18FD9B7F1C077AC0004D835D /* PLTracking.h */,
 				18FD9B801C077AC0004D835D /* PLTracking.m */,
+				180F64D41C41199100D792AE /* PhoneNumberFormatter.h */,
+				180F64D51C41199100D792AE /* PhoneNumberFormatter.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 				D58BF8B81B7BF68900821175 /* BBCyclingLabel.m in Sources */,
 				D513F5791B73E7C600B0E16E /* MenuViewController.m in Sources */,
 				D55D52B11B9796CE0026D6D5 /* PLCRMSupport.m in Sources */,
+				180F64D61C41199100D792AE /* PhoneNumberFormatter.m in Sources */,
 				D513F5731B73DF9000B0E16E /* AFURLConnectionOperation.m in Sources */,
 				D513F58E1B73ED1900B0E16E /* MenuTableViewCell.m in Sources */,
 				D59B5F1E1BC7125500BF32D4 /* UIImage+Resize.m in Sources */,

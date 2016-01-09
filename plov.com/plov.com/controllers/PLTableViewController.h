@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     PLTableItemType_Phone,
     PLTableItemType_Email,
     PLTableItemType_ReadOnly,
+    PLTableItemType_ReadOnlyRuble,
     PLTableItemType_ListItem,
     PLTableItemType_Complex,
 } PLTableItemType;
@@ -49,6 +50,8 @@ typedef void (^PLItemSelectBlock)(PLTableViewController * controller, PLTableIte
                      text:(NSString *)text required:(BOOL)requited type:(PLTableItemType)type;
 
 + (PLTableItem *)complexItem:(NSString *)itemId withTitle:(NSString *)title blocks:(NSArray *)blocks;
+
+- (BOOL)valid;
 
 @end
 

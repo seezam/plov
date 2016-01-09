@@ -234,7 +234,7 @@
                                          placeholder:@""
                                                 name:LOC(@"LOC_ORDER_DELIVERING")
                                              reuseId:@"address"
-                                                type:PLTableItemType_ReadOnly
+                                                type:PLTableItemType_ReadOnlyRuble
                                               blocks:nil
                                                 last:!self.statusMode];
             

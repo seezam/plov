@@ -6,6 +6,7 @@
 //  Copyright © 2015 plov.com. All rights reserved.
 //
 
+#import "PhoneNumberFormatter.h"
 #import "PLTextTableViewCell.h"
 
 @interface PLTextTableViewCell ()<UITextFieldDelegate>
@@ -13,12 +14,15 @@
 @property (nonatomic, strong) NSMutableArray * inputs;
 
 @property (nonatomic, assign) PLTableItemType type;
+
+@property (nonatomic, strong) PhoneNumberFormatter * phoneFormatter;
 @end
 
-#define FIELD_AVAILABLE_WIDTH ([[UIScreen mainScreen] bounds].size.width - 18)
-#define FIELD_WIDTH 180
-#define BLOCK_GAP 10
 #define FIELD_LEFT_MARGIN 140
+#define FIELD_AVAILABLE_WIDTH ([[UIScreen mainScreen] bounds].size.width - 18)
+#define FIELD_WIDTH ([[UIScreen mainScreen] bounds].size.width - 18) - FIELD_LEFT_MARGIN
+#define BLOCK_GAP 10
+
 
 @implementation PLTextTableViewCell
 
@@ -142,6 +146,12 @@
                 break;
             case PLTableItemType_Phone:
                 field.keyboardType = UIKeyboardTypePhonePad;
+                
+                cell.phoneFormatter = [[PhoneNumberFormatter alloc] init];
+                [field addTarget:cell action:@selector(phoneFormatTextField:)
+                    forControlEvents:UIControlEventEditingChanged];
+                
+                field.text = [cell.phoneFormatter format:field.text withLocale:@"ru"];
                 break;
             case PLTableItemType_Email:
                 field.keyboardType = UIKeyboardTypeEmailAddress;
@@ -149,6 +159,12 @@
             case PLTableItemType_ReadOnly:
                 field.userInteractionEnabled = NO;
                 field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
+                break;
+            case PLTableItemType_ReadOnlyRuble:
+                field.attributedText = [SHARED_APP rubleCost:text.integerValue font:field.font];
+                field.userInteractionEnabled = NO;
+                field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
+                field.textAlignment = NSTextAlignmentRight;
                 break;
             case PLTableItemType_ListItem:
                 field.userInteractionEnabled = NO;
@@ -190,6 +206,15 @@
     return cell;
 }
 
+-(void)dealloc
+{
+    if (self.type == PLTableItemType_Phone && self.inputs.count == 1)
+    {
+        UITextField * field = self.inputs.firstObject[@"field"];
+        [field removeTarget:self action:@selector(phoneFormatTextField:) forControlEvents:UIControlEventAllEvents];
+    }
+}
+
 - (void)setResponder
 {
     NSDictionary * input = self.inputs.firstObject;
@@ -225,6 +250,14 @@
             validChars = [NSCharacterSet alphanumericCharacterSet];
         }
             break;
+//        case PLTableItemType_Email:
+//            if ([string isEqualToString:@"@"]||
+//                [string isEqualToString:@"-"]||
+//                [string isEqualToString:@"_"]||
+//                [string isEqualToString:@"."]) return YES;
+//            
+//            validChars = [NSCharacterSet alphanumericCharacterSet];
+//            break;
         case PLTableItemType_Complex:
         {
             for (NSDictionary * dict in self.inputs)
@@ -254,6 +287,28 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return [self validChars:string type:self.type field:textField];
+}
+
+- (void)phoneFormatTextField:(UITextField *)field
+{
+    UITextRange *selRange = field.selectedTextRange;
+    UITextPosition *selStartPos = selRange.start;
+    
+    NSInteger pos = [field offsetFromPosition:field.beginningOfDocument toPosition:selStartPos];
+    
+    BOOL keepPos = YES;
+    if (pos == field.text.length)
+    {
+        keepPos = NO;
+    }
+    
+    field.text = [self.phoneFormatter format:field.text withLocale:@"ru"];
+
+    if (keepPos)
+    {
+        UITextPosition * newPos = [field positionFromPosition:field.beginningOfDocument offset:pos];
+        [field setSelectedTextRange:[field textRangeFromPosition:newPos toPosition:newPos]];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
