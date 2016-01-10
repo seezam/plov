@@ -357,7 +357,7 @@
     [item81 setTitle:@"Compote X.O." forLng:@"en"];
     [item81 setDesc:@"Разнообразные компоты с ягодами и плодами с чудесным ароматом и вкусом." forLng:@"ru"];
     [item81 setDesc:@"Selection of flavorful fruit and berry compotes." forLng:@"en"];
-    [item81 setCost:180 forLitres:1];
+    [item81 setCost:200 forLitres:1];
     [cat8 addMenuItem:item81];
     
     MenuItemObject * item82 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
@@ -365,7 +365,7 @@
     [item82 setTitle:@"Milk ulun tea" forLng:@"en"];
     [item82 setDesc:@"Зелёный китайский чай с мягким молочным вкусом и лёгким приятным ароматом." forLng:@"ru"];
     [item82 setDesc:@"Green tea" forLng:@"en"];
-    [item82 setCost:150 forWeight:10];
+    [item82 setCost:100 forWeight:6];
     [cat8 addMenuItem:item82];
    
     MenuItemObject * item83 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
@@ -373,7 +373,7 @@
     [item83 setTitle:@"Green tea" forLng:@"en"];
     [item83 setDesc:@"Насыщенный зелёный крупнолистовой чай с многогранным ароматом." forLng:@"ru"];
     [item83 setDesc:@"Green tea" forLng:@"en"];
-    [item83 setCost:150 forWeight:10];
+    [item83 setCost:100 forWeight:6];
     [cat8 addMenuItem:item83];
     
     MenuItemObject * item84 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
@@ -381,7 +381,7 @@
     [item84 setTitle:@"Green tea" forLng:@"en"];
     [item84 setDesc:@"Китайский выдержанный чай, ферментированный естественным способом с тонким вкусом и насыщенным цветом." forLng:@"ru"];
     [item84 setDesc:@"Green tea" forLng:@"en"];
-    [item84 setCost:150 forWeight:10];
+    [item84 setCost:100 forWeight:6];
     [cat8 addMenuItem:item84];
     
     

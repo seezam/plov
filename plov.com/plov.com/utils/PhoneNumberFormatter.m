@@ -70,6 +70,11 @@
         
     }
     
+    if (res.length == 11 && [[res substringToIndex:1] isEqualToString:@"8"])
+    {
+        [res replaceCharactersInRange:NSMakeRange(0, 1) withString:@"+7"];
+    }
+    
     return res;
     
 }

@@ -30,7 +30,7 @@
         controller.items = @[
                      [PLTableItem textItem:@"name" withTitle:LOC(@"LOC_ORDER_NAME_FIELD") text:SHARED_APP.customer.name
                                   required:YES
-                                      type:PLTableItemType_Alpha],
+                                      type:PLTableItemType_Name],
                      [PLTableItem textItem:@"phone" withTitle:LOC(@"LOC_ORDER_PHONE_FIELD") text:SHARED_APP.customer.phone
                                   required:YES
                                       type:PLTableItemType_Phone],

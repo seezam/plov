@@ -69,7 +69,7 @@
             field.delegate = cell;
          
             switch (item.type) {
-                case PLTableItemType_Alpha:
+                case PLTableItemType_Name:
                     field.keyboardType = UIKeyboardTypeNamePhonePad;
                     break;
                 case PLTableItemType_AlphaNumber:
@@ -117,13 +117,13 @@
     }
     else
     {
-        UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(140, 10, FIELD_WIDTH, 30)];
+        UITextField * field = [[UITextField alloc] initWithFrame:CGRectMake(FIELD_LEFT_MARGIN, 10, FIELD_WIDTH, 30)];
         field.placeholder = placeholder?placeholder:@"";
         field.autocorrectionType = UITextAutocorrectionTypeNo;
         field.text = text?text:@"";
         field.backgroundColor = [UIColor clearColor];
         field.textColor = [UIColor whiteColor];
-        field.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        field.autoresizingMask = UIViewAutoresizingNone;
         [field setClearButtonMode:UITextFieldViewModeWhileEditing];
         field.delegate = cell;
         [cell.inputs addObject:@{@"type": @(type), @"field": field }];
@@ -135,8 +135,9 @@
         }
         
         switch (type) {
-            case PLTableItemType_Alpha:
+            case PLTableItemType_Name:
                 field.keyboardType = UIKeyboardTypeNamePhonePad;
+                field.autocapitalizationType = UITextAutocapitalizationTypeWords;
                 break;
             case PLTableItemType_AlphaNumber:
                 field.keyboardType = UIKeyboardTypeDefault;
@@ -150,6 +151,11 @@
                 cell.phoneFormatter = [[PhoneNumberFormatter alloc] init];
                 [field addTarget:cell action:@selector(phoneFormatTextField:)
                     forControlEvents:UIControlEventEditingChanged];
+                
+                if (field.text.length == 0)
+                {
+                    field.text = @"+7";
+                }
                 
                 field.text = [cell.phoneFormatter format:field.text withLocale:@"ru"];
                 break;
@@ -227,7 +233,7 @@
     NSCharacterSet * invalidChars = nil;
     
     switch (type) {
-        case PLTableItemType_Alpha:
+        case PLTableItemType_Name:
         {
             if ([string isEqualToString:@" "]) return YES;
             
@@ -291,6 +297,11 @@
 
 - (void)phoneFormatTextField:(UITextField *)field
 {
+    if (field.text.length < 2)
+    {
+        field.text = @"+7";
+    }
+    
     UITextRange *selRange = field.selectedTextRange;
     UITextPosition *selStartPos = selRange.start;
     
