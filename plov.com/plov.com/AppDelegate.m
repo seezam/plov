@@ -362,9 +362,9 @@
     
     MenuItemObject * item82 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item82 setTitle:@"Чай молочный улун" forLng:@"ru"];
-    [item82 setTitle:@"Milk ulun tea" forLng:@"en"];
+    [item82 setTitle:@"Milk oolong tea" forLng:@"en"];
     [item82 setDesc:@"Зелёный китайский чай с мягким молочным вкусом и лёгким приятным ароматом." forLng:@"ru"];
-    [item82 setDesc:@"Green tea" forLng:@"en"];
+    [item82 setDesc:@"Chinese green tea with mild milky taste and a pleasant, delicate aroma." forLng:@"en"];
     [item82 setCost:100 forWeight:6];
     [cat8 addMenuItem:item82];
    
@@ -372,15 +372,15 @@
     [item83 setTitle:@"Зелёный чай" forLng:@"ru"];
     [item83 setTitle:@"Green tea" forLng:@"en"];
     [item83 setDesc:@"Насыщенный зелёный крупнолистовой чай с многогранным ароматом." forLng:@"ru"];
-    [item83 setDesc:@"Green tea" forLng:@"en"];
+    [item83 setDesc:@"Full leaf green tea with rich aroma and flavour." forLng:@"en"];
     [item83 setCost:100 forWeight:6];
     [cat8 addMenuItem:item83];
     
     MenuItemObject * item84 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item84 setTitle:@"Чай пуэр" forLng:@"ru"];
-    [item84 setTitle:@"Green tea" forLng:@"en"];
+    [item84 setTitle:@"Pu-erh tea" forLng:@"en"];
     [item84 setDesc:@"Китайский выдержанный чай, ферментированный естественным способом с тонким вкусом и насыщенным цветом." forLng:@"ru"];
-    [item84 setDesc:@"Green tea" forLng:@"en"];
+    [item84 setDesc:@"Chinese aged and naturally fermented tea with subtle flavour and deep colour." forLng:@"en"];
     [item84 setCost:100 forWeight:6];
     [cat8 addMenuItem:item84];
     
