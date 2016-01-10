@@ -136,7 +136,7 @@
         
         switch (type) {
             case PLTableItemType_Name:
-                field.keyboardType = UIKeyboardTypeNamePhonePad;
+                field.keyboardType = UIKeyboardTypeDefault;
                 field.autocapitalizationType = UITextAutocapitalizationTypeWords;
                 break;
             case PLTableItemType_AlphaNumber:
