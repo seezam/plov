@@ -168,6 +168,21 @@
     [self.navigationController pushViewController:orderVc animated:YES];
 }
 
+- (NSInteger)recalcBucket
+{
+    NSInteger summ = 0;
+    
+    for (MenuCategoryObject * cat in SHARED_APP.menuData.categories)
+    {
+        for (MenuItemObject * item in cat.items)
+        {
+            summ += item.count*item.cost;
+        }
+    }
+    
+    return summ;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -176,13 +191,25 @@
     {
         [self fillItemInfo];
 
-        self.bucketSum = 0;
+        NSInteger summ = [self recalcBucket];
+        self.bucketSum = summ;
         
-        self.navigationItem.rightBarButtonItem = nil;
-        
-        self.bucketSumLabel.alpha = 0;
-        self.cartIcon.x = self.view.width - self.cartIcon.width - 13;
-        [self.bucketSumLabel setText:@"" animated:NO];
+        if (summ > 0)
+        {
+            self.navigationItem.rightBarButtonItem = self.orderButton;
+            
+            [self.bucketSumLabel setAttributedText:[SHARED_APP rubleCost:self.bucketSum font:self.bucketSumLabel.font] animated:NO];
+            self.bucketSumLabel.alpha = 1;
+            [self checkCartPosAnimated:NO];
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItem = nil;
+            
+            self.bucketSumLabel.alpha = 0;
+            self.cartIcon.x = self.view.width - self.cartIcon.width - 13;
+            [self.bucketSumLabel setText:@"" animated:NO];
+        }
     }
 }
 

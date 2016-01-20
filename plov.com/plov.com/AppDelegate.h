@@ -11,6 +11,7 @@
 @class PLCRMSupport;
 @class MenuObject;
 @class CustomerObject;
+@class OrderObject;
 @class SWRevealViewController;
 @class PLTracking;
 
@@ -38,7 +39,7 @@
 
 - (NSAttributedString *)rubleCost:(NSInteger)cost font:(UIFont *)font;
 
-- (void)updateMenu;
+- (void)resetMenuToOrder:(OrderObject *)order;
 
 @end
 

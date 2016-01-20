@@ -152,7 +152,7 @@
             
             [SHARED_APP.customer setLastOrder:self.order];
             [SHARED_APP.customer saveData];
-            [SHARED_APP updateMenu];
+            [SHARED_APP resetMenuToOrder:nil];
             self.processed = YES;
             
             self.infoLabel.text = LOC(@"LOC_ORDER_CREATED");

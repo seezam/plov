@@ -20,6 +20,9 @@
 
 #import "CustomerObject.h"
 
+#import "OrderObject.h"
+#import "OrderItemObject.h"
+
 
 @interface AppDelegate ()<UIAlertViewDelegate>
 
@@ -42,7 +45,7 @@
     return nil;
 }
 
-- (void)updateMenu
+- (void)resetMenuToOrder:(OrderObject *)order
 {
     MenuViewController * vc = (MenuViewController *)self.revealViewController.rearViewController;
     [vc reloadData];
@@ -52,6 +55,15 @@
         for (MenuItemObject * item in cat.items)
         {
             item.count = 0;
+        }
+    }
+    
+    if (order)
+    {
+        for (OrderItemObject * oi in order.list)
+        {
+            MenuItemObject * item = [self.menuData itemById:oi.itemId];
+            item.count = oi.count;
         }
     }
     

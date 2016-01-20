@@ -60,7 +60,7 @@
         if (controller.buttonMode == PLTableButtonMode_Save)
         {
             [SHARED_APP.customer saveData];
-            [SHARED_APP updateMenu];
+            [SHARED_APP resetMenuToOrder:nil];
             [controller.navigationController popToRootViewControllerAnimated:YES];
         }
         else
