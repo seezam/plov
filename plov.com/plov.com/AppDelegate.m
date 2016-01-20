@@ -570,6 +570,8 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     [self.tracking FBActivateApp];
+    
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
