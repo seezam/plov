@@ -20,6 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.logo.image = [UIImage imageNamed:[PLResourseManager splashImageName]];
+    
     [self checkForNetwork];
 }
 

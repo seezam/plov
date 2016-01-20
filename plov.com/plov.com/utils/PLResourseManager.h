@@ -31,4 +31,6 @@ extern NSString * resImageLogo;
 
 + (NSString *)currentLng;
 
++ (NSString *)splashImageName;
+
 @end

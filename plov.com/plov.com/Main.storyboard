@@ -442,21 +442,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="UYP-ho-bPR">
-                                <rect key="frame" x="98" y="65" width="124" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spin.png" id="ROe-sy-UTf">
                                 <rect key="frame" x="130" y="476" width="61" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro.png" id="4bQ-0m-TVk">
-                                <rect key="frame" x="67" y="123" width="186" height="321"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4bQ-0m-TVk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.55294117649999996" green="0.44705882349999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="logo" destination="4bQ-0m-TVk" id="s47-UE-4gW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TjB-hp-PtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -634,10 +633,8 @@
         <image name="bott_fade" width="320" height="92"/>
         <image name="cart" width="34" height="33"/>
         <image name="cart-white" width="23" height="22"/>
-        <image name="intro.png" width="186" height="321"/>
         <image name="left" width="25" height="88"/>
         <image name="logo" width="124" height="26"/>
-        <image name="logo.png" width="124" height="26"/>
         <image name="menu-avatar" width="69" height="69"/>
         <image name="menu-edit" width="25" height="19"/>
         <image name="minus" width="36" height="36"/>
