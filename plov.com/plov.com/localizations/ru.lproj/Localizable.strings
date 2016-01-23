@@ -38,6 +38,7 @@
 "LOC_ORDER_PHONE_FIELD" = "Телефон";
 "LOC_ORDER_EMAIL_FIELD" = "E-mail";
 
+"LOC_ORDER_TOTAL" = "Итого";
 "LOC_ORDER_DELIVERING" = "Доставка";
 "LOC_NOCATEGORY" = "Без категории";
 

@@ -38,6 +38,7 @@
 "LOC_ORDER_PHONE_FIELD" = "Phone number";
 "LOC_ORDER_EMAIL_FIELD" = "Email";
 
+"LOC_ORDER_TOTAL" = "Total";
 "LOC_ORDER_DELIVERING" = "Delivery";
 "LOC_NOCATEGORY" = "No category";
 
