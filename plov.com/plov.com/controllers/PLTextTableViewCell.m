@@ -43,6 +43,35 @@
     title.numberOfLines = 0;
     [cell.contentView addSubview:title];
     
+    UILabel * title2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 9, 120, 30)];
+    title2.font = [UIFont fontWithName:@"ProximaNova-Light" size:14];
+    title2.textColor = UIColorFromRGBA(resColorMenuText);
+    title2.text = name?name:@"";
+    title2.numberOfLines = 0;
+    title2.hidden = YES;
+    [cell.contentView addSubview:title2];
+    
+    if (type == PLTableItemType_ListItem2)
+    {
+        NSArray * lines = [name componentsSeparatedByString:@"\n"];
+        
+        if (lines.count >= 2)
+        {
+            title.text = lines[0];
+            title2.text = lines[1];
+            
+            title2.hidden = NO;
+            
+            title.height = 16;
+            title.y = 8;
+            title.numberOfLines = 1;
+            
+            title2.height = 15;
+            title2.y = 24;
+            title2.numberOfLines = 1;
+        }
+    }
+    
     if (type == PLTableItemType_Complex)
     {
         NSInteger blockW = FIELD_WIDTH/blocks.count;
@@ -172,10 +201,12 @@
                 field.textColor = [UIColor colorWithWhite:1 alpha:0.3];
                 field.textAlignment = NSTextAlignmentRight;
                 break;
-            case PLTableItemType_ListItem:
+            case PLTableItemType_ListItem1:
+            case PLTableItemType_ListItem2:
                 field.userInteractionEnabled = NO;
                 field.hidden = YES;
-                title.width = field.right - title.x;
+                title.width = field.right - title.x - 18;
+                title2.width = title.width;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
             case PLTableItemType_Complex:

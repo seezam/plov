@@ -37,7 +37,7 @@
             NSString * title = [NSString stringWithFormat:@"%@\n%@", address, date];
             
             [orders addObject:[PLTableItem textItem:order.orderId withTitle:title text:nil required:YES
-                                               type:PLTableItemType_ListItem]];
+                                               type:PLTableItemType_ListItem2]];
         }
         controller.items = orders;
     };

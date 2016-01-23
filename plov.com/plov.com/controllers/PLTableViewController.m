@@ -305,7 +305,8 @@
     
     PLTableItem * item = self.items[row];
     
-    if (item.type == PLTableItemType_ListItem && self.itemSelectBlock)
+    if ((item.type == PLTableItemType_ListItem1 || item.type == PLTableItemType_ListItem2)
+        && self.itemSelectBlock)
     {
         self.itemSelectBlock(self, item);
     }

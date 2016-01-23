@@ -16,7 +16,8 @@ typedef enum : NSUInteger {
     PLTableItemType_Email,
     PLTableItemType_ReadOnly,
     PLTableItemType_ReadOnlyRuble,
-    PLTableItemType_ListItem,
+    PLTableItemType_ListItem1,
+    PLTableItemType_ListItem2,
     PLTableItemType_Complex,
 } PLTableItemType;
 

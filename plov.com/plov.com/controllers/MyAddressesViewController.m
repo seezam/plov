@@ -29,7 +29,7 @@
         for (AddressObject * address in SHARED_APP.customer.addresses)
         {
             [addresses addObject:[PLTableItem textItem:@(i++).stringValue withTitle:address.fullAddressString text:nil required:YES
-                                                  type:PLTableItemType_ListItem]];
+                                                  type:PLTableItemType_ListItem1]];
         }
         controller.items = addresses;
     };
