@@ -23,6 +23,13 @@
 #import "OrderObject.h"
 #import "OrderItemObject.h"
 
+NSString * kRemoteInfoBuildNumber = @"min-ios-build-number";
+NSString * kRemoteInfoMinimalCost = @"minimal-cost";
+NSString * kRemoteInfoFreeDeliveryCost = @"free-delivery-cost";
+NSString * kRemoteInfoDeliveryCost = @"delivery-cost";
+NSString * kRemoteInfoUpdateURL = @"ios-update-url";
+NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
+
 
 @interface AppDelegate ()<UIAlertViewDelegate>
 
@@ -411,9 +418,9 @@
 //    [item91 setCost:300 forWeight:1];
 //    [cat9 addMenuItem:item91];
     
-    obj.minimalCost = [self.remoteAppInfo[@"minimal-cost"] integerValue];
-    obj.freeDeliveryCost = [self.remoteAppInfo[@"free-delivery-cost"] integerValue];
-    obj.deliveryCost = [self.remoteAppInfo[@"delivery-cost"] integerValue];
+    obj.minimalCost = [self.remoteAppInfo[kRemoteInfoMinimalCost] integerValue];
+    obj.freeDeliveryCost = [self.remoteAppInfo[kRemoteInfoFreeDeliveryCost] integerValue];
+    obj.deliveryCost = [self.remoteAppInfo[kRemoteInfoDeliveryCost] integerValue];
     
     return obj;
 }
@@ -434,7 +441,7 @@
 {
     if (alertView.tag == 100)
     {
-        NSURL *appStoreURL = [NSURL URLWithString:@"https://itunes.apple.com/app/id1029884019"];
+        NSURL *appStoreURL = [NSURL URLWithString:self.remoteAppInfo[kRemoteInfoUpdateURL]];
         [[UIApplication sharedApplication] openURL:appStoreURL];
     }
 }
@@ -465,7 +472,7 @@
 {
     if ([self updateRemoteInfo])
     {
-        NSInteger minBuild = [self.remoteAppInfo[@"min-ios-build-number"] integerValue];
+        NSInteger minBuild = [self.remoteAppInfo[kRemoteInfoBuildNumber] integerValue];
         
         NSInteger appBuild = [[[NSBundle mainBundle] infoDictionary][(NSString *)kCFBundleVersionKey] integerValue];
         

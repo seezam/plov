@@ -244,7 +244,14 @@
     {
 //        [Intercom presentMessageComposer];
         
-        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@",@"+74957897893"]];
+        NSString * callcenterNumber = SHARED_APP.remoteAppInfo[kRemoteInfoCallcenterNumber];
+        
+        if (callcenterNumber.length == 0)
+        {
+            callcenterNumber = @"+74957897893";
+        }
+        
+        NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt:%@", callcenterNumber]];
         
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
         {

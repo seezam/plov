@@ -15,6 +15,13 @@
 @class SWRevealViewController;
 @class PLTracking;
 
+extern NSString * kRemoteInfoBuildNumber;
+extern NSString * kRemoteInfoMinimalCost;
+extern NSString * kRemoteInfoFreeDeliveryCost;
+extern NSString * kRemoteInfoDeliveryCost;
+extern NSString * kRemoteInfoUpdateURL;
+extern NSString * kRemoteInfoCallcenterNumber;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) PLTracking * tracking;
