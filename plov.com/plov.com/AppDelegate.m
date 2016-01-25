@@ -191,13 +191,14 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
     [item31 setCost:270 forWeight:100];
     [cat3 addMenuItem:item31];
     
-    MenuItemObject * item32 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item32 setTitle:@"Перепелиные яйца" forLng:@"ru"];
-    [item32 setTitle:@"Quail Eggs" forLng:@"en"];
-    [item32 setDesc:@"Отваренные диетические яйца перепела традиционно добавляются к плову как дополнительный ингредиент." forLng:@"ru"];
-    [item32 setDesc:@"Dietary boiled quail eggs, traditionally served with plov as an additional ingredient." forLng:@"en"];
-    [item32 setCost:120 forWeight:70];
-    [cat3 addMenuItem:item32];
+    ++itemId;
+//    MenuItemObject * item32 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+//    [item32 setTitle:@"Перепелиные яйца" forLng:@"ru"];
+//    [item32 setTitle:@"Quail Eggs" forLng:@"en"];
+//    [item32 setDesc:@"Отваренные диетические яйца перепела традиционно добавляются к плову как дополнительный ингредиент." forLng:@"ru"];
+//    [item32 setDesc:@"Dietary boiled quail eggs, traditionally served with plov as an additional ingredient." forLng:@"en"];
+//    [item32 setCost:120 forWeight:70];
+//    [cat3 addMenuItem:item32];
     
     MenuItemObject * item33 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
     [item33 setTitle:@"Казы" forLng:@"ru"];
@@ -358,13 +359,14 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
     [item71 setCost:200 forWeight:430];
     [cat7 addMenuItem:item71];
     
-    MenuItemObject * item72 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item72 setTitle:@"Чак-Чак Норрис" forLng:@"ru"];
-    [item72 setTitle:@"Chuck Chuck Norris" forLng:@"en"];
-    [item72 setDesc:@"Восточное лакомство приготовленное в сочетании замешанного теста на яйцах, сахаре, масле и медовой обливки." forLng:@"ru"];
-    [item72 setDesc:@"Eastern sweet treat made with dough and honey glazing." forLng:@"en"];
-    [item72 setCost:180 forWeight:200];
-    [cat7 addMenuItem:item72];
+    ++itemId;
+//    MenuItemObject * item72 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
+//    [item72 setTitle:@"Чак-Чак Норрис" forLng:@"ru"];
+//    [item72 setTitle:@"Chuck Chuck Norris" forLng:@"en"];
+//    [item72 setDesc:@"Восточное лакомство приготовленное в сочетании замешанного теста на яйцах, сахаре, масле и медовой обливки." forLng:@"ru"];
+//    [item72 setDesc:@"Eastern sweet treat made with dough and honey glazing." forLng:@"en"];
+//    [item72 setCost:180 forWeight:200];
+//    [cat7 addMenuItem:item72];
 //-----------------
     MenuCategoryObject * cat8 = [[MenuCategoryObject alloc] initWithId:@"7"];
     [cat8 setTitle:@"Напитки" forLng:@"ru"];
