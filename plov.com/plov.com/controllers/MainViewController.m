@@ -542,7 +542,11 @@
     
         if (item.litres)
         {
-            self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_LITRES"), @(item.weight)];
+            double litres = item.weight / 1000.f;
+            
+            NSString * s = [NSString stringWithFormat:@"%.2f", litres];
+            
+            self.weightLabel.text = [NSString stringWithFormat:LOC(@"LOC_MAIN_LITRES"), s];
         }
         else
         {

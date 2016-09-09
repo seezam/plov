@@ -53,16 +53,24 @@
     _litres = NO;
 }
 
-- (void)setCost:(NSInteger)cost forLitres:(NSInteger)litres
+- (void)setCost:(NSInteger)cost forMlitres:(NSInteger)litres
 {
     _cost = cost;
     _weight = litres;
     _litres = YES;
 }
 
+- (void)setImageId:(NSInteger)imageId
+{
+    _imageId = imageId;
+}
+
 - (UIImage *)image
 {
-    NSString * imgName = [NSString stringWithFormat:@"item%03ld", (long)self.itemId.integerValue];
+    NSString * imgName = [NSString stringWithFormat:@"item%03ld",
+                          (_imageId == -1)?
+                          (long)self.itemId.integerValue:
+                          (long)self.imageId];
     return [[UIImage imageNamed:imgName] resizeImageTo:CGSizeMake(320, 568)];
 }
 
@@ -72,6 +80,8 @@
     {
         _titles = [NSMutableDictionary dictionary];
         _descs = [NSMutableDictionary dictionary];
+        
+        _imageId = -1;
     }
     
     return self;
@@ -84,6 +94,8 @@
         _itemId = itemId;
         _titles = [NSMutableDictionary dictionary];
         _descs = [NSMutableDictionary dictionary];
+        
+        _imageId = -1;
     }
     
     return self;

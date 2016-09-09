@@ -77,6 +77,24 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
     self.reinitialized = YES;
 }
 
+- (MenuItemObject *)itemObjectWithTitles:(NSDictionary *)titles descriptions:(NSDictionary *)descriptions cost:(NSInteger)cost weight:(NSInteger)weight withId:(NSInteger)objectId
+{
+    MenuItemObject * item = [[MenuItemObject alloc] initWithId:@(objectId).stringValue];
+    
+    for (NSString * key in titles.allKeys)
+    {
+        [item setTitle:titles[key] forLng:key];
+    }
+    
+    for (NSString * key in descriptions.allKeys)
+    {
+        [item setDesc:descriptions[key] forLng:key];
+    }
+    [item setCost:cost forWeight:weight];
+    
+    return item;
+}
+
 - (MenuObject *)loadData
 {
 //    NSString * data = @"\
@@ -118,307 +136,339 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
 //    MenuObject * obj = [[MenuObject alloc] initWithData:[NSData dataWithBytes:data.UTF8String length:data.length]];
     
     NSInteger itemId = 0;
+    NSInteger catId = 0;
     
     MenuObject * obj = [[MenuObject alloc] init];
     
-    MenuCategoryObject * cat1 = [[MenuCategoryObject alloc] initWithId:@"0"];
-    [cat1 setTitle:@"Плов" forLng:@"ru"];
-    [cat1 setTitle:@"Plov" forLng:@"en"];
-    [obj addMenuCategory:cat1];
+    MenuCategoryObject * cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Горячее" forLng:@"ru"];
+    [cat setTitle:@"Main Courses" forLng:@"en"];
+    [obj addMenuCategory:cat];
     
-    MenuItemObject * item11 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item11 setTitle:@"Плов «Чайханский»" forLng:@"ru"];
-    [item11 setTitle:@"Chaykhansky Plov" forLng:@"en"];
-    [item11 setDesc:@"Плов «Чайханский» Знаменитый узбекский плов из бараньей ножки с рисом «Лазер», желтой морковью, ароматным чесноком с добавлением «Зиры»."
-             forLng:@"ru"];
-    [item11 setDesc:@"Traditional Uzbek plov with lamb, lazer rice, yellow and red carrots, spiced with garlic and cumin."
-             forLng:@"en"];
-    [item11 setCost:390 forWeight:300];
-    [cat1 addMenuItem:item11];
+    MenuItemObject * item = [self itemObjectWithTitles:@{@"ru": @"Плов «Праздничный»",
+                                                        @"en": @"Prazdnichnyy Plov"}
+                                          descriptions:@{@"ru": @"Рис лазер, мясо барашка, желтая и красная морковь, горох нут, узбекский темный изюм с добавлением восточных специй.",
+                                                         @"en": @"Lamb, lazer rice, yellow and red carrots, chickpeas, with dark Uzbek raisins and oriental spices."}
+                                                  cost:330
+                                                weight:250
+                                                withId:++itemId];
+    [item setImageId:1];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item12 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item12 setTitle:@"Плов «Праздничный»" forLng:@"ru"];
-    [item12 setTitle:@"Prazdnichnyy Plov" forLng:@"en"];
-    [item12 setDesc:@"Рис «Лазер», мясо барашка, желтая и красная морковь, горох «Нут», узбекский изюм с добавлением восточных специй."
-             forLng:@"ru"];
-    [item12 setDesc:@"Lamb, lazer rice, yellow and red carrots, chickpeas, with dark Uzbek raisins and oriental spices."
-             forLng:@"en"];
-    [item12 setCost:350 forWeight:300];
-    [cat1 addMenuItem:item12];
+    item = [self itemObjectWithTitles:@{@"ru": @"Плов «Вегетарианский»",
+                                        @"en": @"Vegetarian Plov"}
+                         descriptions:@{@"ru": @"Приготовленный на масле из виноградных косточек, с добавлением кураги и чернослива. Рис лазер, лук, жёлтая и красная морковь с душистыми специями.",
+                                        @"en": @"Lazer rice, onions, yellow and red carrots with spices, dried apricots and prunes. Cooked with grape seed oil."}
+                                 cost:330
+                               weight:250
+                               withId:++itemId];
+    [item setImageId:2];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item13 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item13 setTitle:@"Плов «Вегетарианский»" forLng:@"ru"];
-    [item13 setTitle:@"Vegetarian Plov" forLng:@"en"];
-    [item13 setDesc:@"Плов с овощами, длинозерновым рисом, горохом «Нут», молотой паприкой, барбарисом и сухофруктами."
-             forLng:@"ru"];
-    [item13 setDesc:@"Lazer rice, onions, yellow and red carrots with spices, dried apricots and prunes. Cooked with grape seed oil." forLng:@"en"];
-    [item13 setCost:370 forWeight:300];
-    [cat1 addMenuItem:item13];
-//-----------------
-    MenuCategoryObject * cat2 = [[MenuCategoryObject alloc] initWithId:@"1"];
-    [cat2 setTitle:@"Горячее" forLng:@"ru"];
-    [cat2 setTitle:@"Main Courses" forLng:@"en"];
-    [obj addMenuCategory:cat2];
+    item = [self itemObjectWithTitles:@{@"ru": @"Плов «Чайханский»",
+                                        @"en": @"Chaykhansky Plov"}
+                         descriptions:@{@"ru": @"Традиционный узбекский плов из бараньей ножки с рисом лазер, жёлтой и красной морковью, ароматным чесноком и с добавлением зиры.",
+                                        @"en": @"Traditional Uzbek plov with lamb, lazer rice, yellow and red carrots, spiced with garlic and cumin."}
+                                 cost:330
+                               weight:250
+                               withId:++itemId];
+    [item setImageId:3];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item21 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item21 setTitle:@"Le Манты" forLng:@"ru"];
-    [item21 setTitle:@"Le Manty" forLng:@"en"];
-    [item21 setDesc:@"Нежные, приготовленные на пару из рубленной сочной баранины, лука и ароматных специй. Подаются с мацони — кисломолочным соусом с зеленью." forLng:@"ru"];
-    [item21 setDesc:@"Tender steamed manty with succulent lamb, onions and spices. Served with matzoon – a yogurt sauce with herbs." forLng:@"en"];
-    [item21 setCost:370 forWeight:210];
-    [cat2 addMenuItem:item21];
+    item = [self itemObjectWithTitles:@{@"ru": @"Плов Chicken",
+                                        @"en": @"Chicken Plov"}
+                         descriptions:@{@"ru": @"Легкий и нежный плов, приготовленный из сочного куриного мяса, риса, красной и жёлтой моркови с ароматными специями.",
+                                        @"en": @"Light and tender plov, made with juicy chicken meat, rice, yellow and red carrots, and flavorful spices."}
+                                 cost:300
+                               weight:250
+                               withId:++itemId];
+    [item setImageId:4];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item22 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item22 setTitle:@"Жан-Клод Лагман" forLng:@"ru"];
-    [item22 setTitle:@"Jean-Claude Laghman" forLng:@"en"];
-    [item22 setDesc:@"Настоящая домашняя лапша, сделанная вручную. С мякотью баранины, сельдереем, красным и жёлтым перцем, помидорами, луком и китайской капустой." forLng:@"ru"];
-    [item22 setDesc:@"Homemade noodles with juicy lamb meat, celery, yellow and red carrots, tomatoes, onions and bok choy." forLng:@"en"];
-    [item22 setCost:350 forWeight:300];
-    [cat2 addMenuItem:item22];
-//-----------------
-    MenuCategoryObject * cat3 = [[MenuCategoryObject alloc] initWithId:@"2"];
-    [cat3 setTitle:@"Закуски" forLng:@"ru"];
-    [cat3 setTitle:@"Appetizers" forLng:@"en"];
-    [obj addMenuCategory:cat3];
+    item = [self itemObjectWithTitles:@{@"ru": @"Жан-Клод Лагман",
+                                        @"en": @"Jean-Claude Laghman"}
+                         descriptions:@{@"ru": @"Настоящая домашняя лапша, сделанная вручную. С мякотью баранины, сельде- реем, красным и жёлтым перцем, томатами, луком и китайской капустой. Подаются с острым соусом Пападжика.",
+                                        @"en": @"Homemade noodles with juicy lamb meat, celery, yellow and red carrots, tomatoes, onions and bok choy."}
+                                 cost:320
+                               weight:300
+                               withId:++itemId];
+    [item setImageId:5];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item31 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item31 setTitle:@"Говяжий язык" forLng:@"ru"];
-    [item31 setTitle:@"Beef Tongue" forLng:@"en"];
-    [item31 setDesc:@"Нежный говяжий язык, варёный и нарезанный. Подаётся вместе со сливочным соусом на основе хрена."
-             forLng:@"ru"];
-    [item31 setDesc:@"Tender beef tongue, boiled and sliced, served with creamy horseradish sauce."
-             forLng:@"en"];
-    [item31 setCost:270 forWeight:100];
-    [cat3 addMenuItem:item31];
+    item = [self itemObjectWithTitles:@{@"ru": @"Le Манты с бараниной",
+                                        @"en": @"Le Manty"}
+                         descriptions:@{@"ru": @"Нежные, приготовленные на пару из рубленой сочной баранины, лука и ароматных специй. Подаются с соусом Мамацони.",
+                                        @"en": @"Tender steamed manty with succulent lamb, onions and spices. Served with matzoon – a yogurt sauce with herbs."}
+                                 cost:380
+                               weight:210
+                               withId:++itemId];
+    [item setImageId:6];
+    [cat addMenuItem:item];
     
-    ++itemId;
-//    MenuItemObject * item32 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-//    [item32 setTitle:@"Перепелиные яйца" forLng:@"ru"];
-//    [item32 setTitle:@"Quail Eggs" forLng:@"en"];
-//    [item32 setDesc:@"Отваренные диетические яйца перепела традиционно добавляются к плову как дополнительный ингредиент." forLng:@"ru"];
-//    [item32 setDesc:@"Dietary boiled quail eggs, traditionally served with plov as an additional ingredient." forLng:@"en"];
-//    [item32 setCost:120 forWeight:70];
-//    [cat3 addMenuItem:item32];
+    item = [self itemObjectWithTitles:@{@"ru": @"Le Манты с говядиной",
+                                        @"en": @"Le Manty with beef"}
+                         descriptions:@{@"ru": @"Аппетитные манты, приготовленные на пару с мякотью говядины, репчатым луком, специями и соусом Мамацони.",
+                                        @"en": @"Mouth-watering steamed manty with tender beef, onions and spices. Served with Mamatsioni sauce."}
+                                 cost:380
+                               weight:210
+                               withId:++itemId];
+    [item setImageId:7];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item33 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item33 setTitle:@"Казы" forLng:@"ru"];
-    [item33 setTitle:@"Kazy" forLng:@"en"];
-    [item33 setDesc:@"Особый деликатес из конины, сваренный с добавлением ароматных приправ." forLng:@"ru"];
-    [item33 setDesc:@"Special delicacy from horse meat, cooked with flavorful spices." forLng:@"en"];
-    [item33 setCost:300 forWeight:100];
-    [cat3 addMenuItem:item33];
-//-----------------
-    MenuCategoryObject * cat4 = [[MenuCategoryObject alloc] initWithId:@"3"];
-    [cat4 setTitle:@"Соусы" forLng:@"ru"];
-    [cat4 setTitle:@"Sauces" forLng:@"en"];
-    [obj addMenuCategory:cat4];
+    item = [self itemObjectWithTitles:@{@"ru": @"Le Манты с картофелем",
+                                        @"en": @"Le Manty with potatoes"}
+                         descriptions:@{@"ru": @"Сочные манты, приготовленные на пару, с рубленым кубиками картофелем, репчатым луком и специями. Подаются со сметаной.",
+                                        @"en": @"Juicy steamed manty with minced potatoes, onions and spices. Served with sour cream."}
+                                 cost:300
+                               weight:210
+                               withId:++itemId];
+    [item setImageId:8];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item41 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item41 setTitle:@"Пападжика" forLng:@"ru"];
-    [item41 setTitle:@"Papadzhika" forLng:@"en"];
-    [item41 setDesc:@"Острый соус на основе стручкового и болгарского перцев, томатов, укропа, чеснока и специй."
-             forLng:@"ru"];
-    [item41 setDesc:@"Hot sauce made with chili and bell peppers, tomatoes, dill, garlic and spices."
-             forLng:@"en"];
-    [item41 setCost:40 forWeight:30];
-    [cat4 addMenuItem:item41];
-    
-    MenuItemObject * item42 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item42 setTitle:@"Мамациони" forLng:@"ru"];
-    [item42 setTitle:@"Mamatsioni" forLng:@"en"];
-    [item42 setDesc:@"Нежный кисломолочный соус в сочетании со свежей ароматной кинзой." forLng:@"ru"];
-    [item42 setDesc:@"Delicate sour cream sauce served with fresh cilantro." forLng:@"en"];
-    [item42 setCost:40 forWeight:50];
-    [cat4 addMenuItem:item42];
-    
-    MenuItemObject * item43 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item43 setTitle:@"Томатони" forLng:@"ru"];
-    [item43 setTitle:@"Tomatoni" forLng:@"en"];
-    [item43 setDesc:@"Ароматный томатный соус с болгарским перцем, чесноком, кинзой, укропом и специями." forLng:@"ru"];
-    [item43 setDesc:@"Fragrant tomato sauce with bell peppers, garlic, cilantro, dill and spices." forLng:@"en"];
-    [item43 setCost:40 forWeight:50];
-    [cat4 addMenuItem:item43];
-    
-    MenuItemObject * item44 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item44 setTitle:@"Нехреновый" forLng:@"ru"];
-    [item44 setTitle:@"Horseradish Sauce" forLng:@"en"];
-    [item44 setDesc:@"Пикантный сливочный соус на основе хрена." forLng:@"ru"];
-    [item44 setDesc:@"Savoury creamy horseradish sauce." forLng:@"en"];
-    [item44 setCost:40 forWeight:30];
-    [cat4 addMenuItem:item44];
+    item = [self itemObjectWithTitles:@{@"ru": @"Le Манты с тыквой",
+                                        @"en": @"Pumpkin Le Manty"}
+                         descriptions:@{@"ru": @"Ароматные манты, приготовленные на пару, с начинкой из тыквы с добавлением специй. Подаются со сметаной.",
+                                        @"en": @"Delicious steamed manty with seasoned pumpkin filling. Served with sour cream."}
+                                 cost:300
+                               weight:210
+                               withId:++itemId];
+    [item setImageId:9];
+    [cat addMenuItem:item];
     
 //-----------------
-    MenuCategoryObject * cat5 = [[MenuCategoryObject alloc] initWithId:@"4"];
-    [cat5 setTitle:@"Салаты" forLng:@"ru"];
-    [cat5 setTitle:@"Salads" forLng:@"en"];
-    [obj addMenuCategory:cat5];
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Супы" forLng:@"ru"];
+    [cat setTitle:@"Soups" forLng:@"en"];
+    [obj addMenuCategory:cat];
     
-    MenuItemObject * item51 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item51 setTitle:@"Морковь КимЧинИра" forLng:@"ru"];
-    [item51 setTitle:@"KimChanIr Carrots" forLng:@"en"];
-    [item51 setDesc:@"Тёртая сочная морковь, душистые специи, немного уксуса и растительного масла с добавлением чеснока и кориандра." forLng:@"ru"];
-    [item51 setDesc:@"Grated juicy carrots seasoned with garlic, coriander, vinegar and vegetable oil." forLng:@"en"];
-    [item51 setCost:140 forWeight:100];
-    [cat5 addMenuItem:item51];
+    item = [self itemObjectWithTitles:@{@"ru": @"Тыквенный крем-суп",
+                                        @"en": @"Pumpkin cream soup"}
+                         descriptions:@{@"ru": @"Нежный крем-суп из ароматной тыквы с добавлением сливок, репчатого лука и порции поджареных сухариков.",
+                                        @"en": @"Delicate pumpkin cream soup. Made with cream, onions and served with croutons."}
+                                 cost:230
+                               weight:250
+                               withId:++itemId];
+    [item setImageId:10];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item52 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item52 setTitle:@"Соленья MIX" forLng:@"ru"];
-    [item52 setTitle:@"Pickle MIX" forLng:@"en"];
-    [item52 setDesc:@"Соленые красные помидоры с огурчиками и квашеной мелко рубленной капустой." forLng:@"ru"];
-    [item52 setDesc:@"Pickled red tomatoes and cucumbers and finely chopped sour cabbage." forLng:@"en"];
-    [item52 setCost:250 forWeight:250];
-    [cat5 addMenuItem:item52];
-    
-    MenuItemObject * item53 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item53 setTitle:@"i—Чучук" forLng:@"ru"];
-    [item53 setTitle:@"i - Chuchuk" forLng:@"en"];
-    [item53 setDesc:@"Тонко порезанные спелые ароматные помидоры, белый лук, вместе с нашинкованным зеленым базиликом — традиционный салат для плова." forLng:@"ru"];
-    [item53 setDesc:@"Thinly sliced ripe tomatoes, white onions and chopped fresh basil. Traditional salad served with plov."
-             forLng:@"en"];
-    [item53 setCost:150 forWeight:150];
-    [cat5 addMenuItem:item53];
-    
-    MenuItemObject * item54 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item54 setTitle:@"Салат Fresh" forLng:@"ru"];
-    [item54 setTitle:@"Fresh Salad" forLng:@"en"];
-    [item54 setDesc:@"Ароматный огуречный салат со свежей кинзой, укропом, рубленым зеленым луком, с добавлением растительного масла и соли." forLng:@"ru"];
-    [item54 setDesc:@"Fragrant cucumber salad seasoned with fresh cilantro, dill, chopped scallions, vegetable oil and salt."
-             forLng:@"en"];
-    [item54 setCost:150 forWeight:150];
-    [cat5 addMenuItem:item54];
+    item = [self itemObjectWithTitles:@{@"ru": @"Куриный суп-лапша",
+                                        @"en": @"Chicken noodle soup"}
+                         descriptions:@{@"ru": @"Аппетитное первое блюдо с куриной грудкой и бульоном, лапшой, болгарским перцем, красной морковью и специями.",
+                                        @"en": @"An appetizing soup with chicken breast, noodles, bell peppers, carrots and spices."}
+                                 cost:230
+                               weight:250
+                               withId:++itemId];
+    [item setImageId:11];
+    [cat addMenuItem:item];
     
 //-----------------
-    MenuCategoryObject * cat6 = [[MenuCategoryObject alloc] initWithId:@"5"];
-    [cat6 setTitle:@"Выпечка" forLng:@"ru"];
-    [cat6 setTitle:@"Pastries" forLng:@"en"];
-    [obj addMenuCategory:cat6];
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Закуски" forLng:@"ru"];
+    [cat setTitle:@"Appetizers" forLng:@"en"];
+    [obj addMenuCategory:cat];
     
-    MenuItemObject * item61 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item61 setTitle:@"Кутаб Пифагора с сыром" forLng:@"ru"];
-    [item61 setTitle:@"Pythagorean Qutab with Cheese" forLng:@"en"];
-    [item61 setDesc:@"Бездрожжевое тесто с начинкой из сыра сулугуни и гауда, запечённое на огне, обмазанное сливочным маслом."
-             forLng:@"ru"];
-    [item61 setDesc:@"Pastry with suluguni and gouda cheese filling, fire baked and lightly coated with butter."
-             forLng:@"en"];
-    [item61 setCost:200 forWeight:130];
-    [cat6 addMenuItem:item61];
+    item = [self itemObjectWithTitles:@{@"ru": @"Казы",
+                                        @"en": @"Kazy"}
+                         descriptions:@{@"ru": @"Особый деликатес из конины, сваренный с добавлением ароматных приправ.",
+                                        @"en": @"Special delicacy from horse meat, cooked with flavorful spices."}
+                                 cost:330
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:12];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item62 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item62 setTitle:@"Кутаб Пифагора с мясом" forLng:@"ru"];
-    [item62 setTitle:@"Pythagorean Qutab with Meat" forLng:@"en"];
-    [item62 setDesc:@"Мякоть говядины и специи, с добавлением приправ в запеченном без дрожжевом тесте и обмазанное сливочным маслом." forLng:@"ru"];
-    [item62 setDesc:@"Pastry with seasoned beef filling, fire baked and lightly coated with butter." forLng:@"en"];
-    [item62 setCost:200 forWeight:130];
-    [cat6 addMenuItem:item62];
+    item = [self itemObjectWithTitles:@{@"ru": @"Манты Карло",
+                                        @"en": @"Manty Carlo"}
+                         descriptions:@{@"ru": @"Карликовые манты, фаршированные бараниной. Поджарены на сковороде с добавлением лука и душистых специй. Подаются со сметаной.",
+                                        @"en": @"Bite-sized manty with lamb. Pan-fried and seasoned with onions and flavorful spices. Served with sour cream."}
+                                 cost:250
+                               weight:150
+                               withId:++itemId];
+    [item setImageId:13];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item63 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item63 setTitle:@"Кутаб Пифагора с зеленью" forLng:@"ru"];
-    [item63 setTitle:@"Pythagorean Qutab with Herbs" forLng:@"en"];
-    [item63 setDesc:@"Начинённый шпинатом и кинзой, с добавлением зелёного молодого лука и укропа. Приготовленный из бездрожжевого теста на огне." forLng:@"ru"];
-    [item63 setDesc:@"Fire baked pastry stuffed with spinach, cilantro, scallions and dill." forLng:@"en"];
-    [item63 setCost:200 forWeight:130];
-    [cat6 addMenuItem:item63];
-    
-    MenuItemObject * item64 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item64 setTitle:@"Самса с ягнятиной" forLng:@"ru"];
-    [item64 setTitle:@"Samsa with Lamb" forLng:@"en"];
-    [item64 setDesc:@"Приготовленная по традиционному узбекскому рецепту, с начинкой из мелко рубленной баранины с добавлением лука и душистых специй в слоеном тесте." forLng:@"ru"];
-    [item64 setDesc:@"Traditional Uzbek samsa – puff pastry stuffed with finely chopped lamb, onions and fragrant spices."
-             forLng:@"en"];
-    [item64 setCost:180 forWeight:100];
-    [cat6 addMenuItem:item64];
 
-    MenuItemObject * item65 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item65 setTitle:@"Самса с тыквой" forLng:@"ru"];
-    [item65 setTitle:@"Samsa with Pumpkin" forLng:@"en"];
-    [item65 setDesc:@"Запеченное слоеное тесто с начинкой из ароматной тыквы, лука, с добавлением душистых специй."
-             forLng:@"ru"];
-    [item65 setDesc:@"Baked puff pastry stuffed with flavorful pumpkin, onions and fragrant spices."
-             forLng:@"en"];
-    [item65 setCost:160 forWeight:100];
-    [cat6 addMenuItem:item65];
-    
-    MenuItemObject * item66 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item66 setTitle:@"The Лепешка" forLng:@"ru"];
-    [item66 setTitle:@"The Lepeshka" forLng:@"en"];
-    [item66 setDesc:@"Запеченное в тандыре пшеничное тесто на воде, украшенное кунжутом." forLng:@"ru"];
-    [item66 setDesc:@"Wheat flatbread baked in tandoor and sprinkled with sesame seeds." forLng:@"en"];
-    [item66 setCost:60 forWeight:100];
-    [cat6 addMenuItem:item66];
 //-----------------
-    MenuCategoryObject * cat7 = [[MenuCategoryObject alloc] initWithId:@"6"];
-    [cat7 setTitle:@"Сладости" forLng:@"ru"];
-    [cat7 setTitle:@"Sweets" forLng:@"en"];
-    [obj addMenuCategory:cat7];
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Соусы" forLng:@"ru"];
+    [cat setTitle:@"Sauces" forLng:@"en"];
+    [obj addMenuCategory:cat];
     
-    MenuItemObject * item71 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item71 setTitle:@"Варенье" forLng:@"ru"];
-    [item71 setTitle:@"Jam" forLng:@"en"];
-    [item71 setDesc:@"Натуральное разнообразное плодово-ягодное варенье." forLng:@"ru"];
-    [item71 setDesc:@"Selection of natural fruit and berry jam." forLng:@"en"];
-    [item71 setCost:200 forWeight:430];
-    [cat7 addMenuItem:item71];
+    item = [self itemObjectWithTitles:@{@"ru": @"Пападжика",
+                                        @"en": @"Papadzhika"}
+                         descriptions:@{@"ru": @"Острый соус на основе стручкового и болгарского перцев, томатов, укропа, чеснока и специй.",
+                                        @"en": @"Hot sauce made with chili and bell peppers, tomatoes, dill, garlic and spices."}
+                                 cost:50
+                               weight:50
+                               withId:++itemId];
+    [item setImageId:14];
+    [cat addMenuItem:item];
     
-    ++itemId;
-//    MenuItemObject * item72 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-//    [item72 setTitle:@"Чак-Чак Норрис" forLng:@"ru"];
-//    [item72 setTitle:@"Chuck Chuck Norris" forLng:@"en"];
-//    [item72 setDesc:@"Восточное лакомство приготовленное в сочетании замешанного теста на яйцах, сахаре, масле и медовой обливки." forLng:@"ru"];
-//    [item72 setDesc:@"Eastern sweet treat made with dough and honey glazing." forLng:@"en"];
-//    [item72 setCost:180 forWeight:200];
-//    [cat7 addMenuItem:item72];
+    item = [self itemObjectWithTitles:@{@"ru": @"Мамациони",
+                                        @"en": @"Mamatsioni"}
+                         descriptions:@{@"ru": @"Нежный кисломолочный соус в сочетании со свежей ароматной кинзой.",
+                                        @"en": @"Delicate sour cream sauce served with fresh cilantro."}
+                                 cost:50
+                               weight:50
+                               withId:++itemId];
+    [item setImageId:15];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Сметана",
+                                        @"en": @"Sour cream"}
+                         descriptions:@{@"ru": @"Кисломолочный продукт, на основе сливок и закваски.",
+                                        @"en": @"Cream-based dairy product."}
+                                 cost:50
+                               weight:50
+                               withId:++itemId];
+    [item setImageId:16];
+    [cat addMenuItem:item];
+    
+    
 //-----------------
-    MenuCategoryObject * cat8 = [[MenuCategoryObject alloc] initWithId:@"7"];
-    [cat8 setTitle:@"Напитки" forLng:@"ru"];
-    [cat8 setTitle:@"Beverages" forLng:@"en"];
-    [obj addMenuCategory:cat8];
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Салаты" forLng:@"ru"];
+    [cat setTitle:@"Salads" forLng:@"en"];
+    [obj addMenuCategory:cat];
     
-    MenuItemObject * item81 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item81 setTitle:@"Компоты Х.О." forLng:@"ru"];
-    [item81 setTitle:@"Compote X.O." forLng:@"en"];
-    [item81 setDesc:@"Разнообразные компоты с ягодами и плодами с чудесным ароматом и вкусом." forLng:@"ru"];
-    [item81 setDesc:@"Selection of flavorful fruit and berry compotes." forLng:@"en"];
-    [item81 setCost:200 forLitres:1];
-    [cat8 addMenuItem:item81];
+    item = [self itemObjectWithTitles:@{@"ru": @"i — Чучук",
+                                        @"en": @"i - Chuchuk"}
+                         descriptions:@{@"ru": @"Тонко порезанные спелые ароматные помидоры, белый лук, вместе с нашинкованным зеленым базиликом — традиционный салат для плова.",
+                                        @"en": @"Thinly sliced ripe tomatoes, white onions and chopped fresh basil. Traditional salad served with plov."}
+                                 cost:180
+                               weight:150
+                               withId:++itemId];
+    [item setImageId:17];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item82 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item82 setTitle:@"Чай молочный улун" forLng:@"ru"];
-    [item82 setTitle:@"Milk oolong tea" forLng:@"en"];
-    [item82 setDesc:@"Зелёный китайский чай с мягким молочным вкусом и лёгким приятным ароматом." forLng:@"ru"];
-    [item82 setDesc:@"Chinese green tea with mild milky taste and a pleasant, delicate aroma." forLng:@"en"];
-    [item82 setCost:100 forWeight:6];
-    [cat8 addMenuItem:item82];
-   
-    MenuItemObject * item83 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item83 setTitle:@"Зелёный чай" forLng:@"ru"];
-    [item83 setTitle:@"Green tea" forLng:@"en"];
-    [item83 setDesc:@"Насыщенный зелёный крупнолистовой чай с многогранным ароматом." forLng:@"ru"];
-    [item83 setDesc:@"Full leaf green tea with rich aroma and flavour." forLng:@"en"];
-    [item83 setCost:100 forWeight:6];
-    [cat8 addMenuItem:item83];
+    item = [self itemObjectWithTitles:@{@"ru": @"Салат Fresh",
+                                        @"en": @"Fresh Salad"}
+                         descriptions:@{@"ru": @"Ароматный огуречный салат со свежей кинзой, укропом, рубленым зеленым луком, с добавлением растительного масла и соли.",
+                                        @"en": @"Fragrant cucumber salad seasoned with fresh cilantro, dill, chopped scallions, vegetable oil and salt."}
+                                 cost:180
+                               weight:150
+                               withId:++itemId];
+    [item setImageId:18];
+    [cat addMenuItem:item];
     
-    MenuItemObject * item84 = [[MenuItemObject alloc] initWithId:@(++itemId).stringValue];
-    [item84 setTitle:@"Чай пуэр" forLng:@"ru"];
-    [item84 setTitle:@"Pu-erh tea" forLng:@"en"];
-    [item84 setDesc:@"Китайский выдержанный чай, ферментированный естественным способом с тонким вкусом и насыщенным цветом." forLng:@"ru"];
-    [item84 setDesc:@"Chinese aged and naturally fermented tea with subtle flavour and deep colour." forLng:@"en"];
-    [item84 setCost:100 forWeight:6];
-    [cat8 addMenuItem:item84];
+//-----------------
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Выпечка" forLng:@"ru"];
+    [cat setTitle:@"Pastries" forLng:@"en"];
+    [obj addMenuCategory:cat];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Самса с ягнятиной",
+                                        @"en": @"Samsa with Lamb"}
+                         descriptions:@{@"ru": @"Приготовленная по традиционному узбекскому рецепту, с начинкой из мелко рубленной баранины с добавлением лука и душистых специй в слоеном тесте.",
+                                        @"en": @"Traditional Uzbek samsa – puff pastry stuffed with finely chopped lamb, onions and fragrant spices."}
+                                 cost:130
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:19];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Самса с зеленью и сыром",
+                                        @"en": @"Samsa with cheese"}
+                         descriptions:@{@"ru": @"Приготовленная с добавлением зелёного лука, укропа, кориандра, специй и трёх видов сыра: сулугуни, брынза и гауда.",
+                                        @"en": @"Baked samsa with onions, dill, cilantro, spices and three cheeses – sulugini, gouda and feta cheese."}
+                                 cost:130
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:20];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Самса с овощами и курицей",
+                                        @"en": @"Samsa with chicken and vegetables"}
+                         descriptions:@{@"ru": @"Запечённое слоёное тесто с куриной грудкой, болгарским перцем, томатом, укропом, репчатым луком и специями.",
+                                        @"en": @"Baked puff pastry with chicken breast, bell peppers, tomatoes, dill, onions and spices."}
+                                 cost:130
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:21];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Самса с тыквой",
+                                        @"en": @"Samsa with pumpkin"}
+                         descriptions:@{@"ru": @"Запечённое слоёное тесто с начинкой из ароматной тыквы, лука, с добавлением душистых специй.",
+                                        @"en": @"Baked puff pastry with flavorful pumpkin, onions and fragrant spices."}
+                                 cost:130
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:22];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Роберт-Брауни младший",
+                                        @"en": @"Robert Brownie, Jr"}
+                         descriptions:@{@"ru": @"Десерт из темного бельгийского шоколада с добавлением натурального какао, грецкого ореха и белого шоколада.",
+                                        @"en": @"Chocolate desert. Made with dark Belgian chocolate, natural cocoa, walnuts and white chocolate."}
+                                 cost:140
+                               weight:100
+                               withId:++itemId];
+    [item setImageId:23];
+    [cat addMenuItem:item];
     
     
-//    MenuCategoryObject * cat9 = [[MenuCategoryObject alloc] initWithId:@"8"];
-//    cat9.hide = YES;
-//    [cat9 setTitle:@"Прочее" forLng:@"ru"];
-//    [cat9 setTitle:@"Other" forLng:@"en"];
-//    [obj addMenuCategory:cat9];
-//
-//    MenuItemObject * item91 = [[MenuItemObject alloc] initWithId:@"10000"];
-//    [item91 setTitle:@"Доставка" forLng:@"ru"];
-//    [item91 setTitle:@"Delivery" forLng:@"en"];
-//    [item91 setDesc:@"Доставка" forLng:@"ru"];
-//    [item91 setDesc:@"Delivery" forLng:@"en"];
-//    [item91 setCost:300 forWeight:1];
-//    [cat9 addMenuItem:item91];
+//-----------------
+    cat = [[MenuCategoryObject alloc] initWithId:@(catId++).stringValue];
+    [cat setTitle:@"Напитки" forLng:@"ru"];
+    [cat setTitle:@"Beverages" forLng:@"en"];
+    [obj addMenuCategory:cat];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Coca-Cola",
+                                        @"en": @"Coca-Cola"}
+                         descriptions:@{@"ru": @"Газированный напиток.",
+                                        @"en": @"Soda drink"}
+                                 cost:0
+                               weight:0
+                               withId:++itemId];
+    [item setCost:70 forMlitres:330];
+    [item setImageId:24];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Dr Pepper",
+                                        @"en": @"Dr Pepper"}
+                         descriptions:@{@"ru": @"Газированный напиток.",
+                                        @"en": @"Soda drink"}
+                                 cost:0
+                               weight:0
+                               withId:++itemId];
+    [item setCost:90 forMlitres:330];
+    [item setImageId:25];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Borjomi",
+                                        @"en": @"Borjomi"}
+                         descriptions:@{@"ru": @"Минеральная газированная лечебно-столовая вода.",
+                                        @"en": @"Mineral sparkling water."}
+                                 cost:0
+                               weight:0
+                               withId:++itemId];
+    [item setCost:100 forMlitres:300];
+    [item setImageId:26];
+    [cat addMenuItem:item];
+    
+    item = [self itemObjectWithTitles:@{@"ru": @"Соки Rich",
+                                        @"en": @"Juices Rich"}
+                         descriptions:@{@"ru": @"Фруктовые соки в ассортименте.",
+                                        @"en": @"Assorted fruit juices"}
+                                 cost:0
+                               weight:0
+                               withId:++itemId];
+    [item setCost:160 forMlitres:1000];
+    [item setImageId:27];
+    [cat addMenuItem:item];
+
+    item = [self itemObjectWithTitles:@{@"ru": @"Компоты Х.О.",
+                                        @"en": @"Compote X.O."}
+                         descriptions:@{@"ru": @"Разнообразные компоты с ягодами и плодами с чудесным ароматом и вкусом.",
+                                        @"en": @"Selection of flavorful fruit and berry compotes."}
+                                 cost:0
+                               weight:0
+                               withId:++itemId];
+    [item setCost:280 forMlitres:1000];
+    [item setImageId:28];
+    [cat addMenuItem:item];
+
     
     obj.minimalCost = [self.remoteAppInfo[kRemoteInfoMinimalCost] integerValue];
     obj.freeDeliveryCost = [self.remoteAppInfo[kRemoteInfoFreeDeliveryCost] integerValue];

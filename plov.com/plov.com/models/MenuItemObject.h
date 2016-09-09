@@ -18,6 +18,7 @@
 @property (nonatomic, readonly, assign) NSInteger weight;
 @property (nonatomic, readonly, assign) NSInteger cost;
 @property (nonatomic, readonly, assign) BOOL litres;
+@property (nonatomic, readonly, assign) NSInteger imageId;
 @property (nonatomic, assign) NSInteger count;
 
 - (NSString *)titleForLng:(NSString *)lng;
@@ -27,7 +28,9 @@
 - (void)setDesc:(NSString *)desc forLng:(NSString *)lng;
 
 - (void)setCost:(NSInteger)cost forWeight:(NSInteger)weight;
-- (void)setCost:(NSInteger)cost forLitres:(NSInteger)litres;
+- (void)setCost:(NSInteger)cost forMlitres:(NSInteger)litres;
+
+- (void)setImageId:(NSInteger)imageId;
 
 - (instancetype)initWithData:(NSData *)data;
 - (instancetype)initWithId:(NSString *)itemId;
