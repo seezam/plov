@@ -96,6 +96,13 @@
     UIButton * btn = [[UIButton alloc] initWithFrame:self.bucketSumLabel.bounds];
     [btn addTarget:self action:@selector(processToOrder) forControlEvents:UIControlEventTouchUpInside];
     self.orderButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    
+    [SHARED_APP.crm getMenuSuccess:^(NSDictionary *data) {
+        
+    } error:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

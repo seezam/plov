@@ -20,4 +20,15 @@
              success:(void (^)(NSDictionary *data))successBlock
                error:(void (^)(NSError *error))errorBlock;
 
+
+- (void)getTokenSuccess:(void (^)(NSData *data))successBlock
+                  error:(void (^)(NSError *error))errorBlock;
+
+- (void)getOrganizationSuccess:(void (^)(NSArray *data))successBlock
+                  error:(void (^)(NSError *error))errorBlock;
+
+- (void)getMenuSuccess:(void (^)(NSDictionary *data))successBlock
+          error:(void (^)(NSError *error))errorBlock;
+
+
 @end
