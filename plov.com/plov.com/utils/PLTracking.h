@@ -19,8 +19,8 @@
 - (void)FBActivateApp;
 - (void)FBLogEvent:(NSString *)event sum:(double)sum;
 
-- (void)ParseRegisterPush:(NSData*)token;
-- (void)ParseHandlePush:(NSDictionary *)userInfo;
+//- (void)ParseRegisterPush:(NSData*)token;
+//- (void)ParseHandlePush:(NSDictionary *)userInfo;
 
 - (void)openScreen:(NSString *)screenName;
 - (void)cartPurchased:(OrderObject *)order;

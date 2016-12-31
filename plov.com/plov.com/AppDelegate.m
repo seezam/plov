@@ -649,7 +649,7 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
 //    [Intercom setDeviceToken:deviceToken];
     NSLog(@"My token is: %@", deviceToken);
     
-    [self.tracking ParseRegisterPush:deviceToken];
+//    [self.tracking ParseRegisterPush:deviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -658,7 +658,7 @@ NSString * kRemoteInfoCallcenterNumber = @"callcenter_number";
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [self.tracking ParseHandlePush:userInfo];
+//    [self.tracking ParseHandlePush:userInfo];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

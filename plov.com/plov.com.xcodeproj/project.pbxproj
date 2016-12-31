@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		180F64D61C41199100D792AE /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F64D51C41199100D792AE /* PhoneNumberFormatter.m */; };
+		181F2E941E18212800C37D1F /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181F2E931E18212800C37D1F /* OneSignal.framework */; };
 		184B14EC1B6E84DD00276C04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EB1B6E84DD00276C04 /* main.m */; };
 		184B14EF1B6E84DD00276C04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B14EE1B6E84DD00276C04 /* AppDelegate.m */; };
 		184B15131B6E87E200276C04 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B15121B6E87E200276C04 /* SWRevealViewController.m */; };
@@ -16,7 +17,6 @@
 		18FD9B831C078D45004D835D /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD9B821C078D45004D835D /* libAdIdAccess.a */; };
 		18FD9B851C078DD7004D835D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FD9B841C078DD6004D835D /* AdSupport.framework */; };
 		D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */; };
-		D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0301BFB26F000544165 /* Parse.framework */; };
 		D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0341BFB286E00544165 /* Bolts.framework */; };
 		D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0361BFB29D000544165 /* libz.tbd */; };
 		D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D50EC0381BFB29D700544165 /* libsqlite3.tbd */; };
@@ -85,6 +85,7 @@
 /* Begin PBXFileReference section */
 		180F64D41C41199100D792AE /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
 		180F64D51C41199100D792AE /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
+		181F2E931E18212800C37D1F /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 		184B14E61B6E84DD00276C04 /* plov.com.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plov.com.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184B14EA1B6E84DD00276C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184B14EB1B6E84DD00276C04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		18FD9B821C078D45004D835D /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAdIdAccess.a; path = GTM/libAdIdAccess.a; sourceTree = "<group>"; };
 		18FD9B841C078DD6004D835D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		D50EC0301BFB26F000544165 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D50EC0341BFB286E00544165 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D50EC0361BFB29D000544165 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D50EC0381BFB29D700544165 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -221,13 +221,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18FD9B851C078DD7004D835D /* AdSupport.framework in Frameworks */,
+				181F2E941E18212800C37D1F /* OneSignal.framework in Frameworks */,
 				18FD9B831C078D45004D835D /* libAdIdAccess.a in Frameworks */,
 				D50EC0441BFBB2D600544165 /* CoreData.framework in Frameworks */,
 				D50EC03B1BFB29F600544165 /* AudioToolbox.framework in Frameworks */,
 				D50EC0391BFB29D700544165 /* libsqlite3.tbd in Frameworks */,
 				D50EC0371BFB29D000544165 /* libz.tbd in Frameworks */,
 				D50EC0351BFB286E00544165 /* Bolts.framework in Frameworks */,
-				D50EC0311BFB26F100544165 /* Parse.framework in Frameworks */,
 				D50EC02F1BFA854F00544165 /* FBSDKCoreKit.framework in Frameworks */,
 				D56D64841B6FFA0F0077671F /* UIKit.framework in Frameworks */,
 				D56D64811B6FF7E60077671F /* Foundation.framework in Frameworks */,
@@ -238,6 +238,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181F2E921E18212800C37D1F /* OneSIgnal */ = {
+			isa = PBXGroup;
+			children = (
+				181F2E931E18212800C37D1F /* OneSignal.framework */,
+			);
+			path = OneSIgnal;
+			sourceTree = "<group>";
+		};
 		184B14DD1B6E84DD00276C04 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +297,7 @@
 		184B150F1B6E87E200276C04 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				181F2E921E18212800C37D1F /* OneSIgnal */,
 				18FD9B841C078DD6004D835D /* AdSupport.framework */,
 				18FD9B821C078D45004D835D /* libAdIdAccess.a */,
 				D50EC03A1BFB29F600544165 /* AudioToolbox.framework */,
@@ -297,7 +306,6 @@
 				D50EC0341BFB286E00544165 /* Bolts.framework */,
 				D50EC0471BFBB33500544165 /* GTM */,
 				D50EC0431BFBB2D600544165 /* CoreData.framework */,
-				D50EC0301BFB26F000544165 /* Parse.framework */,
 				D50EC02E1BFA854F00544165 /* FBSDKCoreKit.framework */,
 				D56D64831B6FFA0F0077671F /* UIKit.framework */,
 				D56D64801B6FF7E60077671F /* Foundation.framework */,
@@ -726,6 +734,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/plov.com/frameworks/Intercom",
 					"$(PROJECT_DIR)/plov.com/frameworks",
+					"$(PROJECT_DIR)/plov.com/frameworks/OneSIgnal",
 				);
 				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
 				INFOPLIST_FILE = plov.com/Info.plist;
@@ -753,6 +762,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/plov.com/frameworks/Intercom",
 					"$(PROJECT_DIR)/plov.com/frameworks",
+					"$(PROJECT_DIR)/plov.com/frameworks/OneSIgnal",
 				);
 				GCC_PREFIX_HEADER = "plov.com/plov.com-prefix.pch";
 				INFOPLIST_FILE = plov.com/Info.plist;

@@ -10,7 +10,7 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import <Parse/Parse.h>
+#import <OneSignal/OneSignal.h>
 
 #import "TAGContainer.h"
 #import "TAGContainerOpener.h"
@@ -47,8 +47,44 @@
                                         timeout:nil
                                        notifier:self];
         
-        [Parse setApplicationId:@"1OwEBp7a2H7MInky6Tps3kMhh8iqXdYzv1QtTfng"
-                      clientKey:@"vOqnH9hAB7TUFQ6hp4IHAth2ZwVEr0PE1Xp1X5Cs"];
+//        [Parse setApplicationId:@"1OwEBp7a2H7MInky6Tps3kMhh8iqXdYzv1QtTfng"
+//                      clientKey:@"vOqnH9hAB7TUFQ6hp4IHAth2ZwVEr0PE1Xp1X5Cs"];
+        
+        [OneSignal initWithLaunchOptions:launchOptions appId:@"5bbd1f0b-6617-4c44-a204-b6035bb85c89" handleNotificationAction:^(OSNotificationOpenedResult *result) {
+            
+//            // This block gets called when the user reacts to a notification received
+//            OSNotificationPayload* payload = result.notification.payload;
+//            
+//            
+//            NSString* messageTitle = @"OneSignal Example";
+//            NSString* fullMessage = [payload.body copy];
+//            
+//            if (payload.additionalData) {
+//                
+//                if(payload.title)
+//                    messageTitle = payload.title;
+//                
+//                NSDictionary* additionalData = payload.additionalData;
+//                
+//                if (additionalData[@"actionSelected"])
+//                    fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", additionalData[@"actionSelected"]]];
+//            }
+//            
+//            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
+//                                                                message:fullMessage
+//                                                               delegate:self
+//                                                      cancelButtonTitle:@"Close"
+//                                                      otherButtonTitles:nil, nil];
+//            [alertView show];
+            
+        }];
+        
+        [OneSignal IdsAvailable:^(NSString *userId, NSString *pushToken) {
+            if(pushToken) {
+                NSLog(@"Received push token - %@", pushToken);
+                NSLog(@"User ID - %@", userId);
+            }
+        }];
         
         [[FBSDKApplicationDelegate sharedInstance] application:[UIApplication sharedApplication]
                                  didFinishLaunchingWithOptions:launchOptions];
@@ -85,18 +121,18 @@
 
 //------
 
-- (void)ParseRegisterPush:(NSData*)token
-{
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:token];
-    currentInstallation.channels = @[ @"global" ];
-    [currentInstallation saveInBackground];
-}
-
-- (void)ParseHandlePush:(NSDictionary *)userInfo
-{
-    [PFPush handlePush:userInfo];
-}
+//- (void)ParseRegisterPush:(NSData*)token
+//{
+//    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//    [currentInstallation setDeviceTokenFromData:token];
+//    currentInstallation.channels = @[ @"global" ];
+//    [currentInstallation saveInBackground];
+//}
+//
+//- (void)ParseHandlePush:(NSDictionary *)userInfo
+//{
+//    [PFPush handlePush:userInfo];
+//}
 
 //-------
 
